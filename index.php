@@ -1,4 +1,11 @@
 <?php session_start(); ?>
+<?php include('connection.php'); ?>
+<?php $result = $conn->query('SELECT * FROM PRODUCT');
+  while ($rows= mysqli_fetch_array($result)) {
+    echo $rows['id'] . '<br>';
+  }
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,11 +21,9 @@
 <body>
   <div class="container">
     <div class="alert alert-primary text-center" role="alert">
-      歡迎光臨BOSS
+
     </div>
-    <div class="alert alert-secondary text-center" role="alert">
-      這裡什麼也還沒有
-    </div>
+
   </div>
 </body>
 </html>
