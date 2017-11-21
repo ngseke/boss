@@ -1,11 +1,6 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php $result = $conn->query('SELECT * FROM PRODUCT');
-  while ($rows= mysqli_fetch_array($result)) {
-    echo $rows['id'] . '<br>';
-  }
-
-?>
+<?php  ?>
 <!DOCTYPE html>
 <html>
 
