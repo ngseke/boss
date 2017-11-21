@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php  ?>
+<?php
+  $conn->query();
+ ?>
 <!DOCTYPE html>
 <html>
 
