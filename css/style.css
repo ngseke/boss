@@ -2,3 +2,8 @@
 body{
   padding-top: 5rem;
 }
+
+/* 修正icon對齊 */
+.material-icons{
+  vertical-align: bottom;
+}

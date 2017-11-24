@@ -3,7 +3,7 @@
 <?php
   // 本頁的標題
   $page_name = '所有商品';
-  // 如果有從網址列撈到'search'內容
+  // 如果有從網址列GET到'search'內容
   $search = isset($_GET['search']) ? $_GET['search'] : '';
   if(isset($_GET['search'])){
     $page_name = '搜尋: ' . $search;
@@ -50,21 +50,31 @@
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
 
+            // 若執行搜尋，印出提示文字
+            echo '<div class="col-12">';
+            if(isset($_GET['search'])){
+              echo '<div class="alert alert-info">
+                      <i class="material-icons">search</i>
+                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項關於 <em>'. $_GET['search'] .'</em> 的商品。
+                    </div>';
+            }
+            echo '</div>';
+
             // 用迴圈把每列內容取出 存放在$rows 並印出
             while($rows = mysqli_fetch_array($result)){
               $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
               echo '<div class="col-12 col-lg-4 mb-2">
-                <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <img src="' . $rows['Img'] . '" class="img-fluid mb-2">
-                    <h5 class="card-title">' . $rows['Name'] . '</h5>
-                    <p class="card-text ">' . $info . '</p>
-                    <span class="badge badge-primary">NT$ ' . $rows['Price'] . '</span>
-                  </div>
-                </div>
-                </a>
-              </div>';
+                      <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
+                            <h5 class="card-title mb-1">' . $rows['Name'] . '</h5>
+                            <p class="card-text mb-2">' . $info . '</p>
+                            <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>';
             }
           ?>
 
