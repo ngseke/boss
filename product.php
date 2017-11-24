@@ -2,7 +2,12 @@
 <?php include('connection.php'); ?>
 <?php
   // 本頁的標題
-  $page_name = '所有商品'
+  $page_name = '所有商品';
+  // 如果有從網址列撈到'search'內容
+  $search = isset($_GET['search']) ? $_GET['search'] : '';
+  if(isset($_GET['search'])){
+    $page_name = '搜尋: ' . $search;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +31,7 @@
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active">  Cras justo odio  </a>
+          <a href="#" class="list-group-item list-group-item-action active">所有商品</a>
           <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
           <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
@@ -38,20 +43,24 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT * FROM PRODUCT WHERE Name LIKE '%". $_GET['search'] ."%'";
+            $sql = "SELECT * FROM PRODUCT
+                    WHERE Name LIKE '%$search%'
+                    OR Info LIKE '%$search%' ";
+
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
 
-            // 用迴圈把每列內容取出 存放在$rows
+            // 用迴圈把每列內容取出 存放在$rows 並印出
             while($rows = mysqli_fetch_array($result)){
+              $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
               echo '<div class="col-12 col-lg-4 mb-2">
                 <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
                 <div class="card">
                   <div class="card-body text-center">
                     <img src="' . $rows['Img'] . '" class="img-fluid mb-2">
-                    <h4 class="card-title">' . $rows['Name'] . '</h4>
-                    <p class="card-text">' . $rows['Info'] . '</p>
-                    <span class="badge badge-warning">NT$ ' . $rows['Price'] . '</span>
+                    <h5 class="card-title">' . $rows['Name'] . '</h5>
+                    <p class="card-text ">' . $info . '</p>
+                    <span class="badge badge-primary">NT$ ' . $rows['Price'] . '</span>
                   </div>
                 </div>
                 </a>
@@ -59,8 +68,8 @@
             }
           ?>
 
-
         </div>
+        <hr>
       </div>
     </div>
   </div>

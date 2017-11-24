@@ -28,6 +28,21 @@
           </div>
         </li>
       </ul>
+
+      <!-- DEBUG MODE 時顯示之選單 -->
+      <?php
+        if(debug_mode){
+          echo '<ul class="navbar-nav border border-info">
+                  <li class="nav-item">
+                    <a class="nav-link" href="db.php"><i>DB</i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="http://localhost/phpmyadmin/"><i>phpmyadmin</i></a>
+                  </li>
+                </ul>';
+        }
+      ?>
+
       <!-- 靠右 -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item <?php echo (false) ? 'active' : '';?>">
