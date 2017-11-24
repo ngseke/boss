@@ -34,7 +34,7 @@ $arr = explode(';', $file);
 <body>
   <?php include('nav.php') ?>
   <div class="container">
-    <div class="alert alert-primary text-center">執行了以下查詢</div>
+    <div class="alert alert-primary text-center"><i class="material-icons">storage</i> 執行了以下查詢</div>
     <?php
       // 逐一執行mysql查詢
       foreach ($arr as $line) {
@@ -45,7 +45,7 @@ $arr = explode(';', $file);
           }
         } else {
           // 若錯誤 印出錯誤資訊
-          echo'<div class="alert alert-danger" >錯誤 :<br><pre><code>'
+          echo'<div class="alert alert-danger" ><i class="material-icons">warning</i> 錯誤 :<br><pre><code>'
               . $line . ';<br><strong></code></pre>'. $conn->error .'</strong></div>';
         }
       }

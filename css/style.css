@@ -3,7 +3,7 @@ body{
   padding-top: 5rem;
 }
 
-/* 修正icon對齊 */
+/* 修正icon垂直對齊 */
 .material-icons{
-  vertical-align: bottom;
+  vertical-align: middle;
 }
