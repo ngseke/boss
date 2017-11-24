@@ -44,9 +44,9 @@ $arr = explode(';', $file);
             echo '<div class="alert alert-secondary" ><pre><code>'. $line . ';</code></pre></div>';
           }
         } else {
-          // 若錯誤 印出錯誤資訊並"停止執行"
-          die ('<div class="alert alert-danger" >錯誤 :<br><pre><code>'
-              . $line . ';<br><strong></code></pre>'. $conn->error .'</strong></div>');
+          // 若錯誤 印出錯誤資訊
+          echo'<div class="alert alert-danger" >錯誤 :<br><pre><code>'
+              . $line . ';<br><strong></code></pre>'. $conn->error .'</strong></div>';
         }
       }
     ?>
