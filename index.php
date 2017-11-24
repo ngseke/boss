@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
-  <title>BOSS商店</title>
+  <title><?php echo title_name ?> </title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <!-- ~~STUFF -->
     <?php include('page.php') ?>
   </div>
-
+  <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
