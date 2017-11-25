@@ -31,9 +31,8 @@ CREATE TABLE PRODUCT(
 );
 
 -- 商品類型;
-CREATE TABLE CATAGORY(
+CREATE TABLE CATEGORY(
   ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  PID INT(7) UNSIGNED NOT NULL,
   Name VARCHAR(10) NOT NULL UNIQUE
 );
 
@@ -94,16 +93,19 @@ CREATE TABLE DISCOUNT (
 
 -- 插入測試用範例資料;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('純喫茶 綠茶', 25, 'in_stock', 999, NULL, 0, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
-      ('純喫茶 紅茶', 25, 'in_stock', 999, NULL, 0, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
-      ('純喫茶 檸檬紅茶', 25, 'in_stock', 999, NULL, 0, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
-      ('純喫茶 烏龍青茶', 25, 'in_stock', 999, NULL, 0, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
-      ('純喫茶 鮮柚綠茶', 25, 'in_stock', 999, NULL, 0, '以冰析鮮萃工法，保留葡萄柚香氣，調和清爽甘醇的茉莉綠茶，激盪出酸甜清香的新鮮果茶風味！', 'http://www.pecos.com.tw/tmp/image/20150105/20150105090925_79899.jpg'),
-      ('純喫茶 無糖綠茶', 25, 'in_stock', 999, NULL, 0, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg');
+VALUE('純喫茶 綠茶', 25, 'in_stock', 999, NULL, 2, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
+      ('純喫茶 紅茶', 25, 'in_stock', 999, NULL, 1, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
+      ('純喫茶 檸檬紅茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
+      ('純喫茶 烏龍青茶', 25, 'in_stock', 999, NULL, 1, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
+      ('純喫茶 鮮柚綠茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留葡萄柚香氣，調和清爽甘醇的茉莉綠茶，激盪出酸甜清香的新鮮果茶風味！', 'http://www.pecos.com.tw/tmp/image/20150105/20150105090925_79899.jpg'),
+      ('純喫茶 無糖綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg');
+
+INSERT INTO CATEGORY(Name) Value('茶'), ('綠茶');
+
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
-ALTER TABLE PRODUCT ADD FOREIGN KEY (CategoryID) REFERENCES CATAGORY(ID);
+ALTER TABLE PRODUCT ADD FOREIGN KEY (CategoryID) REFERENCES CATEGORY(ID);
 ALTER TABLE ORDER_LIST ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID);
 ALTER TABLE ORDER_LIST ADD FOREIGN KEY (DID) REFERENCES DISCOUNT(ID);
 ALTER TABLE ORDER_LIST_RECORD ADD FOREIGN KEY (OID) REFERENCES ORDER_LIST(ID);

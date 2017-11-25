@@ -31,10 +31,17 @@
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active">所有商品</a>
-          <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+          <a href="product.php" class="list-group-item list-group-item-action <?php echo !isset($_GET['category'])?'active':'' ?>">所有商品</a>
+          <?php
+            $sql = "SELECT * FROM CATEGORY C ORDER BY ID ASC";
+            $result = $conn->query($sql);
+            while($rows = mysqli_fetch_array($result)){
+              if(isset($_GET['category']) && $_GET['category']== $rows['ID']){
+                $list_active='active';
+              }else $list_active='';
+              echo '<a href="product.php?category='. $rows['ID'] .'" class="list-group-item list-group-item-action '. $list_active .'">'. $rows['Name'] .'</a>';
+            }
+          ?>
         </div>
       </div>
 
@@ -43,10 +50,19 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT * FROM PRODUCT
-                    WHERE Name LIKE '%$search%'
-                    OR Info LIKE '%$search%' ";
+            $sql = "SELECT *, P.Name PName, C.Name CName FROM PRODUCT P
+                    INNER JOIN CATEGORY C
+                    ON P.CategoryID = C.ID
+                    WHERE P.CategoryID = C.ID
+                    AND (P.Name LIKE '%$search%'
+                    OR P.Info LIKE '%$search%') ";
 
+            if(isset($_GET['category'])){
+              $sql = "SELECT *, P.Name PName, C.Name CName FROM PRODUCT P, CATEGORY C
+                      WHERE P.CategoryID = C.ID
+                      AND P.CategoryID =" . $_GET['category'];
+            }
+            
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
 
@@ -68,9 +84,10 @@
                         <div class="card">
                           <div class="card-body text-center">
                             <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
-                            <h5 class="card-title mb-1">' . $rows['Name'] . '</h5>
+                            <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
                             <p class="card-text mb-2">' . $info . '</p>
                             <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
+                            <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                           </div>
                         </div>
                       </a>

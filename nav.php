@@ -41,7 +41,7 @@
         if(debug_mode){
           echo '<ul class="navbar-nav border border-info rounded">
                   <li class="nav-item">
-                    <a class="nav-link" href="db.php"><i>DB</i></a>
+                    <a class="nav-link" href="db.php"><i>一鍵生成DB</i></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" target="_blank" href="http://localhost/phpmyadmin/"><i>phpmyadmin</i></a>
