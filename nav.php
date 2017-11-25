@@ -1,4 +1,11 @@
 <!-- 導覽列 -->
+
+<?php
+  // 取得當前頁面的檔名
+  $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
+?>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.php">BOSS</a>
@@ -10,7 +17,7 @@
       <!-- 靠左 -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item <?php echo (false) ? 'active' : '';?>">
-          <a class="nav-link" href="product.php">商品</a>
+          <a class="nav-link <?php echo ($this_page =='product')?'active':''; ?> " href="product.php">商品</a>
         </li>
         <form class="form-inline mx-0 mx-lg-2 my-2 my-lg-0" method="get" >
           <input class="form-control mr-sm-2" type="search" placeholder="搜尋" name="search">
