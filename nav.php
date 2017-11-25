@@ -34,7 +34,7 @@
           <a class="nav-link" href="#">購物車</a>
         </li>
         <li class="nav-item <?php echo (false) ? 'active' : '';?>">
-          <a class="nav-link" href="#">登入</a>
+          <a class="nav-link" href="login.php">登入</a>
         </li>
         <li class="nav-item <?php echo (false) ? 'active' : '';?>">
           <a class="nav-link" href="#">註冊</a>
