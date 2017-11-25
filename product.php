@@ -6,7 +6,12 @@
   // 如果有從網址列GET到'search'內容
   $search = isset($_GET['search']) ? $_GET['search'] : '';
   if(isset($_GET['search'])){
+    // set本頁面名稱為搜尋的內容
     $page_name = '搜尋: ' . $search;
+  }else if(isset($_GET['category'])){
+    // set本頁面名稱為選擇的Category
+    $sql = "SELECT Name N FROM CATEGORY C WHERE ID=". $_GET['category'];
+    $page_name = mysqli_fetch_array($conn->query($sql))['N'];
   }
 ?>
 
