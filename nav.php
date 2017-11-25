@@ -39,12 +39,12 @@
       <!-- DEBUG MODE 時顯示之選單 -->
       <?php
         if(debug_mode){
-          echo '<ul class="navbar-nav border border-info rounded">
+          echo '<ul class="navbar-nav border border-info rounded ">
                   <li class="nav-item">
-                    <a class="nav-link" href="db.php"><i>一鍵生成DB</i></a>
+                    <a class="nav-link text-info" href="db.php">一鍵生成DB</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="http://localhost/phpmyadmin/"><i>phpmyadmin</i></a>
+                    <a class="nav-link text-info" target="_blank" href="http://localhost/phpmyadmin/">phpmyadmin</a>
                   </li>
                 </ul>';
         }

@@ -31,15 +31,23 @@
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3">
         <div class="list-group">
-          <a href="product.php" class="list-group-item list-group-item-action <?php echo !isset($_GET['category'])?'active':'' ?>">所有商品</a>
+          <?php $list_active = !(isset($_GET['category'])||isset($_GET['search']))?'active':''  ?>
+          <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
           <?php
             $sql = "SELECT * FROM CATEGORY C ORDER BY ID ASC";
             $result = $conn->query($sql);
+
             while($rows = mysqli_fetch_array($result)){
+              // 查詢該類別下有多少筆商品
+              $sql1 = "SELECT COUNT(*) COUNT_NUM FROM PRODUCT P, CATEGORY C
+                      WHERE P.CategoryID = C.ID
+                      AND P.CategoryID =" . $rows['ID'];
               if(isset($_GET['category']) && $_GET['category']== $rows['ID']){
                 $list_active='active';
               }else $list_active='';
-              echo '<a href="product.php?category='. $rows['ID'] .'" class="list-group-item list-group-item-action '. $list_active .'">'. $rows['Name'] .'</a>';
+              echo '<a href="product.php?category='. $rows['ID'] .'"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['Name'] .
+                    '<span class="badge badge-dark badge-pill">'. mysqli_fetch_array($conn->query($sql1))['COUNT_NUM'] .'</span></a>';
             }
           ?>
         </div>
@@ -62,7 +70,7 @@
                       WHERE P.CategoryID = C.ID
                       AND P.CategoryID =" . $_GET['category'];
             }
-            
+
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
 
@@ -94,7 +102,6 @@
                     </div>';
             }
           ?>
-
         </div>
         <hr>
       </div>
