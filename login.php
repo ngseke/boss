@@ -1,6 +1,9 @@
 <?php session_start(); ?>
+<?php include('connection.php'); ?>
+<?php $page_name = '登入'; ?>
+
 <?php
-$login = isset($_SESSION['username']) ? true : false ;
+  $login = isset($_SESSION['username']) ? true : false ;
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +44,7 @@ $login = isset($_SESSION['username']) ? true : false ;
         </div>
       </div>
     </div>
-    </div>  
+    </div>
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->

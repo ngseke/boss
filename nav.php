@@ -16,8 +16,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- 靠左 -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item <?php echo (false) ? 'active' : '';?>">
-          <a class="nav-link <?php echo ($this_page =='product')?'active':''; ?> " href="product.php">商品</a>
+        <li class="nav-item <?php echo ($this_page =='product')?'active':''; ?>">
+          <a class="nav-link " href="product.php">商品</a>
         </li>
         <form class="form-inline mx-0 mx-lg-2 my-2 my-lg-0" method="get" >
           <input class="form-control mr-sm-2" type="search" placeholder="搜尋" name="search">
@@ -52,13 +52,13 @@
 
       <!-- 靠右 -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item <?php echo (false) ? 'active' : '';?>">
+        <li class="nav-item ">
           <a class="nav-link" href="#"><i class="material-icons">shopping_cart</i> 購物車</a>
         </li>
-        <li class="nav-item <?php echo (false) ? 'active' : '';?>">
+        <li class="nav-item <?php echo ($this_page =='login')?'active':''; ?>">
           <a class="nav-link" href="login.php">登入</a>
         </li>
-        <li class="nav-item <?php echo (false) ? 'active' : '';?>">
+        <li class="nav-item ">
           <a class="nav-link" href="#">註冊</a>
         </li>
       </ul>
