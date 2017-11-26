@@ -31,11 +31,11 @@
           <form class="row" action="login_user.php" method="post">
             <div class="col-12 form-group">
               <label for="">帳號</label>
-              <input <?php if($login)echo 'disabled'; ?> type="text" name="username" placeholder="帳號" class="form-control" required>
+              <input <?php if($login)echo 'disabled'; ?> type="text" name="ID" placeholder="帳號" class="form-control" required>
             </div>
             <div class="col-12 form-group">
               <label for="">密碼</label>
-              <input <?php if($login)echo 'disabled'; ?> type="password" name="password" placeholder="密碼" class="form-control" required>
+              <input <?php if($login)echo 'disabled'; ?> type="password" name="Password" placeholder="密碼" class="form-control" required>
             </div>
             <div class="col-12 form-group">
               <button <?php if($login)echo 'disabled'; ?> class="btn btn-primary btn-block <?php if($login)echo 'btn-secondary'; ?>" type="submit" >LOGIN</button>
