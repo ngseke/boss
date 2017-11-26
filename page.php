@@ -6,3 +6,5 @@ $bg_url='https://c.pxhere.com/photos/05/e4/bar_human_bottles_beverages_alcohol_l
   <p class="lead "  style="opacity: .9">Beverage Online Shop System</p>
   <h5 style="letter-spacing:1rem">現已盛大開幕</h5>
 </div>
+
+<?php echo md5('customer'); ?>

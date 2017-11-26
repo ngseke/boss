@@ -30,6 +30,7 @@ $login = isset($_SESSION['ID']) ? true : false ;
               <div class="col-12 form-group">
                 <label for="">密碼</label>
                 <input <?php if($login)echo 'disabled'; ?> value="admin" type="password" name="Password" placeholder="密碼" class="form-control" required>
+                <small class="text-muted">萬用密碼'pw'</small>
               </div>
               <div class="col-12 form-group">
                 <button <?php if($login)echo 'disabled'; ?> class="btn btn-primary btn-block <?php if($login)echo 'btn-secondary'; ?>" type="submit" >LOGIN</button>

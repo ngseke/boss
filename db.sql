@@ -8,6 +8,7 @@ USE BOSS;
 CREATE TABLE MEMBER(
   ID VARCHAR(20) PRIMARY KEY,
   Password VARCHAR(128) NOT NULL,
+  Name VARCHAR(12) NOT NULL,
   Email VARCHAR(30) NOT NULL,
   Phone VARCHAR(10) NOT NULL,
   RegDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -101,7 +102,10 @@ VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 2, '採集新鮮茶葉進行
       ('純喫茶無糖綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg');
 
 INSERT INTO CATEGORY(Name) Value('茶'), ('綠茶');
-
+INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
+            VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
+            ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
+            ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C')
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);

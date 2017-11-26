@@ -23,6 +23,7 @@
 
         $ID=$_POST['ID'];
         $Password=md5($_POST['Password']);
+        $Name=$_POST['Name'];
         $Email=$_POST['Email'];
         $Phone=$_POST['Phone'];
         $Regdate=date("Y/m/d H:i:s");//取得年份/月/日 時:分:秒
@@ -30,8 +31,8 @@
         $Gender=$_POST['Gender'];
         $Address=$_POST['Address'];
         $Position='C';//只能註冊顧客喔～
-        $sql= "INSERT INTO MEMBER(ID,Password,Email,Phone,Regdate,Birth,Gender,Address,Position)
-        VALUE('$ID','$Password','$Email','$Phone','$Regdate','$Birth','$Gender','$Address','$Position')";
+        $sql= "INSERT INTO MEMBER(ID,Password,Email,Name,Phone,Regdate,Birth,Gender,Address,Position)
+        VALUE('$ID','$Password','$Email','$Name','$Phone','$Regdate','$Birth','$Gender','$Address','$Position')";
         // 將使用者輸入的username 和資料庫中的比對，檢查是否重複
         $sql_check= "SELECT * FROM MEMBER WHERE ID='" . $_POST['ID']."'";
         $rows= $conn->query($sql_check);
