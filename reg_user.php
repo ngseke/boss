@@ -37,7 +37,8 @@
         $rows= $conn->query($sql_check);
         if(mysqli_num_rows($rows)>=1){ // 若欲查詢的在資料庫中已存在(結果筆數>=1)
           echo '<div class="alert alert-danger">';
-          echo "帳號<strong> ". $_POST['ID'] ."</strong> 名稱已被使用";
+          echo '帳號<strong> '. $_POST['ID'] .'</strong> 名稱已被使用! <br>';
+          echo '<a href="#" class="alert-link" onclick="history.back()">點擊返回修改</a>';
           echo '</div>';
         } else{
           if ($conn->query($sql) === true) {

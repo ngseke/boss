@@ -22,19 +22,19 @@
 
             <form class="row" action="reg_user.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
-                <label for="">帳號</label>
+                <label for="">帳號 <span class="text-info">*</span></label>
                 <input type="text" value="asdf" name="ID" placeholder="Username" class="form-control" required>
               </div>
               <div class="col-12 form-group">
-                <label for="">密碼</label>
+                <label for="">密碼 <span class="text-info">*</span></label>
                 <input type="password" value="asdf" name="Password" placeholder="Password" class="form-control" required>
               </div>
               <div class="col-12 form-group">
-                <label for="">Email</label>
+                <label for="">Email <span class="text-info">*</span></label>
                 <input type="email" value="asdf@gmail.com" name="Email" placeholder="Email" class="form-control" required>
               </div>
               <div class="col-12 form-group">
-                <label for="">電話</label>
+                <label for="">電話 <span class="text-info">*</span></label>
                 <input type="text" value="0987654321" name="Phone" placeholder="Phone" class="form-control" required>
               </div>
               <div class="col-12 form-group">
