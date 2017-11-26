@@ -61,6 +61,9 @@
         <li class="nav-item <?php echo ($this_page =='reg')?'active':''; ?>">
           <a class="nav-link" href="reg.php">註冊</a>
         </li>
+        <li class="nav-item <?php echo ($this_page =='logout')?'active':''; ?>">
+          <a class="nav-link" href="logout.php">登出</a>
+        </li>
       </ul>
     </div>
   </div>

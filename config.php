@@ -18,6 +18,6 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 
 define('auto_jump_time', 1, false); // 自動跳轉的秒數
 define('title_name', 'BOSS茶店', false); // 專案名稱
-define('debug_mode', true, false); // 是否為DEBUG MODE
+define('debug_mode', true); // 是否為DEBUG MODE
 
 ?>

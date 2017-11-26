@@ -1,21 +1,20 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
+<?php $page_name = '註冊' ?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
-  <title><?php echo title_name ?> </title>
+  <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 
 <body>
   <?php include('nav.php'); ?>
   <div class="container">
-    <div class="row mt-3">
+    <div class="row">
       <div class="col-12 col-lg-6 offset-lg-3">
         <div class="card">
           <div class="card-header text-center">註冊</div>
@@ -40,11 +39,11 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">生日</label>
-                <input type="date" value="2017-11-26" name="Birth" placeholder="Birth" class="form-control" required>
+                <input type="date" value="2017-11-26" name="Birth" placeholder="Birth" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <label for="">性別</label>
-                <select class="form-control" name="Gender" required>  
+                <select class="form-control" name="Gender" required>
                   <option value="M">男</option>
                   <option value="F">女</option>
                   <option value="N">不明</option>
@@ -52,7 +51,7 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">地址</label>
-                <input type="text" value="taipei" name="Address" placeholder="Address" class="form-control" required>
+                <input type="text" value="taipei" name="Address" placeholder="Address" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <button class="btn btn-success btn-block" type="submit" >立即註冊</button>
@@ -66,6 +65,5 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
 <?php include('js.php') ?>
 </html>
