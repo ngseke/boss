@@ -37,7 +37,7 @@
           <a class="nav-link" href="login.php">登入</a>
         </li>
         <li class="nav-item <?php echo (false) ? 'active' : '';?>">
-          <a class="nav-link" href="#">註冊</a>
+          <a class="nav-link" href="reg.php">註冊</a>
         </li>
       </ul>
     </div>
