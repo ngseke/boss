@@ -23,23 +23,23 @@
             <form class="row" action="reg_user.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
                 <label for="">帳號 <span class="text-info">*</span></label>
-                <input type="text" value="asdf" name="ID" placeholder="Username" class="form-control" required>
+                <input type="text" value="admin" name="ID" placeholder="Username" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">密碼 <span class="text-info">*</span></label>
-                <input type="password" value="asdf" name="Password" placeholder="Password" class="form-control" required>
+                <input type="password" value="admin" name="Password" placeholder="Password" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">Email <span class="text-info">*</span></label>
-                <input type="email" value="asdf@gmail.com" name="Email" placeholder="Email" class="form-control" required>
+                <input type="email" value="admin@gmail.com" name="Email" placeholder="Email" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">電話 <span class="text-info">*</span></label>
-                <input type="text" value="0987654321" name="Phone" placeholder="Phone" class="form-control" required>
+                <input type="text" value="0912345678" name="Phone" placeholder="Phone" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">生日</label>
-                <input type="date" value="2017-11-26" name="Birth" placeholder="Birth" class="form-control" >
+                <input type="date" value="1911-10-10" name="Birth" placeholder="Birth" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <label for="">性別</label>
@@ -51,7 +51,7 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">地址</label>
-                <input type="text" value="taipei" name="Address" placeholder="Address" class="form-control" >
+                <input type="text" value="台北市大安區忠孝東路三段一號" name="Address" placeholder="Address" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <button class="btn btn-success btn-block" type="submit" >立即註冊</button>

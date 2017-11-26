@@ -55,14 +55,18 @@
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="material-icons">shopping_cart</i> 購物車</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='login')?'active':''; ?>">
+        <li class="nav-item <?php echo ($this_page =='login')?'active':'' ?> <?php echo isset($_SESSION['ID'])?'d-none':'' ?>">
           <a class="nav-link" href="login.php">登入</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='reg')?'active':''; ?>">
+        <li class="nav-item <?php echo ($this_page =='reg')?'active':'' ?> <?php echo isset($_SESSION['ID'])?'d-none':'' ?>">
           <a class="nav-link" href="reg.php">註冊</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='logout')?'active':''; ?>">
-          <a class="nav-link" href="logout.php">登出</a>
+        <li class="nav-item <?php echo ($this_page =='logout')?'active':'' ?> <?php echo isset($_SESSION['ID'])?'':'d-none' ?>">
+          <a class="nav-link" href="logout.php">
+            <i class="material-icons">exit_to_app</i>
+            登出
+            <?php echo isset($_SESSION['ID'])?$_SESSION['ID']:''; ?>
+          </a>
         </li>
       </ul>
     </div>
