@@ -39,18 +39,15 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">生日</label>
-                <input type="text" name="Birth" placeholder="Birth" class="form-control" required>
-
+                <input type="date" name="Birth" placeholder="Birth" class="form-control" required>
               </div>
               <div class="col-12 form-group">
-                <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="form-control">
-                  性別
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" name="M">男</a>
-                  <a class="dropdown-item" name="F">女</a>
-                  <a class="dropdown-item" name="N">不明</a>
-                </div>
+                <label for="">性別</label>
+                <select class="form-control" required>  
+                  <option name="Gender" value="M">男</option>
+                  <option name="Gender" value="F">女</option>
+                  <option name="Gender" value="N">不明</option>
+                </select>
               </div>
               <div class="col-12 form-group">
                 <label for="">地址</label>
