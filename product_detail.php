@@ -16,7 +16,7 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  <div class="container">
+  <div class="container my-3">
     <div class="row">
       <?php
         $sql = 'SELECT * FROM PRODUCT WHERE ID=' . $_GET['ID'];

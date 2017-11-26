@@ -15,7 +15,7 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  <div class="container">
+  <div class="container my-3">
     <!-- ~~STUFF -->
     <?php include('page.php') ?>
   </div>

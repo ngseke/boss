@@ -8,9 +8,9 @@
   if(isset($_GET['search'])){
     // set本頁面名稱為搜尋的內容
     $page_name = '搜尋: ' . $search;
-  }else if(isset($_GET['category'])){
+  }else if(isset($_GET['category_id'])){
     // set本頁面名稱為選擇的Category
-    $sql = "SELECT Name N FROM CATEGORY C WHERE ID=". $_GET['category'];
+    $sql = "SELECT Name N FROM CATEGORY C WHERE ID=". $_GET['category_id'];
     $page_name = mysqli_fetch_array($conn->query($sql))['N'];
   }
 ?>
@@ -31,12 +31,12 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  <div class="container">
+  <div class="container my-3">
     <div class="row">
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3">
         <div class="list-group">
-          <?php $list_active = !(isset($_GET['category'])||isset($_GET['search']))?'active':''  ?>
+          <?php $list_active = !(isset($_GET['category_id'])||isset($_GET['search']))?'active':''  ?>
           <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
           <?php
             $sql = "SELECT * FROM CATEGORY C ORDER BY ID ASC";
@@ -47,10 +47,10 @@
               $sql1 = "SELECT COUNT(*) COUNT_NUM FROM PRODUCT P, CATEGORY C
                       WHERE P.CategoryID = C.ID
                       AND P.CategoryID =" . $rows['ID'];
-              if(isset($_GET['category']) && $_GET['category']== $rows['ID']){
+              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['ID']){
                 $list_active='active';
               }else $list_active='';
-              echo '<a href="product.php?category='. $rows['ID'] .'"
+              echo '<a href="product.php?category_id='. $rows['ID'] .'"
                       class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['Name'] .
                     '<span class="badge badge-dark badge-pill">'. mysqli_fetch_array($conn->query($sql1))['COUNT_NUM'] .'</span></a>';
             }
@@ -70,10 +70,10 @@
                     AND (P.Name LIKE '%$search%'
                     OR P.Info LIKE '%$search%') ";
 
-            if(isset($_GET['category'])){
+            if(isset($_GET['category_id'])){
               $sql = "SELECT *, P.Name PName, C.Name CName FROM PRODUCT P, CATEGORY C
                       WHERE P.CategoryID = C.ID
-                      AND P.CategoryID =" . $_GET['category'];
+                      AND P.CategoryID =" . $_GET['category_id'];
             }
 
             // $result 存放查詢到的所有物件
