@@ -96,7 +96,7 @@
                       <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
                         <div class="card">
                           <div class="card-body text-center">
-                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
+                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="max-height:7rem;">
                             <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
                             <p class="card-text mb-2">' . $info . '</p>
                             <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
