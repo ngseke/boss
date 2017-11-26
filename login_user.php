@@ -21,18 +21,18 @@
       <div class="row">
         <div class="col-12 text-center">
           <?php
-          $sql= "SELECT * FROM USER WHERE username='" . $_POST['username']."'";
-          $result= $conn->query($sql);
-          $row= mysqli_fetch_row($result);
-          if(mysqli_num_rows($result)>=1){ 
-            if (md5($_POST['password']) == $row[1]) { 
-              $_SESSION['username'] = $_POST['username']; 
+          $sql = "SELECT ID, Password FROM MEMBER WHERE ID='" . $_POST['ID']."'";
+          $result = $conn->query($sql);
+          $rows = mysqli_fetch_array($result);
+          if(mysqli_num_rows($result) >= 1){ 
+            if (md5($_POST['Password']) == $rows['Password']) { 
+              $_SESSION['ID'] = $_POST['ID']; 
             } else {
               echo '<div class="alert alert-danger">';
               echo "密碼錯誤！";
               echo '</div>';
             }
-          } else{
+          } else {
             echo '<div class="alert alert-danger">';
             echo "查無此帳號！";
             echo '</div>';

@@ -23,35 +23,35 @@
             <form class="row" action="reg_user.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
                 <label for="">帳號</label>
-                <input type="text" name="ID" placeholder="Username" class="form-control" required>
+                <input type="text" value="asdf" name="ID" placeholder="Username" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">密碼</label>
-                <input type="password" name="Password" placeholder="Password" class="form-control" required>
+                <input type="password" value="asdf" name="Password" placeholder="Password" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">Email</label>
-                <input type="email" name="Email" placeholder="Email" class="form-control" required>
+                <input type="email" value="asdf@gmail.com" name="Email" placeholder="Email" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">電話</label>
-                <input type="text" name="Phone" placeholder="Phone" class="form-control" required>
+                <input type="text" value="0987654321" name="Phone" placeholder="Phone" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">生日</label>
-                <input type="date" name="Birth" placeholder="Birth" class="form-control" required>
+                <input type="date" value="2017-11-26" name="Birth" placeholder="Birth" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">性別</label>
-                <select class="form-control" required>  
-                  <option name="Gender" value="M">男</option>
-                  <option name="Gender" value="F">女</option>
-                  <option name="Gender" value="N">不明</option>
+                <select class="form-control" name="Gender" required>  
+                  <option value="M">男</option>
+                  <option value="F">女</option>
+                  <option value="N">不明</option>
                 </select>
               </div>
               <div class="col-12 form-group">
                 <label for="">地址</label>
-                <input type="text" name="Address" placeholder="Address" class="form-control" required>
+                <input type="text" value="taipei" name="Address" placeholder="Address" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <button class="btn btn-success btn-block" type="submit" >立即註冊</button>
