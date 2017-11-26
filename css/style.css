@@ -9,10 +9,19 @@ body{
 }
 
 /* login頁背景 */
-
 .login-bg{
   background: url('https://c.pxhere.com/photos/62/b8/restaurant_cafe_bar_counter-2620.jpg!d');
   background-position: top center;
   background-size: 100% auto;
   background-attachment: fixed;
+}
+
+/* jumbotron滑入效果 */
+.link.jumbotron{
+  transition: transform .3s;
+}
+
+.link.jumbotron:hover{
+  transform: scale(1.02);
+  cursor: pointer;
 }
