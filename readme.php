@@ -19,3 +19,6 @@
 
 // 1秒後自動跳轉
 <meta http-equiv="refresh" content="1;url=index.php" />
+
+// https://pxhere.com/
+// 背景圖素材
