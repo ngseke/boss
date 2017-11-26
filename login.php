@@ -3,7 +3,7 @@
 <?php $page_name = '登入'; ?>
 
 <?php
-  $login = isset($_SESSION['username']) ? true : false ;
+  $login = isset($_SESSION['ID']) ? true : false ;
 ?>
 <!DOCTYPE html>
 <html>

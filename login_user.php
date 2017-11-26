@@ -27,6 +27,9 @@
           if(mysqli_num_rows($result) >= 1){ 
             if (md5($_POST['Password']) == $rows['Password']) { 
               $_SESSION['ID'] = $_POST['ID']; 
+              echo '<div class="alert alert-success">';
+              echo "登入成功";
+              echo '</div>';
             } else {
               echo '<div class="alert alert-danger">';
               echo "密碼錯誤！";
