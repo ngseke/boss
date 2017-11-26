@@ -63,7 +63,7 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT *, P.Name PName, C.Name CName FROM PRODUCT P
+            $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
                     INNER JOIN CATEGORY C
                     ON P.CategoryID = C.ID
                     WHERE P.CategoryID = C.ID
@@ -71,7 +71,7 @@
                     OR P.Info LIKE '%$search%') ";
 
             if(isset($_GET['category_id'])){
-              $sql = "SELECT *, P.Name PName, C.Name CName FROM PRODUCT P, CATEGORY C
+              $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P, CATEGORY C
                       WHERE P.CategoryID = C.ID
                       AND P.CategoryID =" . $_GET['category_id'];
             }
@@ -93,7 +93,7 @@
             while($rows = mysqli_fetch_array($result)){
               $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
               echo '<div class="col-12 col-lg-4 mb-2">
-                      <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
+                      <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="card">
                           <div class="card-body text-center">
                             <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
