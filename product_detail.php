@@ -47,7 +47,6 @@
               <div class="col-12 col-lg-8">
                 <h3 class="mt-3 text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h3>
                 <span class="badge badge-dark"><?php echo $rows['Name']; ?></span>
-                
                 <hr class="my-4">
                 <p><?php echo $rows['Info']; ?></p>
                 <small>運費 : NT$<strong>60</strong></small>
@@ -84,35 +83,32 @@
                    <small>'. $Date .'</small>
                    </div>
                    <p class="mb-1">'. $Comment .'</p>
-                   </a>';
-                 }
-                 ?>
-
+                 </a>';}?>
                </div>
-               <form action="post_comment.php" method="post">
-                <div class="form-group">
-                  <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
-                  <small id="emailHelp" class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
+                
+                <form action="post_comment.php" method="post" class="mt-3">
+                  <div class="row">
+                    <div class="col-11 pr-0">
+                      <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
+                    </div>
+                    <div class="col-1 text-left pl-0">
+                      <button type="submit" class="btn btn-primary btn-sm">發表</button>
+                    </div>
+                  </div>
+                  <div class="form-group d-none">
                   <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">發表</button>
+                </div>      
               </form>
-            </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+   <?php include('footer.php') ?>
+ </body>
+ <!-- 引入JS -->
+ <?php include('js.php') ?>
 
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-<?php include('footer.php') ?>
-</body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
-
-</html>
+ </html>
