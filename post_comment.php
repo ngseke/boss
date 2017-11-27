@@ -18,8 +18,9 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  <div class="container">
+  <div class="container my-3">
     <div class="row">
+      <div class="col-12">
       <?php
       //設定地點為台北時區
         date_default_timezone_set('Asia/Taipei');
@@ -31,12 +32,14 @@
       $sql="INSERT INTO COMMENT(CID,PID,Star,Date,Comment)
       VALUE('$CID',$PID,'$Star','$Date','$Comment')" ;
       if ($conn->query($sql)===true) {
-        echo '成功';
+        echo '<div class="alert alert-success text-center">';
+        echo "成功發表評論！";
+        echo '</div>';
       } else {
         echo $conn->error . "<br>";
       }
       ?>
-
+      </div>
     </div>
   </div>
   <?php include('footer.php') ?>
