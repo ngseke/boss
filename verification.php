@@ -10,7 +10,7 @@ $user_name= '訪客';
 $user_position='G';
 $user_email= $user_phone= $user_reg_date= $user_birth=$user_gender=$user_address='';
 
-if(false){ 
+if(isset($_SESSION['ID'])){ // 若已登入
   $user_id = $_SESSION['ID']; // 登入的用戶id
   $sql = "SELECT * FROM MEMBER WHERE ID='$user_id'";
   $rows = mysqli_fetch_array($conn->query($sql));
