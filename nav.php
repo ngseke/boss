@@ -60,7 +60,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
         </li>
         <!-- Admin & Staff  -->
         <li class="nav-item <?php echo ($this_page =='order')?'active ':'' ?> <?php echo $admin_display ?>">
-          <a class="nav-link" href="order.php">管理訂單</a>
+          <a class="nav-link" href="order_list.php">管理訂單</a>
         </li>
         <li class="nav-item <?php echo ($this_page =='product_list')?'active ':'' ?> <?php echo $admin_display ?>">
           <a class="nav-link" href="product_list.php">管理商品</a>
