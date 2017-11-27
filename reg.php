@@ -41,11 +41,11 @@
                 <label for="">電話 <span class="text-info">*</span></label>
                 <input type="text" value="0912345678" name="Phone" placeholder="Phone" maxlength="10" class="form-control" required>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">生日</label>
                 <input type="date" value="1911-10-10" name="Birth" placeholder="Birth" class="form-control" >
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">性別</label>
                 <select class="form-control" name="Gender" required>
                   <option value="M">男</option>

@@ -20,10 +20,10 @@
     <div class="row">
       <?php
       $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
-                    INNER JOIN CATEGORY C
-                    ON P.CategoryID = C.ID
-                    WHERE P.CategoryID = C.ID
-                    AND P.ID = ".$_GET['ID'];
+      INNER JOIN CATEGORY C
+      ON P.CategoryID = C.ID
+      WHERE P.CategoryID = C.ID
+      AND P.ID = ".$_GET['ID'];
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
       $img = $rows['Img'];
@@ -72,37 +72,45 @@
                 <h6>商品評論</h6>
                 <div class="list-group">
                   <?php
-                $result = $conn->query($sql);
-                 while($rows=mysqli_fetch_array($result)){
+                  $sql = 'SELECT * FROM Comment';
+                  $result = $conn->query($sql);
+                  while($rows=mysqli_fetch_array($result)){
                    $Name=$rows['CID'];
-                   $date=$rows['date'];
-                   $comment=$rows['comment'];
-                    echo '<a href="#" class="list-group-item list-group-item-action flex-column">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">'. $uid .'</h6>
-                        <small>'. $date .'</small>
-                      </div>
-                      <p class="mb-1">'. $comment .'</p>
-                    </a>';
-                  }
-                ?>
-                  <button type="button" class="list-group-item  list-group-item-action ">Cras justo odio</button>
-                  <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-                  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-                  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-                </div>
-              </div>
+                   $Date=$rows['Date'];
+                   $Comment=$rows['Comment'];
+                   echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                   <div class="d-flex w-100 justify-content-between">
+                   <h6 class="mb-1">'. $Name .'</h6>
+                   <small>'. $Date .'</small>
+                   </div>
+                   <p class="mb-1">'. $Comment .'</p>
+                   </a>';
+                 }
+                 ?>
 
+               </div>
+               <form action="post_comment.php" method="post">
+                <div class="form-group">
+                  <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
+                  <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group ">
+                  <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">發表</button>
+              </form>
             </div>
 
           </div>
 
         </div>
-      </div>
 
+      </div>
     </div>
+
   </div>
-  <?php include('footer.php') ?>
+</div>
+<?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
