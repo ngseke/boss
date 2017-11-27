@@ -10,7 +10,7 @@ $user_name= '訪客';
 $user_position='G';
 $user_email= $user_phone= $user_reg_date= $user_birth=$user_gender=$user_address='';
 
-if(isset($_SESSION['ID'])){ // 若已登入
+if(false){ 
   $user_id = $_SESSION['ID']; // 登入的用戶id
   $sql = "SELECT * FROM MEMBER WHERE ID='$user_id'";
   $rows = mysqli_fetch_array($conn->query($sql));
@@ -23,14 +23,4 @@ if(isset($_SESSION['ID'])){ // 若已登入
   $user_birth = $rows['Birth'];       // 生日
   $user_gender = $rows['Gender'];     // 性別
   $user_address = $rows['Address'];   // 地址
-}
-if(debug_mode){
-  echo '$user_name: ' .$user_name.
-  ' / $user_position: '.$user_position.
-  ' / $user_email: '. $user_email.
-  ' / $user_phone: '.$user_phone.
-  ' / $user_reg_date: '.$user_reg_date.
-  ' / $user_birth: '. $user_birth .
-  ' / $user_gender: ' . $user_gender.
-  ' / $user_address: '.$user_address ;
 }
