@@ -6,9 +6,10 @@
       <small>
         <p class="text-muted text-center">© Copyright BOSS</p>
       </small>
-      <div class="alert alert-info text-center" >
+
       <?php
       if(debug_mode){
+        echo '<div class="alert alert-info text-center" >';
         echo '$user_name: ' .$user_name.
         ' / $user_position: '.$user_position.
         ' / $user_email: '. $user_email.
@@ -17,9 +18,10 @@
         ' / $user_birth: '. $user_birth .
         ' / $user_gender: ' . $user_gender.
         ' / $user_address: '.$user_address ;
+        echo '</div>';
       }
       ?>
-      </div>
+
     </div>
   </div>
 </div>
