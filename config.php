@@ -2,7 +2,7 @@
 // 儲存MYSQL伺服器資訊, 及定義各種資訊
 // define(名稱 , 值, case_insensitive)
 
-if($_SERVER['HTTP_HOST'] == 'localhost'){
+if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
   // 若當前主機為localhost
   define('db_host',   'localhost', false); // 資料庫host
   define('db_username', 'root', false);    // 資料庫用戶名

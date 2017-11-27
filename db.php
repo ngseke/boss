@@ -6,7 +6,7 @@
 $page_name = '執行SQL腳本'; // 本頁面名稱
 require_once 'config.php';
 
-if($_SERVER['HTTP_HOST']=='localhost'){
+if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
   // 若當前主機為localhost
   $file = file_get_contents('db.sql'); // 取得sql腳本檔
   $conn = new mysqli(db_host, db_username, db_password); // 建立mysql連接

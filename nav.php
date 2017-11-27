@@ -4,15 +4,7 @@
 $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 ?>
 <?php
-  include('connection.php');
-  $user_position='G'; // Guset
-  if(isset($_SESSION['ID'])){
-    $user_id = $_SESSION['ID']; // 登入的用戶id
-    $sql = "SELECT * FROM MEMBER WHERE ID='$user_id'";
-    $rows = mysqli_fetch_array($conn->query($sql));
-    $user_name = $rows['Name']; // 用戶名稱
-    $user_position = $rows['Position']; // 用戶職位
-  }
+  include('verification.php');
   $login_display = isset($_SESSION['ID'])?'d-none ':''; // 登入按鈕display
   $reg_display   = isset($_SESSION['ID'])?'d-none ':''; // 註冊按鈕display
   $user_display  = isset($_SESSION['ID'])?'':'d-none '; // 用戶按鈕display
@@ -86,7 +78,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
         <li class="nav-item dropdown <?php echo isset($_SESSION['ID'])?'':'d-none' ?>">
           <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">account_circle</i>
-            <?php echo $user_id ?>
+            <?php echo $user_name ?>
             <?php
             if($user_position=='A'){
               echo '<span class="badge badge-pill badge-warning">管理員</span>';
@@ -97,6 +89,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 
           </a>
           <div class="dropdown-menu" >
+            <h6 class="dropdown-header">ID: <?php echo $user_id ?></h6>
             <a class="dropdown-item <?php echo $customer_display ?>" href="#">訂單</a>
             <a class="dropdown-item" href="#">會員資料</a>
             <div class="dropdown-divider"></div>
