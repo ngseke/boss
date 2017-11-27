@@ -12,7 +12,7 @@
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=product_detail.php">
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=product_detail.php<?php echo '?ID='.$_POST['PID']?>">
 </head>
 
 <body>
@@ -30,7 +30,6 @@
       $Star=3;
       $sql="INSERT INTO COMMENT(CID,PID,Star,Date,Comment)
       VALUE('$CID',$PID,'$Star','$Date','$Comment')" ;
-      echo $sql;
       if ($conn->query($sql)===true) {
         echo '成功';
       } else {
