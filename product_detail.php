@@ -50,11 +50,12 @@
                 
                 <hr class="my-4">
                 <p><?php echo $rows['Info']; ?></p>
+                <small>運費 : NT$<strong>60</strong></small>
                 <p>
                   <h5 class="d-inline"><span class="badge badge-pill badge-primary" style="margin-right: 1rem;">NT$ <?php echo $rows['Price']; ?></span></h5>
                   <span class="badge badge-pill badge-secondary">庫存: <?php echo $rows['Stock']; ?></span>
                 </p>
-
+                
                 <form method="post" action="">
                   <div class="form-group row ">
                     <div class="col-6">
