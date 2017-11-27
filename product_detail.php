@@ -72,35 +72,45 @@
                 <h6>商品評論</h6>
                 <div class="list-group">
                   <?php
-                    $sql = 'SELECT * FROM Comment';
-                    $result = $conn->query($sql);
-                    while($rows=mysqli_fetch_array($result)){
-                     $Name=$rows['CID'];
-                     $Date=$rows['Date'];
-                     $Comment=$rows['Comment'];
-                     echo '<a href="#" class="list-group-item list-group-item-action flex-column">
-                     <div class="d-flex w-100 justify-content-between">
-                     <h6 class="mb-1">'. $Name .'</h6>
-                     <small>'. $Date .'</small>
-                     </div>
-                     <p class="mb-1">'. $Comment .'</p>
-                     </a>';
-                    }
-                  ?>
+                  $sql = 'SELECT * FROM Comment';
+                  $result = $conn->query($sql);
+                  while($rows=mysqli_fetch_array($result)){
+                   $Name=$rows['CID'];
+                   $Date=$rows['Date'];
+                   $Comment=$rows['Comment'];
+                   echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                   <div class="d-flex w-100 justify-content-between">
+                   <h6 class="mb-1">'. $Name .'</h6>
+                   <small>'. $Date .'</small>
+                   </div>
+                   <p class="mb-1">'. $Comment .'</p>
+                   </a>';
+                 }
+                 ?>
 
                </div>
-             </div>
+               <form action="post_comment.php" method="post">
+                <div class="form-group">
+                  <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
+                  <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group ">
+                  <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">發表</button>
+              </form>
+            </div>
 
-           </div>
+          </div>
 
-         </div>
+        </div>
 
-       </div>
-     </div>
+      </div>
+    </div>
 
-   </div>
- </div>
- <?php include('footer.php') ?>
+  </div>
+</div>
+<?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
