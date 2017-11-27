@@ -95,13 +95,20 @@
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="card">
-                          <div class="card-body text-center">
-                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
-                            <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
-                            <p class="card-text mb-2">' . $info . '</p>
-                            <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
-                            <span class="badge badge-dark ">' . $rows['CName'] . '</span>
+                          <div class="card-body">
+                            <div class="row no-gutters text-left text-lg-center">
+                              <div class="col-4 col-lg-12 text-center">
+                                <img src="' . $rows['Img'] . '" class="img-fluid mb-3">
+                              </div>
+                              <div class="col-8 col-lg-12">
+                                <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
+                                <p class="card-text mb-2">' . $info . '</p>
+                                <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
+                                <span class="badge badge-dark ">' . $rows['CName'] . '</span>
+                              </div>
+                            </div>
                           </div>
+
                         </div>
                       </a>
                     </div>';
