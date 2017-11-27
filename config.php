@@ -10,10 +10,10 @@ if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
   define('db_name',   'BOSS', false);      // 資料庫名稱
  }else{
   // 若當前主機在遠端上
-  define('db_host',   '', false);
-  define('db_username', '', false);
-  define('db_password', '', false);
-  define('db_name',   '', false);
+  define('db_host',   'sql202.byethost24.com', false);
+  define('db_username', 'b24_21029138', false);
+  define('db_password', 'g122299893', false);
+  define('db_name',   'b24_21029138_BOSS', false);
  }
 
 define('auto_jump_time', 1, false); // 自動跳轉的秒數

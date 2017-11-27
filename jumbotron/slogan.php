@@ -1,5 +1,6 @@
 <?php
-  $slogan_list= array( "img"=>array("https://c.pxhere.com/photos/c7/d2/cocktail_drink_refreshment_glass_delicious_pool_summer-1238441.jpg!d","https://c.pxhere.com/photos/61/ff/da_hong_pao_chinese_tea_traditional-735282.jpg!d") ,
+  $slogan_list= array( "img"=>array("https://c.pxhere.com/photos/c7/d2/cocktail_drink_refreshment_glass_delicious_pool_summer-1238441.jpg!d",
+                                  "https://c.pxhere.com/photos/61/ff/da_hong_pao_chinese_tea_traditional-735282.jpg!d") ,
                   "slogan"=>array("飲涼卡好。","回甘就像現泡。"),
                   "slogan_color"=>array("dark","light"),
                   "slogan_shadow_color"=>array("light","dark"),
