@@ -24,18 +24,61 @@
       $rows = mysqli_fetch_array($result);
       $img = $rows['Img'];
       ?>
-      <div class="row">
-        <div class="col-6 col-lg-6"><img src="<?php echo $rows['Img'] ?>" class="img-fluid rounded mx-auto d-block" ></div>
-        <div class="col-12 col-lg-6">
-          <p><h3><?php echo $rows['Name']; ?></h3></p>
-          <p><?php echo $rows['Info']; ?></p>
-          <p>
-            <span class="badge badge-pill badge-primary" style="margin-right: 1rem;">$<?php echo $rows['Price']; ?></span>
-            <span class="badge badge-pill badge-secondary">Stock:<?php echo $rows['Stock']; ?></span>
-          </p>
-          <p><button type="button" class="btn btn-danger">加入購物車</button></p>
+
+      
+      <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-lg-4 text-center">
+                <img src="<?php echo $rows['Img'] ?>" class="img-fluid rounded mx-auto d-block" style="max-height: 16rem; width: auto;">
+                <span class="badge badge-light star my-3">
+                  <i class="material-icons">star</i>
+                  <i class="material-icons">star</i>
+                  <i class="material-icons">star_half</i>
+                  <i class="material-icons">star_border</i>
+                  <i class="material-icons">star_border</i>
+                </span>
+              </div>
+              <div class="col-12 col-lg-8">
+                <h3 class="mt-3 text-center text-lg-left"><?php echo $rows['Name']; ?></h3>
+            
+                <hr class="my-4">
+                <p><?php echo $rows['Info']; ?></p>
+                <p>
+                  <h5 class="d-inline"><span class="badge badge-pill badge-primary" style="margin-right: 1rem;">NT$ <?php echo $rows['Price']; ?></span></h5>
+                  <span class="badge badge-pill badge-secondary">庫存: <?php echo $rows['Stock']; ?></span>
+                </p>
+
+                <form method="post" action="">
+                  <div class="form-group row ">
+                    <div class="col-6">
+                      <button type="submit" class="btn btn-primary btn-block">加入購物車</button>
+                    </div>
+                    <label for="Quantity" class="col-auto col-form-label col-form-label-sm">數量</label>
+                    <div class="col-2">
+                      <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
+                    </div>
+                  </div>
+                </form>
+                <hr class="my-4"> 
+                <!-- 評論 -->
+                <h6>商品評論</h6>
+                <div class="list-group">
+                  <button type="button" class="list-group-item  list-group-item-action ">Cras justo odio</button>
+                  <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-      </div>  
+      </div>
+
     </div>
   </div>
   <?php include('footer.php') ?>

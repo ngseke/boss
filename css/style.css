@@ -38,3 +38,13 @@ body{
 .blockquote-footer{
   color: #ccc;
 }
+
+.star{
+  vertical-align: top;
+}
+
+.star i.material-icons{
+
+  color: gold;
+  font-size: 1rem;
+}
