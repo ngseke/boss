@@ -73,6 +73,11 @@
                 <h6>商品評論</h6>
                 <div class="list-group">
                   <?php
+                  $sqlnone = 'SELECT COUNT(*) COUNT_NUM FROM Comment WHERE PID='.$_GET['ID'];
+                  if( mysqli_fetch_array($conn->query($sqlnone))['COUNT_NUM']==0)
+                    echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                    <i class="text-muted">目前尚無評論</i>
+                  </a>';
                   $sql = 'SELECT * FROM Comment WHERE PID='.$_GET['ID'];
                   $result = $conn->query($sql);
                   while($rows=mysqli_fetch_array($result)){
