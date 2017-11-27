@@ -19,16 +19,23 @@
   <div class="container my-3">
     <div class="row">
       <?php
-        $sql = 'SELECT * FROM PRODUCT WHERE ID=' . $_GET['ID'];
-        $result = $conn->query($sql);
-        $rows = mysqli_fetch_array($result);
+      $sql = 'SELECT * FROM PRODUCT WHERE ID=' . $_GET['ID'];
+      $result = $conn->query($sql);
+      $rows = mysqli_fetch_array($result);
+      $img = $rows['Img'];
       ?>
-      <div class="col-12 col-lg-9">
-        <p><?php echo $rows['Name'];  ?></p>
-        <p>$<?php echo $rows['Price'];  ?></p>
-        <p><?php echo $rows['Info'];  ?></p>
-        <p>Stock:<?php echo $rows['Stock'];  ?></p>
-      </div>
+      <div class="row">
+        <div class="col-6 col-lg-6"><img src="<?php echo $rows['Img'] ?>" class="img-fluid rounded mx-auto d-block" ></div>
+        <div class="col-12 col-lg-6">
+          <p><h3><?php echo $rows['Name']; ?></h3></p>
+          <p><?php echo $rows['Info']; ?></p>
+          <p>
+            <span class="badge badge-pill badge-primary" style="margin-right: 1rem;">$<?php echo $rows['Price']; ?></span>
+            <span class="badge badge-pill badge-secondary">Stock:<?php echo $rows['Stock']; ?></span>
+          </p>
+          <p><button type="button" class="btn btn-danger">加入購物車</button></p>
+        </div>
+      </div>  
     </div>
   </div>
   <?php include('footer.php') ?>
