@@ -19,7 +19,11 @@
   <div class="container my-3">
     <div class="row">
       <?php
-      $sql = 'SELECT * FROM PRODUCT WHERE ID=' . $_GET['ID'];
+      $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
+                    INNER JOIN CATEGORY C
+                    ON P.CategoryID = C.ID
+                    WHERE P.CategoryID = C.ID
+                    AND P.ID = ".$_GET['ID'];
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
       $img = $rows['Img'];
@@ -41,8 +45,9 @@
                 </span>
               </div>
               <div class="col-12 col-lg-8">
-                <h3 class="mt-3 text-center text-lg-left"><?php echo $rows['Name']; ?></h3>
-            
+                <h3 class="mt-3 text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h3>
+                <span class="badge badge-dark"><?php echo $rows['Name']; ?></span>
+                
                 <hr class="my-4">
                 <p><?php echo $rows['Info']; ?></p>
                 <p>
