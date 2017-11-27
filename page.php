@@ -1,3 +1,4 @@
+<!-- 隨機展示熱銷商品 -->
 <div class="row">
   <?php
   $sql="SELECT * FROM PRODUCT ORDER BY RAND() LIMIT 3";
@@ -18,6 +19,10 @@
       ?>
     </div>
   </div>
+</div>
+
+<!-- 巨大登入按鈕 -->
+<div class="row  <?php if(isset($_SESSION['ID']))echo'd-none ' ?>">
   <div class="col-12 col-lg-7">
     <?php $bg_url='https://c.pxhere.com/photos/e3/78/mug_coffee_cup_drink-98978.jpg!s' ; ?>
     <div class="jumbotron link text-center bg-dark text-light" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; background-attachment:fixedX;" onclick="location.href='login.php'">
