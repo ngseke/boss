@@ -103,7 +103,7 @@
                         <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="<?php if($user_position == 'G') echo'請先登入';else echo'輸入對此商品的評論' ?>" <?php if($user_position == 'G') echo'disabled' ;?> >
                       </div>
                       <div class="col-2">
-                        <button type="submit" class="btn btn-primary btn-block btn-sm ">發表</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-sm "<?php if($user_position == 'G') echo'disabled' ;?>>發表</button>
                       </div>
                     </div>
                     <div class="form-group d-none">
