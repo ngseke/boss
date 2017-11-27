@@ -25,3 +25,16 @@ body{
   transform: scale(1.02);
   cursor: pointer;
 }
+
+/* 文字陰影 */
+.text-shadow-dark{
+  text-shadow:0 0 .5rem black;
+}
+
+.text-shadow-light{
+  text-shadow:0 0 .5rem #fff;
+}
+
+.blockquote-footer{
+  color: #ccc;
+}

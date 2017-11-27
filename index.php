@@ -15,11 +15,11 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  <?php include('index-jumbotron.php') ?>
+  <?php include('jumbotron/head.php') ?>
   <div class="container my-3">
     <?php include('page.php') ?>
   </div>
-  <?php include('index-jumbotron1.php') ?>
+  <?php include('jumbotron/slogan.php') ?>
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
