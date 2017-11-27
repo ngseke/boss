@@ -6,12 +6,12 @@
   <div class="col-12 my-3 my-lg-5 text-center">
     <div class="row">
       <div class="col-12 mb-4">
-        <h1 class="d-inline " style="border-bottom:5px #333 solid;">熱銷商品</h1>
+        <h2 class="d-inline " style="border-bottom:5px #333 solid;">熱銷商品</h2>
       </div>
       <?php
       while($rows=mysqli_fetch_array($result)){
         echo '<div class="col-12 col-lg-4 text-center my-3">
-          <img src="' . $rows['Img'] . '" class="img-fluid mx-auto d-block mb-2">
+          <img src="' . $rows['Img'] . '" class="img-fluid mx-auto d-block mb-2" style="height:8rem;width:auto;">
           <h5>'. $rows['Name'] . '</h5>
         </div>';
       }
