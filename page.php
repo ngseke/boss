@@ -11,7 +11,7 @@
       </div>
       <?php
       while($rows=mysqli_fetch_array($result)){
-        echo '<div class="col-12 col-lg-4 text-center my-3">
+        echo '<div class="col-12 col-lg-4 text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['ID'].'\'">
           <img src="' . $rows['Img'] . '" class="img-fluid mx-auto d-block mb-2" style="height:8rem;width:auto;">
           <h5>'. $rows['Name'] . '</h5>
         </div>';

@@ -17,11 +17,11 @@ body{
 }
 
 /* jumbotron滑入效果 */
-.link.jumbotron{
+.link.jumbotron, div.link{
   transition: transform .3s;
 }
 
-.link.jumbotron:hover{
+.link.jumbotron:hover, div.link:hover{
   transform: scale(1.02);
   cursor: pointer;
 }
