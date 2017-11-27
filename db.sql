@@ -111,7 +111,7 @@ INSERT INTO CATEGORY(Name) Value('茶'), ('綠茶'), ('酒');
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
-            ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C')
+            ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C');
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
