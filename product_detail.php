@@ -29,7 +29,7 @@
       $img = $rows['Img'];
       ?>
 
-      
+
       <div class="col-12 col-lg-10 offset-lg-1">
         <div class="card">
           <div class="card-body">
@@ -45,8 +45,10 @@
                 </span>
               </div>
               <div class="col-12 col-lg-8">
-                <h3 class="mt-3 text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h3>
-                <span class="badge badge-dark"><?php echo $rows['Name']; ?></span>
+                <div class="my-3">
+                  <h3 class="text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h3>
+                  <span class="badge badge-dark mx-2"><?php echo $rows['Name']; ?></span>
+                </div>
                 <hr class="my-4">
                 <p><?php echo $rows['Info']; ?></p>
                 <small>運費 : NT$<strong>60</strong></small>
@@ -54,7 +56,7 @@
                   <h5 class="d-inline"><span class="badge badge-pill badge-primary" style="margin-right: 1rem;">NT$ <?php echo $rows['Price']; ?></span></h5>
                   <span class="badge badge-pill badge-secondary">庫存: <?php echo $rows['Stock']; ?></span>
                 </p>
-                
+
                 <form method="post" action="">
                   <div class="form-group row ">
                     <div class="col-6">
@@ -66,49 +68,53 @@
                     </div>
                   </div>
                 </form>
-                <hr class="my-4"> 
+                <hr class="my-4">
                 <!-- 評論 -->
                 <h6>商品評論</h6>
                 <div class="list-group">
                   <?php
-                  $sql = 'SELECT * FROM Comment';
+                  $sql = 'SELECT * FROM Comment WHERE PID='.$_GET['ID'];
                   $result = $conn->query($sql);
                   while($rows=mysqli_fetch_array($result)){
-                   $Name=$rows['CID'];
-                   $Date=$rows['Date'];
-                   $Comment=$rows['Comment'];
-                   echo '<a href="#" class="list-group-item list-group-item-action flex-column">
-                   <div class="d-flex w-100 justify-content-between">
-                   <h6 class="mb-1">'. $Name .'</h6>
-                   <small>'. $Date .'</small>
-                   </div>
-                   <p class="mb-1">'. $Comment .'</p>
-                 </a>';}?>
-               </div>
-                
-                <form action="post_comment.php" method="post" class="mt-3">
-                  <div class="row">
-                    <div class="col-11 pr-0">
-                      <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
+                    $Name=$rows['CID'];
+                    $Date=$rows['Date'];
+                    $Comment=$rows['Comment'];
+                    echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">'. $Name .'</h6>
+                    <small>'. $Date .'</small>
                     </div>
-                    <div class="col-1 text-left pl-0">
-                      <button type="submit" class="btn btn-primary btn-sm">發表</button>
-                    </div>
+                    <p class="mb-1">'. $Comment .'</p>
+                    </a>';
+                  }
+                  ?>
                   </div>
-                  <div class="form-group d-none">
-                  <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
-                </div>      
-              </form>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-   <?php include('footer.php') ?>
- </body>
- <!-- 引入JS -->
- <?php include('js.php') ?>
+                  <form action="post_comment.php" method="post" class="mt-3">
+                    <div class="row">
+                      <div class="col-auto">
+                        <span class="badge badge-info"><?php echo $user_id ?></span>
+                      </div>
+                      <div class="col">
+                        <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
+                      </div>
+                      <div class="col-2">
+                        <button type="submit" class="btn btn-primary btn-block btn-sm ">發表</button>
+                      </div>
+                    </div>
+                    <div class="form-group d-none">
+                      <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php include('footer.php') ?>
+  </body>
+  <!-- 引入JS -->
+  <?php include('js.php') ?>
 
- </html>
+  </html>
