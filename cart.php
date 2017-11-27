@@ -24,6 +24,7 @@
               <th scope="col">商品名稱</th>
               <th scope="col">單價</th>
               <th scope="col">數量</th>
+              <th scope="col">小計</th>
               <th scope="col">刪除</th>
             </tr>
           </thead>
@@ -34,13 +35,14 @@
               </th>
               <td class="align-middle">25</td>
               <td class="align-middle">1</td>
+              <td class="align-middle">25</td>
               <td class="align-middle"><i class="material-icons">delete</i></td>
             </tr>
             <tr>
-              <td colspan="4">您尚未選購產品</td>
+              <td colspan="5">您尚未選購產品</td>
             </tr>
             <tr class="text-right">
-              <td colspan="4">
+              <td colspan="5">
                 共　件商品　商品金額：</br>
                 運費小計：</br>
                 <font size="+2">總金額：</font>
