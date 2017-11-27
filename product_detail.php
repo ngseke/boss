@@ -94,7 +94,7 @@
                   <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
                   <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
-                <div class="form-group ">
+                <div class="form-group">
                   <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">發表</button>

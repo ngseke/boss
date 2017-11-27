@@ -114,6 +114,11 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
             ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C');
 
+INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'I am Admin!');
+INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('staff', '1', '3', CURRENT_TIMESTAMP, 'I am staff!');
+INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!');
+INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'asdf');
+
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
 ALTER TABLE PRODUCT ADD FOREIGN KEY (CategoryID) REFERENCES CATEGORY(ID);
