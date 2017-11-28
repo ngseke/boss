@@ -89,10 +89,12 @@
                     $Date=$rows['Date'];
                     $Comment=$rows['Comment'];
                     $Star=$rows['Star'];
+                    $comment_by_me=($Name==$user_id)?'list-group-item-secondary':'';
+
                     $star_text='<span class="badge badge-light star mx-2">
                                   <i class="material-icons">star</i>'. $Star .'
                                 </span>';
-                    echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                    echo '<a href="#" class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
                             <div class="d-flex w-100 justify-content-between">
                               <h6 class="mb-2"><i class="material-icons">account_circle</i> '. $Name . $star_text .'</h6>
                               <small>'. $Date .'</small>
@@ -102,16 +104,17 @@
                   }
                   ?>
                 </div>
-                <form class="row mt-3" action="comment_post.php" method="post" >
+                <form class="row mt-3 <?php if($user_position == 'G') echo'd-none' ?>" action="comment_post.php" method="post" >
                   <div class="col-auto">
                     <span class="badge badge-info"><?php echo $user_id ?></span>
                   </div>
                   <div class="col">
                     <div class="row">
-                      <div class="col-12">
-                        <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="<?php if($user_position == 'G') echo'請先登入';else echo'輸入對此商品的評論' ?>" <?php if($user_position == 'G') echo'disabled' ;?> required>
+                      <div class="col-12 ">
+                        <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論..." <?php if($user_position == 'G') echo'disabled' ;?> required>
                       </div>
-                      <div class="col-12 my-1">
+                      <div class="col-12 my-2 <?php if($user_position == 'G') echo'd-none' ?> ">
+                        <span class="badge badge-pill badge-warning mr-2"><i class="material-icons" style="font-size:1rem;">star</i> 評分</span>
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
                             <input class="form-check-input" type="radio" name="Star" id="inlineRadio5" value="5" checked>5
@@ -122,7 +125,7 @@
                             echo '<div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                       <input class="form-check-input" type="radio" name="Star" id="inlineRadio'.$i.'" value="'.$i.'" >'. $i .'
-                                    </label>
+                                     </label>
                                   </div>';
                           }
                         ?>

@@ -28,7 +28,7 @@
       $PID= $_POST['PID'];
       $Date = date("Y/m/d H:i:s");//取得年份/月/日 時:分:秒
       $Comment= $_POST['Comment'];
-      $Star=3;
+      $Star= $_POST['Star'];
       $sql="INSERT INTO COMMENT(CID,PID,Star,Date,Comment)
       VALUE('$CID',$PID,'$Star','$Date','$Comment')" ;
       if ($conn->query($sql)===true) {

@@ -8,7 +8,7 @@
       </small>
 
       <?php
-      if(debug_mode){
+      if(false){
         echo '<div class="alert alert-info text-center" >';
         echo '$user_name: ' .$user_name.
         ' / $user_position: '.$user_position.

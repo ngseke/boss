@@ -4,7 +4,7 @@
                   "slogan"=>array("飲涼卡好。","回甘就像現泡。"),
                   "slogan_color"=>array("dark","light"),
                   "slogan_shadow_color"=>array("light","dark"),
-                  "auther"=>array("徐志摩。","北科茶裏王。"));
+                  "auther"=>array("徐志摩","北科茶裏王"));
   $rand_index=rand(0,1); // 隨機挑選slogan
   $bg_url= $slogan_list['img'][$rand_index];
   $slogan= $slogan_list['slogan'][$rand_index];
