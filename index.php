@@ -20,9 +20,12 @@
     <?php include('page1.php') ?>
   </div>
   <?php include('jumbotron/slogan1.php') ?>
-  <div class="container my-3">
-    <?php include('page2.php') ?>
+  <div class="discount py-3" style="background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);">
+    <div class="container">
+      <?php include('page2.php') ?>
+    </div>
   </div>
+
   <?php include('jumbotron/slogan2.php') ?>
   <?php include('footer.php') ?>
 </body>
