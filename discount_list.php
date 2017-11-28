@@ -38,7 +38,7 @@
             {
               echo '<tr style="cursor: pointer;" onclick="location.href=\'discount_list_detail.php?ID=' . $rows['ID'].'\'">';
               echo '<th scope="row" class="align-middle">'.$rows['ID'].'</th>';
-              $Type = ($rows['EventType']!=NULL)?'-'.$rows['EventType']:'';
+              $Type = ($rows['EventType']=='event')?'-'.$rows['EventType']:'';
 
               echo '<td class="align-middle">'.$rows['Type'].$Type.'</td>';
               echo '<td class="align-middle"><small><span class="badge badge-pill badge-warning mr-1">起</span>'.$rows['PeriodFrom'].'<br><span class="badge badge-pill badge-warning mr-1">迄</span>'.$rows['PeriodTo'].'</small></td>';
@@ -86,11 +86,11 @@
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
-                <input type="number" value="0.01" name="Requirement" step="0.01" min="0.01" max="0.99" class="form-control" >
+                <input type="number" value="0.01" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
-                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" required></textarea>
+                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
               </div>
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
