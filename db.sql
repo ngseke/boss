@@ -90,6 +90,7 @@ CREATE TABLE DISCOUNT (
   PeriodTo DATETIME NOT NULL,
   Requirement INT(7) UNSIGNED,
   Rate DOUBLE(3,3) NOT NULL,
+  Info VARCHAR(100) NOT NULL,
   EventType ENUM('BOGO', 'discount')
 );
 
@@ -118,6 +119,11 @@ INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('staff', '1', '3', CURRENT_TIMESTAMP, 'I am staff!');
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!');
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'asdf');
+
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29','500','10.00','asdf','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29','500','10.00','qwer','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29','500','10.00','hjkl','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29','500','10.00','zxcv','discount');
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
