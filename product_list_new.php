@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-12 col-lg-6 offset-lg-3">
         <div class="card">
-          <div class="card-header text-center">註冊</div>
+          <div class="card-header text-center">商品</div>
           <div class="card-body">
 
             <form class="row" action="product_list_new_add.php" method="post" enctype="multipart/form-data" >

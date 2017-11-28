@@ -66,6 +66,9 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
           <a class="nav-link" href="product_list.php">管理商品</a>
         </li>
         <li class="nav-item <?php echo ($this_page =='user_list')?'active ':'' ?> <?php echo $admin_display ?>">
+          <a class="nav-link" href=" discount_list.php">管理折扣</a>
+        </li>
+        <li class="nav-item <?php echo ($this_page =='user_list')?'active ':'' ?> <?php echo $admin_display ?>">
           <a class="nav-link" href="user_list.php">管理會員</a>
         </li>
 
