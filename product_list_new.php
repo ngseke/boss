@@ -27,7 +27,10 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">商品狀態 <span class="text-info">*</span></label>
-                <input type="password" value="" name="State" placeholder="" maxlength="20" class="form-control" required>
+                <select class="form-control" name="State" required>
+                  <option value="in_stock">in_stock</option>
+                  <option value="out_of_stock">out_of_stock</option>
+                </select>
               </div>
               <div class="col-12 form-group">
                 <label for="">庫存 <span class="text-info">*</span></label>
@@ -39,11 +42,11 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">商品介紹<span class="text-info">*</span></label>
-                <input type="text" value="" name="Info" placeholder="" maxlength="100" class="form-control" required>
+                <textarea type="text" value="" name="Info" placeholder="" maxlength="100" class="form-control" rows="5" required></textarea>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣方式</label>
-                <select class="form-control" name="Gender" required>
+                <select class="form-control" name="Discount" required>
                   <option value="BOGO">BOGO</option>
                   <option value="discount">discount</option>
                 </select>
