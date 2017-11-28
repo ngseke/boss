@@ -58,8 +58,56 @@
           </tbody>
         </table>
       </div>
-      <div class="col-12 text-center">   
-        <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">新增折扣</h2>
+
+      <div class="col-6 offset-3 mt-5">   
+        <div class="card">
+          <div class="card-header text-center">新增折扣</div>
+          <div class="card-body">
+            <form class="row" action="discount_list_new_add.php" method="post" enctype="multipart/form-data" >
+              <div class="col-12 form-group">
+                <label for="">類型 <span class="text-info">*</span></label>
+                <select class="form-control" name="Type" required>
+                  <option value="shipping">shipping</option>
+                  <option value="seasoning">seasoning</option>
+                  <option value="event">event</option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">開始日期 <span class="text-info">*</span></label>
+                <input type="date" value="1911-10-10" name="PeriodFrom" class="form-control" >
+              </div>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">結束日期 <span class="text-info">*</span></label>
+                <input type="date" value="1911-10-10" name="PeriodTo" class="form-control" >
+              </div>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">折扣條件 <span class="text-info">*</span></label>
+                <input type="number" value="100" name="Requirement" min="1" class="form-control" >
+              </div>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">折扣率</label>
+                <input type="number" value="0.01" name="Requirement" step="0.01" min="0.01" max="0.99" class="form-control" >
+              </div>
+              <div class="col-12 form-group">
+                <label for="">資訊 <span class="text-info">*</span></label>
+                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" required></textarea>
+              </div>
+              <div class="col-12 form-group">
+                <label for="">Event類型</label>
+                <select class="form-control" name="EventType" required>
+                  <option value="BOGO">BOGO</option>
+                  <option value="discount">discount</option>
+                </select>
+              </div>
+              <div class="col-12 form-group">
+                <button class="btn btn-success btn-block" type="submit" >立即註冊</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
 
       </div>
     </div>
