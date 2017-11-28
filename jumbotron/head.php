@@ -1,5 +1,5 @@
 <?php
-$bg_url='https://c.pxhere.com/photos/05/e4/bar_human_bottles_beverages_alcohol_lamps_club_party-1333424.jpg!d' ;
+$bg_url='img/cafe.jpg' ;
 ?>
 <div class="jumbotron-fluid text-center bg-dark text-white" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; background-attachment:fixed;">
   <div class="container" style="padding:5rem 0;">

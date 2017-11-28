@@ -17,9 +17,13 @@
   <?php include('nav.php') ?>
   <?php include('jumbotron/head.php') ?>
   <div class="container my-3">
-    <?php include('page.php') ?>
+    <?php include('page1.php') ?>
   </div>
-  <?php include('jumbotron/slogan.php') ?>
+  <?php include('jumbotron/slogan1.php') ?>
+  <div class="container my-3">
+    <?php include('page2.php') ?>
+  </div>
+  <?php include('jumbotron/slogan2.php') ?>
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
