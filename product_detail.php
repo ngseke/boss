@@ -102,7 +102,7 @@
                   }
                   ?>
                 </div>
-                <form class="row mt-3" action="post_comment.php" method="post" >
+                <form class="row mt-3" action="comment_post.php" method="post" >
                   <div class="col-auto">
                     <span class="badge badge-info"><?php echo $user_id ?></span>
                   </div>
