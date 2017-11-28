@@ -29,9 +29,8 @@
       $img = $rows['Img'];
       ?>
 
-      
       <div class="col-12 col-lg-10 offset-lg-1">
-        <div class="card">
+        <div class="card py-3">
           <div class="card-body">
             <div class="row">
               <div class="col-12 col-lg-4 text-center">
@@ -45,72 +44,86 @@
                 </span>
               </div>
               <div class="col-12 col-lg-8">
-                <h3 class="mt-3 text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h3>
-                <span class="badge badge-dark"><?php echo $rows['Name']; ?></span>
-                
+                <div class="mb-3">
+                  <h2 class="text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h2>
+                  <span class="badge badge-dark badge-pill mx-2"><?php echo $rows['Name']; ?></span>
+                </div>
                 <hr class="my-4">
                 <p><?php echo $rows['Info']; ?></p>
-                <small>運費 : NT$<strong>60</strong></small>
-                <p>
-                  <h5 class="d-inline"><span class="badge badge-pill badge-primary" style="margin-right: 1rem;">NT$ <?php echo $rows['Price']; ?></span></h5>
-                  <span class="badge badge-pill badge-secondary">庫存: <?php echo $rows['Stock']; ?></span>
-                </p>
-                
-                <form method="post" action="">
-                  <div class="form-group row ">
-                    <div class="col-6">
-                      <button type="submit" class="btn btn-primary btn-block">加入購物車</button>
+                <div class="card bg-light border-light">
+                  <div class="card-body">
+                    <h4 class="text-danger d-inline-block">NT$ </h4>
+                    <h1 class="text-danger d-inline-block"><?php echo $rows['Price']; ?></h1>
+                    <div >
+                      <span class="badge badge-pill badge-primary">運費: NT $60</span>
+                      <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
                     </div>
-                    <label for="Quantity" class="col-auto col-form-label col-form-label-sm">數量</label>
-                    <div class="col-2">
+                  </div>
+                </div>
+                <form class="my-4" method="post" action="">
+                  <div class="form-group row ">
+                    <div class="input-group col-6 col-lg-3 ">
+                      <span class="input-group-addon">數量</span>
                       <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
+                    </div>
+                    <div class="input-group col-6 col-lg-5 ">
+                      <button type="submit" class="btn btn-outline-success btn-block">加入購物車</button>
                     </div>
                   </div>
                 </form>
-                <hr class="my-4"> 
+                <hr class="my-4">
                 <!-- 評論 -->
                 <h6>商品評論</h6>
                 <div class="list-group">
                   <?php
-                  $sql = 'SELECT * FROM Comment';
+                  $sqlnone = 'SELECT COUNT(*) COUNT_NUM FROM Comment
+                  WHERE PID='.$_GET['ID'];
+                  if( mysqli_fetch_array($conn->query($sqlnone))['COUNT_NUM']==0)
+                  echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                  <i class="text-muted">目前尚無評論</i>
+                  </a>';
+                  $sql = 'SELECT * FROM Comment WHERE PID='.$_GET['ID'];
                   $result = $conn->query($sql);
                   while($rows=mysqli_fetch_array($result)){
-                   $Name=$rows['CID'];
-                   $Date=$rows['Date'];
-                   $Comment=$rows['Comment'];
-                   echo '<a href="#" class="list-group-item list-group-item-action flex-column">
-                   <div class="d-flex w-100 justify-content-between">
-                   <h6 class="mb-1">'. $Name .'</h6>
-                   <small>'. $Date .'</small>
-                   </div>
-                   <p class="mb-1">'. $Comment .'</p>
-                   </a>';
-                 }
-                 ?>
-
-               </div>
-               <form action="post_comment.php" method="post">
-                <div class="form-group">
-                  <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論">
-                  <small id="emailHelp" class="form-text text-muted"></small>
+                    $Name=$rows['CID'];
+                    $Date=$rows['Date'];
+                    $Comment=$rows['Comment'];
+                    $Star=$rows['Star'];
+                    $star_text='<span class="badge badge-light star mx-2">
+                                  <i class="material-icons">star</i>'. $Star .'
+                                </span>';
+                    echo '<a href="#" class="list-group-item list-group-item-action flex-column">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h6 class="mb-2"><i class="material-icons">account_circle</i> '. $Name . $star_text .'</h6>
+                              <small>'. $Date .'</small>
+                            </div>
+                            <p class="mb-0">'. $Comment .'</p>
+                          </a>';
+                  }
+                  ?>
                 </div>
-                <div class="form-group">
-                  <input type="text" name="PID" value="<?php echo $_GET['ID']?>" class="form-control form-control-sm" placeholder="">
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">發表</button>
-              </form>
+                <form class="row mt-3" action="post_comment.php" method="post" >
+                  <div class="col-auto">
+                    <span class="badge badge-info"><?php echo $user_id ?></span>
+                  </div>
+                  <div class="col">
+                    <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="<?php if($user_position == 'G') echo'請先登入';else echo'輸入對此商品的評論' ?>" <?php if($user_position == 'G') echo'disabled' ;?> required>
+                  </div>
+                  <div class="col-3 col-lg-2">
+                    <button type="submit" class="btn btn-primary btn-block btn-sm "<?php if($user_position == 'G') echo'disabled' ;?>>發表</button>
+                  </div>
+                  <div class="form-group d-none">
+                    <input type="text" name="PID" value="<?php echo $_GET['ID']?>" placeholder="">
+                  </div>
+                </form>
+              </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
-
   </div>
-</div>
-<?php include('footer.php') ?>
+  <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>

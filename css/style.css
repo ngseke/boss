@@ -36,7 +36,7 @@ body{
 }
 
 .blockquote-footer{
-  color: #ccc;
+  color: #eee;
 }
 
 .star{
@@ -44,7 +44,6 @@ body{
 }
 
 .star i.material-icons{
-
-  color: gold;
+  color: #FFBA0C;
   font-size: 1rem;
 }

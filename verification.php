@@ -8,6 +8,7 @@ include('connection.php');
 // INIT Guset 的資訊
 $user_name= '訪客';
 $user_position='G';
+$user_id='guest';
 $user_email= $user_phone= $user_reg_date= $user_birth=$user_gender=$user_address='';
 
 if(isset($_SESSION['ID'])){ // 若已登入
