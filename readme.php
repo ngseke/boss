@@ -33,3 +33,13 @@
         product_list_new_add     (INSERT)
 
 */
+
+/*
+
+  管理折扣(discount_list_*.php)
+     discount_list                列出所有折扣(後台)
+      discount_list_detail        該折扣的詳情，顯示在input裡面，按下button可以送出修改
+        discount_list_detail_edit (UPDATE)
+      discount_list_new           INSERT新折扣，提供input和上傳欄位
+        discount_list_new_add     (INSERT)
+*/       
