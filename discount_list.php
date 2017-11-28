@@ -82,7 +82,10 @@
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣條件 <span class="text-info">*</span></label>
-                <input type="number" value="100" name="Requirement" min="1" class="form-control" >
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="number" value="100" name="Requirement" min="1" class="form-control" >
+                </div>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
