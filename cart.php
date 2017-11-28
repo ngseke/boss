@@ -29,7 +29,58 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <?php
+              // 資料庫指令
+              $sql = "SELECT * FROM PRODUCT P";
+              // $result 存放查詢到的所有物件
+              $result = $conn->query($sql);
+              if(count($sql)>0){
+                while($rows = mysqli_fetch_array($result)){
+                  $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
+                  echo '
+                  <tr >
+                    <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
+                      <div class="row no-gutters text-left text-lg-center">
+                          <th scope="row" class="text-left">
+                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['Name'] . '</h5>
+                          </th>
+                          <th class="align-middle">NT$ ' . $rows['Price'] . '</th>
+                          <th class="align-middle">'.$rows['Stock'].'</th>
+                          <th class="align-middle">'.$rows['Price'] * $rows['Stock'].'</th>
+                          <th class="align-middle"><button type="button" class="btn btn-outline-dark"><i class="material-icons">delete</i></button></th>
+                      </div>
+                    </a>
+                  </tr>';
+                }
+
+                $sql = "SELECT * FROM PRODUCT P";
+                $result2 = $conn->query($sql);
+                $SelectCount = 0;
+                $Total = 0;
+                $Fare = 60;
+                while($rows = mysqli_fetch_array($result2)){
+                  $SelectCount += $rows['Stock'];
+                  $Total += $rows['Stock'] * $rows['Price'];
+                }
+                if($Total<1000) $Total+=$Fare;
+                else $Fare=0;
+                echo '
+                  <tr class="text-right">
+                    <td colspan="5">
+                      共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '. $Total .'</strong></br>
+                      運費小計：<strong>NT$ '.$Fare.'</strong></br>
+                      <font size="+2">總金額：NT$ <strong>'.$Total.'</strong></font>
+                    </td>
+                  </tr>';
+              }
+              else {
+                echo'
+                  <tr>
+                    <td colspan="5">您尚未選購產品</td>
+                  </tr>';
+              }
+            ?>
+            <!--<tr>
               <th scope="row" class="text-left"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" alt="">
                 純喫茶綠茶
               </th>
@@ -38,19 +89,12 @@
               <td class="align-middle">25</td>
               <td class="align-middle">
                 <button type="button" class="btn btn-outline-dark"><i class="material-icons">delete</i></button>
-
               </td>
             </tr>
             <tr>
               <td colspan="5">您尚未選購產品</td>
-            </tr>
-            <tr class="text-right">
-              <td colspan="5">
-                共<strong>1</strong>件商品　商品金額：NT$ <strong>123</strong></br>
-                運費小計：NT$ <strong>123</strong></br>
-                <font size="+2">總金額：NT$ <strong>123</strong></font>
-              </td>
-            </tr>
+            </tr>-->
+
           </tbody>
         </table>
       </div>
