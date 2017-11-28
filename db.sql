@@ -120,10 +120,10 @@ INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('staff', '
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!');
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'asdf');
 
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,10.00,'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,10.00,'qwer','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,10.00,'hjkl','BOGO');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,10.00,'zxcv','discount');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之全館免運','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣-秋季大折扣','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.9,'asdf','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.87,'飲涼卡好-第二杯87折','discount');
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
