@@ -32,6 +32,7 @@
         $sql= "UPDATE DISCOUNT
                SET Type = '$Type',PeriodFrom='$PeriodFrom',PeriodTo='$PeriodTo',Requirement=$Requirement,Rate=$Rate,Info='$Info',EventType='$EventType'
                WHERE ID = $ID";
+        //echo $sql;
         $conn->query($sql);
         echo '<div class="alert alert-success">修改成功!';
         $conn->close();
