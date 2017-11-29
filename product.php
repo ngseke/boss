@@ -92,7 +92,11 @@
             // 用迴圈把每列內容取出 存放在$rows 並印出
             $i=0;
             while($rows = mysqli_fetch_array($result)){
-              $product_animation='id="product-item" style="animation-delay: '. ($i) .'s;"';
+              if(product_item_animation_mode)
+                $product_animation='id="product-item" style="animation-delay: '. ($i) .'s;"';
+              else
+                $product_animation='';
+
               $i+=0.08;
               $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
               echo '<div class="col-12 col-lg-4 mb-2">

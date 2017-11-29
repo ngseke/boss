@@ -20,4 +20,6 @@ define('auto_jump_time', 1, false); // 自動跳轉的秒數
 define('title_name', 'BOSS茶店', false); // 專案名稱
 define('debug_mode', true); // 是否為DEBUG MODE
 
+define('product_item_animation_mode', true); // 是否開啟product載入的動畫
+define('product_detail_animation_mode', true); // 是否開啟product載入的動畫
 ?>
