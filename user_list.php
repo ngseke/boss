@@ -22,7 +22,6 @@
         <table class="table table-hover table-dark my-3 ">
           <thead>
             <tr>
-
               <th scope="col" style="">ID</th>
               <th scope="col" style="">密碼</th>
               <th scope="col" style="">名稱</th>

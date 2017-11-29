@@ -22,8 +22,8 @@
       </div>
 
       <?php 
-        $sql = 'SELECT * FROM MEMBER
-                WHERE ID =' . '$_GET['.'ID'.']';
+        $sql = "SELECT * FROM MEMBER
+                WHERE ID ='" . $_GET['ID']."'";
         $result = $conn->query($sql);
         $row = mysqli_fetch_array($result);
         $ID=$row['ID'];
@@ -53,7 +53,7 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">密碼<span class="text-info">*</span></label>
-                <input type="text" value="<?php echo $Password;?>" name="Password" class="form-control" >
+                <input type="text" name="Password" placeholder = "若不修改請留白" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <label for="">E-mail<span class="text-info">*</span></label>

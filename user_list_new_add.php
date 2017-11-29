@@ -26,7 +26,7 @@
         $Name=$_POST['Name'];
         $Email=$_POST['Email'];
         $Phone=$_POST['Phone'];
-        $Regdate=date("Y/m/d H:i:s");//取得年份/月/日 時:分:秒
+        $Regdate=date("Y/m/d");//取得年份/月/日 時:分:秒
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
         $Address=($_POST['Address']=NULL)?NULL:$_POST['Address'];

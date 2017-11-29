@@ -11,7 +11,7 @@ CREATE TABLE MEMBER(
   Name VARCHAR(12) NOT NULL,
   Email VARCHAR(30) NOT NULL,
   Phone VARCHAR(10) NOT NULL,
-  RegDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  RegDate DATE,
   Birth DATE,
   Gender ENUM('M', 'F', 'N'),
   Address VARCHAR(100),
@@ -110,12 +110,12 @@ VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉進行
       ('美國 鶴湖卡本內蘇維翁紅酒 ', 5999, 'in_stock', 999, NULL, 2, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
 
 INSERT INTO CATEGORY(Name) Value('茶'), ('酒');
-INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
-            VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
-            ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
-            ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C'),
-            ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C'),
-            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C');
+INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position,RegDate)
+            VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A','2017-11-29'),
+            ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S','2017-11-29'),
+            ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C','2017-11-29'),
+            ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C','2017-11-29'),
+            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C','2017-11-29');
 
 INSERT INTO COMMENT (CID, PID, Star, Date, Comment)
   VALUES ('admin', '1', '4', CURRENT_TIMESTAMP, 'I am Admin!'),
