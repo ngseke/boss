@@ -1,6 +1,13 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php $page_name = '所有商品' ?>
+<?php
+$sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
+INNER JOIN CATEGORY C
+ON P.CategoryID = C.ID
+WHERE P.CategoryID = C.ID
+AND P.ID = ".$_GET['ID'];
+$page_name = mysqli_fetch_array($conn->query($sql))['PName'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -65,6 +72,7 @@
                       <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
                     </div>
                     <div class="input-group col-6 col-lg-5 ">
+                      <input class="form-control d-none" type="text" name="ID"  value="<?php echo $_GET['ID'] ?>">
                       <button type="submit" class="btn btn-outline-success btn-block">加入購物車</button>
                     </div>
                   </div>

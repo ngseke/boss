@@ -11,27 +11,35 @@
   echo '<a href="#" class="list-group-item list-group-item-action flex-column">
   <i class="text-muted">目前尚無評論</i>
   </a>';
-  $sql = 'SELECT * FROM COMMENT
+  $sql = 'SELECT *, COMMENT.ID CommentID FROM COMMENT
           INNER JOIN MEMBER ON MEMBER.ID = COMMENT.CID
           WHERE Comment.PID=' . $_GET['ID'];
   $result = $conn->query($sql);
 
   // 印出評論
   while($rows=mysqli_fetch_array($result)){
-    $CID=$rows['CID'];
-    $CName=$rows['Name'];
+    $CommentID=$rows['CommentID']; // 留言流水號
+    $CID=$rows['CID']; // 用戶帳號
+    $CName=$rows['Name']; // 用戶名
     $Date=$rows['Date'];
     $Comment=$rows['Comment'];
     $Star=$rows['Star'];
     $Position=$rows['Position'];
     $comment_by_me=($CID==$user_id)?'list-group-item-secondary':'';
+
+    // 針對不同職業的留言 顯示不一樣的用戶名顏色
     if($Position=='A') $comment_color= 'text-danger';
     else if($Position=='S') $comment_color= 'text-warning';
     else $comment_color='';
+
+    // 若‘登入’職位為A或S 則提供按下刪除留言的功能。
+    if($user_position=='A'||$user_position=='S') $comment_del_url= 'comment_del.php?CommentID='.$CommentID.'&PID='.$_GET['ID'];
+    else $comment_del_url='';
+
     $star_text='<span class="badge badge-light star mx-2">
                   <i class="material-icons">star</i>'. $Star .'
                 </span>';
-    echo '<a href="#" class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
+    echo '<a href="'. $comment_del_url .'" class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
             <div class="d-flex w-100 justify-content-between">
               <h6 class="mb-2 '. $comment_color . '">
               <i class="material-icons">account_circle</i> '. $CName .' <span class="text-muted">('. $CID .')</span>' . $star_text .'</h6>
