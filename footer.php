@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-12">
       <small>
-        <p class="text-muted text-center">© Copyright BOSS</p>
+        <p class="text-muted text-center" onclick="location.href='percent.php'">© Copyright BOSS</p>
       </small>
 
       <?php
