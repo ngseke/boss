@@ -33,6 +33,7 @@
         <tbody>
           <form method="post" name="form1" action="XXXXXXX.php">
             <?php
+            $i=1;
             $sql = "SELECT * FROM product";
             $result = $conn->query($sql);
             if($result->num_rows > 0) {
@@ -47,8 +48,9 @@
                   echo '<td> <img src ="' .$row['Img'] . '" height="100" width="100">';
                   echo '</td>
                   <td>' . $row["Info"] . '</td>
-                  <td> <button type="button" class="btn btn-primary">改爆</button> </td>
+                  <td> <button type="button" class="btn btn-primary" onclick="location.href=\'product_list_detail.php?ID=' .$i.'\'"> 改爆 </button> </td>
                 </tr>';
+                $i++;
             }
           }
           ?>
