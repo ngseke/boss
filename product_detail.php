@@ -63,8 +63,12 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                     <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
                       <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
+                      <!-- 以下暫時加的 -->
                       <span class="badge badge-pill badge-info">未知的活動1 - 此品項打87折</span>
                       <span class="badge badge-pill badge-info">未知的活動2 - 此品項買一送一</span>
+                      <span class="badge badge-pill badge-warning">未知的活動3 - 全館滿999免運</span>
+                      <span class="badge badge-pill badge-danger">未知的活動4 - 結帳滿999再打87折</span>
+                      <!-- 以上暫時加的 -->
                     </div>
                   </div>
                 </div>

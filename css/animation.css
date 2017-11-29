@@ -1,3 +1,5 @@
+/*首頁巨大廣告看版head動畫*/
+
 @keyframes head-ani{
   0% {
     transform: translateY(3rem) scale(.95);
@@ -26,7 +28,7 @@
 
 #head4{animation-delay: .4s;}
 
-
+/*所有商品入場動畫*/
 @keyframes product-item-ani{
   0% {
     transform: translateY(2rem);
@@ -47,6 +49,7 @@
   opacity: 0;
 }
 
+/*商品詳情動畫*/
 @keyframes product-detail-ani{
   0% {
     transform: translateY(2rem);
