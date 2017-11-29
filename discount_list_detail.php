@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php $page_name = '管理折扣' ?>
+<?php $page_name = '修改折扣' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +21,20 @@
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">修改折扣</h2>
       </div>
 
+      <?php 
+        $sql = 'SELECT * FROM DISCOUNT
+                WHERE ID =' . $_GET['ID'];
+        $result = $conn->query($sql);
+        $row = mysqli_fetch_array($result);
+        $Type=$row['Type'];
+        $PeriodFrom=$row['PeriodFrom'];
+        $PeriodTo=$row['PeriodTo'];
+        $Requirement=$row['Requirement'];
+        $Rate=$row['Rate'];
+        $Info=$row['Info'];
+        $EventType=$row['EventType'];
+       ?>
+
       <div class="col-6 offset-3 mt-3">   
         <div class="card">
           <div class="card-header text-center">修改折扣</div>
@@ -28,11 +42,11 @@
             <form class="row" action="discount_list_detail_edit.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group d-none">
                 <label for="">ID <span class="text-info">*</span></label>
-                <input type="text" name="ID" value="<?php echo $_GET['ID']; ?>" placeholder="" class="form-control" >
+                <input type="text" name="ID" value="<?php echo $_GET['ID']; ?>" placeholder="<?php echo $_GET['ID']; ?>" class="form-control" >
               </div>
               <div class="col-12 form-group">
                 <label for="">類型 <span class="text-info">*</span></label>
-                <select class="form-control" name="Type" required>
+                <select class="form-control" value = "<?php echo $Type ;?>" placeholder="<?php echo $Type ;?>" name="Type" required>
                   <option value="shipping">shipping</option>
                   <option value="seasoning">seasoning</option>
                   <option value="event">event</option>
@@ -40,30 +54,30 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
-                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
+                <textarea type="text" name="Info" maxlength="100" class="form-control" rows="2" required><?php echo $Info;?></textarea>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
-                <input type="date" value="1911-10-10" name="PeriodFrom" class="form-control" >
+                <input type="date" value="<?php echo $PeriodFrom; ?>" name="PeriodFrom" class="form-control" >
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">結束日期 <span class="text-info">*</span></label>
-                <input type="date" value="1911-10-10" name="PeriodTo" class="form-control" >
+                <input type="date" value="<?php echo $PeriodTo;?>" name="PeriodTo" class="form-control" >
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣條件 <span class="text-info">*</span></label>
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
-                  <input type="number" value="100" name="Requirement" min="1" class="form-control" >
+                  <input type="number" value="<?php echo $Requirement ;?>" name="Requirement" min="1" class="form-control" >
                 </div>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
-                <input type="number" value="0.01" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
+                <input type="number" value="<?php echo $Rate ;?>" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
               </div>  
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
-                <select class="form-control" name="EventType" required>
+                <select class="form-control" name="EventType" value="<?php echo $EventType;?>" required>
                   <option value="BOGO">BOGO</option>
                   <option value="discount">discount</option>
                 </select>
