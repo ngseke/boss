@@ -25,7 +25,11 @@
         <div class="card">
           <div class="card-header text-center">修改折扣</div>
           <div class="card-body">
-            <form class="row" action="discount_list_new_add.php" method="post" enctype="multipart/form-data" >
+            <form class="row" action="discount_list_detail_edit.php" method="post" enctype="multipart/form-data" >
+              <div class="col-12 form-group d-none">
+                <label for="">ID <span class="text-info">*</span></label>
+                <input type="text" name="ID" value="<?php echo $_GET['ID']; ?>" placeholder="" class="form-control" >
+              </div>
               <div class="col-12 form-group">
                 <label for="">類型 <span class="text-info">*</span></label>
                 <select class="form-control" name="Type" required>
