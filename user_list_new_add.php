@@ -43,7 +43,6 @@
           echo '</div>';
         } else{
           if ($conn->query($sql) === true) {
-            $_SESSION['ID'] = $_POST['ID'];
             echo '<div class="alert alert-success">成功註冊!';
           } else {
             echo '<div class="alert alert-danger">';

@@ -23,7 +23,7 @@
 
       <?php 
         $sql = 'SELECT * FROM MEMBER
-                WHERE ID =' . $_GET['ID'];
+                WHERE ID =' . '$_GET['.'ID'.']';
         $result = $conn->query($sql);
         $row = mysqli_fetch_array($result);
         $ID=$row['ID'];
