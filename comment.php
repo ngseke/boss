@@ -47,15 +47,16 @@
             <div class="d-flex w-100 justify-content-between">
               <h6 class="mb-2 '. $comment_color . '">
               <i class="material-icons">account_circle</i> '. $CName .' <span class="text-muted">('. $CID .')</span>' . $star_text .'</h6>
-              <small>'. $Date .'</small>
+              <small class="d-none d-lg-inline-block">'. $Date .'</small>
             </div>
             <p class="mb-0">'. $Comment .'</p>
+            <small class="d-inline-block d-lg-none">'. $Date .'</small>
           </a>';
   }
   ?>
 </div>
 <form class="row mt-3 <?php if($user_position == 'G') echo'd-none' ?>" action="comment_post.php" method="post" >
-  <div class="col-auto">
+  <div class="col-auto d-none">
     <span class="badge badge-info"><?php echo $user_id ?></span>
   </div>
   <div class="col">
@@ -63,29 +64,29 @@
       <div class="col-12 ">
         <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論..." <?php if($user_position == 'G') echo'disabled' ;?> required>
       </div>
-      <div class="col-12 my-2 <?php if($user_position == 'G') echo'd-none' ?> ">
-        <span class="badge badge-pill badge-warning mr-2"><i class="material-icons" style="font-size:1rem;">stars</i> 評分</span>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="Star" id="inlineRadio5" value="5" checked>5
-          </label>
-        </div>
-        <?php
-          for ($i=4; $i > 0 ; $i--) {
-            echo '<div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="Star" id="inlineRadio'.$i.'" value="'.$i.'" >'. $i .'
-                     </label>
-                  </div>';
-          }
-        ?>
-      </div>
     </div>
+
   </div>
   <div class="col-3 col-lg-2">
-    <button type="submit" class="btn btn-primary btn-block btn-sm "<?php if($user_position == 'G') echo'disabled' ;?>>發表</button>
+    <button type="submit" class="btn btn-primary btn-block btn-sm "<?php if($user_position == 'G') echo'disabled' ;?>><i class="material-icons" style="font-size:1.2rem">send</i></button>
   </div>
-
+  <div class="col-12 my-2 <?php if($user_position == 'G') echo'd-none' ?> ">
+    <span class="badge badge-pill badge-warning mr-2"><i class="material-icons" style="font-size:1rem;">stars</i> 評分</span>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="Star" id="inlineRadio5" value="5" checked>5
+      </label>
+    </div>
+    <?php
+      for ($i=4; $i > 0 ; $i--) {
+        echo '<div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="Star" id="inlineRadio'.$i.'" value="'.$i.'" >'. $i .'
+                 </label>
+              </div>';
+      }
+    ?>
+  </div>
   <div class="form-group d-none">
     <input type="text" name="PID" value="<?php echo $_GET['ID']?>" placeholder="" >
   </div>

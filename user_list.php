@@ -60,7 +60,7 @@
         </table>
       </div>
 
-      <div class="col-6 offset-3 mt-5">
+      <div class="col-12 col-lg-6 offset-lg-3 mt-5">
         <div class="card">
           <div class="card-header text-center">新增會員</div>
           <div class="card-body">

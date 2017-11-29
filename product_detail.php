@@ -74,11 +74,11 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                 </div>
                 <form class="my-4" method="post" action="">
                   <div class="form-group row ">
-                    <div class="input-group col-6 col-lg-3 ">
+                    <div class="input-group col-12 col-lg-3 ">
                       <span class="input-group-addon">數量</span>
                       <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
                     </div>
-                    <div class="input-group col-6 col-lg-5 ">
+                    <div class="input-group col-12 mt-2 col-lg-5 mt-lg-0">
                       <input class="form-control d-none" type="text" name="ID"  value="<?php echo $_GET['ID'] ?>">
                       <button type="submit" class="btn btn-outline-success btn-block"><i class="material-icons">add_shopping_cart</i> 加入購物車</button>
                     </div>
