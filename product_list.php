@@ -17,7 +17,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <table class="table mt-5 d-none d-lg-table">
+      <table class="table mt-5 d-none d-lg-table ">
         <thead>
           <tr class="text-center">
             <th scope="col">#</th>
