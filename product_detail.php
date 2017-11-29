@@ -27,10 +27,14 @@
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
       $img = $rows['Img'];
+      if(product_detail_animation_mode)
+        $product_detail_animation='id="product-detail"';
+      else
+        $product_detail_animation='';
       ?>
 
       <div class="col-12 col-lg-10 offset-lg-1">
-        <div class="card py-3">
+        <div class="card py-3 " <?php echo $product_detail_animation ?>>
           <div class="card-body">
             <div class="row">
               <div class="col-12 col-lg-4 text-center">

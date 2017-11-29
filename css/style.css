@@ -46,4 +46,13 @@ body{
 .star i.material-icons{
   color: #FFBA0C;
   font-size: 1rem;
+
+}
+
+.discount{
+  transition: opacity .3s;
+}
+
+.discount:hover{
+  opacity: .8;
 }

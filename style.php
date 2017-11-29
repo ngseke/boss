@@ -8,3 +8,4 @@
 
 <!-- 自定義樣式 -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animation.css">
