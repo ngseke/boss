@@ -1,5 +1,5 @@
 <?php
-  $sqlnone = 'SELECT COUNT(*) COUNT_NUM FROM Comment
+  $sqlnone = 'SELECT COUNT(*) COUNT_NUM FROM COMMENT
   WHERE PID='.$_GET['ID'];
   $comment_num=mysqli_fetch_array($conn->query($sqlnone))['COUNT_NUM'];
 ?>
@@ -17,7 +17,7 @@
   </a>';
   $sql = 'SELECT *, COMMENT.ID CommentID FROM COMMENT
           INNER JOIN MEMBER ON MEMBER.ID = COMMENT.CID
-          WHERE Comment.PID=' . $_GET['ID'];
+          WHERE COMMENT.PID=' . $_GET['ID'];
   $result = $conn->query($sql);
 
   // 印出評論
