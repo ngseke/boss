@@ -23,7 +23,7 @@
           <thead>
             <tr>
               <th scope="col" style="width:2rem;">#</th>
-              <th scope="col" style="width:5rem;" >類型</th>
+              <th scope="col" style="width:5rem;">類型</th>
               <th scope="col" style="width:9rem;">資訊</th>
               <th scope="col" style="width:12rem;">開始/結束</th>
               <th scope="col" style="width:6rem;">折扣需求</th>
