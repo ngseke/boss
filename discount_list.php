@@ -24,10 +24,10 @@
             <tr>
               <th scope="col" style="width:2rem;">#</th>
               <th scope="col" style="width:5rem;" >類型</th>
+              <th scope="col" style="width:9rem;">資訊</th>
               <th scope="col" style="width:12rem;">開始/結束</th>
               <th scope="col" style="width:6rem;">折扣需求</th>
               <th scope="col" style="width:5rem;">折扣內容</th>
-              <th scope="col" style="width:9rem;">資訊</th>
             </tr>
           </thead>
           <tbody>
@@ -39,8 +39,8 @@
               echo '<tr style="cursor: pointer;" onclick="location.href=\'discount_list_detail.php?ID=' . $rows['ID'].'\'">';
               echo '<th scope="row" class="align-middle">'.$rows['ID'].'</th>';
               $Type = ($rows['EventType']=='event')?'-'.$rows['EventType']:'';
-
               echo '<td class="align-middle">'.$rows['Type'].$Type.'</td>';
+              echo '<td class="align-middle">'.$rows['Info'].'</td>';
               echo '<td class="align-middle"><small><span class="badge badge-pill badge-warning mr-1">起</span>'.$rows['PeriodFrom'].'<br><span class="badge badge-pill badge-warning mr-1">迄</span>'.$rows['PeriodTo'].'</small></td>';
               echo '<td class="align-middle">NT$ '.$rows['Requirement'].'</td>';
               if($rows['Type']=='shipping'){
@@ -50,8 +50,7 @@
               }else{
                 $RateText=($rows['Rate']*100).'%';
               }
-              echo '<td class="align-middle">'. $RateText.'</td>';
-              echo '<td class="align-middle">'.$rows['Info'].'</td>';
+              echo '<td class="align-middle">'. $RateText.'</td>'; 
               echo '</tr>';
             }
             ?>
@@ -72,6 +71,10 @@
                   <option value="event">event</option>
                 </select>
               </div>
+              <div class="col-12 form-group">
+                <label for="">資訊 <span class="text-info">*</span></label>
+                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
+              </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
                 <input type="date" value="1911-10-10" name="PeriodFrom" class="form-control" >
@@ -90,11 +93,7 @@
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
                 <input type="number" value="0.01" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
-              </div>
-              <div class="col-12 form-group">
-                <label for="">資訊 <span class="text-info">*</span></label>
-                <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
-              </div>
+              </div>  
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
                 <select class="form-control" name="EventType" required>
@@ -103,14 +102,11 @@
                 </select>
               </div>
               <div class="col-12 form-group">
-                <button class="btn btn-success btn-block" type="submit" >立即註冊</button>
+                <button class="btn btn-success btn-block" type="submit" >立即新增</button>
               </div>
             </form>
           </div>
         </div>
-
-
-
 
       </div>
     </div>
