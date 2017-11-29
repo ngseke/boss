@@ -16,7 +16,7 @@
     <div class="card">
       <div class="card-header text-center">修改商品</div>
       <div class="card-body">
-        <form class="row" action="product_list_detail_edit.php" method="post" >
+        <form class="row" action="product_list_detail_edit.php" method="post" enctype="multipart/form-data" >
           <div class="col-12 form-group">
             <label for="">名稱 <span class="text-info">*</span></label>
             <input type="text" class="form-control" name="name" >
@@ -24,8 +24,8 @@
           <div class="col-12 form-group">
             <label for="">庫存狀態 <span class="text-info">*</span></label>
             <select class="form-control" name="stock">
-              <option value="InStock">in_stock</option>
-              <option value="OutStock">out_of_stock</option>
+              <option value="in_stock">in_stock</option>
+              <option value="out_of_stock">out_of_stock</option>
             </select>
           </div>
           <div class="col-12 col-lg-6 form-group">
@@ -38,7 +38,7 @@
           </div>
           <div class="col-12 col-lg-6 form-group">
             <label for="exampleFormControlFile1">上傳圖片</label>
-            <input type="file" class="form-control-file" name="uploadImg">
+            <input type="file" class="form-control-file" name="file">
           </div>
           <div class="col-12 form-group">
             <label for="">商品描述 <span class="text-info">*</span></label>
@@ -46,6 +46,7 @@
             </select>
           </div>
           <div class="col-12 form-group">
+            <input type="hidden" name="IDnum" value="<?php echo $_GET['ID'] ?>">
             <button class="btn btn-success btn-block" type="submit" >立即新增</button>
           </div>
         </form>
