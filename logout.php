@@ -22,7 +22,7 @@
           // 清空登入的Session
           unset($_SESSION['ID']);
           echo '<div class="alert alert-success">';
-          echo "成功登出！";
+          echo '<i class="material-icons">power_settings_new</i> 成功登出！';
           echo '</div>';
         ?>
       </div>

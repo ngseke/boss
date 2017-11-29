@@ -32,7 +32,7 @@
         $sql= "INSERT INTO DISCOUNT(Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType)
         VALUES('$Type','$PeriodFrom','$PeriodTo','$Requirement','$Rate','$Info','$EventType')";
         $conn->query($sql);
-        echo '<div class="alert alert-success">新增成功!';
+        echo '<div class="alert alert-success"><i class="material-icons">done</i>新增成功!</div>';
         $conn->close();
         ?>
       </div>

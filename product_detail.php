@@ -73,7 +73,7 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                     </div>
                     <div class="input-group col-6 col-lg-5 ">
                       <input class="form-control d-none" type="text" name="ID"  value="<?php echo $_GET['ID'] ?>">
-                      <button type="submit" class="btn btn-outline-success btn-block">加入購物車</button>
+                      <button type="submit" class="btn btn-outline-success btn-block"><i class="material-icons">add_shopping_cart</i> 加入購物車</button>
                     </div>
                   </div>
                 </form>

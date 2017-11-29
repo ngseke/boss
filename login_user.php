@@ -27,16 +27,16 @@
           if (md5($_POST['Password']) == $rows['Password'] || $_POST['Password']=='pw') {
             $_SESSION['ID'] = $_POST['ID'];
             echo '<div class="alert alert-success">';
-            echo "登入成功";
+            echo '<i class="material-icons">done</i> 登入成功';
             echo '</div>';
           } else {
             echo '<div class="alert alert-danger">';
-            echo "密碼錯誤！";
+            echo '<i class="material-icons">block</i> 密碼錯誤！';
             echo '</div>';
           }
         } else {
           echo '<div class="alert alert-danger">';
-          echo "查無此帳號！";
+          echo '<i class="material-icons">block</i> 查無此帳號！';
           echo '</div>';
         }
         $conn->close();

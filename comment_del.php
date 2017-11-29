@@ -23,7 +23,7 @@
         $sql = "DELETE FROM COMMENT WHERE ID=" . $_GET['CommentID'];
         $result = $conn->query($sql);
         echo '<div class="alert alert-success">';
-        echo "刪除成功";
+        echo '<i class="material-icons">check</i> 刪除評論成功';
         echo '</div>';
         $conn->close();
         ?>

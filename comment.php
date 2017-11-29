@@ -3,7 +3,11 @@
   WHERE PID='.$_GET['ID'];
   $comment_num=mysqli_fetch_array($conn->query($sqlnone))['COUNT_NUM'];
 ?>
-<h6>商品評論 (<?php echo $comment_num; ?>)</h6>
+<h6>
+  <i class="material-icons">comment</i> 商品評論
+  (<?php echo $comment_num; ?>)
+  <?php if($user_position=='A'||$user_position=='S')echo '<small class="text-info ml-1"><i class="material-icons" style="font-size:1rem;">info</i> 點擊可刪除評論</small>'?>
+</h6>
 <div class="list-group ">
   <?php
 
@@ -33,13 +37,13 @@
     else $comment_color='';
 
     // 若‘登入’職位為A或S 則提供按下刪除留言的功能。
-    if($user_position=='A'||$user_position=='S') $comment_del_url= 'comment_del.php?CommentID='.$CommentID.'&PID='.$_GET['ID'];
+    if($user_position=='A'||$user_position=='S') $comment_del_url= 'href="comment_del.php?CommentID='.$CommentID.'&PID='.$_GET['ID'].'"';
     else $comment_del_url='';
 
     $star_text='<span class="badge badge-light star mx-2">
                   <i class="material-icons">star</i>'. $Star .'
                 </span>';
-    echo '<a href="'. $comment_del_url .'" class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
+    echo '<a '. $comment_del_url .' class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
             <div class="d-flex w-100 justify-content-between">
               <h6 class="mb-2 '. $comment_color . '">
               <i class="material-icons">account_circle</i> '. $CName .' <span class="text-muted">('. $CID .')</span>' . $star_text .'</h6>
@@ -60,7 +64,7 @@
         <input type="text" name="Comment" class="form-control form-control-sm"  placeholder="輸入對此商品的評論..." <?php if($user_position == 'G') echo'disabled' ;?> required>
       </div>
       <div class="col-12 my-2 <?php if($user_position == 'G') echo'd-none' ?> ">
-        <span class="badge badge-pill badge-warning mr-2"><i class="material-icons" style="font-size:1rem;">star</i> 評分</span>
+        <span class="badge badge-pill badge-warning mr-2"><i class="material-icons" style="font-size:1rem;">stars</i> 評分</span>
         <div class="form-check form-check-inline">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="Star" id="inlineRadio5" value="5" checked>5

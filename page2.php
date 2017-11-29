@@ -20,11 +20,11 @@ if($rows['Type']=='seasoning'){
 <div class="row" style="cursor:pointer" onclick="location.href='product.php'">
   <div class="col-12 my-3 my-lg-5 text-center">
     <div class="row">
-      <div class="col-12 mb-4">
-        <h2 class="d-inline " style="border-bottom:5px #333 solid;">折扣開催中</h2>
+      <div class="col-12">
+        <i class="material-icons text-light animated infinite rubberBand" style="font-size:5rem;">redeem</i>
       </div>
       <div class="col-12 my-3 text-center">
-        <h3 class="text-light d-block" >
+        <h3 class="text-light d-block " >
           <?php echo $info ?>
         </h3>
         <h5 class="text-light my-3" style="opacity: .9">

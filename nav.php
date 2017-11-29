@@ -97,7 +97,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
             <a class="dropdown-item" href="#">會員資料</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout.php">
-              <i class="material-icons">exit_to_app</i>登出
+              <i class="material-icons">exit_to_app</i> 登出
             </a>
           </div>
         </li>
