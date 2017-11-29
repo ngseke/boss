@@ -59,9 +59,12 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                   <div class="card-body">
                     <h4 class="text-danger d-inline-block">NT$ </h4>
                     <h1 class="text-danger d-inline-block"><?php echo $rows['Price']; ?></h1>
-                    <div >
+                    <h5 class="text-muted d-inline-block ml-2"><del>NT$ 25</del></h5>
+                    <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
                       <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
+                      <span class="badge badge-pill badge-info">未知的活動1 - 此品項打87折</span>
+                      <span class="badge badge-pill badge-info">未知的活動2 - 此品項買一送一</span>
                     </div>
                   </div>
                 </div>
