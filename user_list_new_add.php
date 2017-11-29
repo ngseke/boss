@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>00;URL=user_list.php">
 </head>
 
 <body>
@@ -29,8 +29,8 @@
         $Regdate=date("Y/m/d H:i:s");//取得年份/月/日 時:分:秒
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
-        $Address=$_POST['Address'];
-        $Position=$_POST['Position'];//只能註冊顧客喔～
+        $Address=($_POST['Address']=NULL)?NULL:$_POST['Address'];
+        $Position=$_POST['Position'];
         $sql= "INSERT INTO MEMBER(ID,Password,Email,Name,Phone,Regdate,Birth,Gender,Address,Position)
         VALUE('$ID','$Password','$Email','$Name','$Phone','$Regdate','$Birth','$Gender','$Address','$Position')";
         // 將使用者輸入的username 和資料庫中的比對，檢查是否重複
