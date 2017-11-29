@@ -1,6 +1,6 @@
 @keyframes head-ani{
   0% {
-    transform: translateY(3rem) scale(.9);
+    transform: translateY(3rem) scale(.95);
     opacity: 0;
   }
   100% {
@@ -25,3 +25,24 @@
 #head3{animation-delay: .6s;}
 
 #head4{animation-delay: .8s;}
+
+
+@keyframes product-item-ani{
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#product-item{
+  animation-name: product-item-ani;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: .5s;
+  animation-delay: 0s;
+  opacity: 0;
+}
