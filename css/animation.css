@@ -1,0 +1,27 @@
+@keyframes head-ani{
+  0% {
+    transform: translateY(3rem) scale(.9);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#head1, #head2, #head3, #head4{
+  animation-name: head-ani;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: .8s;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+#head1{animation-delay: .2s;}
+
+#head2{animation-delay: .4s;}
+
+#head3{animation-delay: .6s;}
+
+#head4{animation-delay: .8s;}

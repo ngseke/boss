@@ -113,7 +113,9 @@ INSERT INTO CATEGORY(Name) Value('茶'), ('酒');
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
-            ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C');
+            ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C'),
+            ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'A');
+
 
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'I am Admin!');
 INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('staff', '1', '3', CURRENT_TIMESTAMP, 'I am staff!');
