@@ -32,7 +32,6 @@
             <?php
               // 資料庫指令
 
-              //$sql = "SELECT * FROM PRODUCT P";
               $sql = "SELECT C.ID CID, C.DID CDID, P.ID PID, P.Img PIMG, P.Name PName, P.Price PPrice, CR.Quantity CRQ
                       FROM CART C
                       JOIN CART_RECORD CR
@@ -44,21 +43,26 @@
               if(count($sql)>0){
                 while($rows = mysqli_fetch_array($result)){
                   echo '
-                  <tr >
-                    <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
-                      <div class="row no-gutters text-left text-lg-center">
-                          <th scope="row" class="text-left">
-                            <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['PName'] . '</h5>
-                          </th>
-                          <th class="align-middle">NT$ ' . $rows['PPrice'] . '</th>
-                          <th class="align-middle">'.$rows['CRQ'].'</th>
-                          <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
-                          <th class="align-middle"><button type="button" class="btn btn-outline-dark"><i class="material-icons">delete</i></button></th>
-                      </div>
-                    </a>
-                  </tr>';
+                  <form action="cart_del.php">
+                    <tr>
+                      <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
+                        <div class="row no-gutters text-left text-lg-center">
+                            <th scope="row" class="text-left">
+                              <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['PName'] . '</h5>
+                            </th>
+                            <th class="align-middle">NT$ ' . $rows['PPrice'] . '</th>
+                            <th class="align-middle">'.$rows['CRQ'].'</th>
+                            <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
+                            <th class="align-middle">
+                              <input type="submit" value="Submit"><i class="material-icons">delete</i>
+                              <input type="hidden" name="temp" value="'.$rows['PID'].'">
+                            </th>
+                        </div>
+                      </a>
+                    </tr>
+                  </form>';
                 }
-                
+
                 $result2 = $conn->query($sql);
                 $SelectCount = 0;
                 $Total = 0;

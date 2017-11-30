@@ -143,7 +143,8 @@ INSERT INTO CART(ID, CID, DID)
 INSERT INTO CART_RECORD(ID, PID, Quantity)
   VALUES('1','1','3'),
   ('1','2','5'),
-  ('1','6','10')
+  ('1','6','10'),
+  ('1','3','15')
 ;
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
