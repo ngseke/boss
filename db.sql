@@ -117,6 +117,14 @@ VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
 
+-- 插入 乳酸飲料;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('養樂多活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005446_800.jpeg'),
+      ('養樂多300LIGHT活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005450_300light_800.jpeg'),
+      ('比菲多原味', 28, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20fiber.jpg'),
+      ('比菲多綠茶多酚', 30, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20green%20tea.jpg');
+
+
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
 ('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
