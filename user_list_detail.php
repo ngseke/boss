@@ -31,7 +31,7 @@
         $Name=$row['Name'];
         $Email=$row['Email'];
         $Phone=$row['Phone'];
-        $Regdate=$row['Regdate'];
+        $RegDate=$row['RegDate'];
         $Birth=$row['Birth'];
         $Gender=$row['Gender'];
         $Address=$row['Address'];
