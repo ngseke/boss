@@ -56,6 +56,11 @@
           ?>
         </tbody>
       </table>
+      <div class="row">
+        <div class="col-12 col-lg-2 offset-lg-10 mb-3">
+          <a href="product_list_new.php" class="btn btn-primary btn-block btn-lg" role="button">新增一波</a>
+        </div>
+      </div>
 
     </div>
   </div>
