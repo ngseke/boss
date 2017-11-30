@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>00;URL=user_list.php">
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
 </head>
 
 <body>
