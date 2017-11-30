@@ -137,6 +137,15 @@ INSERT INTO COMMENT (CID, PID, Star, Comment)
   ('a92304a92304', '1', '1', '樓上自肥')
 ;
 
+INSERT INTO CART(ID, CID, DID)
+  VALUES('1', 'customer', '1');
+
+INSERT INTO CART_RECORD(ID, PID, Quantity)
+  VALUES('1','1','3'),
+  ('1','2','5'),
+  ('1','6','10')
+;
+
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣﹣秋季大折扣','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.9,'不小心進貨太多之特賣','BOGO');

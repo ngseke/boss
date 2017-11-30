@@ -31,36 +31,41 @@
           <tbody>
             <?php
               // 資料庫指令
-              $sql = "SELECT * FROM PRODUCT P";
+
+              //$sql = "SELECT * FROM PRODUCT P";
+              $sql = "SELECT C.ID CID, C.DID CDID, P.ID PID, P.Img PIMG, P.Name PName, P.Price PPrice, CR.Quantity CRQ
+                      FROM CART C
+                      JOIN CART_RECORD CR
+                      ON C.ID = CR.ID
+                      JOIN PRODUCT P
+                      ON CR.PID = P.ID";
               // $result 存放查詢到的所有物件
               $result = $conn->query($sql);
               if(count($sql)>0){
                 while($rows = mysqli_fetch_array($result)){
-                  $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
                   echo '
                   <tr >
-                    <a href="product_detail.php?ID='. $rows['ID'] .'" class="text-dark">
+                    <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                       <div class="row no-gutters text-left text-lg-center">
                           <th scope="row" class="text-left">
-                            <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['Name'] . '</h5>
+                            <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['PName'] . '</h5>
                           </th>
-                          <th class="align-middle">NT$ ' . $rows['Price'] . '</th>
-                          <th class="align-middle">'.$rows['Stock'].'</th>
-                          <th class="align-middle">'.$rows['Price'] * $rows['Stock'].'</th>
+                          <th class="align-middle">NT$ ' . $rows['PPrice'] . '</th>
+                          <th class="align-middle">'.$rows['CRQ'].'</th>
+                          <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
                           <th class="align-middle"><button type="button" class="btn btn-outline-dark"><i class="material-icons">delete</i></button></th>
                       </div>
                     </a>
                   </tr>';
                 }
-
-                $sql = "SELECT * FROM PRODUCT P";
+                
                 $result2 = $conn->query($sql);
                 $SelectCount = 0;
                 $Total = 0;
                 $Fare = 60;
                 while($rows = mysqli_fetch_array($result2)){
-                  $SelectCount += $rows['Stock'];
-                  $Total += $rows['Stock'] * $rows['Price'];
+                  $SelectCount += $rows['CRQ'];
+                  $Total += $rows['CRQ'] * $rows['PPrice'];
                 }
                 if($Total<1000) $Total+=$Fare;
                 else $Fare=0;
