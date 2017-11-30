@@ -95,21 +95,32 @@ CREATE TABLE DISCOUNT (
 );
 
 -- 插入測試用範例資料;
+-- 插入 純喫茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
-      ('純喫茶紅茶', 25, 'in_stock', 999, NULL, 1, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
-      ('純喫茶檸檬紅茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
-      ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 1, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
+      ('純喫茶紅茶', 25, 'in_stock', 999, NULL, 2, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
+      ('純喫茶檸檬紅茶', 25, 'in_stock', 999, NULL, 2, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
+      ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 3, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
       ('純喫茶鮮柚綠茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留葡萄柚香氣，調和清爽甘醇的茉莉綠茶，激盪出酸甜清香的新鮮果茶風味！', 'http://www.pecos.com.tw/tmp/image/20150105/20150105090925_79899.jpg'),
-      ('純喫茶無糖綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg'),
-      ('袋鼠山雪多利白葡萄酒', 500, 'in_stock', 999, NULL, 2, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
-      ('西班牙 彩鑽蝶戀白酒', 699, 'in_stock', 999, NULL, 2, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
-      ('美國 摩根灣夏多內白酒 ', 799, 'in_stock', 999, NULL, 2, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
-      ('法國 茱麗葉紅酒14/15 ', 899, 'in_stock', 999, NULL, 2, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
-      ('義大利 山之巔黃標紅酒 ', 1999, 'in_stock', 999, NULL, 2, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
-      ('美國 鶴湖卡本內蘇維翁紅酒 ', 5999, 'in_stock', 999, NULL, 2, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
+      ('純喫茶無糖綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg');
 
-INSERT INTO CATEGORY(Name) Value('茶'), ('酒');
+-- 插入 高級酒;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
+      ('西班牙彩鑽蝶戀白酒', 2399, 'in_stock', 999, NULL, 15, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
+      ('美國摩根灣夏多內白酒', 6960, 'in_stock', 999, NULL, 15, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
+      ('法國茱麗葉紅酒14/15', 6960, 'in_stock', 999, NULL, 14, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
+      ('義大利山之巔黃標紅酒', 4999, 'in_stock', 999, NULL, 14, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
+      ('美國鶴湖卡本內蘇維翁紅酒 ', 3999, 'in_stock', 999, NULL, 14, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
+
+-- 插入 日本茶;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
+
+INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
+('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
+('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
+
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
