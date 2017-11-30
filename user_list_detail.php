@@ -10,7 +10,8 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
-
+<?php $sql= "DELETE FROM MEMBER
+               WHERE ID ='" .$_POST['ID']."'"; ?>
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
@@ -88,7 +89,7 @@
                 <input type="text" name="Address" value="<?php echo $Address;?>" maxlength="100" class="form-control" >
               </div>
               <div class="col-12 form-group">
-                <button class="btn btn-success btn-block" type="submit" name="Update" >立即修改</button>
+                <button class="btn btn-success btn-block" type="submit" name="update" >立即修改</button>
               </div>
               <div class="col-12 form-group">
                 <button class="btn btn-danger btn-block" type="submit" name="delete">刪除此用戶</button>

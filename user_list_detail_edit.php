@@ -9,7 +9,7 @@ $sql= "DELETE FROM MEMBER
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>00;URL=user_list.php">
 </head>
 
 <body>
@@ -19,6 +19,8 @@ $sql= "DELETE FROM MEMBER
     <div class="row">
       <div class="col-12 text-center">
         <?php
+        if (isset($_POST['update'])) echo 'update';
+        elseif (isset($_POST['delete'])) echo 'delete';
         //設定地點為台北時區
         date_default_timezone_set('Asia/Taipei');
 

@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-12 text-center">
         <?php
-        //設定地點為台北時區
-        date_default_timezone_set('Asia/Taipei');
+        if (isset($_POST['update'])){
+            date_default_timezone_set('Asia/Taipei');
 
         $ID=$_POST['ID'];
         $Password=md5($_POST['Password']);
@@ -49,6 +49,13 @@
             echo "Error 註冊: " . $conn->error;
             echo '</div>';
           }
+        }
+        }
+        elseif (isset($_POST['delete'])){
+            $sql= "DELETE FROM MEMBER
+               WHERE ID ='" .$_POST['ID']."'";
+            $conn->query($sql);
+            echo '<div class="alert alert-success">成功刪除</div>';
         }
         $conn->close();
         ?>
