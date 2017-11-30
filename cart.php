@@ -40,7 +40,7 @@
                       ON CR.PID = P.ID";
               // $result 存放查詢到的所有物件
               $result = $conn->query($sql);
-              if(count($sql)>0){
+              if(mysqli_num_rows($result)>0){
                 while($rows = mysqli_fetch_array($result)){
                   echo '
                   <form action="cart_del.php">
@@ -54,7 +54,7 @@
                             <th class="align-middle">'.$rows['CRQ'].'</th>
                             <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
                             <th class="align-middle">
-                              <input type="submit" value="Submit"><i class="material-icons">delete</i>
+                              <input type="submit" value="Submit">
                               <input type="hidden" name="temp" value="'.$rows['PID'].'">
                             </th>
                         </div>
