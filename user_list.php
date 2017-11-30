@@ -22,16 +22,13 @@
         <table class="table table-hover table-dark my-3 ">
           <thead>
             <tr>
-
               <th scope="col" style="">ID</th>
-              <th scope="col" style="">密碼</th>
               <th scope="col" style="">名稱</th>
               <th scope="col" style="">Email</th>
               <th scope="col" style="">電話</th>
               <th scope="col" style="">生日</th>
               <th scope="col" style="">性別</th>
               <th scope="col" style="">地址</th>
-              <th scope="col" style="">職位</th>
               <th scope="col" style="">註冊日</th>
             </tr>
           </thead>
@@ -41,17 +38,25 @@
             $result = $conn->query($sql);
             while($rows = mysqli_fetch_array($result))
             {
+
+              if($rows['Position']=='A'){
+              $positionName= '<span class="badge badge-pill badge-warning">管理員</span>';
+            }else if($rows['Position']=='S'){
+             $positionName='<span class="badge badge-pill badge-info">店員</span>';
+            }
+            else{
+              $positionName='<span class="badge badge-pill badge-secondary">顧客</span>';
+            }
+
               echo '<tr style="cursor: pointer;" onclick="location.href=\'user_list_detail.php?ID=' . $rows['ID'].'\'">';
 
-              echo '<td class="align-middle">'.$rows['ID'].'</td>';
-              echo '<td class="align-middle"><small>'.$rows['Password'].'</small></td>';
+              echo '<td class="align-middle">'.$positionName.' '.$rows['ID'].'</td>';
               echo '<td class="align-middle">'.$rows['Name'].'</td>';
               echo '<td class="align-middle">'.$rows['Email'].'</td>';
               echo '<td class="align-middle">'.$rows['Phone'].'</td>';
               echo '<td class="align-middle">'.$rows['Birth'].'</td>';
               echo '<td class="align-middle">'.$rows['Gender'].'</td>';
               echo '<td class="align-middle">'.$rows['Address'].'</td>';
-              echo '<td class="align-middle">'.$rows['Position'].'</td>';
               echo '<td class="align-middle">'.$rows['RegDate'].'</td>';
               echo '</tr>';
             }
