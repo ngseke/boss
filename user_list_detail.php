@@ -10,6 +10,11 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
+<<<<<<< HEAD
+=======
+<?php $sql= "DELETE FROM MEMBER
+               WHERE ID ='" .$_GET['ID']."'"; ?>
+>>>>>>> 5e99a7d0664c4cb79e61425b1b3abc6e6105ec14
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
