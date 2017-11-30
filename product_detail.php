@@ -1,6 +1,13 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php $page_name = '所有商品' ?>
+<?php
+$sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
+INNER JOIN CATEGORY C
+ON P.CategoryID = C.ID
+WHERE P.CategoryID = C.ID
+AND P.ID = ".$_GET['ID'];
+$page_name = mysqli_fetch_array($conn->query($sql))['PName'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -52,20 +59,28 @@
                   <div class="card-body">
                     <h4 class="text-danger d-inline-block">NT$ </h4>
                     <h1 class="text-danger d-inline-block"><?php echo $rows['Price']; ?></h1>
-                    <div >
+                    <h5 class="text-muted d-inline-block ml-2"><del>NT$ 25</del></h5>
+                    <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
                       <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
+                      <!-- 以下暫時加的 -->
+                      <span class="badge badge-pill badge-info">未知的活動1 - 此品項打87折</span>
+                      <span class="badge badge-pill badge-info">未知的活動2 - 此品項買一送一</span>
+                      <span class="badge badge-pill badge-warning">未知的活動3 - 全館滿999免運</span>
+                      <span class="badge badge-pill badge-danger">未知的活動4 - 結帳滿999再打87折</span>
+                      <!-- 以上暫時加的 -->
                     </div>
                   </div>
                 </div>
                 <form class="my-4" method="post" action="">
                   <div class="form-group row ">
-                    <div class="input-group col-6 col-lg-3 ">
+                    <div class="input-group col-12 col-lg-3 ">
                       <span class="input-group-addon">數量</span>
                       <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
                     </div>
-                    <div class="input-group col-6 col-lg-5 ">
-                      <button type="submit" class="btn btn-outline-success btn-block">加入購物車</button>
+                    <div class="input-group col-12 mt-2 col-lg-5 mt-lg-0">
+                      <input class="form-control d-none" type="text" name="ID"  value="<?php echo $_GET['ID'] ?>">
+                      <button type="submit" class="btn btn-outline-success btn-block"><i class="material-icons">add_shopping_cart</i> 加入購物車</button>
                     </div>
                   </div>
                 </form>

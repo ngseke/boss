@@ -88,10 +88,11 @@ CREATE TABLE COMMENT (
 CREATE TABLE DISCOUNT (
   ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   Type ENUM('shipping', 'seasoning', 'event'),
-  PeriodFrom DATETIME NOT NULL,
-  PeriodTo DATETIME NOT NULL,
+  PeriodFrom DATE NOT NULL,
+  PeriodTo DATE NOT NULL,
   Requirement INT(7) UNSIGNED,
   Rate DOUBLE(3,3) NOT NULL,
+  Info VARCHAR(100) NOT NULL,
   EventType ENUM('BOGO', 'discount')
 );
 
@@ -103,23 +104,34 @@ VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉進行
       ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 1, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
       ('純喫茶鮮柚綠茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留葡萄柚香氣，調和清爽甘醇的茉莉綠茶，激盪出酸甜清香的新鮮果茶風味！', 'http://www.pecos.com.tw/tmp/image/20150105/20150105090925_79899.jpg'),
       ('純喫茶無糖綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉，以冰析鮮萃工法保留新鮮茶香及兒茶素，茶感清香回韻，讓原味更新鮮！', 'http://www.pecos.com.tw/tmp/image/20160130/20160130103658_89475.jpg'),
-      ('袋鼠山雪多利白葡萄酒', 25, 'in_stock', 999, NULL, 2, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
-      ('西班牙 彩鑽蝶戀白酒', 25, 'in_stock', 999, NULL, 2, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
-      ('美國 摩根灣夏多內白酒 ', 25, 'in_stock', 999, NULL, 2, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
-      ('法國 茱麗葉紅酒14/15 ', 25, 'in_stock', 999, NULL, 2, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
-      ('義大利 山之巔黃標紅酒 ', 25, 'in_stock', 999, NULL, 2, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
-      ('美國 鶴湖卡本內蘇維翁紅酒 ', 25, 'in_stock', 999, NULL, 2, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
+      ('袋鼠山雪多利白葡萄酒', 500, 'in_stock', 999, NULL, 2, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
+      ('西班牙 彩鑽蝶戀白酒', 699, 'in_stock', 999, NULL, 2, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
+      ('美國 摩根灣夏多內白酒 ', 799, 'in_stock', 999, NULL, 2, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
+      ('法國 茱麗葉紅酒14/15 ', 899, 'in_stock', 999, NULL, 2, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
+      ('義大利 山之巔黃標紅酒 ', 1999, 'in_stock', 999, NULL, 2, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
+      ('美國 鶴湖卡本內蘇維翁紅酒 ', 5999, 'in_stock', 999, NULL, 2, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
 
 INSERT INTO CATEGORY(Name) Value('茶'), ('酒');
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A'),
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S'),
-            ('customer', '91ec1f9324753048c0096d036a694f86', '奧克', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C');
+            ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C'),
+            ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C'),
+            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C');
 
-INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'I am Admin!');
-INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('staff', '1', '3', CURRENT_TIMESTAMP, 'I am staff!');
-INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!');
-INSERT INTO COMMENT (`CID`, `PID`, `Star`, `Date`, `Comment`) VALUES ('admin', '1', '3', CURRENT_TIMESTAMP, 'asdf');
+INSERT INTO COMMENT (CID, PID, Star, Date, Comment)
+  VALUES ('admin', '1', '4', CURRENT_TIMESTAMP, 'I am Admin!'),
+  ('staff', '1', '4', CURRENT_TIMESTAMP, 'I am staff!'),
+  ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!'),
+  ('customer', '1', '5', CURRENT_TIMESTAMP, '樓下金城武'),
+  ('customer', '1', '5', CURRENT_TIMESTAMP, '好茶好茶'),
+  ('a92304a92304', '1', '1', CURRENT_TIMESTAMP, '樓上自肥')
+;
+
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣﹣秋季大折扣','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.9,'不小心進貨太多之特賣','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.87,'飲涼卡好特賣','discount');
 
 -- FOREIGN KEY;
 ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);

@@ -14,14 +14,14 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  
+
   <div class="container my-3">
     <div class="row">
       <div class="col-12 text-center">
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">修改折扣</h2>
       </div>
 
-      <?php 
+      <?php
         $sql = 'SELECT * FROM DISCOUNT
                 WHERE ID =' . $_GET['ID'];
         $result = $conn->query($sql);
@@ -35,7 +35,7 @@
         $EventType=$row['EventType'];
        ?>
 
-      <div class="col-6 offset-3 mt-3">   
+      <div class="col-6 offset-3 mt-3">
         <div class="card">
           <div class="card-header text-center">修改折扣</div>
           <div class="card-body">
@@ -74,7 +74,7 @@
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
                 <input type="number" value="<?php echo $Rate ;?>" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
-              </div>  
+              </div>
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
                 <select class="form-control" name="EventType" value="<?php echo $EventType;?>" required>
@@ -92,7 +92,7 @@
       </div>
     </div>
   </div>
-  
+
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->

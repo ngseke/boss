@@ -2,13 +2,14 @@
 <?php include('connection.php'); ?>
 <!DOCTYPE html>
 <html>
-
+$sql= "DELETE FROM MEMBER
+               WHERE ID ='" .$_POST['ID']."'";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>00;URL=user_list.php">
 </head>
 
 <body>
@@ -18,6 +19,8 @@
     <div class="row">
       <div class="col-12 text-center">
         <?php
+        if (isset($_POST['update'])) echo 'update';
+        elseif (isset($_POST['delete'])) echo 'delete';
         //設定地點為台北時區
         date_default_timezone_set('Asia/Taipei');
 
@@ -29,8 +32,8 @@
         $Regdate=date("Y/m/d");//取得年份/月/日 時:分:秒
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
-        $Address=$_POST['Address'];
-        $Position='C';//只能註冊顧客喔～
+        $Address=($_POST['Address']=NULL)?NULL:$_POST['Address'];
+        $Position=$_POST['Position'];
         $sql= "INSERT INTO MEMBER(ID,Password,Email,Name,Phone,Regdate,Birth,Gender,Address,Position)
         VALUE('$ID','$Password','$Email','$Name','$Phone','$Regdate','$Birth','$Gender','$Address','$Position')";
         // 將使用者輸入的username 和資料庫中的比對，檢查是否重複
@@ -43,7 +46,6 @@
           echo '</div>';
         } else{
           if ($conn->query($sql) === true) {
-            $_SESSION['ID'] = $_POST['ID'];
             echo '<div class="alert alert-success">成功註冊!';
           } else {
             echo '<div class="alert alert-danger">';

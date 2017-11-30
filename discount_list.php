@@ -14,7 +14,7 @@
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
-  
+
   <div class="container my-3">
     <div class="row">
       <div class="col-12 text-center">
@@ -31,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php 
+            <?php
             $sql = 'SELECT * FROM DISCOUNT';
             $result = $conn->query($sql);
             while($rows = mysqli_fetch_array($result))
@@ -50,7 +50,7 @@
               }else{
                 $RateText=($rows['Rate']*100).'%';
               }
-              echo '<td class="align-middle">'. $RateText.'</td>'; 
+              echo '<td class="align-middle">'. $RateText.'</td>';
               echo '</tr>';
             }
             ?>
@@ -58,7 +58,7 @@
         </table>
       </div>
 
-      <div class="col-6 offset-3 mt-5">   
+      <div class="col-12 col-lg-6 offset-lg-3 mt-5">   
         <div class="card">
           <div class="card-header text-center">新增折扣</div>
           <div class="card-body">
@@ -93,7 +93,7 @@
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣率</label>
                 <input type="number" value="0.01" name="Rate" step="0.01" min="0.01" max="0.99" class="form-control" >
-              </div>  
+              </div>
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
                 <select class="form-control" name="EventType" required>
@@ -111,7 +111,7 @@
       </div>
     </div>
   </div>
-  
+
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->

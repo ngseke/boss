@@ -33,7 +33,7 @@
       VALUE('$CID',$PID,'$Star','$Date','$Comment')" ;
       if ($conn->query($sql)===true) {
         echo '<div class="alert alert-success text-center">';
-        echo "成功發表評論！";
+        echo '<i class="material-icons">check</i> 成功發表評論！';
         echo '</div>';
       } else {
         echo $conn->error . "<br>";

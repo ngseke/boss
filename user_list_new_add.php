@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
 </head>
 
 <body>
@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-12 text-center">
         <?php
-        //設定地點為台北時區
-        date_default_timezone_set('Asia/Taipei');
+        if (isset($_POST['update'])){
+            date_default_timezone_set('Asia/Taipei');
 
         $ID=$_POST['ID'];
         $Password=md5($_POST['Password']);
@@ -29,8 +29,8 @@
         $Regdate=date("Y/m/d");//取得年份/月/日 時:分:秒
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
-        $Address=$_POST['Address'];
-        $Position='C';//只能註冊顧客喔～
+        $Address=($_POST['Address']=NULL)?NULL:$_POST['Address'];
+        $Position=$_POST['Position'];
         $sql= "INSERT INTO MEMBER(ID,Password,Email,Name,Phone,Regdate,Birth,Gender,Address,Position)
         VALUE('$ID','$Password','$Email','$Name','$Phone','$Regdate','$Birth','$Gender','$Address','$Position')";
         // 將使用者輸入的username 和資料庫中的比對，檢查是否重複
@@ -43,13 +43,19 @@
           echo '</div>';
         } else{
           if ($conn->query($sql) === true) {
-            $_SESSION['ID'] = $_POST['ID'];
             echo '<div class="alert alert-success">成功註冊!';
           } else {
             echo '<div class="alert alert-danger">';
             echo "Error 註冊: " . $conn->error;
             echo '</div>';
           }
+        }
+        }
+        elseif (isset($_POST['delete'])){
+            $sql= "DELETE FROM MEMBER
+               WHERE ID ='" .$_POST['ID']."'";
+            $conn->query($sql);
+            echo '<div class="alert alert-success">成功刪除</div>';
         }
         $conn->close();
         ?>

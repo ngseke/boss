@@ -13,7 +13,7 @@
 <span class="badge badge-dark star my-3">
   <?php
     if($star_num=='0')
-      echo '評分資訊不足😢';
+      echo '暫無評分';
     else{
       $star_counter=0;
       // 印出填滿星星

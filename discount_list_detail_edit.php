@@ -34,7 +34,7 @@
                WHERE ID = $ID";
         //echo $sql;
         $conn->query($sql);
-        echo '<div class="alert alert-success">修改成功!';
+        echo '<div class="alert alert-success"><i class="material-icons">done</i>修改成功!</div>';
         $conn->close();
         ?>
       </div>
