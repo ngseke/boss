@@ -11,7 +11,7 @@
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 <?php $sql= "DELETE FROM MEMBER
-               WHERE ID ='" .$_POST['ID']."'"; ?>
+               WHERE ID ='" .$_GET['ID']."'"; ?>
 <body>
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
