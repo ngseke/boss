@@ -44,12 +44,12 @@
           <div class="card-body">
             <form class="row" action="user_list_new_add.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
-                <label for="">姓名<span class="text-info">*</span></label>
-                <input type="text" value="<?php echo $Name;?>" name="Name" placeholder="" class="form-control" required>
+                <label for="">帳號<span class="text-info">*</span></label>
+                <input type="text" value="<?php echo $ID;?>" name="ID" class="form-control" readonly>
               </div>
               <div class="col-12 form-group">
-                <label for="">帳號<span class="text-info">*</span></label>
-                <input type="text" value="<?php echo $ID;?>" name="ID" class="form-control" >
+                <label for="">姓名<span class="text-info">*</span></label>
+                <input type="text" value="<?php echo $Name;?>" name="Name" placeholder="" class="form-control" required>
               </div>
               <div class="col-12 form-group">
                 <label for="">密碼<span class="text-info">*</span></label>
