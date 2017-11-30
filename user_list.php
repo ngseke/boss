@@ -41,12 +41,11 @@
 
               if($rows['Position']=='A'){
               $positionName= '<span class="badge badge-pill badge-warning">管理員</span>';
-            }else if($rows['Position']=='S'){
-             $positionName='<span class="badge badge-pill badge-info">店員</span>';
-            }
-            else{
-              $positionName='<span class="badge badge-pill badge-secondary">顧客</span>';
-            }
+              } else if($rows['Position']=='S'){
+               $positionName='<span class="badge badge-pill badge-info">店員</span>';
+              } else{
+                $positionName='<span class="badge badge-pill badge-secondary">顧客</span>';
+              }
 
               echo '<tr style="cursor: pointer;" onclick="location.href=\'user_list_detail.php?ID=' . $rows['ID'].'\'">';
 

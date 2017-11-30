@@ -11,7 +11,7 @@ CREATE TABLE MEMBER(
   Name VARCHAR(12) NOT NULL,
   Email VARCHAR(30) NOT NULL,
   Phone VARCHAR(10) NOT NULL,
-  RegDate DATE,
+  RegDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   Birth DATE,
   Gender ENUM('M', 'F', 'N'),
   Address VARCHAR(100),
@@ -128,13 +128,13 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
             ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街');
 
-INSERT INTO COMMENT (CID, PID, Star, Date, Comment)
-  VALUES ('admin', '1', '4', CURRENT_TIMESTAMP, 'I am Admin!'),
-  ('staff', '1', '4', CURRENT_TIMESTAMP, 'I am staff!'),
-  ('customer', '1', '3', CURRENT_TIMESTAMP, 'I am customer!'),
-  ('customer', '1', '5', CURRENT_TIMESTAMP, '樓下金城武'),
-  ('customer', '1', '5', CURRENT_TIMESTAMP, '好茶好茶'),
-  ('a92304a92304', '1', '1', CURRENT_TIMESTAMP, '樓上自肥')
+INSERT INTO COMMENT (CID, PID, Star, Comment)
+  VALUES ('admin', '1', '4', 'I am Admin!'),
+  ('staff', '1', '4', 'I am staff!'),
+  ('customer', '1', '3','I am customer!'),
+  ('customer', '1', '5', '樓下金城武'),
+  ('customer', '1', '5', '好茶好茶'),
+  ('a92304a92304', '1', '1', '樓上自肥')
 ;
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
