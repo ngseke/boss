@@ -15,103 +15,46 @@
     $stock = $_POST['stock'];
     $stockNum = $_POST['stockNum'];
     $price = $_POST['price'];
-    // $uploadImg = $_POST['file'];
     $description = $_POST['description'];
     $ID = $_POST['IDnum'];
-
 
     $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
-    if(isset($name)) {
+    if(isset($_POST['file'])) {
       $check = getimagesize($_FILES["file"]["tmp_name"]);
       if($check !== false) {
-          echo "File is an image - " . $check["mime"] . ".";
+          echo "File is an image - " . $check["mime"] . ". <br>";
           $uploadOk = 1;
           move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
-          echo $_FILES["file"]["tmp_name"];
+          // echo $_FILES["file"]["tmp_name"]."<br>";
+          $sql = "UPDATE product
+                  SET Img = '$target_file'
+                  WHERE ID = " . $ID;
+          if ($conn -> query($sql) === TRUE)
+            echo "Check File Successful <br>";
+          else
+            echo "Check File fail <br>";
+
       } else {
-          echo "File is not an image.";
+          echo "File is not an image. <br>";
           $uploadOk = 0;
       }
     }
-    else{
-      echo "upload error";
-    }
 
-    if(isset($name)){
+    if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
+       isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
       $sql = "UPDATE product
-              SET Name = '$name'
+              SET Name = '$name', Info = '$description', State = '$stock',
+                  Stock = '$stockNum', Price = $price
               WHERE ID = " . $ID;
 
       if ($conn -> query($sql) === TRUE)
-        echo "Check Name Successful <br>";
+        echo "Check Successful <br>";
       else
-        echo "Check Name fail <br>";
-    }
-
-    if(isset($stock)){
-      $sql = "UPDATE product
-              SET State = '$stock'
-              WHERE ID = " . $ID;
-
-      if ($conn -> query($sql) === TRUE)
-        echo "Check stock Successful <br>";
-      else
-        echo "Check stock fail <br>";
-    }
-
-    if(isset($stockNum)){
-      $sql = "UPDATE product
-              SET Stock = '$name'
-              WHERE ID = " . $ID;
-
-      if ($conn -> query($sql) === TRUE)
-        echo "Check stockNum Successful <br>";
-      else
-        echo "Check stockNum fail <br>";
-    }
-
-    if(isset($price)){
-      $sql = "UPDATE product
-              SET Price = $price
-              WHERE ID = " . $ID;
-
-      if ($conn -> query($sql) === TRUE)
-        echo "Check price Successful <br>";
-      else
-        echo "Check price fail <br>";
-    }
-
-    // if(isset($uploadImg)){
-    //   $sql = "UPDATE product
-    //           SET Img = '$uploadImg'
-    //           WHERE ID = " . $ID;
-    //
-    //   if ($conn -> query($sql) === TRUE)
-    //     echo "Check Img Successful <br>";
-    //   else
-    //     echo "Check Img fail <br>";
-    // }
-
-    if(isset($description)){
-      $sql = "UPDATE product
-              SET Info = '$description'
-              WHERE ID = " . $ID;
-
-      if ($conn -> query($sql) === TRUE)
-        echo "Check description Successful <br>";
-      else
-        echo "Check description fail <br>";
-    }
-
-    if(isset($ID)){
-      echo "ID is exist";
-    }
-    else{
-      echo "ID is not exist";
+        echo "Check fail <br>";
     }
    ?>
 </body>
