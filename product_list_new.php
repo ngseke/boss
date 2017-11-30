@@ -9,6 +9,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <style>
+    .d-block{
+      display: block;
+    }
+    .d-none{
+      display: none;;
+    }
+  </style>
 </head>
 
 <body>
@@ -44,15 +52,27 @@
                 <label for="">商品介紹<span class="text-info">*</span></label>
                 <textarea type="text" value="" name="Info" placeholder="" maxlength="100" class="form-control" rows="5" required></textarea>
               </div>
-              <div class="col-12 col-lg-6 form-group">
+              <div class="col-12 col-lg-6 form-group" >
                 <label for="">折扣方式</label>
-                <select class="form-control" name="Discount" required>
-                  <option value="BOGO">BOGO</option>
-                  <option value="discount">discount</option>
+                <select class="form-control" name="DiscountType" id="DiscountType" required>
+                  <option value="shipping">shipping</option>
+                  <option value="seasoning">seasoning</option>
+                  <option value="event">event</option>
                 </select>
               </div>
-              <div class="col-12 form-group">
-                <button class="btn btn-success btn-block" type="submit" >立即註冊</button>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="exampleFormControlFile1">上傳圖片</label>
+                <input type="file" class="form-control-file" name="File" required>
+              </div>
+              <div class="col-12 form-group d-none" id="EventTypeDiv">
+                <label for="">Event折扣方式</label>
+                <select class="form-control " name="EventType" required>
+                  <option value="BOGO">Buy 1 Get 1</option>
+                  <option value="discount_rate">discount_rate</option>
+                </select>
+              </div>
+              <div class="col-12 form-group mt-3">
+                <button class="btn btn-success btn-block" type="submit" >確認新增</button>
               </div>
             </form>
           </div>
@@ -64,4 +84,21 @@
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#DiscountType").change(function() {
+      if($("#DiscountType option:selected").index() == 2){
+        $("#EventTypeDiv").removeClass("d-none");
+        $("#EventTypeDiv").addClass("d-block");
+      }
+      else{
+        $("#EventTypeDiv").removeClass("d-block");
+        $("#EventTypeDiv").addClass("d-none");
+      }
+    });
+  });
+
+</script>
+
 </html>
