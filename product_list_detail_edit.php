@@ -20,7 +20,7 @@
     $ID = $_POST['IDnum'];
 
 
-    $target_dir = "Upload/";
+    $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -30,6 +30,8 @@
       if($check !== false) {
           echo "File is an image - " . $check["mime"] . ".";
           $uploadOk = 1;
+          move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
+          echo $_FILES["file"]["tmp_name"];
       } else {
           echo "File is not an image.";
           $uploadOk = 0;
