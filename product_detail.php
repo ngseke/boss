@@ -26,7 +26,7 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   <div class="container my-3">
     <div class="row">
       <?php
-      $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
+      $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P
       INNER JOIN CATEGORY C
       ON P.CategoryID = C.ID
       WHERE P.CategoryID = C.ID
@@ -58,7 +58,7 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                 <div class="card bg-light border-light">
                   <div class="card-body">
                     <h4 class="text-danger d-inline-block">NT$ </h4>
-                    <h1 class="text-danger d-inline-block"><?php echo $rows['Price']; ?></h1>
+                    <h1 class="text-danger d-inline-block price"><?php echo $rows['PPrice']; ?></h1>
                     <h5 class="text-muted d-inline-block ml-2"><del>NT$ 25</del></h5>
                     <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>

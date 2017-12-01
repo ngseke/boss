@@ -1,6 +1,4 @@
-<?php
-$bg_url='img/cafe.jpg' ;
-?>
+<?php $bg_url='img/cafe.jpg' ?>
 <div class="jumbotron-fluid text-center bg-dark text-white" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; background-attachment:fixed;">
   <div class="container" style="padding:5rem 0;">
     <h1 id="head1" class="display-2 my-0" >BOSS</h1>
