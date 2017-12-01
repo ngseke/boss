@@ -34,7 +34,7 @@
   <div class="container my-3">
     <div class="row">
       <!-- 左側選單 -->
-      <div class="col-12 col-lg-3 mb-3">
+      <div class="col-12 col-lg-3 mb-3" style="max-height:30rem; overflow-y: scroll; overflow-x: hidden;">
         <div class="list-group">
           <?php $list_active = !(isset($_GET['category_id'])||isset($_GET['search']))?'active':''  ?>
           <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
@@ -98,7 +98,7 @@
                 $product_animation='';
 
               $i+=0.08;
-              $info = mb_substr($rows['Info'], 0,10,'UTF-8') . '...';
+              $info = $rows['Info'];
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="card" '. $product_animation .'>
@@ -109,7 +109,7 @@
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
-                                <p class="card-text mb-2">' . $info . '</p>
+                                <p class="card-text mb-2 text-truncate">' . $info . '</p>
                                 <span class="badge badge-primary ">NT$ ' . $rows['PPrice'] . '</span>
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                               </div>
