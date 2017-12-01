@@ -71,12 +71,12 @@
                   <option value="event">event</option>
                 </select>
               </div>
+              <div class="col-12">
+                <p class="text-muted" id="TypeDescribe">折扣說明</p>
+              </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
                 <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
-              </div>
-              <div class="col-12">
-                <p class="text-muted" id="TypeDescribe">折扣說明</p>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
