@@ -51,9 +51,10 @@
                   <option value="seasoning">seasoning</option>
                   <option value="event">event</option>
                 </select>
-                <p class="text-muted">123</p>
               </div>
-
+              <div class="col-12">
+                <p class="text-muted" id="TypeDescribe">折扣說明</p>
+              </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
                 <textarea type="text" name="Info" maxlength="100" class="form-control" rows="2" required><?php echo $Info;?></textarea>
@@ -105,22 +106,41 @@
     if($("select[name='Type']").val()=='shipping'){
       $("input[name='Rate']").parent().addClass('d-none');
       $("select[name='EventType']").parent().addClass('d-none');
+      $('#TypeDescribe').html('運費：達到特定金額享訂單免運費。');
     } else if($("select[name='Type']").val()=='seasoning'){
       $("input[name='Rate']").parent().removeClass('d-none');
       $("select[name='EventType']").parent().addClass('d-none');
+      $('#TypeDescribe').html('季節：達到特定金額享訂單打折。');
     } else if($("select[name='Type']").val()=='event'){
       $("input[name='Rate']").parent().removeClass('d-none');
       $("select[name='EventType']").parent().removeClass('d-none');
       $("select[name='Rate']").addClass('d-none');
+      $('#TypeDescribe').html('活動：特定商品買一送一或打折。');
     }
   }
+
+  function SetEventTypeDisplay(){
+    if($("select[name='Type']").val()=='event'){
+      if($("select[name='EventType']").val()=='BOGO'){
+        $("input[name='Rate']").parent().addClass('d-none');
+        $("input[name='Requirement']").parent().parent().addClass('d-none');
+      } else if($("select[name='EventType']").val()=='discount'){
+        $("input[name='Rate']").parent().removeClass('d-none');
+        $("input[name='Requirement']").parent().parent().removeClass('d-none');
+      }
+    }
+  }
+
   $(document).ready(function(){
+    SetEventTypeDisplay();
     SetInputDisplay();
   });
   $("select[name='Type']").change(function(){
     SetInputDisplay();
+    SetEventTypeDisplay();
   });
-
-
+  $("select[name='EventType']").change(function(){
+    SetEventTypeDisplay();
+  });
 </script>
 </html>

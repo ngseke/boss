@@ -58,7 +58,7 @@
         </table>
       </div>
 
-      <div class="col-12 col-lg-6 offset-lg-3 mt-5">   
+      <div class="col-12 col-lg-6 offset-lg-3 mt-5">
         <div class="card">
           <div class="card-header text-center">新增折扣</div>
           <div class="card-body">
@@ -74,6 +74,9 @@
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
                 <textarea type="text" value="admin" name="Info" placeholder="" maxlength="100" class="form-control" rows="2" required></textarea>
+              </div>
+              <div class="col-12">
+                <p class="text-muted" id="TypeDescribe">折扣說明</p>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
@@ -116,5 +119,47 @@
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
+<script type="text/javascript">
+  // 動態設定欄位的顯示
+  function SetInputDisplay() {
+    if($("select[name='Type']").val()=='shipping'){
+      $("input[name='Rate']").parent().addClass('d-none');
+      $("select[name='EventType']").parent().addClass('d-none');
+      $('#TypeDescribe').html('運費：達到特定金額享訂單免運費。');
+    } else if($("select[name='Type']").val()=='seasoning'){
+      $("input[name='Rate']").parent().removeClass('d-none');
+      $("select[name='EventType']").parent().addClass('d-none');
+      $('#TypeDescribe').html('季節：達到特定金額享訂單打折。');
+    } else if($("select[name='Type']").val()=='event'){
+      $("input[name='Rate']").parent().removeClass('d-none');
+      $("select[name='EventType']").parent().removeClass('d-none');
+      $("select[name='Rate']").addClass('d-none');
+      $('#TypeDescribe').html('活動：特定商品買一送一或打折。');
+    }
+  }
 
+  function SetEventTypeDisplay(){
+    if($("select[name='Type']").val()=='event'){
+      if($("select[name='EventType']").val()=='BOGO'){
+        $("input[name='Rate']").parent().addClass('d-none');
+        $("input[name='Requirement']").parent().parent().addClass('d-none');
+      } else if($("select[name='EventType']").val()=='discount'){
+        $("input[name='Rate']").parent().removeClass('d-none');
+        $("input[name='Requirement']").parent().parent().removeClass('d-none');
+      }
+    }
+  }
+
+  $(document).ready(function(){
+    SetEventTypeDisplay();
+    SetInputDisplay();
+  });
+  $("select[name='Type']").change(function(){
+    SetInputDisplay();
+    SetEventTypeDisplay();
+  });
+  $("select[name='EventType']").change(function(){
+    SetEventTypeDisplay();
+  });
+</script>
 </html>
