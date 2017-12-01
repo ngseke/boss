@@ -28,6 +28,7 @@
             <th scope="col">圖片</th>
             <th scope="col">資訊</th>
             <th scope="col">修改</th>
+            <th scope="col">刪除</th>
           </tr>
         </thead>
         <tbody>
@@ -48,6 +49,8 @@
                   echo '</td>
                   <td>' . $row["Info"] . '</td>
                   <td> <button type="button" class="btn btn-primary" onclick="location.href=\'product_list_detail.php?ID=' .$row["ID"].'\'"> 改爆 </button> </td>
+                  <td> <button type="button" class="btn btn-primary" onclick="location.href=\'product_list_delete.php?DEL=' .$row["ID"].'\'"> 刪除 </button> </td>
+
                 </tr>';
             }
           }
