@@ -24,27 +24,33 @@
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
     $check = getimagesize($_FILES["file"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ". <br>";
-        $uploadOk = 1;
-        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-    } else {
-        echo "File is not an image. <br>";
-        $uploadOk = 0;
-    }
 
-    if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
-       isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
-      $sql = "UPDATE product
-              SET Name = '$name', Info = '$description', State = '$stock',
-                  Stock = '$stockNum', Price = $price, Img = '$target_file'
-              WHERE ID = " . $ID;
 
-      if ($conn -> query($sql) === TRUE)
-        echo "Check Successful <br>";
-      else
-        echo "Check fail <br>";
-    }
+      if($check !== false) {
+          echo "File is an image - " . $check["mime"] . ". <br>";
+          $uploadOk = 1;
+          move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+      } else {
+          echo "File is not an image. <br>";
+          $uploadOk = 0;
+      }
+
+      if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
+         isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
+        $sql = "UPDATE product
+                SET Name = '$name', Info = '$description', State = '$stock',
+                    Stock = '$stockNum', Price = $price, Img = '$target_file'
+                WHERE ID = " . $ID;
+
+        if ($conn -> query($sql) === TRUE)
+          echo "Check Successful <br>";
+        else
+          echo "Check fail <br>";
+      }
+
+
+
+
    ?>
 </body>
 </html>

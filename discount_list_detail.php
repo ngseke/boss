@@ -103,10 +103,12 @@
               <div class="col-12 form-group">
                 <button class="btn btn-success btn-block" type="submit" >立即修改</button>
               </div>
+              <div class="col-12 form-group">
+                <a class="btn btn-danger btn-block font-weight-bold text-light" href="discount_list_detail_delete.php?ID=<?php echo $_GET['ID'] ?>" type="submit" >直接刪除</a>
+              </div>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>
