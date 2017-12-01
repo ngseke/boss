@@ -33,44 +33,53 @@
                 <label for="">商品名稱 <span class="text-info">*</span></label>
                 <input type="text" name="Name" placeholder="商品名稱" maxlength="20" class="form-control" required>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">商品狀態 <span class="text-info">*</span></label>
                 <select class="form-control" name="State" required>
                   <option value="in_stock">in_stock</option>
                   <option value="out_of_stock">out_of_stock</option>
                 </select>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">商品分類 <span class="text-info">*</span></label>
+                <select class="form-control" name="Type" required>
+                  <option value="1">茶</option>
+                  <option value="2">酒</option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">庫存 <span class="text-info">*</span></label>
                 <input type="number" value="99" name="Stock" placeholder="" maxlength="12" class="form-control" required>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">價格 <span class="text-info">*</span></label>
                 <input type="number" value="" name="Price" placeholder="" maxlength="30" class="form-control" required>
               </div>
+
               <div class="col-12 form-group">
                 <label for="">商品介紹<span class="text-info">*</span></label>
                 <textarea type="text" value="" name="Info" placeholder="" maxlength="100" class="form-control" rows="5" required></textarea>
               </div>
-              <div class="col-12 col-lg-6 form-group" >
-                <label for="">折扣方式</label>
-                <select class="form-control" name="DiscountType" id="DiscountType" required>
-                  <option value="shipping">shipping</option>
-                  <option value="seasoning">seasoning</option>
-                  <option value="event">event</option>
+              <div class="col-12 col-lg-6 form-group">
+                <label for="">Event折扣方式</label>
+                <select class="form-control " name="Event" required>
+                  <?php
+                    $sql = "SELECT * FROM discount WHERE Type = 'event'";
+                    $result = $conn->query($sql);
+                    if($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc()){
+                        echo "<option value = " . $row["ID"] . ">" . $row["Info"] . "</option>";
+                      }
+                    }
+                  ?>
                 </select>
               </div>
+
               <div class="col-12 col-lg-6 form-group">
                 <label for="exampleFormControlFile1">上傳圖片</label>
-                <input type="file" class="form-control-file" name="File" required>
+                <input type="file" class="form-control-file" name="file">
               </div>
-              <div class="col-12 form-group d-none" id="EventTypeDiv">
-                <label for="">Event折扣方式</label>
-                <select class="form-control " name="EventType" required>
-                  <option value="BOGO">Buy 1 Get 1</option>
-                  <option value="discount_rate">discount_rate</option>
-                </select>
-              </div>
+
               <div class="col-12 form-group mt-3">
                 <button class="btn btn-success btn-block" type="submit" >確認新增</button>
               </div>
@@ -84,8 +93,8 @@
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>
-
-<script type="text/javascript">
+</html>
+<!-- <script type="text/javascript">
   $(document).ready(function(){
     $("#DiscountType").change(function() {
       if($("#DiscountType option:selected").index() == 2){
@@ -99,6 +108,4 @@
     });
   });
 
-</script>
-
-</html>
+</script> -->
