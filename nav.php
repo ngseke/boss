@@ -13,7 +13,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
   $admin_display  = ($user_position=='A'||$user_position=='S')?'':'d-none '; // Admin和Staff的Display
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary1 sticky-top" style="background:rgba(62,63,58,1);">
   <div class="container">
     <a class="navbar-brand" href="index.php">BOSS茶店</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

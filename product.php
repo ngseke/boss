@@ -63,7 +63,8 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P
+            $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
+                    FORMAT(Price,0) PPrice FROM PRODUCT P
                     INNER JOIN CATEGORY C
                     ON P.CategoryID = C.ID
                     WHERE P.CategoryID = C.ID
@@ -71,7 +72,8 @@
                     OR P.Info LIKE '%$search%') ";
 
             if(isset($_GET['category_id'])){
-              $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P, CATEGORY C
+              $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
+                      FORMAT(Price,0) PPrice FROM PRODUCT P, CATEGORY C
                       WHERE P.CategoryID = C.ID
                       AND P.CategoryID =" . $_GET['category_id'];
             }
@@ -79,12 +81,17 @@
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
 
-            // 若執行搜尋，印出提示文字
             echo '<div class="col-12">';
+            // 若執行搜尋，印出提示文字
             if(isset($_GET['search'])){
               echo '<div class="alert alert-info">
                       <i class="material-icons">search</i>
                       查到 <strong>'. mysqli_num_rows($result) .'</strong> 項關於 <em>'. $_GET['search'] .'</em> 的商品。
+                    </div>';
+            }else if(isset($_GET['category_id'])){ // 若以分類查詢
+              echo '<div class="alert alert-info">
+                      <i class="material-icons">search</i>
+                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT * FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
                     </div>';
             }
             echo '</div>';

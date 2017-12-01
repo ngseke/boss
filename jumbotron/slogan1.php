@@ -1,10 +1,11 @@
 <?php
-  $slogan_list= array( "img"=>array("img/beach_drink.jpg", "img/chinese_tea.jpg") ,
-                  "slogan"=>array("飲涼卡好。","回甘就像現泡。"),
-                  "slogan_color"=>array("dark","light"),
-                  "slogan_shadow_color"=>array("light","dark"),
-                  "auther"=>array("徐志摩","北科茶裏王"));
-  $rand_index=rand(0,1); // 隨機挑選slogan
+  $slogan_list= array( "img"=>array("img/ice_drink.jpg", "img/chinese_tea.jpg", 'img/coins.jpg') ,
+                  "slogan"=>array("飲涼卡好。","回甘就像現泡。", "價錢公道，童叟無欺。"),
+                  "slogan_color"=>array("light","light" ,"light"),
+                  "slogan_shadow_color"=>array("dark","dark" ,"dark"),
+                  "auther"=>array("徐志摩","北科茶裏王", "店長"));
+
+  $rand_index=rand(0,2); // 隨機挑選slogan
   $bg_url= $slogan_list['img'][$rand_index];
   $slogan= $slogan_list['slogan'][$rand_index];
   $slogan_color= $slogan_list['slogan_color'][$rand_index];

@@ -17,7 +17,8 @@
   </a>';
   $sql = 'SELECT *, COMMENT.ID CommentID FROM COMMENT
           INNER JOIN MEMBER ON MEMBER.ID = COMMENT.CID
-          WHERE COMMENT.PID=' . $_GET['ID'];
+          WHERE COMMENT.PID=' . $_GET['ID'].'
+          ORDER BY CommentID';
   $result = $conn->query($sql);
 
   // 印出評論

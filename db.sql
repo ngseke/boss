@@ -117,6 +117,26 @@ VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
 
+-- 插入 麥香;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('麥香紅茶', 10, 'in_stock', 999, NULL, 2, '醇厚紅茶結合焙炒大麥，成就獨特大麥風味、暢銷全台的紅茶飲料。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201104624_26964.jpg'),
+('麥香奶茶', 10, 'in_stock', 999, NULL, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
+('麥香綠茶', 10, 'in_stock', 999, NULL, 2, '選用甜香特色的焙香綠茶葉，萃取醇厚茶汁，搭配焙炒大麥，呈現獨特大麥風味的綠茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110522_79817.jpg'),
+('麥香阿薩姆紅茶', 25, 'in_stock', 999, NULL, 2, '選用花甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥，呈現茶香甜香交織的阿薩姆紅茶。', 'http://www.pecos.com.tw/tmp/image/20150910/20150910082855_85509.jpg'),
+('麥香阿薩姆奶茶', 25, 'in_stock', 999, NULL, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
+('麥香錫蘭奶茶', 25, 'in_stock', 999, NULL, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
+
+-- 插入 水;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('UNI water', 20, 'in_stock', 999, NULL, 17, 'UNI water為國內首創「簡約時尚」包裝水！如水晶般完美六角透明瓶身，襯托出水的純淨無暇。 簡約設計融合彩虹七色，為您的生活帶來絢爛繽紛的幸福。不論是個人飲用或是朋友聚會，絕對是您品味生活不可或缺的最佳選擇！', 'http://www.pecos.com.tw/tmp/image/20170907/20170907141846_14406.jpg'),
+('統一PH9.0鹼性離子水', 25, 'in_stock', 999, NULL, 17, '【體質加鹼顧，健康好鹼單】現代人應酬頻繁、外食攝取率過高，常常容易造成身體過多的負擔；吃完美食別忘了顧體質，天天喝統一 PH9.0鹼性離子水，補充人體所需的水份。', 'http://www.pecos.com.tw/tmp/image/20140402/20140402195619_58489.jpg');
+
+-- 插入 健康茶;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('爽健美茶', 25, 'in_stock', 999, NULL, 4, '生活的壓力與瑣事總讓自己感到煩躁，多希望能有一個天然的純淨茶飲，讓身心靈釋放，得到片刻的舒緩，以再次擁有清爽愉快的心情，朝著健康的生活積極邁進。風行日本多年的『爽健美茶』是大自然恩賜的完美組合，由薏仁、玄米、綠茶、月見草等15種100%日本進口、有益健康的天然素材調和而成，散發獨特香氣與純淨清新的口感。喝一口，就能感受到大自然所帶來清爽、健康、美麗的全新愉快感受。喝一口爽健美茶，讓身體沉浸在15種天然成分調和的大自然恩賜中，由內而外，為你帶來清爽、健康、美麗的全新愉快感受。', 'https://mart.ibon.com.tw/mdz_file/item/21/20/01/1005/10050009143G_char_5_170217093152.jpg');
+
+
+-- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
 ('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
