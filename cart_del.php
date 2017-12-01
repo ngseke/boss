@@ -18,8 +18,8 @@
     <div class="row" >
       <div class="col-12 text-center ">
         <?php
-          if($_GET['temp']){
-            $delete = $_GET['temp'];
+          if($_POST['temp']){
+            $delete = $_POST['temp'];
             $sql = " DELETE FROM CART_RECORD
                      WHERE CART_RECORD.PID =".$delete;
             $conn->query($sql);

@@ -43,7 +43,9 @@
               if(mysqli_num_rows($result)>0){
                 while($rows = mysqli_fetch_array($result)){
                   echo '
-                  <form action="cart_del.php">
+                  <form action="cart_del.php" method="post">
+                    <input type="hidden" name="temp" value="' . $rows['PID'] . '">
+
                     <tr>
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="row no-gutters text-left text-lg-center">
@@ -55,7 +57,6 @@
                             <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
                             <th class="align-middle">
                               <input type="submit" value="Submit">
-                              <input type="hidden" name="temp" value="'.$rows['PID'].'">
                             </th>
                         </div>
                       </a>
