@@ -41,6 +41,7 @@ $login = isset($_SESSION['ID']) ? true : false ;
       </div>
     </div>
   </div>
+
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>

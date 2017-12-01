@@ -63,7 +63,7 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
+            $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P
                     INNER JOIN CATEGORY C
                     ON P.CategoryID = C.ID
                     WHERE P.CategoryID = C.ID
@@ -71,7 +71,7 @@
                     OR P.Info LIKE '%$search%') ";
 
             if(isset($_GET['category_id'])){
-              $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P, CATEGORY C
+              $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P, CATEGORY C
                       WHERE P.CategoryID = C.ID
                       AND P.CategoryID =" . $_GET['category_id'];
             }
@@ -110,7 +110,7 @@
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
                                 <p class="card-text mb-2">' . $info . '</p>
-                                <span class="badge badge-primary ">NT$ ' . $rows['Price'] . '</span>
+                                <span class="badge badge-primary ">NT$ ' . $rows['PPrice'] . '</span>
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                               </div>
                             </div>
@@ -127,6 +127,7 @@
       </div>
     </div>
   </div>
+  <?php include('jumbotron/page2.php') ?>
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
