@@ -8,6 +8,7 @@
       echo '<meta http-equiv=REFRESH CONTENT=1;url=';
     }
   ?>
+  echo '<meta http-equiv=REFRESH CONTENT=1;url=product_list.php>';
 </head>
 <body>
   <?php
