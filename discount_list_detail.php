@@ -46,11 +46,21 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">類型 <span class="text-info">*</span></label>
-                <select class="form-control" value = "<?php echo $Type ;?>" placeholder="<?php echo $Type ;?>" name="Type" required>
-                  <option value="shipping">shipping</option>
-                  <option value="seasoning">seasoning</option>
-                  <option value="event">event</option>
+                <select class="form-control" value = "<?php echo $Type ;?>" name="Type" required>
+                  <?php
+                    // 如果直接對select標籤預設value是不管用der
+                    // 所以改以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
+                    $discountList= array('shipping','seasoning','event');
+                    $discountTextList= array('運費 (shipping)','季節 (seasoning)','活動 (event)');
+                    foreach ($discountList as $key => $ppap) {
+                      $isThisSelected = ($Type==$ppap)?'selected ':'';
+                      echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$discountTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
+              </div>
+              <div class="col-12">
+                <p class="text-muted" id="TypeDescribe">折扣說明</p>
               </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
@@ -58,11 +68,11 @@
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
-                <input type="date" value="<?php echo $PeriodFrom; ?>" name="PeriodFrom" class="form-control" >
+                <input type="date" value="<?php echo $PeriodFrom; ?>" name="PeriodFrom" class="form-control" placeholder="年/月/日">
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">結束日期 <span class="text-info">*</span></label>
-                <input type="date" value="<?php echo $PeriodTo;?>" name="PeriodTo" class="form-control" >
+                <input type="date" value="<?php echo $PeriodTo;?>" name="PeriodTo" class="form-control" placeholder="年/月/日">
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣條件 <span class="text-info">*</span></label>
@@ -77,9 +87,17 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
-                <select class="form-control" name="EventType" value="<?php echo $EventType;?>" required>
-                  <option value="BOGO">BOGO</option>
-                  <option value="discount">discount</option>
+                <select class="form-control" name="EventType" required>
+                  <?php
+                    // 如果直接對select標籤預設value是不管用der
+                    // 所以改以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
+                    $eventTypeList= array('BOGO','discount');
+                    $eventTypeTextList= array('買一送一 (BOGO)','打折 (discount)');
+                    foreach ($eventTypeList as $key => $ppap) {
+                      $isThisSelected = ($EventType==$ppap)?'selected ':'';
+                      echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$eventTypeTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div class="col-12 form-group">
@@ -97,5 +115,4 @@
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
-
 </html>

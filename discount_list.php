@@ -26,7 +26,7 @@
               <th scope="col" style="width:5rem;">類型</th>
               <th scope="col" style="width:9rem;">資訊</th>
               <th scope="col" style="width:12rem;">開始/結束</th>
-              <th scope="col" style="width:6rem;">折扣需求</th>
+              <th scope="col" style="width:6rem;">折扣條件</th>
               <th scope="col" style="width:5rem;">折扣內容</th>
             </tr>
           </thead>
@@ -38,14 +38,27 @@
             {
               echo '<tr style="cursor: pointer;" onclick="location.href=\'discount_list_detail.php?ID=' . $rows['ID'].'\'">';
               echo '<th scope="row" class="align-middle">'.$rows['ID'].'</th>';
-              $Type = ($rows['EventType']=='event')?'-'.$rows['EventType']:'';
-              echo '<td class="align-middle">'.$rows['Type'].$Type.'</td>';
+              if($rows['Type']=='shipping'){
+                $TypeText= '運費 (shipping)';
+              } else if($rows['Type']=='seasoning'){
+                $TypeText= '季節 (seasoning)';
+              } else if($rows['Type']=='event'){
+                $TypeText= '活動 (event)';
+              }
+              echo '<td class="align-middle">'.$TypeText.'</td>';
               echo '<td class="align-middle">'.$rows['Info'].'</td>';
               echo '<td class="align-middle"><small><span class="badge badge-pill badge-warning mr-1">起</span>'.$rows['PeriodFrom'].'<br><span class="badge badge-pill badge-warning mr-1">迄</span>'.$rows['PeriodTo'].'</small></td>';
-              echo '<td class="align-middle">NT$ '.$rows['Requirement'].'</td>';
+              if($rows['Type']=='event'){
+                $RequirementText='-';
+              } else{
+                $RequirementText='NT$ '.$rows['Requirement'];
+              }
+
+              echo '<td class="align-middle">'.$RequirementText.'</td>';
+
               if($rows['Type']=='shipping'){
                 $RateText='免運';
-              }else if($rows['EventType']=='BOGO'){
+              }else if($rows['Type']=='event' && $rows['EventType']=='BOGO'){
                 $RateText='買一送一';
               }else{
                 $RateText=($rows['Rate']*100).'%';
@@ -58,7 +71,7 @@
         </table>
       </div>
 
-      <div class="col-12 col-lg-6 offset-lg-3 mt-5">   
+      <div class="col-12 col-lg-6 offset-lg-0 my-3">
         <div class="card">
           <div class="card-header text-center">新增折扣</div>
           <div class="card-body">
@@ -66,10 +79,17 @@
               <div class="col-12 form-group">
                 <label for="">類型 <span class="text-info">*</span></label>
                 <select class="form-control" name="Type" required>
-                  <option value="shipping">shipping</option>
-                  <option value="seasoning">seasoning</option>
-                  <option value="event">event</option>
+                  <?php
+                    $discountList= array('shipping','seasoning','event');
+                    $discountTextList= array('運費 (shipping)','季節 (seasoning)','活動 (event)');
+                    foreach ($discountList as $key => $ppap) {
+                      echo '<option value="'.$ppap.'" >'.$discountTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
+              </div>
+              <div class="col-12">
+                <p class="text-muted" id="TypeDescribe">折扣說明</p>
               </div>
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
@@ -77,11 +97,11 @@
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">開始日期 <span class="text-info">*</span></label>
-                <input type="date" value="1911-10-10" name="PeriodFrom" class="form-control" >
+                <input type="date" name="PeriodFrom" class="form-control date-today" placeholder="年/月/日">
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">結束日期 <span class="text-info">*</span></label>
-                <input type="date" value="1911-10-10" name="PeriodTo" class="form-control" >
+                <input type="date" name="PeriodTo" class="form-control date-today" placeholder="年/月/日">
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">折扣條件 <span class="text-info">*</span></label>
@@ -97,8 +117,13 @@
               <div class="col-12 form-group">
                 <label for="">Event類型</label>
                 <select class="form-control" name="EventType" required>
-                  <option value="BOGO">BOGO</option>
-                  <option value="discount">discount</option>
+                  <?php
+                    $eventTypeList= array('BOGO','discount');
+                    $eventTypeTextList= array('買一送一 (BOGO)','打折 (discount)');
+                    foreach ($eventTypeList as $key => $ppap) {
+                      echo '<option value="'.$ppap.'" >'.$eventTypeTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div class="col-12 form-group">
@@ -109,6 +134,24 @@
         </div>
 
       </div>
+      <div class="col-12 col-lg-6 my-3">
+        <div class="card" >
+          <div class="card-body">
+            <h4 class="card-title">猴子都能懂的折扣類型說明</h4>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">
+              <code>[...]</code> 中代表對於該折扣類型有用的屬性。
+              <pre>
+DISCOUNT
+┣ shipping [Requirement]        :達特定金額享“訂單免運費”。
+┣ seasoning [Requirement, Rate] :達特定金額享“訂單打折”。
+┗ event
+  ┣ BOGO [x]                    :特定商品買一送一。
+  ┗ discount [Rate]             :特定商品打折。</pre>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -116,5 +159,4 @@
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
-
 </html>

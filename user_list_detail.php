@@ -69,17 +69,30 @@
               <div class="col-12 col-lg-6 form-group">
                 <label for="">性別<span class="text-info">*</span></label>
                 <select class="form-control" value="<?php echo $Gender;?>" name="Gender" required>
-                  <option value="M">男</option>
-                  <option value="F">女</option>
-                  <option value="N">不明</option>
+                  <?php
+                    // 如果直接對select標籤預設value是不管用der
+                    // 所以改以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
+                    $genderList= array('M','F','N');
+                    $genderTextList= array('男(M)','女(F)','未知(N)');
+                    foreach ($genderList as $key => $ppap) {
+                      $isThisSelected = ($Gender==$ppap)?'selected ':'';
+                      echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$genderTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">職位<span class="text-info">*</span></label>
                 <select class="form-control" value="<?php echo $Position;?>" name="Position" required>
-                  <option value="C">Customer</option>
-                  <option value="S">Staff</option>
-                  <option value="A">Admin</option>
+                  <?php
+                    // 以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
+                    $positionList= array('C','S','A');
+                    $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
+                    foreach ($positionList as $key => $ppap) {
+                      $isThisSelected = ($Position==$ppap)?'selected ':'';
+                      echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$positionTextList[$key].'</option>';
+                    }
+                  ?>
                 </select>
               </div>
               <div class="col-12 form-group">
