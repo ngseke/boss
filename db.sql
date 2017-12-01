@@ -124,6 +124,15 @@ VALUE('養樂多活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通�
       ('比菲多原味', 28, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20fiber.jpg'),
       ('比菲多綠茶多酚', 30, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20green%20tea.jpg');
 
+-- 插入燒酒;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('初飲初樂燒酒', 160, 'in_stock', 999, NULL, 13, '乾果韓國最初100%用礦物質釀製的燒酒', 'https://cdn.ztore.com/images/ztore/production/product/640px/1003084_1.jpg?1475573773'),
+      ('初飲初樂柚子燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著清香的柚子味，口感較普通燒酒更加柔和、清甜爽口', 'https://img.alicdn.com/tfscom/i2/725677994/TB1WMJFby0TMKJjSZFNXXa_1FXa_!!2-item_pic.png_196x196Q50s50.jpg'),
+      ('初飲初樂水蜜桃燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著濃濃的水蜜桃味，與柚子味燒酒不同的是，此次新上市的水蜜桃酒甜味更加濃郁。 ', 'http://www.cn-kr.net/upload/newsimg/20150725/1437806225310689.jpg'),
+      ('初飲初樂蘋果燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著清香的蘋果味，口感較普通燒酒更加柔和、清甜爽口', 'https://www.dj9.com.tw/images/201608/goods_img/1256_P_1471836842299.jpg');
+
+
+
 
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
