@@ -29,15 +29,6 @@
           echo "File is an image - " . $check["mime"] . ". <br>";
           $uploadOk = 1;
           move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
-          // echo $_FILES["file"]["tmp_name"]."<br>";
-          $sql = "UPDATE product
-                  SET Img = '$target_file'
-                  WHERE ID = " . $ID;
-          if ($conn -> query($sql) === TRUE)
-            echo "Check File Successful <br>";
-          else
-            echo "Check File fail <br>";
-
       } else {
           echo "File is not an image. <br>";
           $uploadOk = 0;
@@ -48,7 +39,7 @@
        isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
       $sql = "UPDATE product
               SET Name = '$name', Info = '$description', State = '$stock',
-                  Stock = '$stockNum', Price = $price
+                  Stock = '$stockNum', Price = $price, Img = '$target_file'
               WHERE ID = " . $ID;
 
       if ($conn -> query($sql) === TRUE)

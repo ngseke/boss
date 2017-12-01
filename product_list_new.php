@@ -74,12 +74,10 @@
                   ?>
                 </select>
               </div>
-
               <div class="col-12 col-lg-6 form-group">
                 <label for="exampleFormControlFile1">上傳圖片</label>
                 <input type="file" class="form-control-file" name="file">
               </div>
-
               <div class="col-12 form-group mt-3">
                 <button class="btn btn-success btn-block" type="submit" >確認新增</button>
               </div>
