@@ -23,16 +23,14 @@
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
-    if(isset($_POST['file'])) {
-      $check = getimagesize($_FILES["file"]["tmp_name"]);
-      if($check !== false) {
-          echo "File is an image - " . $check["mime"] . ". <br>";
-          $uploadOk = 1;
-          move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-      } else {
-          echo "File is not an image. <br>";
-          $uploadOk = 0;
-      }
+    $check = getimagesize($_FILES["file"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ". <br>";
+        $uploadOk = 1;
+        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+    } else {
+        echo "File is not an image. <br>";
+        $uploadOk = 0;
     }
 
     if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
