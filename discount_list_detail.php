@@ -51,7 +51,9 @@
                   <option value="seasoning">seasoning</option>
                   <option value="event">event</option>
                 </select>
+                <p class="text-muted">123</p>
               </div>
+
               <div class="col-12 form-group">
                 <label for="">資訊 <span class="text-info">*</span></label>
                 <textarea type="text" name="Info" maxlength="100" class="form-control" rows="2" required><?php echo $Info;?></textarea>
@@ -97,5 +99,28 @@
 </body>
 <!-- 引入JS -->
 <?php include('js.php') ?>
+<script type="text/javascript">
+  // 動態設定欄位的顯示
+  function SetInputDisplay() {
+    if($("select[name='Type']").val()=='shipping'){
+      $("input[name='Rate']").parent().addClass('d-none');
+      $("select[name='EventType']").parent().addClass('d-none');
+    } else if($("select[name='Type']").val()=='seasoning'){
+      $("input[name='Rate']").parent().removeClass('d-none');
+      $("select[name='EventType']").parent().addClass('d-none');
+    } else if($("select[name='Type']").val()=='event'){
+      $("input[name='Rate']").parent().removeClass('d-none');
+      $("select[name='EventType']").parent().removeClass('d-none');
+      $("select[name='Rate']").addClass('d-none');
+    }
+  }
+  $(document).ready(function(){
+    SetInputDisplay();
+  });
+  $("select[name='Type']").change(function(){
+    SetInputDisplay();
+  });
 
+
+</script>
 </html>
