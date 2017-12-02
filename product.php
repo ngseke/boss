@@ -104,7 +104,7 @@
               else
                 $product_animation='';
 
-              $i+=0.08;
+              $i+=0.06;
               $info = $rows['Info'];
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
@@ -115,7 +115,7 @@
                               <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
                               </div>
                               <div class="col-8 col-lg-12">
-                                <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
+                                <h5 class="card-title mb-1 text-truncate">' . $rows['PName'] . '</h5>
                                 <p class="card-text mb-2 text-truncate">' . $info . '</p>
                                 <span class="badge badge-primary ">NT$ ' . $rows['PPrice'] . '</span>
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>

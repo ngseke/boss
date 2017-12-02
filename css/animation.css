@@ -31,7 +31,7 @@
 /*所有商品入場動畫*/
 @keyframes product-item-ani{
   0% {
-    transform: translateY(2rem);
+    transform: translateY(0rem);
     opacity: 0;
   }
   100% {
@@ -40,13 +40,14 @@
 }
 
 #product-item{
+  opacity: 0;
   animation-name: product-item-ani;
   animation-timing-function: ease;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation-duration: .5s;
-  animation-delay: 0s;
-  opacity: 0;
+  animation-duration: .3s;
+  animation-delay: 0s
+
 }
 
 /*商品詳情動畫*/
@@ -68,3 +69,22 @@
   animation-delay: 0s;
   opacity: 0;
 }
+/*
+@keyframes navbar-ani{
+  0% {
+    transform: translateY(-.5rem);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#navbar{
+  animation-name: navbar-ani;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: .4s;
+  animation-delay: 0s;
+  opacity: 0;
+}*/
