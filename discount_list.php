@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
 <?php $page_name = '管理折扣' ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
+  <?php // 若無權限
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">'); ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 

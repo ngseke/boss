@@ -9,6 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=reg.php">
 </head>
 
 <body>
@@ -37,14 +38,13 @@
         $sql_check= "SELECT * FROM MEMBER WHERE ID='" . $_POST['ID']."'";
         $rows= $conn->query($sql_check);
         if(mysqli_num_rows($rows)>=1){ // 若欲查詢的在資料庫中已存在(結果筆數>=1)
-          echo '<div class="alert alert-danger">';
-          echo '帳號<strong> '. $_POST['ID'] .'</strong> 名稱已被使用! <br>';
-          echo '<a href="#" class="alert-link" onclick="history.back()">點擊返回修改</a>';
-          echo '</div>';
+          $_SESSION['AlertMsg'] =
+          array('danger','<i class="material-icons">block</i> 帳號<strong> '. $_POST['ID'] .'</strong> 名稱已被使用!',false);
         } else{
           if ($conn->query($sql) === true) {
             $_SESSION['ID'] = $_POST['ID'];
-            echo '<div class="alert alert-success">成功註冊!';
+            $_SESSION['AlertMsg'] =
+            array('success','<i class="material-icons">done</i> 成功註冊！',false);
           } else {
             echo '<div class="alert alert-danger">';
             echo "Error 註冊: " . $conn->error;

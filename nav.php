@@ -4,7 +4,7 @@
 $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 ?>
 <?php
-  include('verification.php');
+
   $login_display = isset($_SESSION['ID'])?'d-none ':''; // 登入按鈕display
   $reg_display   = isset($_SESSION['ID'])?'d-none ':''; // 註冊按鈕display
   $user_display  = isset($_SESSION['ID'])?'':'d-none '; // 用戶按鈕display

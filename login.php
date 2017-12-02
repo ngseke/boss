@@ -1,9 +1,7 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
 <?php $page_name = '登入' ?>
-<?php
-$login = isset($_SESSION['ID']) ? true : false ;
-?>
+<?php $login = isset($_SESSION['ID']) ? true : false ; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +10,7 @@ $login = isset($_SESSION['ID']) ? true : false ;
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <?php if($login) echo '<meta http-equiv="refresh" content="0;URL=index.php">'; ?>
+  <?php if($login) die ('<meta http-equiv="refresh" content="0;URL=index.php">'); ?>
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -22,6 +20,18 @@ $login = isset($_SESSION['ID']) ? true : false ;
         <div class="card">
           <div class="card-header text-center"><span class="oi oi-account-login"></span> 登入</div>
           <div class="card-body">
+            <?php
+              if(isset($_SESSION['AlertMsg'])){
+                if(!$_SESSION['AlertMsg'][2]){
+                  $_SESSION['AlertMsg'][2]=true;
+                  echo '<div class="alert alert-'. $_SESSION['AlertMsg'][0] .'" >';
+                  echo $_SESSION['AlertMsg'][1];
+                  echo '</div>';
+                }else{
+                  unset($_SESSION['AlertMsg']);
+                }
+              }
+            ?>
             <form class="row" action="login_user.php" method="post">
               <div class="col-12 form-group">
                 <label for="">帳號</label>
