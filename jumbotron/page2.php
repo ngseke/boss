@@ -7,9 +7,9 @@ $info=$rows['Info'];
 
 // 取得折扣的文字
 if($rows['Type']=='seasoning'){
-  $discount='結帳打'.($rows['Rate']*100).'折';
+  $discount='結帳訂單滿<strong>'. $rows['Requirement'] .'</strong>打'.($rows['Rate']*100).'折';
 } else if($rows['Type']=='shipping'){
-  $discount= '全館免運';
+  $discount= '全館結帳訂單滿<strong>'. $rows['Requirement'] .'</strong>免運';
 } else if($rows['Type']=='event'){
   if($rows['EventType']=='BOGO')
   $discount= '指定商品買一送一';

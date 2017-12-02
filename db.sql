@@ -97,7 +97,7 @@ CREATE TABLE DISCOUNT (
 -- 插入測試用範例資料;
 -- 插入 純喫茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
+VALUE('純喫茶綠茶', 25, 'in_stock', 999, 3, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
       ('純喫茶紅茶', 25, 'in_stock', 999, NULL, 2, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
       ('純喫茶檸檬紅茶', 25, 'in_stock', 999, NULL, 2, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
       ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 3, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
@@ -146,7 +146,9 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S', '台北市中正區忠孝東路一段1號'),
             ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市中正區中山南路1號'),
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
-            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街');
+            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
+            ('zhaozhenting', '0104b52e470130135013a7a87a42b609', '趙振廷', 'zhaozhenting@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市'),
+            ('yuakiqi', '0104b52e470130135013a7a87a42b609', '余鎧企', 'yuakiqi@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
 
 INSERT INTO COMMENT (CID, PID, Star, Comment)
   VALUES ('admin', '1', '4', 'I am Admin!'),
@@ -167,12 +169,12 @@ INSERT INTO CART_RECORD(ID, PID, Quantity)
   ('1','3','15')
 ;
 
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來😈','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-12-31',500,0.1,'老闆出差之員工亂來😈','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣﹣秋季大折扣','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.9,'不小心進太多貨之再不銷出去倉庫就要滿了特賣','BOGO');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.87,'❄️飲涼卡好節','discount');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'❄️飲涼卡好節','discount');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-20','2017-12-27',123,0.90,'Xmas🎄耶誕優惠','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-28','2018-1-10', 112,0.88,'1/12週年慶','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-2','2018-1-10', 112,0.88,'1/12週年慶','');
 
 
 -- FOREIGN KEY;
