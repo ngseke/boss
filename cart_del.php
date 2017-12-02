@@ -18,16 +18,17 @@
     <div class="row" >
       <div class="col-12 text-center ">
         <?php
-          if($_POST['temp']){
-            $delete = $_POST['temp'];
+          if(isset($_GET['CartID'])&&isset($_GET['PID'])){
             $sql = " DELETE FROM CART_RECORD
-                     WHERE CART_RECORD.PID =".$delete;
+                     WHERE CART_RECORD.PID =".$_GET['PID'].
+                     " AND ID='".$_GET['CartID']."'";
+                    echo $sql;
             $conn->query($sql);
           }
         ?>
       </div>
     </div>
-    <meta http-equiv="refresh" content="0;url=cart.php" />
+    <meta http-equiv="refresh" content="1000;url=cart.php" />
   </div>
   <?php include('footer.php') ?>
 </body>
