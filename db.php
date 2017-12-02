@@ -5,6 +5,7 @@
 */
 $page_name = '執行SQL腳本'; // 本頁面名稱
 require_once 'config.php';
+require_once 'connection.php';
 
 if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
   // 若當前主機為localhost
@@ -18,7 +19,6 @@ if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
 // 將讀入的腳本檔字串打散為Array，以';'分割，所以連註解的尾也要打';'
 $arr = explode(';', $file);
 
-// echo'<meta http-equiv="refresh" content="1;URL=index.php">'
 ?>
 
 <!DOCTYPE html>

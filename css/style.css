@@ -1,6 +1,7 @@
 /* 修正icon垂直對齊 */
-.material-icons{
-  vertical-align: bottom;
+i.material-icons{
+  vertical-align: middle;
+  font-size: 1.2rem;
 }
 
 /* login頁背景 */

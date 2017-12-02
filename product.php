@@ -112,7 +112,7 @@
                           <div class="card-body">
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">
-                              <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">
+                              <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1">' . $rows['PName'] . '</h5>
