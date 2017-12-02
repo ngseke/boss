@@ -131,6 +131,13 @@ VALUE('初飲初樂燒酒', 160, 'in_stock', 999, NULL, 13, '乾果韓國最初1
       ('初飲初樂水蜜桃燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著濃濃的水蜜桃味，與柚子味燒酒不同的是，此次新上市的水蜜桃酒甜味更加濃郁。 ', 'http://www.cn-kr.net/upload/newsimg/20150725/1437806225310689.jpg'),
       ('初飲初樂蘋果燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著清香的蘋果味，口感較普通燒酒更加柔和、清甜爽口', 'https://www.dj9.com.tw/images/201608/goods_img/1256_P_1471836842299.jpg');
 
+-- 插入碳酸飲料;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('黑松沙士', 25, 'in_stock', 999, NULL, 6, '歡樂時光一直倒~黑松汽水', 'https://s.yimg.com/wb/images/7AFE3D71067C3B77792A97650BB6B20066F91BAC'),
+      ('黑松沙士-加鹽', 25, 'in_stock', 999, NULL, 6, '享受清涼快意!', 'http://static.blog.sina.com.tw/myimages/108/126316/images/20120511181348325.jpg'),
+      ('可口可樂', 29, 'in_stock', 999, NULL, 6, '擋不住的暢快口感', 'http://img.udn.com/image/product/S0001126/APPROVED/U001359050/20130415174850924_300.jpg?t=20150603115750'),
+      ('百事可樂', 32, 'in_stock', 999, NULL, 6, '引領時尚潮流，創造快樂，要你把快樂帶回家', 'http://www.vedan.com.tw/thumbnail.aspx?h=200&f=/upload/Product/P000174/PEPSI-500_445x440.jpg'),
+      ('雪碧汽水', 29, 'in_stock', 999, NULL, 6, '擋不住的暢快口感給您前所未有的滿足', 'https://img1.e-payless.com.tw/content/images/thumbs/0462543_1200600ml24.jpeg');
 
 
 
