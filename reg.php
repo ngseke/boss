@@ -21,18 +21,7 @@
         <div class="card">
           <div class="card-header text-center">註冊</div>
           <div class="card-body">
-            <?php
-              if(isset($_SESSION['AlertMsg'])){
-                if(!$_SESSION['AlertMsg'][2]){
-                  $_SESSION['AlertMsg'][2]=true;
-                  echo '<div class="alert alert-'. $_SESSION['AlertMsg'][0] .'" >';
-                  echo $_SESSION['AlertMsg'][1];
-                  echo '</div>';
-                }else{
-                  unset($_SESSION['AlertMsg']);
-                }
-              }
-            ?>
+            <?php include('echo_alert.php') ?>
             <form class="row" action="reg_user.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
                 <label for="">帳號 <span class="text-info">*</span></label>

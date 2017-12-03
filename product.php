@@ -69,7 +69,8 @@
                     ON P.CategoryID = C.ID
                     WHERE P.CategoryID = C.ID
                     AND (P.Name LIKE '%$search%'
-                    OR P.Info LIKE '%$search%') ";
+                    OR P.Info LIKE '%$search%')
+                    ORDER BY P.CategoryID, PID";
 
             if(isset($_GET['category_id'])){
               $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,

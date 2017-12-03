@@ -21,9 +21,8 @@
         <?php
           // 清空登入的Session
           unset($_SESSION['ID']);
-          // echo '<div class="alert alert-success">';
-          // echo '<i class="material-icons">power_settings_new</i> 成功登出！';
-          // echo '</div>';
+          $_SESSION['AlertMsg'] =
+          array('success','<i class="material-icons">done</i> 成功登出！',false);
         ?>
       </div>
     </div>

@@ -24,25 +24,16 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
   <div class="container my-3">
-    <?php
-      if(isset($_SESSION['AlertMsg'])){
-        if(!$_SESSION['AlertMsg'][2]){
-          $_SESSION['AlertMsg'][2]=true;
-          echo '<div class="alert text-center alert-'. $_SESSION['AlertMsg'][0] .'" >';
-          echo $_SESSION['AlertMsg'][1];
-          echo '</div>';
-        }else{
-          unset($_SESSION['AlertMsg']);
-        }
-      }
-    ?>
+    <?php include('echo_alert.php') ?>
     <div class="row">
       <?php
-      $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P
-      INNER JOIN CATEGORY C
-      ON P.CategoryID = C.ID
-      WHERE P.CategoryID = C.ID
-      AND P.ID = ".$_GET['ID'];
+      $sql = "SELECT *, P.ID PID ,P.Name PName, P.Info PInfo, C.Name CName,
+              FORMAT(Price,0) PPrice, FORMAT(P.Price * D.Rate,0) FinalP FROM PRODUCT P
+              INNER JOIN CATEGORY C ON P.CategoryID = C.ID
+              LEFT JOIN DISCOUNT D ON P.DID = D.ID
+              WHERE P.CategoryID = C.ID
+              AND P.ID = ".$_GET['ID'];
+
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
       $img = $rows['Img'];
@@ -65,13 +56,28 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                   <h2 class="text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h2>
                   <span class="badge badge-dark badge-pill mx-2"><?php echo $rows['Name']; ?></span>
                 </div>
+
                 <hr class="my-4">
-                <p><?php echo $rows['Info']; ?></p>
+                <p><?php echo $rows['PInfo']; ?></p>
                 <div class="card bg-light border-light">
                   <div class="card-body">
-                    <h4 class="text-danger d-inline-block">NT$ </h4>
-                    <h1 class="text-danger d-inline-block price"><?php echo $rows['PPrice']; ?></h1>
-                    <h5 class="text-muted d-inline-block ml-2"><del>NT$ 25</del></h5>
+                    <div class="">
+                      <?php
+                      $rows['FinalP'];
+                      $OriginalPrice = $FinalPrice = $rows['PPrice'];
+                      if($rows['FinalP']!=''){
+                        if((date('Y-m-d')>=$rows['PeriodFrom']) && (date('Y-m-d')<=$rows['PeriodTo'])){
+                          $FinalPrice=  $rows['FinalP'];
+                        }
+                      }
+                      ?>
+                      <h4 class="text-danger d-inline-block">NT$ </h4>
+                      <h1 class="text-danger d-inline-block price"><?php echo $FinalPrice ?></h1>
+                      <?php
+                      if($OriginalPrice != $FinalPrice)
+                        echo '<h5 class="text-muted d-inline-block ml-2 "><del>NT$ '. $OriginalPrice.'</del></h5>';
+                      ?>
+                    </div>
                     <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
                       <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
@@ -80,21 +86,23 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                     </div>
                   </div>
                 </div>
-                <form class="my-4" method="post" action="">
+                <form class="my-4" method="post" action="cart_add.php">
                   <div class="form-group row ">
                     <div class="input-group col-12 col-lg-3 ">
                       <span class="input-group-addon">數量</span>
                       <input class="form-control form-control-sm" type="number" name="Quantity" min="1" max="999" value="1">
                     </div>
                     <div class="input-group col-12 mt-2 col-lg-5 mt-lg-0">
-                      <input class="form-control d-none" type="text" name="ID"  value="<?php echo $_GET['ID'] ?>">
-                      <button type="submit" class="btn btn-outline-success btn-block"><i class="material-icons">add_shopping_cart</i> 加入購物車</button>
+                      <input class="form-control d-none" type="text" name="ID" value="<?php echo $_GET['ID'] ?>">
+                      <button type="submit" class="btn btn-outline-success btn-block">
+                        <i class="material-icons">add_shopping_cart</i> 加入購物車
+                      </button>
                     </div>
                   </div>
                 </form>
                 <hr class="my-4">
                 <!-- 評論 -->
-                <?php include 'comment.php' ?>
+                <?php include ('comment.php') ?>
               </div>
             </div>
           </div>

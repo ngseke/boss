@@ -20,18 +20,7 @@
         <div class="card">
           <div class="card-header text-center"><span class="oi oi-account-login"></span> 登入</div>
           <div class="card-body">
-            <?php
-              if(isset($_SESSION['AlertMsg'])){
-                if(!$_SESSION['AlertMsg'][2]){
-                  $_SESSION['AlertMsg'][2]=true;
-                  echo '<div class="alert text-center alert-'. $_SESSION['AlertMsg'][0] .'" >';
-                  echo $_SESSION['AlertMsg'][1];
-                  echo '</div>';
-                }else{
-                  unset($_SESSION['AlertMsg']);
-                }
-              }
-            ?>
+            <?php include('echo_alert.php') ?>
             <form class="row" action="login_user.php" method="post">
               <div class="col-12 form-group">
                 <label for="">帳號</label>

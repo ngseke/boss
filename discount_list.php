@@ -20,18 +20,7 @@
   <?php include('nav.php') ?>
 
   <div class="container my-3">
-    <?php
-      if(isset($_SESSION['AlertMsg'])){
-        if(!$_SESSION['AlertMsg'][2]){
-          $_SESSION['AlertMsg'][2]=true;
-          echo '<div class="alert text-center alert-'. $_SESSION['AlertMsg'][0] .'" >';
-          echo $_SESSION['AlertMsg'][1];
-          echo '</div>';
-        }else{
-          unset($_SESSION['AlertMsg']);
-        }
-      }
-    ?>
+    <?php include('echo_alert.php') ?>
     <div class="row">
       <div class="col-12 text-center">
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">管理折扣</h2>
