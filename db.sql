@@ -59,14 +59,14 @@ CREATE TABLE ORDER_LIST_RECORD (
 
 -- 購物車;
 CREATE TABLE CART (
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  CID VARCHAR(30) NOT NULL,
+  ID VARCHAR(8) PRIMARY KEY,
+  CID VARCHAR(30),
   DID INT(7) UNSIGNED
 );
 
 -- 購物車和商品的特殊性關係;
 CREATE TABLE CART_RECORD (
-  ID INT(7) UNSIGNED,
+  ID VARCHAR(8),
   PID INT(7) UNSIGNED,
   Quantity INT(5) UNSIGNED NOT NULL,
   PRIMARY KEY(ID,PID)
@@ -150,7 +150,8 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S', '台北市中正區忠孝東路一段1號'),
             ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市中正區中山南路1號'),
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
-            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街');
+            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
+            ('tim', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品YEE', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街');
 
 INSERT INTO COMMENT (CID, PID, Star, Comment)
   VALUES ('admin', '1', '4', 'I am Admin!'),
@@ -159,16 +160,6 @@ INSERT INTO COMMENT (CID, PID, Star, Comment)
   ('customer', '1', '5', '樓下金城武'),
   ('customer', '1', '5', '好茶好茶'),
   ('a92304a92304', '1', '1', '樓上自肥')
-;
-
-INSERT INTO CART(ID, CID, DID)
-  VALUES('1', 'customer', '1');
-
-INSERT INTO CART_RECORD(ID, PID, Quantity)
-  VALUES('1','1','3'),
-  ('1','2','5'),
-  ('1','6','10'),
-  ('1','3','15')
 ;
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來😈','');
