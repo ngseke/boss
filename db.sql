@@ -117,6 +117,30 @@ VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
 
+-- 插入 乳酸飲料;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('養樂多活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005446_800.jpeg'),
+      ('養樂多300LIGHT活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005450_300light_800.jpeg'),
+      ('比菲多原味', 28, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20fiber.jpg'),
+      ('比菲多綠茶多酚', 30, 'in_stock', 999, NULL, 7, '堅持48小時黃金發酵，醞釀最美麗的風味，隨時補充身體天然益菌。', 'http://www.bifido.com.tw/DB/FileUpLoad/340%20green%20tea.jpg');
+
+-- 插入燒酒;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('初飲初樂燒酒', 160, 'in_stock', 999, NULL, 13, '乾果韓國最初100%用礦物質釀製的燒酒', 'https://cdn.ztore.com/images/ztore/production/product/640px/1003084_1.jpg?1475573773'),
+      ('初飲初樂柚子燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著清香的柚子味，口感較普通燒酒更加柔和、清甜爽口', 'https://img.alicdn.com/tfscom/i2/725677994/TB1WMJFby0TMKJjSZFNXXa_1FXa_!!2-item_pic.png_196x196Q50s50.jpg'),
+      ('初飲初樂水蜜桃燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著濃濃的水蜜桃味，與柚子味燒酒不同的是，此次新上市的水蜜桃酒甜味更加濃郁。 ', 'http://www.cn-kr.net/upload/newsimg/20150725/1437806225310689.jpg'),
+      ('初飲初樂蘋果燒酒', 180, 'in_stock', 999, NULL, 13, '淡淡的酒香中泛著清香的蘋果味，口感較普通燒酒更加柔和、清甜爽口', 'https://www.dj9.com.tw/images/201608/goods_img/1256_P_1471836842299.jpg');
+
+-- 插入碳酸飲料;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('黑松沙士', 25, 'in_stock', 999, NULL, 6, '歡樂時光一直倒~黑松汽水', 'https://s.yimg.com/wb/images/7AFE3D71067C3B77792A97650BB6B20066F91BAC'),
+      ('黑松沙士-加鹽', 25, 'in_stock', 999, NULL, 6, '享受清涼快意!', 'http://static.blog.sina.com.tw/myimages/108/126316/images/20120511181348325.jpg'),
+      ('可口可樂', 29, 'in_stock', 999, NULL, 6, '擋不住的暢快口感', 'http://img.udn.com/image/product/S0001126/APPROVED/U001359050/20130415174850924_300.jpg?t=20150603115750'),
+      ('百事可樂', 32, 'in_stock', 999, NULL, 6, '引領時尚潮流，創造快樂，要你把快樂帶回家', 'http://www.vedan.com.tw/thumbnail.aspx?h=200&f=/upload/Product/P000174/PEPSI-500_445x440.jpg'),
+      ('雪碧汽水', 29, 'in_stock', 999, NULL, 6, '擋不住的暢快口感給您前所未有的滿足', 'https://img1.e-payless.com.tw/content/images/thumbs/0462543_1200600ml24.jpeg');
+
+
+
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
 ('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
