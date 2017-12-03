@@ -22,4 +22,7 @@ define('debug_mode', true); // 是否為DEBUG MODE
 
 define('product_item_animation_mode', true); // 是否開啟product載入的動畫
 define('product_detail_animation_mode', true); // 是否開啟product載入的動畫
-?>
+
+function EchoCode($sql){
+  echo '<pre>'.$sql.'</pre>';
+}

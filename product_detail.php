@@ -24,6 +24,18 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
   <div class="container my-3">
+    <?php
+      if(isset($_SESSION['AlertMsg'])){
+        if(!$_SESSION['AlertMsg'][2]){
+          $_SESSION['AlertMsg'][2]=true;
+          echo '<div class="alert text-center alert-'. $_SESSION['AlertMsg'][0] .'" >';
+          echo $_SESSION['AlertMsg'][1];
+          echo '</div>';
+        }else{
+          unset($_SESSION['AlertMsg']);
+        }
+      }
+    ?>
     <div class="row">
       <?php
       $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P
@@ -63,12 +75,8 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                     <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
                       <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
-                      <!-- 以下暫時加的 -->
-                      <span class="badge badge-pill badge-info">未知的活動1 - 此品項打87折</span>
-                      <span class="badge badge-pill badge-info">未知的活動2 - 此品項買一送一</span>
-                      <span class="badge badge-pill badge-warning">未知的活動3 - 全館滿999免運</span>
-                      <span class="badge badge-pill badge-danger">未知的活動4 - 結帳滿999再打87折</span>
-                      <!-- 以上暫時加的 -->
+                      <!-- 印出資訊折扣的資訊 -->
+                      <?php include 'product_discount.php'; ?>
                     </div>
                   </div>
                 </div>

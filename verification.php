@@ -1,6 +1,6 @@
 <?php
 // 此頁用於取得'登入後'的用戶資料
-// 沒意外會包含在nav.php
+// 已包含在connect.php
 // 所以每個頁面都可以取用。
 
 include('connection.php');

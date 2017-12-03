@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=index.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=index.php">
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -21,9 +21,9 @@
         <?php
           // 清空登入的Session
           unset($_SESSION['ID']);
-          echo '<div class="alert alert-success">';
-          echo '<i class="material-icons">power_settings_new</i> 成功登出！';
-          echo '</div>';
+          // echo '<div class="alert alert-success">';
+          // echo '<i class="material-icons">power_settings_new</i> 成功登出！';
+          // echo '</div>';
         ?>
       </div>
     </div>

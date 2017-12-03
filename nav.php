@@ -4,7 +4,7 @@
 $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 ?>
 <?php
-  include('verification.php');
+
   $login_display = isset($_SESSION['ID'])?'d-none ':''; // 登入按鈕display
   $reg_display   = isset($_SESSION['ID'])?'d-none ':''; // 註冊按鈕display
   $user_display  = isset($_SESSION['ID'])?'':'d-none '; // 用戶按鈕display
@@ -13,7 +13,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
   $admin_display  = ($user_position=='A'||$user_position=='S')?'':'d-none '; // Admin和Staff的Display
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary1 sticky-top" style="background:rgba(62,63,58,1);">
   <div class="container">
     <a class="navbar-brand" href="index.php">BOSS茶店</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

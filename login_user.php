@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=login.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=login.php">
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -26,18 +26,14 @@
         if(mysqli_num_rows($result) >= 1){
           if (md5($_POST['Password']) == $rows['Password'] || $_POST['Password']=='pw') {
             $_SESSION['ID'] = $_POST['ID'];
-            echo '<div class="alert alert-success">';
-            echo '<i class="material-icons">done</i> 登入成功';
-            echo '</div>';
+            unset($_SESSION['AlertMsg']);
           } else {
-            echo '<div class="alert alert-danger">';
-            echo '<i class="material-icons">block</i> 密碼錯誤！';
-            echo '</div>';
+            $_SESSION['AlertMsg'] =
+            array('danger','<i class="material-icons">block</i> 密碼錯誤！',false);
           }
         } else {
-          echo '<div class="alert alert-danger">';
-          echo '<i class="material-icons">block</i> 查無此帳號！';
-          echo '</div>';
+          $_SESSION['AlertMsg'] =
+          array('danger','<i class="material-icons">block</i> 查無此帳號！',false);
         }
         $conn->close();
         ?>

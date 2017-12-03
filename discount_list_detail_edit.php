@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=discount_list.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=discount_list.php">
 </head>
 
 <body>
@@ -32,9 +32,13 @@
         $sql= "UPDATE DISCOUNT
                SET Type = '$Type',PeriodFrom='$PeriodFrom',PeriodTo='$PeriodTo',Requirement=$Requirement,Rate=$Rate,Info='$Info',EventType='$EventType'
                WHERE ID = $ID";
-        //echo $sql;
-        $conn->query($sql);
-        echo '<div class="alert alert-success"><i class="material-icons">done</i>修改成功!</div>';
+        if($conn->query($sql)){
+          $_SESSION['AlertMsg'] =
+          array('success','<i class="material-icons">done</i> 修改成功',false);
+        } else{
+          $_SESSION['AlertMsg'] =
+          array('danger','<i class="material-icons">block</i> 修改失敗！',false);
+        }
         $conn->close();
         ?>
       </div>

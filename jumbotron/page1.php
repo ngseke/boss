@@ -1,7 +1,7 @@
 <!-- 隨機展示熱銷商品 -->
 <div class="row">
   <?php
-  $sql="SELECT * FROM PRODUCT ORDER BY RAND() LIMIT 3";
+  $sql="SELECT *, FORMAT(P.Price,0) PPrice FROM PRODUCT P ORDER BY RAND() LIMIT 4";
   $result=$conn->query($sql)
   ?>
   <div class="col-12 my-3 my-lg-5 text-center">
@@ -11,9 +11,10 @@
       </div>
       <?php
       while($rows=mysqli_fetch_array($result)){
-        echo '<div class="col-12 col-lg-4 text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['ID'].'\'">
+        echo '<div class="col-12 col-lg-3 text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['ID'].'\'">
           <img src="' . $rows['Img'] . '" class="img-fluid mx-auto d-block mb-2" style="height:8rem;width:auto;">
           <h5>'. $rows['Name'] . '</h5>
+          <span class="badge badge-danger">NT$ '. $rows['PPrice'] . '</span>
         </div>';
       }
       ?>

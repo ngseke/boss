@@ -41,7 +41,7 @@ CREATE TABLE CATEGORY(
 CREATE TABLE ORDER_LIST (
   ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   Date DATETIME NOT NULL,
-  Final_Cost INT(7) UNSIGNED NOT NULL,
+  FinalCost INT(7) UNSIGNED NOT NULL,
   State ENUM('submitted', 'processed', 'delivered', 'completed'),
   CID VARCHAR(30) NOT NULL,
   DID INT(7) UNSIGNED NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE DISCOUNT (
 -- 插入測試用範例資料;
 -- 插入 純喫茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('純喫茶綠茶', 25, 'in_stock', 999, NULL, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
+VALUE('純喫茶綠茶', 25, 'in_stock', 999, 3, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
       ('純喫茶紅茶', 25, 'in_stock', 999, NULL, 2, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
       ('純喫茶檸檬紅茶', 25, 'in_stock', 999, NULL, 2, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
       ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 3, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
@@ -116,7 +116,6 @@ VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲
 -- 插入 日本茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
-
 -- 插入 乳酸飲料;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('養樂多活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005446_800.jpeg'),
@@ -139,8 +138,26 @@ VALUE('黑松沙士', 25, 'in_stock', 999, NULL, 6, '歡樂時光一直倒~黑�
       ('百事可樂', 32, 'in_stock', 999, NULL, 6, '引領時尚潮流，創造快樂，要你把快樂帶回家', 'http://www.vedan.com.tw/thumbnail.aspx?h=200&f=/upload/Product/P000174/PEPSI-500_445x440.jpg'),
       ('雪碧汽水', 29, 'in_stock', 999, NULL, 6, '擋不住的暢快口感給您前所未有的滿足', 'https://img1.e-payless.com.tw/content/images/thumbs/0462543_1200600ml24.jpeg');
 
+-- 插入 麥香;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('麥香紅茶', 10, 'in_stock', 999, NULL, 2, '醇厚紅茶結合焙炒大麥，成就獨特大麥風味、暢銷全台的紅茶飲料。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201104624_26964.jpg'),
+('麥香奶茶', 10, 'in_stock', 999, NULL, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
+('麥香綠茶', 10, 'in_stock', 999, NULL, 2, '選用甜香特色的焙香綠茶葉，萃取醇厚茶汁，搭配焙炒大麥，呈現獨特大麥風味的綠茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110522_79817.jpg'),
+('麥香阿薩姆紅茶', 25, 'in_stock', 999, NULL, 2, '選用花甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥，呈現茶香甜香交織的阿薩姆紅茶。', 'http://www.pecos.com.tw/tmp/image/20150910/20150910082855_85509.jpg'),
+('麥香阿薩姆奶茶', 25, 'in_stock', 999, NULL, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
+('麥香錫蘭奶茶', 25, 'in_stock', 999, NULL, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
+
+-- 插入 水;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('UNI water', 20, 'in_stock', 999, NULL, 17, 'UNI water為國內首創「簡約時尚」包裝水！如水晶般完美六角透明瓶身，襯托出水的純淨無暇。 簡約設計融合彩虹七色，為您的生活帶來絢爛繽紛的幸福。不論是個人飲用或是朋友聚會，絕對是您品味生活不可或缺的最佳選擇！', 'http://www.pecos.com.tw/tmp/image/20170907/20170907141846_14406.jpg'),
+('統一PH9.0鹼性離子水', 25, 'in_stock', 999, NULL, 17, '【體質加鹼顧，健康好鹼單】現代人應酬頻繁、外食攝取率過高，常常容易造成身體過多的負擔；吃完美食別忘了顧體質，天天喝統一 PH9.0鹼性離子水，補充人體所需的水份。', 'http://www.pecos.com.tw/tmp/image/20140402/20140402195619_58489.jpg');
+
+-- 插入 健康茶;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('爽健美茶', 25, 'in_stock', 999, NULL, 4, '生活的壓力與瑣事總讓自己感到煩躁，多希望能有一個天然的純淨茶飲，讓身心靈釋放，得到片刻的舒緩，以再次擁有清爽愉快的心情，朝著健康的生活積極邁進。風行日本多年的『爽健美茶』是大自然恩賜的完美組合，由薏仁、玄米、綠茶、月見草等15種100%日本進口、有益健康的天然素材調和而成，散發獨特香氣與純淨清新的口感。喝一口，就能感受到大自然所帶來清爽、健康、美麗的全新愉快感受。喝一口爽健美茶，讓身體沉浸在15種天然成分調和的大自然恩賜中，由內而外，為你帶來清爽、健康、美麗的全新愉快感受。', 'https://mart.ibon.com.tw/mdz_file/item/21/20/01/1005/10050009143G_char_5_170217093152.jpg');
 
 
+-- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
 ('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
@@ -151,7 +168,8 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市中正區中山南路1號'),
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
             ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
-            ('tim', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品YEE', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街');
+            ('zhaozhenting', '0104b52e470130135013a7a87a42b609', '趙振廷', 'zhaozhenting@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市'),
+            ('yuakiqi', '0104b52e470130135013a7a87a42b609', '余鎧企', 'yuakiqi@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
 
 INSERT INTO COMMENT (CID, PID, Star, Comment)
   VALUES ('admin', '1', '4', 'I am Admin!'),
@@ -164,10 +182,10 @@ INSERT INTO COMMENT (CID, PID, Star, Comment)
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來😈','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣﹣秋季大折扣','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.9,'不小心進太多貨之再不銷出去倉庫就要滿了特賣','BOGO');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2017-11-29',500,0.87,'❄️飲涼卡好節','discount');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'❄️飲涼卡好節','discount');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-20','2017-12-27',123,0.90,'Xmas🎄耶誕優惠','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-28','2018-1-10', 112,0.88,'1/12週年慶','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-2','2018-1-10', 112,0.88,'1/12週年慶','');
 
 
 -- FOREIGN KEY;
