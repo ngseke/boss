@@ -12,7 +12,7 @@
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=product_detail.php<?php echo '?ID='.$_POST['PID']?>">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_detail.php<?php echo '?ID='.$_POST['PID']?>">
 </head>
 
 <body>
@@ -32,9 +32,8 @@
       $sql="INSERT INTO COMMENT(CID,PID,Star,Date,Comment)
       VALUE('$CID',$PID,'$Star','$Date','$Comment')" ;
       if ($conn->query($sql)===true) {
-        echo '<div class="alert alert-success text-center">';
-        echo '<i class="material-icons">check</i> 成功發表評論！';
-        echo '</div>';
+        $_SESSION['AlertMsg'] =
+        array('success','<i class="material-icons">check</i> 成功發表評論！',false);
       } else {
         echo $conn->error . "<br>";
       }

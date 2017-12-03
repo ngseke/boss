@@ -24,6 +24,18 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
   <div class="container my-3">
+    <?php
+      if(isset($_SESSION['AlertMsg'])){
+        if(!$_SESSION['AlertMsg'][2]){
+          $_SESSION['AlertMsg'][2]=true;
+          echo '<div class="alert text-center alert-'. $_SESSION['AlertMsg'][0] .'" >';
+          echo $_SESSION['AlertMsg'][1];
+          echo '</div>';
+        }else{
+          unset($_SESSION['AlertMsg']);
+        }
+      }
+    ?>
     <div class="row">
       <?php
       $sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName, FORMAT(Price,0) PPrice FROM PRODUCT P

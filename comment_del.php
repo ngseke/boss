@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=product_detail.php?ID=<?php echo $_GET['PID'] ?>">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_detail.php?ID=<?php echo $_GET['PID'] ?>">
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -22,9 +22,8 @@
         <?php
         $sql = "DELETE FROM COMMENT WHERE ID=" . $_GET['CommentID'];
         $result = $conn->query($sql);
-        echo '<div class="alert alert-success">';
-        echo '<i class="material-icons">check</i> 刪除評論成功';
-        echo '</div>';
+        $_SESSION['AlertMsg'] =
+        array('success','<i class="material-icons">check</i> 成功刪除評論',false);
         $conn->close();
         ?>
       </div>
