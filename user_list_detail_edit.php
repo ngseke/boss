@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=user_list.php">
 </head>
 
 <body>
@@ -37,9 +37,8 @@
         WHERE ID='$ID'";
         $conn->query($sql);
         
-        echo '<div class="alert alert-success">';
-        echo '<i class="material-icons">check</i> 修改用戶成功';
-        echo '</div>';
+        $_SESSION['AlertMsg'] =
+          array('success','<i class="material-icons">done</i> 修改用戶成功',false);
         
         $conn->close();
         ?>

@@ -18,6 +18,7 @@
   <div class="container my-3">
     <div class="row">
       <div class="col-12 text-center">
+        <?php include('echo_alert.php') ?>
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">管理會員</h2>
         <table class="table table-hover table-dark my-3 ">
           <thead>
