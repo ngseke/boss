@@ -8,6 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
+  <?php // 若無權限
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  if(!isset($_GET['page']))
+    die ('<meta http-equiv="refresh" content="0;URL=user_list.php?page=1">'); ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 
@@ -16,10 +21,20 @@
   <?php include('nav.php') ?>
 
   <div class="container my-3">
+    <?php include('echo_alert.php') ?>
     <div class="row">
-      <div class="col-12 text-center">
-        <?php include('echo_alert.php') ?>
-        <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">管理會員</h2>
+      <div class="col-12">
+        <ul class="nav nav-tabs ">
+          <li class="nav-item">
+            <a class="nav-link <?php if($_GET['page']==1)echo 'active ' ?>" href="user_list.php?page=1">管理會員</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?php if($_GET['page']==2)echo 'active ' ?>" href="user_list.php?page=2">新增</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 text-center <?php if($_GET['page']!=1)echo 'd-none ' ?>">
+        <h2 class=" my-3 d-none" style="border-bottom:5px #333 solid;">管理會員</h2>
         <table class="table table-hover table-dark my-3 ">
           <thead>
             <tr>
@@ -35,11 +50,10 @@
           </thead>
           <tbody>
             <?php
-            $sql = 'SELECT * FROM MEMBER';
+            $sql = 'SELECT * FROM MEMBER ORDER BY RegDate DESC';
             $result = $conn->query($sql);
             while($rows = mysqli_fetch_array($result))
             {
-
               if($rows['Position']=='A'){
               $positionName= '<span class="badge badge-pill badge-warning">管理員</span>';
               } else if($rows['Position']=='S'){
@@ -66,7 +80,7 @@
       </div>
     </div>
   </div>
-      <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+      <div class="col-12 col-lg-6 offset-lg-3 mt-5 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
         <div class="card">
           <div class="card-header text-center">新增會員</div>
           <div class="card-body">

@@ -20,7 +20,16 @@
 </head>
 
 <body>
-  <?php include('nav.php'); ?>
+  <?php include('nav.php');
+  // for discount
+  $sql = "SELECT * FROM discount WHERE Type = 'event'";
+  $result = $conn->query($sql);
+
+  // for CATEGORY
+  $sql3 = "SELECT * FROM category";
+  $result3 = $conn -> query($sql3);
+
+  ?>
   <div class="container my-3">
     <div class="row">
       <div class="col-12 col-lg-6 offset-lg-3">
@@ -38,13 +47,19 @@
                 <select class="form-control" name="State" required>
                   <option value="in_stock">in_stock</option>
                   <option value="out_of_stock">out_of_stock</option>
+                  <option value="removed_from_shelves">removed_from_shelves</option>
                 </select>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">商品分類 <span class="text-info">*</span></label>
                 <select class="form-control" name="Type" required>
-                  <option value="1">茶</option>
-                  <option value="2">酒</option>
+                  <?php
+                  if($result3->num_rows > 0) {
+                    while($row3 = $result3->fetch_assoc()){
+                      echo "<option value = " . $row3["ID"] . ">" . $row3["Name"] . "</option>";
+                    }
+                  }
+                  ?>
                 </select>
               </div>
               <div class="col-12 col-lg-6 form-group">
@@ -64,8 +79,6 @@
                 <label for="">Event折扣方式</label>
                 <select class="form-control " name="Event" required>
                   <?php
-                    $sql = "SELECT * FROM discount WHERE Type = 'event'";
-                    $result = $conn->query($sql);
                     if($result->num_rows > 0) {
                       while($row = $result->fetch_assoc()){
                         echo "<option value = " . $row["ID"] . ">" . $row["Info"] . "</option>";

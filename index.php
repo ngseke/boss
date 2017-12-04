@@ -16,7 +16,6 @@
   <!-- 引入導覽列 -->
   <?php include('nav.php') ?>
   <div class="container">
-    <?php include('echo_alert.php') ?>
   </div>
   <?php include('jumbotron/head.php') ?>
   <div class="container my-3">

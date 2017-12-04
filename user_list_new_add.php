@@ -40,14 +40,15 @@
           array('danger','<i class="material-icons">clear</i> 名稱已被使用<br>點擊返回修改',false);
         } else{
           if ($conn->query($sql) === true) {
-            echo '<div class="alert alert-success">成功註冊!';
+            $_SESSION['AlertMsg'] =
+            array('success','<i class="material-icons">done</i> 成功新增會員！',false);
           } else {
             $_SESSION['AlertMsg'] =
           array('danger','<i class="material-icons">clear</i>Error 註冊: '.$conn->error,false);
           }
         }
-        
-        
+
+
         $conn->close();
         ?>
       </div>
