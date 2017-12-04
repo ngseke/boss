@@ -68,6 +68,7 @@
                     INNER JOIN CATEGORY C
                     ON P.CategoryID = C.ID
                     WHERE P.CategoryID = C.ID
+                    AND P.State = \"in_stock\"
                     AND (P.Name LIKE '%$search%'
                     OR P.Info LIKE '%$search%')
                     ORDER BY P.CategoryID, PID";

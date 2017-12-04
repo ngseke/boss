@@ -17,6 +17,8 @@
     $price = $_POST['price'];
     $description = $_POST['description'];
     $ID = $_POST['IDnum'];
+    $DID = $_POST['discount'];
+    $categoryID = $_POST['category'];
 
     $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
@@ -36,19 +38,22 @@
       }
 
       if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
-         isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
+         isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum']) &&
+         isset($_POST['discount']) && isset($_POST['category'])){
 
         // 若未上傳檔案則不update
         if(empty(basename($_FILES["file"]["name"]))){
           $sql = "UPDATE product
                   SET Name = '$name', Info = '$description', State = '$stock',
                       Stock = '$stockNum', Price = $price
+                      , DID = $DID, CategoryID = $categoryID
                   WHERE ID = " . $ID;
         }
         else{
           $sql = "UPDATE product
                   SET Name = '$name', Info = '$description', State = '$stock',
                       Stock = '$stockNum', Price = $price, Img = '$target_file'
+                      , DID = $DID, CategoryID = $categoryID
                   WHERE ID = " . $ID;
         }
 
