@@ -21,7 +21,7 @@ define('title_name', 'BOSS茶店', false); // 專案名稱
 define('debug_mode', true); // 是否為DEBUG MODE
 
 define('product_item_animation_mode', true); // 是否開啟product載入的動畫
-define('product_detail_animation_mode', true); // 是否開啟product載入的動畫
+define('product_detail_animation_mode', false); // 是否開啟product_detail載入的動畫
 
 function EchoCode($sql){
   echo '<pre>'.$sql.'</pre>';

@@ -23,6 +23,8 @@
                      WHERE CART_RECORD.PID =".$_GET['PID'].
                      " AND ID='".$_GET['CartID']."'";
             $conn->query($sql);
+            $_SESSION['AlertMsg'] =
+            array('success','<i class="material-icons">done</i> 成功刪除商品！',false);
           }
         ?>
       </div>

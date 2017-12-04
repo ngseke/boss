@@ -69,6 +69,28 @@
   animation-delay: 0s;
   opacity: 0;
 }
+
+/* 提示信息的動畫 */
+@keyframes alert-ani{
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#alert-ani{
+  z-index: 100;
+  animation-name: alert-ani;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: .4s;
+  animation-delay: 0s;
+  opacity: 0;
+}
+
 /*
 @keyframes navbar-ani{
   0% {

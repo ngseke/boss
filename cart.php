@@ -19,11 +19,13 @@
   <div class="container my-3">
     <div class="row" >
       <div class="col-12 text-center ">
+        <?php include('echo_alert.php') ?>
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">看購物車</h2>
         <p class="text-muted"><?php echo $CartID ?></p>
         <table class="table table-bordered my-3">
           <thead class="thead-dark text-center">
             <tr>
+              <th scope="col" class="text-center" style="width:8rem;"></th>
               <th scope="col">商品名稱</th>
               <th scope="col">單價</th>
               <th scope="col">數量</th>
@@ -33,8 +35,6 @@
           </thead>
           <tbody>
             <?php
-              //$sql = ""
-              //setcookie("name", )
               // 資料庫指令
               $sql = "SELECT P.ID PID, P.Img PIMG, P.Name PName, P.Price PPrice, CR.Quantity CRQ
                       FROM CART C
@@ -46,8 +46,11 @@
               if(mysqli_num_rows($result)>0){
                 while($rows = mysqli_fetch_array($result)){
                   echo '<tr class="text-lg-center">
-                          <th scope="row" class="text-left">
-                            <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" style="height:7rem; width:auto;">' . $rows['PName'] . '</h5>
+                          <th scope="row">
+                            <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" >
+                          </th>
+                          <th scope="row" class="text-left align-middle">'
+                            . $rows['PName'] . '
                           </th>
                           <th class="align-middle">NT$ ' . $rows['PPrice'] . '</th>
                           <th class="align-middle">'.$rows['CRQ'].'</th>
@@ -72,7 +75,7 @@
                   <form action="cart_del.php" method="post">
                   <input type="hidden" name="temp" value="' . $rows['PID'] . '">
                   <tr class="text-right">
-                    <td colspan="5">
+                    <td colspan="6">
                       共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '. $Total .'</strong></br>
                       運費小計：<strong>NT$ '.$Fare.'</strong></br>
                       <font size="+2">總金額：NT$ <strong>'.$Total.'</strong></font>
@@ -82,7 +85,7 @@
               else {
                 echo'
                   <tr>
-                    <td colspan="5">您尚未選購產品</td>
+                    <td colspan="6">您尚未選購產品</td>
                   </tr>';
               }
 

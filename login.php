@@ -28,7 +28,7 @@
               </div>
               <div class="col-12 form-group">
                 <label for="">密碼</label>
-                <input <?php if($login)echo 'disabled'; ?> value="admin" type="password" name="Password" placeholder="密碼" class="form-control" required>
+                <input <?php if($login)echo 'disabled'; ?> value="pw" type="password" name="Password" placeholder="密碼" class="form-control" required>
                 <small class="text-muted">萬用密碼'pw'</small>
               </div>
               <div class="col-12 form-group">
