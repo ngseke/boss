@@ -100,7 +100,10 @@
                 $product_animation='';
 
               // 如果有折扣的話 顯示有折扣後的價格
-              $card_border = 'border-info';
+              $card_border = '';
+              $gift_icon = '<span class="position-absolute" style="right:.8rem; top:.8rem;">
+                              <i class="material-icons text-info">card_giftcard</i>
+                            </span>';
               if($rows['DEventType']=='Discount'){
                 $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
                 $price_text.='<span class="badge badge-info">Event</span> ';
@@ -109,13 +112,14 @@
                   $price_text.='<span class="badge badge-info">買一送一</span> ';
               } else{
                 $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
-                $card_border = '';
+                $card_border= $gift_icon = '';
               }
               $i+=0.06;
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="card '. $card_border .'" '. $product_animation .'>
-                          <div class="card-body">
+                          <div class="card-body position-relative">
+                              '.$gift_icon.'
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">
                               <img src="' . $rows['PImg'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">

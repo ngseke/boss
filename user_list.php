@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-      <div class="col-12 col-lg-6 offset-lg-3 mt-5 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
+      <div class="col-12 col-lg-6 offset-lg-3 my-3 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
         <div class="card">
           <div class="card-header text-center">新增會員</div>
           <div class="card-body">

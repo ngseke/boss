@@ -15,7 +15,10 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary1 sticky-top" style="background:rgba(62,63,58,1);">
   <div class="container">
-    <a class="navbar-brand" href="index.php">BOSS茶店</a>
+    <a class="navbar-brand align-middle" href="index.php">
+      <img src="img/logo-01.png" class="img-fluid" style="max-height:1.1rem"> 茶店
+    </a>
+    <a class="navbar-brand d-none " href="index.php">BOSS茶店</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,10 +40,13 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
       if(debug_mode){
         echo '<ul class="navbar-nav border border-info rounded ">
         <li class="nav-item">
-        <a class="nav-link text-info" href="db.php">一鍵生成DB</a>
+        <a class="nav-link text-info" href="db.php"><i class="material-icons">storage</i></a>
         </li>
         <li class="nav-item">
         <a class="nav-link text-info" target="_blank" href="http://localhost/phpmyadmin/">phpmyadmin</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-info" href="cart.php"><i class="material-icons">shopping_cart</i></a>
         </li>
         </ul>';
       }
