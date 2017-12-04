@@ -21,9 +21,9 @@
           $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
         }
 
-        echo '<div class="col-12 col-lg-3 text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['PID'].'\'">
+        echo '<div class="col-12 col-lg text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['PID'].'\'">
           <img src="' . $rows['PImg'] . '" class="img-fluid mx-auto d-block mb-2" style="height:8rem;width:auto;">
-          <h5>'. $rows['PName'] . '</h5>'
+          <h5 class="text-truncate">'. $rows['PName'] . '</h5>'
           . $price_text .
         '</div>';
       }

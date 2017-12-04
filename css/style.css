@@ -18,7 +18,8 @@ i.material-icons{
 }
 
 .link.jumbotron:hover, div.link:hover{
-  transform: scale(1.02);
+  transform: scale(1.05);
+  opacity: .9;
   cursor: pointer;
 }
 
