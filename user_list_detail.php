@@ -41,7 +41,7 @@
         <div class="card">
           <div class="card-header text-center">修改會員</div>
           <div class="card-body">
-            <form class="row" action="user_list_new_add.php" method="post" enctype="multipart/form-data" >
+            <form class="row" action="user_list_detail_edit.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
                 <label for="">帳號<span class="text-info">*</span></label>
                 <input type="text" value="<?php echo $ID;?>" name="ID" class="form-control" readonly>
