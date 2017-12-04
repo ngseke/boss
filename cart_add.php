@@ -24,11 +24,16 @@
       $Quantity = $_POST['Quantity'];
       $sql = "INSERT INTO CART_RECORD(ID, PID, Quantity)
               VALUES('$CartID', $PID, $Quantity)";
-              echo $sql;
+
       if($conn->query($sql)){
         $_SESSION['AlertMsg'] =
-        array('success','<i class="material-icons">done</i> 已加入購物車！',false);
-      }else die($conn->error);
+          array('success','<i class="material-icons">done</i> 成功加入購物車！',false);
+      }else {
+        if (false !==($rst = strpos($conn->error, 'Duplicate'))){
+          $_SESSION['AlertMsg'] =
+            array('warning','<i class="material-icons">warning</i> 此商品已在購物車中了！',false);
+          }
+      };
     ?>
   </div>
   <?php include('footer.php') ?>
@@ -36,6 +41,6 @@
 <?php include('js.php') ?>
 <script language="Javascript">
   // 返回上一頁
-  setTimeout("history.back()", 100);
+  setTimeout("history.back()", 10);
 </script>
 </html>
