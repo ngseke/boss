@@ -40,10 +40,13 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
       if(debug_mode){
         echo '<ul class="navbar-nav border border-info rounded ">
         <li class="nav-item">
-        <a class="nav-link text-info" href="db.php">一鍵生成DB</a>
+        <a class="nav-link text-info" href="db.php"><i class="material-icons">storage</i></a>
         </li>
         <li class="nav-item">
         <a class="nav-link text-info" target="_blank" href="http://localhost/phpmyadmin/">phpmyadmin</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-info" href="cart.php"><i class="material-icons">shopping_cart</i></a>
         </li>
         </ul>';
       }
