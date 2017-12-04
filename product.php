@@ -63,7 +63,8 @@
             // 資料庫指令
             $sql = "SELECT * FROM PRODUCT_VIEW
                     WHERE (PName LIKE '%$search%'
-                    OR PInfo LIKE '%$search%')
+                    OR PInfo LIKE '%$search%'
+                    OR CName LIKE '%$search%')
                     ORDER BY CID, PID";
 
             if(isset($_GET['category_id'])){
@@ -97,6 +98,7 @@
                 $product_animation='';
 
               // 如果有折扣的話 顯示有折扣後的價格
+              $card_border = 'border-info';
               if($rows['DEventType']=='Discount'){
                 $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
                 $price_text.='<span class="badge badge-info">Event</span> ';
@@ -105,11 +107,12 @@
                   $price_text.='<span class="badge badge-info">買一送一</span> ';
               } else{
                 $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
+                $card_border = '';
               }
               $i+=0.06;
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
-                        <div class="card" '. $product_animation .'>
+                        <div class="card '. $card_border .'" '. $product_animation .'>
                           <div class="card-body">
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">

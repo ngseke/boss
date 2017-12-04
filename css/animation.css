@@ -31,7 +31,6 @@
 /*所有商品入場動畫*/
 @keyframes product-item-ani{
   0% {
-    transform: translateY(0rem);
     opacity: 0;
   }
   100% {
@@ -47,7 +46,6 @@
   animation-fill-mode: forwards;
   animation-duration: .3s;
   animation-delay: 0s
-
 }
 
 /*商品詳情動畫*/
