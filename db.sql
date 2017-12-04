@@ -22,7 +22,7 @@ CREATE TABLE MEMBER(
 CREATE TABLE PRODUCT(
   ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   Name VARCHAR(30) NOT NULL,
-  State ENUM('in_stock', 'out_of_stock'),
+  State ENUM('in_stock', 'out_of_stock', 'removed_from_shelves'),
   Stock INT(7) UNSIGNED NOT NULL,
   Price INT(10) UNSIGNED NOT NULL,
   Img VARCHAR(100) NOT NULL,
