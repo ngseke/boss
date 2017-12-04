@@ -14,7 +14,6 @@
     die ('<meta http-equiv="refresh" content="0;URL=index.php">');
   if(!isset($_GET['page']))
     die ('<meta http-equiv="refresh" content="0;URL=discount_list.php?page=1">'); ?>
-
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 

@@ -27,16 +27,11 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
     <?php include('echo_alert.php') ?>
     <div class="row">
       <?php
-      $sql = "SELECT *, P.ID PID ,P.Name PName, P.Info PInfo, C.Name CName,
-              FORMAT(Price,0) PPrice, FORMAT(P.Price * D.Rate,0) FinalP FROM PRODUCT P
-              INNER JOIN CATEGORY C ON P.CategoryID = C.ID
-              LEFT JOIN DISCOUNT D ON P.DID = D.ID
-              WHERE P.CategoryID = C.ID
-              AND P.ID = ".$_GET['ID'];
+      $sql = "SELECT * FROM PRODUCT_VIEW
+              WHERE PID = ".$_GET['ID'];
 
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
-      $img = $rows['Img'];
       if(product_detail_animation_mode)
         $product_detail_animation='id="product-detail"';
       else
@@ -48,13 +43,13 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
           <div class="card-body">
             <div class="row">
               <div class="col-12 col-lg-4 text-center">
-                <img src="<?php echo $rows['Img'] ?>" class="img-fluid rounded mx-auto d-block" style="max-height: 16rem; width: auto;">
+                <img src="<?php echo $rows['PImg'] ?>" class="img-fluid rounded mx-auto d-block" style="max-height: 16rem; width: auto;">
                 <?php include 'product_get_star.php' ?>
               </div>
               <div class="col-12 col-lg-8">
                 <div class="mb-3">
                   <h2 class="text-center text-lg-left d-inline"><?php echo $rows['PName']; ?></h2>
-                  <span class="badge badge-dark badge-pill mx-2"><?php echo $rows['Name']; ?></span>
+                  <span class="badge badge-dark badge-pill mx-2"><?php echo $rows['CName']; ?></span>
                 </div>
 
                 <hr class="my-4">
@@ -62,25 +57,20 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
                 <div class="card bg-light border-light">
                   <div class="card-body">
                     <div class="">
+                      <h4 class="text-danger d-inline-block">NT$ </h4>
                       <?php
-                      $rows['FinalP'];
-                      $OriginalPrice = $FinalPrice = $rows['PPrice'];
-                      if($rows['FinalP']!=''){
-                        if((date('Y-m-d')>=$rows['PeriodFrom']) && (date('Y-m-d')<=$rows['PeriodTo'])){
-                          $FinalPrice=  $rows['FinalP'];
-                        }
+                      if($rows['PPriceDiscountF'] != ''){ // 有折扣
+                          echo '<h1 class="text-danger d-inline-block price">'. $rows['PPriceDiscountF'].'</h1>';
+                          echo '<h5 class="text-muted d-inline-block ml-2 "><del>NT$ '. $rows['PPriceF'].'</del></h5>';
+                      }else{ // 無折扣
+                        echo '<h1 class="text-danger d-inline-block price">'. $rows['PPriceF'].'</h1>';
                       }
                       ?>
-                      <h4 class="text-danger d-inline-block">NT$ </h4>
-                      <h1 class="text-danger d-inline-block price"><?php echo $FinalPrice ?></h1>
-                      <?php
-                      if($OriginalPrice != $FinalPrice)
-                        echo '<h5 class="text-muted d-inline-block ml-2 "><del>NT$ '. $OriginalPrice.'</del></h5>';
-                      ?>
+
                     </div>
                     <div>
                       <span class="badge badge-pill badge-primary">運費: NT $60</span>
-                      <span class="badge badge-pill badge-success">庫存: <?php echo $rows['Stock']; ?></span>
+                      <span class="badge badge-pill badge-success">庫存: <?php echo $rows['PStock']; ?></span>
                       <!-- 印出資訊折扣的資訊 -->
                       <?php include 'product_discount.php'; ?>
                     </div>

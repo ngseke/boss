@@ -50,7 +50,7 @@
               <i class="material-icons">account_circle</i> '. $CName .' <span class="text-muted">('. $CID .')</span>' . $star_text .'</h6>
               <small class="d-none d-lg-inline-block">'. $Date .'</small>
             </div>
-            <p class="mb-0">'. $Comment .'</p>
+            <p class="mb-0">'. htmlspecialchars($Comment) .'</p>
             <small class="d-inline-block d-lg-none">'. $Date .'</small>
           </a>';
   }

@@ -39,20 +39,18 @@
           <?php $list_active = !(isset($_GET['category_id'])||isset($_GET['search']))?'active':''  ?>
           <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
           <?php
-            $sql = "SELECT * FROM CATEGORY C ORDER BY ID ASC";
+            $sql = "SELECT CID, CName, COUNT(*) CNum
+                    FROM PRODUCT_VIEW GROUP BY CID
+                    ORDER BY CID";
             $result = $conn->query($sql);
-
             while($rows = mysqli_fetch_array($result)){
               // 查詢該類別下有多少筆商品
-              $sql1 = "SELECT COUNT(*) COUNT_NUM FROM PRODUCT P, CATEGORY C
-                      WHERE P.CategoryID = C.ID
-                      AND P.CategoryID =" . $rows['ID'];
-              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['ID']){
+              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['CID']){
                 $list_active='active';
               }else $list_active='';
-              echo '<a href="product.php?category_id='. $rows['ID'] .'"
-                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['Name'] .
-                    '<span class="badge badge-dark badge-pill">'. mysqli_fetch_array($conn->query($sql1))['COUNT_NUM'] .'</span></a>';
+              echo '<a href="product.php?category_id='. $rows['CID'] .'"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
+                    '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
             }
           ?>
         </div>
@@ -63,26 +61,21 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
-                    FORMAT(Price,0) PPrice FROM PRODUCT P
-                    INNER JOIN CATEGORY C
-                    ON P.CategoryID = C.ID
-                    WHERE P.CategoryID = C.ID
-                    AND P.State = \"in_stock\"
-                    AND (P.Name LIKE '%$search%'
-                    OR P.Info LIKE '%$search%')
-                    ORDER BY P.CategoryID, PID";
+            $sql = "SELECT * FROM PRODUCT_VIEW
+                    WHERE (PName LIKE '%$search%'
+                    OR PInfo LIKE '%$search%'
+                    OR CName LIKE '%$search%')
+                    AND PState = 'in_stock'
+                    ORDER BY CID, PID";
 
             if(isset($_GET['category_id'])){
-              $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
-                      FORMAT(Price,0) PPrice FROM PRODUCT P, CATEGORY C
-                      WHERE P.CategoryID = C.ID
-                      AND P.CategoryID =" . $_GET['category_id'];
+              $sql = "SELECT * FROM PRODUCT_VIEW
+                      WHERE PState = 'in_stock'
+                      AND CID =" . $_GET['category_id'];
             }
 
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
-
             echo '<div class="col-12">';
             // 若執行搜尋，印出提示文字
             if(isset($_GET['search'])){
@@ -93,7 +86,7 @@
             }else if(isset($_GET['category_id'])){ // 若以分類查詢
               echo '<div class="alert alert-info">
                       <i class="material-icons">search</i>
-                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT * FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
+                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT Name FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
                     </div>';
             }
             echo '</div>';
@@ -106,20 +99,31 @@
               else
                 $product_animation='';
 
+              // 如果有折扣的話 顯示有折扣後的價格
+              $card_border = 'border-info';
+              if($rows['DEventType']=='Discount'){
+                $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
+                $price_text.='<span class="badge badge-info">Event</span> ';
+              } else if($rows['DEventType']=='BOGO'){
+                  $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
+                  $price_text.='<span class="badge badge-info">買一送一</span> ';
+              } else{
+                $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
+                $card_border = '';
+              }
               $i+=0.06;
-              $info = $rows['Info'];
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
-                        <div class="card" '. $product_animation .'>
+                        <div class="card '. $card_border .'" '. $product_animation .'>
                           <div class="card-body">
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">
-                              <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
+                              <img src="' . $rows['PImg'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1 text-truncate">' . $rows['PName'] . '</h5>
-                                <p class="card-text mb-2 text-truncate">' . $info . '</p>
-                                <span class="badge badge-primary ">NT$ ' . $rows['PPrice'] . '</span>
+                                <p class="card-text mb-2 text-truncate">' . $rows['PInfo'] . '</p>'
+                                 . $price_text . '
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                               </div>
                             </div>
@@ -128,7 +132,6 @@
                         </div>
                       </a>
                     </div>';
-
             }
           ?>
         </div>

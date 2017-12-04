@@ -106,16 +106,17 @@ VALUE('純喫茶綠茶', 25, 'in_stock', 999, 4, 1, '採集新鮮茶葉進行炒
 
 -- 插入 高級酒;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, NULL, 16, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
-      ('西班牙彩鑽蝶戀白酒', 2399, 'in_stock', 999, NULL, 15, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
-      ('美國摩根灣夏多內白酒', 6960, 'in_stock', 999, NULL, 15, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
-      ('法國茱麗葉紅酒14/15', 6960, 'in_stock', 999, NULL, 14, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
-      ('義大利山之巔黃標紅酒', 4999, 'in_stock', 999, NULL, 14, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
-      ('美國鶴湖卡本內蘇維翁紅酒 ', 3999, 'in_stock', 999, NULL, 14, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
+VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, 4, 14, '澳洲袋鼠山雪多利白葡萄酒是典型的澳洲葡萄酒，所擁有的高品質葡萄園在理想環境中生長，由南澳洲袋鼠守護著，以現代化方法釀造。', 'http://www.filgifts.com/images/product/small/Kangaroo-ridge-chardonnay.jpg'),
+      ('西班牙彩鑽蝶戀白酒', 2399, 'in_stock', 999, 4, 14, '具有清新花果香，爽口宜人，入口時柔滑圓潤，佐餐搭配性高。', 'http://www.my9.com.tw/image/product/pro_4e1a71a4279af50d11df1414841b6aa0.jpg'),
+      ('美國摩根灣夏多內白酒', 6960, 'in_stock', 999, 4, 14, '摩根灣夏多內白葡萄酒帶有迷人酸度及清新果香，單飲或搭餐都讓人感受無比魅力。', 'http://www.my9.com.tw/image/product/pro_611f8ba8856f27ef98dbf93c349131ee.png'),
+      ('法國茱麗葉紅酒14/15', 6960, 'in_stock', 999, 4, 14, '入口柔滑圓潤，具有成熟櫻桃味道；後段則顯現圓滑如絲絨般的單寧口感。', 'http://www.my9.com.tw/image/product/pro_3f5d25d7828cd2d23d8665c4c64f979a.jpg'),
+      ('義大利山之巔黃標紅酒', 4999, 'in_stock', 999, 4, 14, '典型的巴貝拉品種，有優雅的花香味，和諧清新，柔軟，且富有豐富的層次。', 'http://www.my9.com.tw/image/product/pro_9808ef97108c22b0c378d33836dc7413.jpg'),
+      ('美國鶴湖卡本內蘇維翁紅酒 ', 3999, 'in_stock', 999, 4, 14, '是一支酒體柔順、果香奔放的一支紅酒，橡木、桑椹及黑莓之香氣更為此酒的特色，非常適合現在即時飲用。', 'http://my9.ehosting.com.tw/image/product/pro_c164182ffb6849b39715d9983ceaa2cd.jpg');
 
 -- 插入 日本茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
+VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, 3, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
+
 -- 插入 乳酸飲料;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('養樂多活菌發酵乳', 8, 'in_stock', 999, NULL, 7, '代田菌能通過胃酸膽鹽考驗，在腸道中生存繁殖，維護腸道的健康。', 'https://carrefoureccdn.azureedge.net/content/images/thumbs/0005446_800.jpeg'),
@@ -141,16 +142,16 @@ VALUE('黑松沙士', 25, 'in_stock', 999, NULL, 6, '歡樂時光一直倒~黑�
 -- 插入 麥香;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('麥香紅茶', 10, 'in_stock', 999, NULL, 2, '醇厚紅茶結合焙炒大麥，成就獨特大麥風味、暢銷全台的紅茶飲料。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201104624_26964.jpg'),
-('麥香奶茶', 10, 'in_stock', 999, NULL, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
+('麥香奶茶', 10, 'in_stock', 999, 3, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
 ('麥香綠茶', 10, 'in_stock', 999, NULL, 2, '選用甜香特色的焙香綠茶葉，萃取醇厚茶汁，搭配焙炒大麥，呈現獨特大麥風味的綠茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110522_79817.jpg'),
 ('麥香阿薩姆紅茶', 25, 'in_stock', 999, NULL, 2, '選用花甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥，呈現茶香甜香交織的阿薩姆紅茶。', 'http://www.pecos.com.tw/tmp/image/20150910/20150910082855_85509.jpg'),
-('麥香阿薩姆奶茶', 25, 'in_stock', 999, NULL, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
-('麥香錫蘭奶茶', 25, 'in_stock', 999, NULL, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
+('麥香阿薩姆奶茶', 25, 'in_stock', 999, 3, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
+('麥香錫蘭奶茶', 25, 'in_stock', 999, 3, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
 
 -- 插入 水;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('UNI water', 20, 'in_stock', 999, NULL, 17, 'UNI water為國內首創「簡約時尚」包裝水！如水晶般完美六角透明瓶身，襯托出水的純淨無暇。 簡約設計融合彩虹七色，為您的生活帶來絢爛繽紛的幸福。不論是個人飲用或是朋友聚會，絕對是您品味生活不可或缺的最佳選擇！', 'http://www.pecos.com.tw/tmp/image/20170907/20170907141846_14406.jpg'),
-('統一PH9.0鹼性離子水', 25, 'in_stock', 999, NULL, 17, '【體質加鹼顧，健康好鹼單】現代人應酬頻繁、外食攝取率過高，常常容易造成身體過多的負擔；吃完美食別忘了顧體質，天天喝統一 PH9.0鹼性離子水，補充人體所需的水份。', 'http://www.pecos.com.tw/tmp/image/20140402/20140402195619_58489.jpg');
+VALUE('UNI water', 20, 'in_stock', 999, NULL, 15, 'UNI water為國內首創「簡約時尚」包裝水！如水晶般完美六角透明瓶身，襯托出水的純淨無暇。 簡約設計融合彩虹七色，為您的生活帶來絢爛繽紛的幸福。不論是個人飲用或是朋友聚會，絕對是您品味生活不可或缺的最佳選擇！', 'http://www.pecos.com.tw/tmp/image/20170907/20170907141846_14406.jpg'),
+('統一PH9.0鹼性離子水', 25, 'in_stock', 999, NULL, 15, '【體質加鹼顧，健康好鹼單】現代人應酬頻繁、外食攝取率過高，常常容易造成身體過多的負擔；吃完美食別忘了顧體質，天天喝統一 PH9.0鹼性離子水，補充人體所需的水份。', 'http://www.pecos.com.tw/tmp/image/20140402/20140402195619_58489.jpg');
 
 -- 插入 健康茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
@@ -169,7 +170,7 @@ VALUE('光泉杯裝麥芽調味乳玉米片', 35, 'in_stock', 999, NULL, 9, '對
 -- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
-('啤酒'), ('燒酒'), ('紅酒'), ('白酒'), ('葡萄酒'), ('水');
+('啤酒'), ('燒酒'), ('洋酒'), ('水');
 
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Address)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A','台北市中正區重慶南路一段122號'),
@@ -189,11 +190,11 @@ INSERT INTO COMMENT (CID, PID, Star, Comment)
   ('a92304a92304', '1', '1', '樓上自肥')
 ;
 
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來😈','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季特賣﹣秋季大折扣','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季大折扣','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'❄️飲涼卡好節','discount');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-20','2017-12-27',123,0.90,'Xmas🎄耶誕優惠','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'飲涼卡好節','discount');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-20','2017-12-27',123,0.90,'Xmas耶誕優惠','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-2','2018-1-10', 112,0.88,'1/12週年慶','');
 
 
@@ -207,4 +208,35 @@ ALTER TABLE ORDER_LIST_RECORD ADD FOREIGN KEY (PID) REFERENCES PRODUCT(ID);
 ALTER TABLE CART ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID);
 ALTER TABLE CART_RECORD ADD FOREIGN KEY (ID) REFERENCES CART(ID);
 ALTER TABLE CART_RECORD ADD FOREIGN KEY (PID) REFERENCES PRODUCT(ID);
-ALTER TABLE COMMENT ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID)
+ALTER TABLE COMMENT ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID);
+
+
+-- VIEW 視界;
+
+DROP VIEW IF EXISTS PRODUCT_VIEW;
+
+-- 為了簡化在php中的查詢指令，建此VIEW把 PRODUCT, CATEGORY, DISCOUNT 合併成一表。;
+-- PPrice: 原始價格 / PPriceDiscount: 折扣後價格，如果沒有折扣或者在期限外則為NULL;
+-- PPriceF: 加入逗號的原始價格 / PPriceDiscount: 加入逗號的折扣後價格，同上。;
+
+CREATE VIEW PRODUCT_VIEW
+AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.State PState,
+          C.Name CName, C.ID CID, D.ID DID, D.Rate DRate,
+          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='BOGO')
+                THEN 'BOGO'
+                WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+                THEN 'Discount'
+                ELSE NULL END) DEventType,
+          P.Price PPrice,
+          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+                THEN (P.Price * D.Rate)
+                ELSE NULL END) PPriceDiscount,
+          FORMAT(P.Price,0) PPriceF,
+          FORMAT((CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+                THEN (P.Price * D.Rate)
+                ELSE NULL END),0) PPriceDiscountF
+           FROM PRODUCT P
+           INNER JOIN CATEGORY C ON P.CategoryID = C.ID
+           LEFT JOIN DISCOUNT D ON P.DID = D.ID
+           WHERE P.CategoryID = C.ID
+           ORDER BY PID
