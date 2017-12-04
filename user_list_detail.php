@@ -37,7 +37,7 @@
         $Position=$row['Position'];
        ?>
 
-      <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+      <div class="col-12 col-lg-6 offset-lg-3 mt-3">
         <div class="card">
           <div class="card-header text-center">修改會員</div>
           <div class="card-body">

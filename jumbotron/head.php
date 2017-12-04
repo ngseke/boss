@@ -5,6 +5,7 @@ $Today= date('Y-m-d H:i:s');
 $FirstDayDiff = floor((strtotime($Today) - strtotime($FirstDay))/3600/24);
 ?>
 <div class="jumbotron-fluid text-center bg-dark text-white" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; background-attachment:fixed;">
+  <div class="container"><?php include('echo_alert.php') ?></div>
   <div class="container" style="padding:5rem 0;">
     <h1 id="head1" class="display-2 my-0 text-shadow-dark" >BOSS</h1>
     <p  id="head2" class="lead text-shadow-dark" >Beverage Online Shop System</p>

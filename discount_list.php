@@ -11,7 +11,10 @@
   <?php include('style.php') ?>
   <?php // 若無權限
   if(!($user_position=='A'||$user_position=='S'))
-    die ('<meta http-equiv="refresh" content="0;URL=index.php">'); ?>
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  if(!isset($_GET['page']))
+    die ('<meta http-equiv="refresh" content="0;URL=discount_list.php?page=1">'); ?>
+
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 
@@ -22,8 +25,18 @@
   <div class="container my-3">
     <?php include('echo_alert.php') ?>
     <div class="row">
-      <div class="col-12 text-center">
-        <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">管理折扣</h2>
+      <div class="col-12">
+        <ul class="nav nav-tabs ">
+          <li class="nav-item">
+            <a class="nav-link <?php if($_GET['page']==1)echo 'active ' ?>" href="discount_list.php?page=1">管理折扣</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?php if($_GET['page']==2)echo 'active ' ?>" href="discount_list.php?page=2">新增</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 text-center <?php if($_GET['page']!=1)echo 'd-none ' ?>">
+        <h2 class="d-none my-3" style="border-bottom:5px #333 solid;">管理折扣</h2>
         <table class="table table-hover table-dark my-3 ">
           <thead>
             <tr>
@@ -76,7 +89,7 @@
         </table>
       </div>
 
-      <div class="col-12 col-lg-6 offset-lg-0 my-3">
+      <div class="col-12 col-lg-6 offset-lg-0 my-3 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
         <div class="card">
           <div class="card-header text-center">新增折扣</div>
           <div class="card-body">
@@ -139,7 +152,7 @@
         </div>
 
       </div>
-      <div class="col-12 col-lg-6 my-3">
+      <div class="col-12 col-lg-6 my-3 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
         <div class="card" >
           <div class="card-body">
             <h4 class="card-title">猴子都能懂的折扣類型說明</h4>

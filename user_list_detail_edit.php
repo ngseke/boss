@@ -17,8 +17,6 @@
     <div class="row">
       <div class="col-12 text-center">
         <?php
-        if (isset($_POST['update'])) echo 'update';
-        elseif (isset($_POST['delete'])) echo 'delete';
         //設定地點為台北時區
         date_default_timezone_set('Asia/Taipei');
 
@@ -27,19 +25,18 @@
         $Name=$_POST['Name'];
         $Email=$_POST['Email'];
         $Phone=$_POST['Phone'];
-        $Regdate=date("Y/m/d");//取得年份/月/日 時:分:秒
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
-        $Address=($_POST['Address']=NULL)?NULL:$_POST['Address'];
+        $Address=$_POST['Address'];
         $Position=$_POST['Position'];
         $sql= "UPDATE MEMBER
-        SET Password='$Password',Email='$Email',Name='$Name',Phone='$Phone',Regdate='$Regdate',Birth='$Birth',Gender='$Gender',Address='$Address',Position='$Position'
+        SET Password='$Password',Email='$Email',Name='$Name', Phone='$Phone',Birth='$Birth',Gender='$Gender', Address='$Address',Position='$Position'
         WHERE ID='$ID'";
         $conn->query($sql);
-        
+
         $_SESSION['AlertMsg'] =
           array('success','<i class="material-icons">done</i> 修改用戶成功',false);
-        
+
         $conn->close();
         ?>
       </div>
