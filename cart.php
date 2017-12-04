@@ -36,12 +36,11 @@
           <tbody>
             <?php
               // 資料庫指令
-              $sql = "SELECT P.ID PID, P.Img PIMG, P.Name PName, P.Price PPrice, CR.Quantity CRQ
+              $sql = "SELECT P.PID PID, P.PImg PIMG, P.PName PName, P.PPrice PPrice, CR.Quantity CRQ
                       FROM CART C
                       JOIN CART_RECORD CR ON C.ID = CR.ID
-                      JOIN PRODUCT P ON CR.PID = P.ID
+                      JOIN PRODUCT_VIEW P ON CR.PID = P.PID
                       WHERE C.ID='".$CartID."'";
-              // $result 存放查詢到的所有物件
               $result = $conn->query($sql);
               if(mysqli_num_rows($result)>0){
                 while($rows = mysqli_fetch_array($result)){
