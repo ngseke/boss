@@ -37,10 +37,20 @@
 
       if(isset($_POST['name']) && isset($_POST['stock']) && isset($_POST['stockNum']) &&
          isset($_POST['price']) && isset($_POST['description']) && isset($_POST['IDnum'])){
-        $sql = "UPDATE product
-                SET Name = '$name', Info = '$description', State = '$stock',
-                    Stock = '$stockNum', Price = $price, Img = '$target_file'
-                WHERE ID = " . $ID;
+
+        // 若未上傳檔案則不update
+        if(empty(basename($_FILES["file"]["name"]))){
+          $sql = "UPDATE product
+                  SET Name = '$name', Info = '$description', State = '$stock',
+                      Stock = '$stockNum', Price = $price
+                  WHERE ID = " . $ID;
+        }
+        else{
+          $sql = "UPDATE product
+                  SET Name = '$name', Info = '$description', State = '$stock',
+                      Stock = '$stockNum', Price = $price, Img = '$target_file'
+                  WHERE ID = " . $ID;
+        }
 
         if ($conn -> query($sql) === TRUE)
           echo "Check Successful <br>";

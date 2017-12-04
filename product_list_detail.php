@@ -10,8 +10,22 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
-
 <body>
+  <?php  include ('connection.php');
+    $sql = "SELECT * FROM product WHERE ID = " . $_GET['ID'];
+    $result = $conn -> query($sql);
+    if ($result->num_rows > 0) {
+    // output data of each row
+      while($row = $result->fetch_assoc()) {
+          $name = $row['Name'];
+          $stockNum = $row['Stock'];
+          $price = $row['Price'];
+          $description = $row['Info'];
+          $Img = $row['Img'];
+      }
+    }
+  ?>
+
   <div class="col-6 offset-3 mt-5">
     <div class="card">
       <div class="card-header text-center">修改商品</div>
@@ -19,30 +33,32 @@
         <form class="row" action="product_list_detail_edit.php" method="post" enctype="multipart/form-data" >
           <div class="col-12 form-group">
             <label for="">名稱 <span class="text-info">*</span></label>
-            <input type="text" class="form-control" name="name" >
+            <input type="text" class="form-control" name="name" value="<?php echo $name; ?>" >
           </div>
           <div class="col-12 form-group">
             <label for="">庫存狀態 <span class="text-info">*</span></label>
-            <select class="form-control" name="stock">
+            <select class="form-control" name="stock" >
               <option value="in_stock">in_stock</option>
               <option value="out_of_stock">out_of_stock</option>
             </select>
           </div>
           <div class="col-12 col-lg-6 form-group">
             <label for="">庫存數量 <span class="text-info">*</span></label>
-            <input type="number" name="stockNum" class="form-control" >
+            <input type="number" name="stockNum" class="form-control" value = "<?php echo $stockNum; ?>" >
           </div>
           <div class="col-12 col-lg-6 form-group">
             <label for="">價錢 <span class="text-info">*</span></label></label>
-            <input type="number" name="price" class="form-control" >
+            <input type="number" name="price" class="form-control" value = "<?php echo $price?>" >
           </div>
           <div class="col-12 col-lg-6 form-group">
             <label for="exampleFormControlFile1">上傳圖片</label>
-            <input type="file" class="form-control-file" name="file">
+            <input type="file" class="form-control-file" name="file" >
           </div>
           <div class="col-12 form-group">
             <label for="">商品描述 <span class="text-info">*</span></label>
-            <textarea class="form-control" name="description" rows="3"></textarea>
+            <textarea class="form-control" name="description" rows="3" >
+              <?php echo $description ?>
+            </textarea>
             </select>
           </div>
           <div class="col-12 form-group">
@@ -50,6 +66,7 @@
             <button class="btn btn-success btn-block" type="submit" >立即新增</button>
           </div>
         </form>
+
       </div>
     </div>
   </div>
