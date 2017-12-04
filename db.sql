@@ -115,7 +115,7 @@ VALUE('袋鼠山雪多利白葡萄酒', 6000, 'in_stock', 999, 4, 14, '澳洲袋
 
 -- 插入 日本茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
-VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, NULL, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
+VALUE('午後の紅茶ミルクティー', 55, 'in_stock', 999, 3, 5, 'かつてシンハラ王朝の都があったセイロン紅茶発祥の地、キャンディの茶葉を使用。キャンディ茶葉のコクのある香りとミルクの濃厚な味わいで心ほどける本格アイスミルクティー。', 'http://www.kirin.co.jp/products/softdrink/gogo/products/images/modal/m_item_milk.png');
 
 -- 插入 乳酸飲料;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
@@ -142,11 +142,11 @@ VALUE('黑松沙士', 25, 'in_stock', 999, NULL, 6, '歡樂時光一直倒~黑�
 -- 插入 麥香;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('麥香紅茶', 10, 'in_stock', 999, NULL, 2, '醇厚紅茶結合焙炒大麥，成就獨特大麥風味、暢銷全台的紅茶飲料。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201104624_26964.jpg'),
-('麥香奶茶', 10, 'in_stock', 999, NULL, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
+('麥香奶茶', 10, 'in_stock', 999, 3, 5, '醇厚紅茶結合大麥香氣與乳粉調配，呈現具獨特大麥及焦糖風味的奶茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110407_73845.jpg'),
 ('麥香綠茶', 10, 'in_stock', 999, NULL, 2, '選用甜香特色的焙香綠茶葉，萃取醇厚茶汁，搭配焙炒大麥，呈現獨特大麥風味的綠茶。', 'http://www.pecos.com.tw/tmp/image/20161201/20161201110522_79817.jpg'),
 ('麥香阿薩姆紅茶', 25, 'in_stock', 999, NULL, 2, '選用花甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥，呈現茶香甜香交織的阿薩姆紅茶。', 'http://www.pecos.com.tw/tmp/image/20150910/20150910082855_85509.jpg'),
-('麥香阿薩姆奶茶', 25, 'in_stock', 999, NULL, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
-('麥香錫蘭奶茶', 25, 'in_stock', 999, NULL, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
+('麥香阿薩姆奶茶', 25, 'in_stock', 999, 3, 5, '選用麥芽甜香與渾厚飽滿特性的阿薩姆紅茶葉，結合焙炒大麥、乳粉與煉乳調配，呈現濃郁甜香的阿薩姆奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113155_53978.jpg'),
+('麥香錫蘭奶茶', 25, 'in_stock', 999, 3, 5, '選用芬芳香氣與口感渾厚的錫蘭紅茶葉，結合焙炒大麥與乳粉，呈現香滑醇順的錫蘭奶茶。', 'http://www.pecos.com.tw/tmp/image/20150909/20150909113347_48359.jpg');
 
 -- 插入 水;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
@@ -213,16 +213,19 @@ DROP VIEW IF EXISTS PRODUCT_VIEW;
 CREATE VIEW PRODUCT_VIEW
 AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock,
           C.Name CName, C.ID CID, D.ID DID, D.Rate DRate,
+          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='BOGO')
+                THEN 'BOGO'
+                WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+                THEN 'Discount'
+                ELSE NULL END) DEventType,
           P.Price PPrice,
-          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()))
+          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
                 THEN (P.Price * D.Rate)
-                ELSE NULL
-                END) PPriceDiscount,
+                ELSE NULL END) PPriceDiscount,
           FORMAT(P.Price,0) PPriceF,
-          FORMAT((CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()))
+          FORMAT((CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
                 THEN (P.Price * D.Rate)
-                ELSE NULL
-                END),0) PPriceDiscountF
+                ELSE NULL END),0) PPriceDiscountF
            FROM PRODUCT P
            INNER JOIN CATEGORY C ON P.CategoryID = C.ID
            LEFT JOIN DISCOUNT D ON P.DID = D.ID

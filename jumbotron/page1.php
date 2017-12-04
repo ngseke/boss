@@ -11,12 +11,16 @@
       </div>
       <?php
       while($rows=mysqli_fetch_array($result)){
-        if($rows['PPriceDiscountF']!=''){
+        if($rows['DEventType']=='Discount'){
           $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
           $price_text.='<span class="badge badge-info">Event</span> ';
+        } else if($rows['DEventType']=='BOGO'){
+            $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
+            $price_text.='<span class="badge badge-info">買一送一</span> ';
         } else{
-          $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span>';
+          $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
         }
+
         echo '<div class="col-12 col-lg-3 text-center my-3 link" onclick="location.href=\'product_detail.php?ID=' . $rows['PID'].'\'">
           <img src="' . $rows['PImg'] . '" class="img-fluid mx-auto d-block mb-2" style="height:8rem;width:auto;">
           <h5>'. $rows['PName'] . '</h5>'

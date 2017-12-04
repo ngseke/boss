@@ -39,20 +39,18 @@
           <?php $list_active = !(isset($_GET['category_id'])||isset($_GET['search']))?'active':''  ?>
           <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
           <?php
-            $sql = "SELECT * FROM CATEGORY C ORDER BY ID ASC";
+            $sql = "SELECT CID, CName, COUNT(*) CNum
+                    FROM PRODUCT_VIEW GROUP BY CID
+                    ORDER BY CID";
             $result = $conn->query($sql);
-
             while($rows = mysqli_fetch_array($result)){
               // 查詢該類別下有多少筆商品
-              $sql1 = "SELECT COUNT(*) COUNT_NUM FROM PRODUCT P, CATEGORY C
-                      WHERE P.CategoryID = C.ID
-                      AND P.CategoryID =" . $rows['ID'];
-              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['ID']){
+              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['CID']){
                 $list_active='active';
               }else $list_active='';
-              echo '<a href="product.php?category_id='. $rows['ID'] .'"
-                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['Name'] .
-                    '<span class="badge badge-dark badge-pill">'. mysqli_fetch_array($conn->query($sql1))['COUNT_NUM'] .'</span></a>';
+              echo '<a href="product.php?category_id='. $rows['CID'] .'"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
+                    '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
             }
           ?>
         </div>
@@ -99,11 +97,14 @@
                 $product_animation='';
 
               // 如果有折扣的話 顯示有折扣後的價格
-              if($rows['PPriceDiscountF']!=''){
+              if($rows['DEventType']=='Discount'){
                 $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
                 $price_text.='<span class="badge badge-info">Event</span> ';
+              } else if($rows['DEventType']=='BOGO'){
+                  $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
+                  $price_text.='<span class="badge badge-info">買一送一</span> ';
               } else{
-                $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span>';
+                $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
               }
               $i+=0.06;
               echo '<div class="col-12 col-lg-4 mb-2">
