@@ -161,6 +161,11 @@ INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('美粒果柳橙汁', 23, 'in_stock', 999, NULL, 8, '加入了陽光果肉，含有果肉纖維、營養更完整，讓您在飲用時可以喝到滿口的果肉，並享有咀嚼果肉的驚奇口感，帶給您全新體驗、愛不釋手。', 'http://www.savesafe.com.tw/ProdImg/1001/659/00/1001659_00_main.jpg?t=20130628101622'),
       ('美粒果白葡萄汁', 23, 'in_stock', 999, NULL, 8, '添加入清新蘆薈粒、營養更完整，讓您在飲用時可以喝到滿口的蘆薈粒，並享有咀嚼蘆薈粒的驚奇口感，帶給您全新體驗、愛不釋手。', 'https://mart.ibon.com.tw/mdz_file/item/21/20/01/1012/10120011634G_char_65_160929104900.jpg');
 
+-- 插入 乳飲品;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('光泉杯裝麥芽調味乳玉米片', 35, 'in_stock', 999, NULL, 9, '對生活步調匆忙的學生族而言，是最便利、營養的早餐飲品,精選進口麥芽粉溶入香純牛乳中,喝下滿口自然香甜的麥芽風味， 也喝下了好健康', 'https://www.savesafe.com.tw/ProdImg/1007/857/00/1007857_00_main.jpg');
+
+
 -- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
 ('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
