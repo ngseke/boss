@@ -45,9 +45,9 @@
               $result = $conn->query($sql);
               if(mysqli_num_rows($result)>0){
                 while($rows = mysqli_fetch_array($result)){
-                  echo '<tr class="text-lg-center">
-                          <th scope="row">
-                            <img src="' . $rows['PIMG'] . '" class="img-fluid mb-3" >
+                  echo '<tr class="text-lg-center" >
+                          <th>
+                            <img src="' . $rows['PIMG'] . '" class="img-fluid " style="max-height:5rem;">
                           </th>
                           <th scope="row" class="text-left align-middle">'
                             . $rows['PName'] . '

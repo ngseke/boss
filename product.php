@@ -63,20 +63,14 @@
         <div class="row">
           <?php
             // 資料庫指令
-            $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
-                    FORMAT(Price,0) PPrice FROM PRODUCT P
-                    INNER JOIN CATEGORY C
-                    ON P.CategoryID = C.ID
-                    WHERE P.CategoryID = C.ID
-                    AND (P.Name LIKE '%$search%'
-                    OR P.Info LIKE '%$search%')
-                    ORDER BY P.CategoryID, PID";
+            $sql = "SELECT * FROM PRODUCT_VIEW
+                    WHERE (PName LIKE '%$search%'
+                    OR PInfo LIKE '%$search%')
+                    ORDER BY CID, PID";
 
             if(isset($_GET['category_id'])){
-              $sql = "SELECT *, P.ID PID, P.Name PName, C.Name CName,
-                      FORMAT(Price,0) PPrice FROM PRODUCT P, CATEGORY C
-                      WHERE P.CategoryID = C.ID
-                      AND P.CategoryID =" . $_GET['category_id'];
+              $sql = "SELECT * FROM PRODUCT_VIEW
+                      WHERE CID =" . $_GET['category_id'];
             }
 
             // $result 存放查詢到的所有物件
@@ -92,7 +86,7 @@
             }else if(isset($_GET['category_id'])){ // 若以分類查詢
               echo '<div class="alert alert-info">
                       <i class="material-icons">search</i>
-                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT * FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
+                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT Name FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
                     </div>';
             }
             echo '</div>';
@@ -106,19 +100,18 @@
                 $product_animation='';
 
               $i+=0.06;
-              $info = $rows['Info'];
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
                         <div class="card" '. $product_animation .'>
                           <div class="card-body">
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">
-                              <img src="' . $rows['Img'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
+                              <img src="' . $rows['PImg'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1 text-truncate">' . $rows['PName'] . '</h5>
-                                <p class="card-text mb-2 text-truncate">' . $info . '</p>
-                                <span class="badge badge-primary ">NT$ ' . $rows['PPrice'] . '</span>
+                                <p class="card-text mb-2 text-truncate">' . $rows['PInfo'] . '</p>
+                                <span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span>
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                               </div>
                             </div>
@@ -127,7 +120,6 @@
                         </div>
                       </a>
                     </div>';
-
             }
           ?>
         </div>
