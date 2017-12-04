@@ -156,6 +156,15 @@ VALUE('UNI water', 20, 'in_stock', 999, NULL, 17, 'UNI water為國內首創「�
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('爽健美茶', 25, 'in_stock', 999, NULL, 4, '生活的壓力與瑣事總讓自己感到煩躁，多希望能有一個天然的純淨茶飲，讓身心靈釋放，得到片刻的舒緩，以再次擁有清爽愉快的心情，朝著健康的生活積極邁進。風行日本多年的『爽健美茶』是大自然恩賜的完美組合，由薏仁、玄米、綠茶、月見草等15種100%日本進口、有益健康的天然素材調和而成，散發獨特香氣與純淨清新的口感。喝一口，就能感受到大自然所帶來清爽、健康、美麗的全新愉快感受。喝一口爽健美茶，讓身體沉浸在15種天然成分調和的大自然恩賜中，由內而外，為你帶來清爽、健康、美麗的全新愉快感受。', 'https://mart.ibon.com.tw/mdz_file/item/21/20/01/1005/10050009143G_char_5_170217093152.jpg');
 
+-- 插入 果汁;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('美粒果柳橙汁', 23, 'in_stock', 999, NULL, 8, '加入了陽光果肉，含有果肉纖維、營養更完整，讓您在飲用時可以喝到滿口的果肉，並享有咀嚼果肉的驚奇口感，帶給您全新體驗、愛不釋手。', 'http://www.savesafe.com.tw/ProdImg/1001/659/00/1001659_00_main.jpg?t=20130628101622'),
+      ('美粒果白葡萄汁', 23, 'in_stock', 999, NULL, 8, '添加入清新蘆薈粒、營養更完整，讓您在飲用時可以喝到滿口的蘆薈粒，並享有咀嚼蘆薈粒的驚奇口感，帶給您全新體驗、愛不釋手。', 'https://mart.ibon.com.tw/mdz_file/item/21/20/01/1012/10120011634G_char_65_160929104900.jpg');
+
+-- 插入 乳飲品;
+INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
+VALUE('光泉杯裝麥芽調味乳玉米片', 35, 'in_stock', 999, NULL, 9, '對生活步調匆忙的學生族而言，是最便利、營養的早餐飲品,精選進口麥芽粉溶入香純牛乳中,喝下滿口自然香甜的麥芽風味， 也喝下了好健康', 'https://www.savesafe.com.tw/ProdImg/1007/857/00/1007857_00_main.jpg');
+
 
 -- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
 INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
