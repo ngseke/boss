@@ -75,7 +75,6 @@
 
             // $result 存放查詢到的所有物件
             $result = $conn->query($sql);
-
             echo '<div class="col-12">';
             // 若執行搜尋，印出提示文字
             if(isset($_GET['search'])){
@@ -99,6 +98,13 @@
               else
                 $product_animation='';
 
+              // 如果有折扣的話 顯示有折扣後的價格
+              if($rows['PPriceDiscountF']!=''){
+                $price_text='<span class="badge badge-danger ">NT$ ' . $rows['PPriceDiscountF'] . '</span> ';
+                $price_text.='<span class="badge badge-info">Event</span> ';
+              } else{
+                $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span>';
+              }
               $i+=0.06;
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
@@ -110,8 +116,8 @@
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1 text-truncate">' . $rows['PName'] . '</h5>
-                                <p class="card-text mb-2 text-truncate">' . $rows['PInfo'] . '</p>
-                                <span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span>
+                                <p class="card-text mb-2 text-truncate">' . $rows['PInfo'] . '</p>'
+                                 . $price_text . '
                                 <span class="badge badge-dark ">' . $rows['CName'] . '</span>
                               </div>
                             </div>
