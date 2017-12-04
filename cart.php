@@ -1,18 +1,8 @@
 <?php session_start();?>
 <?php include('connection.php'); ?>
 <?php $page_name="購物車"?>
-<?php
-if(!isset($_SESSION['CartID'])){
-  $CartID=mb_strimwidth(md5(rand()*rand()),0,8);
-  $sql="INSERT INTO CART(ID,CID,DID) VALUES('$CartID',NULL,NULL)";
-  $conn->query($sql);
-  $_SESSION['CartID']=$CartID;
-}
+<?php include ('cart_set.php')?>
 
-if(isset($_SESSION['CartID'])){
-  $CartID = $_SESSION['CartID'];
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -30,6 +20,7 @@ if(isset($_SESSION['CartID'])){
     <div class="row" >
       <div class="col-12 text-center ">
         <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">看購物車</h2>
+        <p class="text-muted"><?php echo $CartID ?></p>
         <table class="table table-bordered my-3">
           <thead class="thead-dark text-center">
             <tr>
@@ -99,9 +90,8 @@ if(isset($_SESSION['CartID'])){
           </tbody>
         </table>
       </div>
-      <div class="col-12 col-lg-6 offset-lg-6 text-center ">
+      <div class="col-12 col-lg-6 offset-lg-3 text-center ">
         <a class="btn btn-outline-dark btn-block" href="#">確認訂單</a>
-
       </div>
     </div>
 

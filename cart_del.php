@@ -22,7 +22,6 @@
             $sql = " DELETE FROM CART_RECORD
                      WHERE CART_RECORD.PID =".$_GET['PID'].
                      " AND ID='".$_GET['CartID']."'";
-                    echo $sql;
             $conn->query($sql);
           }
         ?>
@@ -33,4 +32,8 @@
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>
+<script language="Javascript">
+  // 返回上一頁
+  setTimeout("history.back()", 100);
+</script>
 </html>
