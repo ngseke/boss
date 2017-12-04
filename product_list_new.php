@@ -47,6 +47,7 @@
                 <select class="form-control" name="State" required>
                   <option value="in_stock">in_stock</option>
                   <option value="out_of_stock">out_of_stock</option>
+                  <option value="removed_from_shelves">removed_from_shelves</option>
                 </select>
               </div>
               <div class="col-12 col-lg-6 form-group">
