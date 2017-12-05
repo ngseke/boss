@@ -65,4 +65,8 @@
   </div>
 </div>
 
+<?php include('footer.php') ?>
 </body>
+<!-- 引入JS -->
+<?php include('js.php') ?>
+<html>
