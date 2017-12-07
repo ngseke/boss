@@ -36,59 +36,68 @@
           <tbody>
             <?php
               // 資料庫指令
-              $sql = "SELECT P.PID PID, P.PImg PIMG, P.PName PName, P.PPrice PPrice, CR.Quantity CRQ
+              $sql = "SELECT P.PID PID, P.PImg PIMG, P.PName PName, P.PPrice PPrice,
+                      CR.Quantity CRQ, P.PPriceDiscount PPriceD, P.DID PDID, P.DEvent PDEvent
                       FROM CART C
                       JOIN CART_RECORD CR ON C.ID = CR.ID
                       JOIN PRODUCT_VIEW P ON CR.PID = P.PID
                       WHERE C.ID='".$CartID."'";
               $result = $conn->query($sql);
-              if(mysqli_num_rows($result)>0){
-                while($rows = mysqli_fetch_array($result)){
-                  echo '<tr class="text-lg-center" >
-                          <th>
-                            <img src="' . $rows['PIMG'] . '" class="img-fluid " style="max-height:5rem;">
-                          </th>
-                          <th scope="row" class="text-left align-middle">'
-                            . $rows['PName'] . '
-                          </th>
-                          <th class="align-middle">NT$ ' . $rows['PPrice'] . '</th>
-                          <th class="align-middle">'.$rows['CRQ'].'</th>
-                          <th class="align-middle">'.$rows['PPrice'] * $rows['CRQ'].'</th>
-                          <th class="align-middle">
-                            <a class="btn btn-outline-dark" href="cart_del.php?CartID='.$CartID.'&PID='.$rows['PID'].'"><i class="material-icons">delete</i></a>
-                          </th>
-                        </tr>';
-                }
-
-                $result2 = $conn->query($sql);
-                $SelectCount = 0;
-                $Total = 0;
-                $Fare = 60;
-                while($rows = mysqli_fetch_array($result2)){
-                  $SelectCount += $rows['CRQ'];
-                  $Total += $rows['CRQ'] * $rows['PPrice'];
-                }
-                if($Total<1000) $Total+=$Fare;
-                else $Fare=0;
-                echo '
-                  <form action="cart_del.php" method="post">
-                  <input type="hidden" name="temp" value="' . $rows['PID'] . '">
-                  <tr class="text-right">
-                    <td colspan="6">
-                      共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '. $Total .'</strong></br>
-                      運費小計：<strong>NT$ '.$Fare.'</strong></br>
-                      <font size="+2">總金額：NT$ <strong>'.$Total.'</strong></font>
-                    </td>
-                  </tr>';
-              }
-              else {
+              if(mysqli_num_rows($result) == 0) {
                 echo'
                   <tr>
                     <td colspan="6">您尚未選購產品</td>
                   </tr>';
               }
-
+              else if(mysqli_num_rows($result) > 0){
+                $Total = 0;
+                $SelectCount = 0;
+                $Fare = 60;
+                while($rows = mysqli_fetch_array($result)){
+                  $CountQuantity = 0;
+                  $cost = 0;
+                  if($rows['PDID'] == 3){
+                    if($rows['CRQ'] % 2 == 0) $CountQuantity = $rows['CRQ'] / 2;
+                    else $CountQuantity = floor($rows['CRQ'] / 2) + 1;
+                  }
+                  else $CountQuantity = $rows['CRQ'];
+                  if($rows['PPriceD'] != ''){ //有折扣
+                    $cost = round($rows['PPriceD']);
+                  }
+                  else{
+                    $cost = $rows['PPrice'];
+                  }
+                  echo $rows['PDID'];
+                  echo $cost;
+                  echo $CountQuantity;
+                  echo '<tr class="text-lg-center" >
+                          <th>
+                            <img src="'.$rows['PIMG'].'" class="img-fluid " style="max-height:5rem;">
+                          </th>
+                          <th scope="row" class="text-left align-middle">'.$rows['PName'].'</br>'.$rows['PDEvent'].'</th>
+                          <th class="align-middle">NT$ '.number_format($cost).'</th>
+                          <th class="align-middle">'.$rows['CRQ'].'</th>
+                          <th class="align-middle">NT$ '.number_format($cost * $CountQuantity).'</th>
+                          <th class="align-middle">
+                            <a class="btn btn-outline-dark" href="cart_del.php?CartID='.$CartID.'&PID='.$rows['PID'].'"><i class="material-icons">delete</i></a>
+                          </th>
+                        </tr>';
+                  $Total += $cost * $CountQuantity;
+                  $SelectCount += $rows['CRQ'];
+                }
+              }
             ?>
+            <form action="cart_del.php" method="post">
+            <?php echo '<input type="hidden" name="temp" value="' . $rows['PID'] . '">'; ?>
+            <tr class="text-right">
+              <td colspan="6">
+                <?php echo '共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '.number_format($Total).'</strong></br>';
+                if($Total<1000) $Total += $Fare;
+                else $Fare = 0;
+                echo '運費小計：<strong>NT$ '.$Fare.'</strong></br>';
+                echo '<font size="+2">總金額：NT$ <strong>'.number_format($Total).'</strong></font>'; ?>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -96,7 +105,6 @@
         <a class="btn btn-outline-dark btn-block" href="#">確認訂單</a>
       </div>
     </div>
-
   </div>
   <?php include('footer.php') ?>
 </body>
