@@ -34,6 +34,9 @@
           </thead>
           <tbody>
             <?php
+              $Total = 0;
+              $SelectCount = 0;
+              $Fare = 60;
               // 資料庫指令
               $sql = "SELECT P.PID PID, P.PImg PIMG, P.PName PName, P.PPrice PPrice,
                       CR.Quantity CRQ, P.PPriceDiscount PPriceD, P.DID PDID, P.DEvent PDEvent
@@ -43,15 +46,13 @@
                       WHERE C.ID='".$CartID."'";
               $result = $conn->query($sql);
               if(mysqli_num_rows($result) == 0) {
+                $Fare = 0;
                 echo'
                   <tr>
                     <td colspan="6">您尚未選購產品</td>
                   </tr>';
               }
               else if(mysqli_num_rows($result) > 0){
-                $Total = 0;
-                $SelectCount = 0;
-                $Fare = 60;
                 while($rows = mysqli_fetch_array($result)){
                   $CountQuantity = 0;
                   $cost = 0;
@@ -78,13 +79,13 @@
                             <a class="btn btn-outline-dark" href="cart_del.php?CartID='.$CartID.'&PID='.$rows['PID'].'"><i class="material-icons">delete</i></a>
                           </th>
                         </tr>';
+                  echo'<form action="cart_del.php" method="post">
+                       <input type="hidden" name="temp" value="' . $rows['PID'] . '">;';
                   $Total += $cost * $CountQuantity;
                   $SelectCount += $rows['CRQ'];
                 }
               }
             ?>
-            <form action="cart_del.php" method="post">
-            <?php echo '<input type="hidden" name="temp" value="' . $rows['PID'] . '">'; ?>
             <tr class="text-right">
               <td colspan="6">
                 <?php echo '共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '.number_format($Total).'</strong></br>';
@@ -98,7 +99,10 @@
         </table>
       </div>
       <div class="col-12 col-lg-6 offset-lg-3 text-center ">
-        <a class="btn btn-outline-dark btn-block" href="#">確認訂單</a>
+        <?php
+          if($Total > 0)
+            echo'<a class="btn btn-outline-dark btn-block" href="#">確認訂單</a>';
+        ?>
       </div>
     </div>
   </div>
