@@ -20,8 +20,7 @@
     <div class="row" >
       <div class="col-12 text-center ">
         <?php include('echo_alert.php') ?>
-        <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">看購物車</h2>
-        <p class="text-muted"><?php echo $CartID ?></p>
+        <h2 class="d-inline-block my-3" style="border-bottom:5px #333 solid;">購物車</h2>
         <table class="table table-bordered my-3">
           <thead class="thead-dark text-center">
             <tr>
@@ -67,9 +66,6 @@
                   else{
                     $cost = $rows['PPrice'];
                   }
-                  echo $rows['PDID'];
-                  echo $cost;
-                  echo $CountQuantity;
                   echo '<tr class="text-lg-center" >
                           <th>
                             <img src="'.$rows['PIMG'].'" class="img-fluid " style="max-height:5rem;">
