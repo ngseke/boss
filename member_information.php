@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
-<?php $page_name = '註冊' ?>
+<?php $page_name = '修改會員資料' ?>
 <?php $login = isset($_SESSION['ID']) ? true : false ; ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@
         $Birth=$row['Birth'];
         $Gender=$row['Gender'];
         $Address=$row['Address'];
-        $Position=$row['Position'];
+        // $Position=$row['Position']; // 職位是不能自己改的親愛的
        ?>
   <div class="container my-3">
     <div class="row">
@@ -73,20 +73,6 @@
                     foreach ($genderList as $key => $ppap) {
                       $isThisSelected = ($Gender==$ppap)?'selected ':'';
                       echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$genderTextList[$key].'</option>';
-                    }
-                  ?>
-                </select>
-              </div>
-              <div class="col-12 col-lg-6 form-group">
-                <label for="">職位<span class="text-info">*</span></label>
-                <select class="form-control" value="<?php echo $Position;?>" name="Position" required>
-                  <?php
-                    // 以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
-                    $positionList= array('C','S','A');
-                    $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
-                    foreach ($positionList as $key => $ppap) {
-                      $isThisSelected = ($Position==$ppap)?'selected ':'';
-                      echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$positionTextList[$key].'</option>';
                     }
                   ?>
                 </select>
