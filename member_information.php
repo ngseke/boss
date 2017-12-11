@@ -50,7 +50,7 @@
                 <label for="">密碼<span class="text-info">*</span></label>
                 <input type="text" name="Password" placeholder = "若不修改請留白" class="form-control" >
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">E-mail<span class="text-info">*</span></label>
                 <input type="email" value="<?php echo $Email;?>" name="Email" maxlength="30" class="form-control" required>
               </div>

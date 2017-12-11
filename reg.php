@@ -35,11 +35,11 @@
                 <label for="">姓名 <span class="text-info">*</span></label>
                 <input type="text" value="管理員大大" name="Name" placeholder="Name" maxlength="12" class="form-control" required>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6 form-group">
                 <label for="">Email <span class="text-info">*</span></label>
                 <input type="email" value="admin@gmail.com" name="Email" placeholder="Email" maxlength="30" class="form-control" required>
               </div>
-              <div class="col-12 form-group">
+              <div class="col-12 col-lg-6  form-group">
                 <label for="">電話 <span class="text-info">*</span></label>
                 <input type="text" value="0912345678" name="Phone" placeholder="Phone" maxlength="10" class="form-control" required>
               </div>
