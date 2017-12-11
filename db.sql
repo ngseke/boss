@@ -98,7 +98,7 @@ CREATE TABLE DISCOUNT (
 -- 插入 純喫茶;
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('純喫茶綠茶', 25, 'in_stock', 999, 4, 1, '採集新鮮茶葉進行炒菁，呈現茶葉鮮綠與清香，搭配柔和的茉莉綠茶，口味清爽不甜膩，新鮮暢飲最過癮!', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg'),
-      ('純喫茶紅茶', 25, 'in_stock', 999, NULL, 2, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
+      ('純喫茶紅茶', 25, 'in_stock', 999, 3, 2, '以焙炒大麥搭配紅茶，調製出濃香十足的台灣味紅茶，滿足你對新鮮的期望！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202109_56209.jpg'),
       ('純喫茶檸檬紅茶', 25, 'in_stock', 999, NULL, 2, '以冰析鮮萃工法，保留檸檬的香氣，搭配濃郁甘醇的紅茶，調和出新鮮的酸甜好滋味！', 'http://www.pecos.com.tw/tmp/image/20140417/20140417192522_66698.jpg'),
       ('純喫茶烏龍青茶', 25, 'in_stock', 999, NULL, 3, '添加焙火烏龍茶，釋放豐富香氣與醇厚原味，多層次的獨特茶感，甘潤無窮！', 'http://www.pecos.com.tw/tmp/image/20140409/20140409202049_34108.jpg'),
       ('純喫茶鮮柚綠茶', 25, 'in_stock', 999, NULL, 1, '以冰析鮮萃工法，保留葡萄柚香氣，調和清爽甘醇的茉莉綠茶，激盪出酸甜清香的新鮮果茶風味！', 'http://www.pecos.com.tw/tmp/image/20150105/20150105090925_79899.jpg'),
@@ -221,7 +221,7 @@ DROP VIEW IF EXISTS PRODUCT_VIEW;
 
 CREATE VIEW PRODUCT_VIEW
 AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.State PState,
-          C.Name CName, C.ID CID, D.ID DID, D.Rate DRate,
+          C.Name CName, C.ID CID, D.ID DID, D.Rate DRate, D.EventType DEvent,
           (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='BOGO')
                 THEN 'BOGO'
                 WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
