@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-12 text-center">
         <?php
-        
+
         //設定地點為台北時區
         date_default_timezone_set('Asia/Taipei');
 
@@ -30,16 +30,15 @@
         $Birth=$_POST['Birth'];
         $Gender=$_POST['Gender'];
         $Address=$_POST['Address'];
-        $Position=$_POST['Position'];
 
         $sql= "UPDATE MEMBER
-        SET Password='$Password',Email='$Email',Name='$Name',Phone='$Phone',Regdate='$Regdate',Birth='$Birth',Gender='$Gender',Address='$Address',Position='$Position'
+        SET Password='$Password',Email='$Email',Name='$Name',Phone='$Phone',Regdate='$Regdate',Birth='$Birth',Gender='$Gender',Address='$Address'
         WHERE ID='$ID'";
         $conn->query($sql);
-        
+
         $_SESSION['AlertMsg'] =
-          array('success','<i class="material-icons">done</i> 修改用戶成功',false);
-        
+          array('success','<i class="material-icons">done</i> 修改用戶資料成功',false);
+
         $conn->close();
         ?>
       </div>
