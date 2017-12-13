@@ -2,17 +2,10 @@
 <?php include('connection.php'); ?>
 <?php
   // 本頁的標題
-  $page_name = '所有商品';
-  // 如果有從網址列GET到'search'內容
-  $search = isset($_GET['search']) ? $_GET['search'] : '';
-  if(isset($_GET['search'])){
-    // set本頁面名稱為搜尋的內容
-    $page_name = '搜尋: ' . $search;
-  }else if(isset($_GET['category_id'])){
-    // set本頁面名稱為選擇的Category
-    $sql = "SELECT Name N FROM CATEGORY C WHERE ID=". $_GET['category_id'];
-    $page_name = mysqli_fetch_array($conn->query($sql))['N'];
-  }
+  $page_name = '商品';
+  // // 如果有從使用任一種搜尋
+  // if($search_keyword!=NULL || $search_category!=NULL || $price_from!=NULL || $price_to!=NULL)
+  //   $page_name = '查詢結果';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +16,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
-
   <!-- 根據所在頁面 印出對應的標題 -->
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
@@ -36,8 +28,15 @@
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3" style="max-height:30rem; overflow-y: scroll; overflow-x: hidden;">
         <div class="list-group">
-          <?php $list_active = !(isset($_GET['category_id'])||isset($_GET['search']))?'active':''  ?>
+          <?php
+           $list_active =
+           !(isset($_GET['category']) ||
+           isset($_GET['search']) ||
+           isset($_GET['page']))?'active':'';
+          ?>
+          <a href="product.php?page=search" class="list-group-item list-group-item-action <?php  if(isset($_GET['page']))echo 'active' ?>"><i class="material-icons">search</i> 搜尋</a>
           <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">所有商品</a>
+
           <?php
             $sql = "SELECT CID, CName, COUNT(*) CNum
                     FROM PRODUCT_VIEW GROUP BY CID
@@ -45,10 +44,10 @@
             $result = $conn->query($sql);
             while($rows = mysqli_fetch_array($result)){
               // 查詢該類別下有多少筆商品
-              if(isset($_GET['category_id']) && $_GET['category_id']== $rows['CID']){
+              if(isset($_GET['category']) && $_GET['category']== $rows['CID']){
                 $list_active='active';
               }else $list_active='';
-              echo '<a href="product.php?category_id='. $rows['CID'] .'"
+              echo '<a href="product.php?category='. $rows['CID'] .'"
                       class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
                     '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
             }
@@ -60,44 +59,59 @@
       <div class="col-12 col-lg-9">
         <div class="row">
           <?php
-            // 資料庫指令
+            $search_keyword=$search_category=$price_from=$price_to=NULL;
+            //基本查詢指令
             $sql = "SELECT * FROM PRODUCT_VIEW
-                    WHERE (PName LIKE '%$search%'
-                    OR PInfo LIKE '%$search%'
-                    OR CName LIKE '%$search%')
-                    AND PState = 'in_stock'
-                    ORDER BY CID, PID";
+                    WHERE PState = 'in_stock' ";
 
-            if(isset($_GET['category_id'])){
-              $sql = "SELECT * FROM PRODUCT_VIEW
-                      WHERE PState = 'in_stock'
-                      AND CID =" . $_GET['category_id'];
+            if(isset($_GET['keyword'])){
+              if($_GET['keyword']!=""){
+                // 加入keyword做篩選條件
+                $search_keyword=$_GET['keyword'];
+                $sql .= "AND (PName LIKE '%$search_keyword%'
+                        OR PInfo LIKE '%$search_keyword%'
+                        OR CName LIKE '%$search_keyword%') ";
+              }
+            }
+            if(isset($_GET['category'])){
+              if($_GET['category']!=""){
+                // 加入種類做篩選條件
+                $search_category=$_GET['category'];
+                $sql .= "AND CID=$search_category ";
+              }
+            }
+            if(isset($_GET['price_from'])&&isset($_GET['price_to'])){
+              if(is_numeric($_GET['price_from']) && is_numeric($_GET['price_to'])){
+                if($_GET['price_from'] <= $_GET['price_to']){
+                  // 加入價做篩選條件
+                  $price_from=$_GET['price_from'];
+                  $price_to=$_GET['price_to'];
+                  $sql .= "AND (PPrice>=$price_from AND PPrice<=$price_to) ";
+                }
+              }
             }
 
-            // $result 存放查詢到的所有物件
-            $result = $conn->query($sql);
-            echo '<div class="col-12">';
-            // 若執行搜尋，印出提示文字
-            if(isset($_GET['search'])){
-              echo '<div class="alert alert-info">
-                      <i class="material-icons">search</i>
-                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項關於 <em>'. $_GET['search'] .'</em> 的商品。
-                    </div>';
-            }else if(isset($_GET['category_id'])){ // 若以分類查詢
-              echo '<div class="alert alert-info">
-                      <i class="material-icons">search</i>
-                      查到 <strong>'. mysqli_num_rows($result) .'</strong> 項類別為 <em>'. mysqli_fetch_array($conn->query('SELECT Name FROM CATEGORY WHERE ID='.$_GET['category_id']))['Name'] .'</em> 的商品。
-                    </div>';
-            }
-            echo '</div>';
+            $sql .= "ORDER BY CID,PID"; // 令查詢到的項目按類別->PID排序
+            $result = $conn->query($sql);  // $result 存放查詢到的所有物件
+
+            if($search_keyword!=NULL || $search_category!=NULL || $price_from!=NULL || $price_to!=NULL)
+            echo '<div class="col-12">
+                  <div class="alert alert-info">
+                    <i class="material-icons">search</i>
+                    查到 <strong>'. mysqli_num_rows($result) .'</strong> 項商品。 搜尋條件：';
+            if($search_keyword!=NULL)
+              echo '<span class="badge badge-light">“ '. $search_keyword .' ”</span> ';
+            if($search_category!=NULL)
+              echo '<span class="badge badge-light">'. mysqli_fetch_array($conn->query("SELECT Name FROM CATEGORY WHERE ID=$search_category"))['Name'] .'</span> ';
+            if($price_from!=NULL && $price_to!=NULL)
+              echo '<span class="badge badge-light"> $'. $price_from .' ~ $'. $price_to .'</span> ';
+
+            if($search_keyword!=NULL || $search_category!=NULL || $price_from!=NULL || $price_to!=NULL)
+            echo '</div> </div>';
 
             // 用迴圈把每列內容取出 存放在$rows 並印出
-            $i=0;
-            while($rows = mysqli_fetch_array($result)){
-              if(product_item_animation_mode)
-                $product_animation='id="product-item" style="animation-delay: '. ($i) .'s;"';
-              else
-                $product_animation='';
+            if(!isset($_GET['page'])){
+              while($rows = mysqli_fetch_array($result)){
 
               // 如果有折扣的話 顯示有折扣後的價格
               $card_border = '';
@@ -114,15 +128,15 @@
                 $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
                 $card_border= $gift_icon = '';
               }
-              $i+=0.06;
+
               echo '<div class="col-12 col-lg-4 mb-2">
                       <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
-                        <div class="card '. $card_border .'" '. $product_animation .'>
+                        <div class="card '. $card_border .'">
                           <div class="card-body position-relative">
                               '.$gift_icon.'
                             <div class="row no-gutters text-left text-lg-center">
                               <div class="col-4 col-lg-12 text-center">
-                              <img src="' . $rows['PImg'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
+                                <img src="' . $rows['PImg'] . '" class="img-fluid mb-3" style="max-height:6rem; width:auto;">
                               </div>
                               <div class="col-8 col-lg-12">
                                 <h5 class="card-title mb-1 text-truncate">' . $rows['PName'] . '</h5>
@@ -132,12 +146,53 @@
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </a>
                     </div>';
+              }
             }
           ?>
+          <div class="col-12 col-lg-9 <?php if(!isset($_GET['page']))echo 'd-none'; ?>">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title mb-3">查詢商品</h2>
+                <form class="" method="get" action="product.php">
+                  <div class="form-group">
+                    <label>關鍵字</label>
+                    <input type="search" class="form-control" name="keyword" placeholder="Keyword">
+                  </div>
+                  <div class="form-group">
+                    <label>價格</label>
+                    <div class="row">
+                      <div class="input-group col-5 col-lg-3">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" min="0" class="form-control" name="price_from" placeholder="">
+                      </div>
+                      <label for="staticEmail" class="col-auto col-form-label px-0">~</label>
+                      <div class="input-group col-5 col-lg-3">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" min="0" class="form-control" name="price_to" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>類別</label>
+                    <select class="form-control" name="category" >
+                      <option value=""></option>
+                      <?php
+                      $sql = "SELECT * FROM CATEGORY";
+                      $result= $conn->query($sql);
+                      while($rows = mysqli_fetch_array($result)){
+                        echo "<option value=" . $rows["ID"] . ">" . $rows["Name"] . "</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">查詢</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
         <hr>
       </div>

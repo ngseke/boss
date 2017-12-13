@@ -31,7 +31,6 @@
           </tr>
         </thead>
         <tbody>
-          <form method="post" name="form1" action="XXXXXXX.php">
             <?php
             $sql = "SELECT * FROM product";
             $result = $conn->query($sql);
