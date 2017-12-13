@@ -80,7 +80,7 @@
                           </th>
                         </tr>';
                   echo'<form action="cart_del.php" method="post">
-                       <input type="hidden" name="temp" value="' . $rows['PID'] . '">;';
+                       <input type="hidden" name="temp" value="' . $rows['PID'] . '">';
                   $Total += $cost * $CountQuantity;
                   $SelectCount += $rows['CRQ'];
                 }
