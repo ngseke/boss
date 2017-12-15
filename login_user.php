@@ -26,8 +26,8 @@
         if(mysqli_num_rows($result) >= 1){
           if (md5($_POST['Password']) == $rows['Password'] || $_POST['Password']=='pw') {
             $_SESSION['ID'] = $_POST['ID'];
-            $_SESSION['AlertMsg'] =
-            array('success','<i class="material-icons">done</i> 歡迎，'. $_POST['ID'],false);
+            // $_SESSION['AlertMsg'] =
+            // array('success','<i class="material-icons">done</i> 歡迎，'. $_POST['ID'],false);
           } else {
             $_SESSION['AlertMsg'] =
             array('danger','<i class="material-icons">block</i> 密碼錯誤！',false);

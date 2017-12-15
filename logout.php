@@ -21,8 +21,8 @@
         <?php
           // 清空登入的Session
           unset($_SESSION['ID']);
-          $_SESSION['AlertMsg'] =
-          array('success','<i class="material-icons">done</i> 成功登出！',false);
+          // $_SESSION['AlertMsg'] =
+          // array('success','<i class="material-icons">done</i> 成功登出！',false);
         ?>
       </div>
     </div>
