@@ -42,9 +42,8 @@
                   <td>' . $row["Name"] . '</td>
                   <td>' . $row["State"] . '</td>
                   <td style="width:100px;">' . $row["Stock"] . '</td>
-                  <td style="width:75px;">' . $row["Price"] . '</td>';
-                  echo '<td> <img src ="' .$row['Img'] . '" height="100" width="100">';
-                  echo '</td>
+                  <td style="width:75px;">' . $row["Price"] . '</td>
+                  <td style="width:10rem;" class="text-center"> <img src ="' .$row['Img'] . '" class="img-fluid" style="max-height:5rem;"></td>
                   <td>' . $row["Info"] . '</td>
                   <td> <button type="button" class="btn btn-primary" onclick="location.href=\'product_list_detail.php?ID=' .$row["ID"].'\'"> 改爆 </button> </td>
 

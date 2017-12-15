@@ -32,6 +32,18 @@
     $sql3 = "SELECT * FROM category";
     $result3 = $conn -> query($sql3);
 
+    // for discount default
+    $sqlInfo = "SELECT Info FROM discount WHERE ID IN (SELECT DID FROM product WHERE ID = " . $_GET['ID'] . ")";
+    $resultInfo = $conn->query($sqlInfo);
+    $rowInfo = mysqli_fetch_array($resultInfo);
+    $info = $rowInfo['Info'];
+
+    // for category DEFAULT
+    $sqlCategory = "SELECT Name FROM category WHERE ID IN (SELECT CategoryID FROM product WHERE ID = " . $_GET['ID'] . ")";
+    $resultCategory = $conn->query($sqlCategory);
+    $rowCategory = mysqli_fetch_array($resultCategory);
+    $category = $rowCategory['Name'];
+
   ?>
 
   <div class="col-6 offset-3 mt-5">
@@ -65,9 +77,18 @@
               <?php
               if($result2->num_rows > 0) {
                 while($row2 = $result2->fetch_assoc()){
-                  echo "<option value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+                  if($row2["Info"] == $info)
+                    echo "<option selected=\"selected\" value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+                  else
+                    echo "<option value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+
                 }
               }
+              if($info == '')
+              echo "<option value= \"\" selected=\"selected\"></option>";
+
+              else
+                echo "<option value= \"\"></option>";
                ?>
             </select>
           </div>
@@ -77,7 +98,10 @@
               <?php
               if($result3->num_rows > 0) {
                 while($row3 = $result3->fetch_assoc()){
-                  echo "<option value = " . $row3["ID"] . ">" . $row3["Name"] . "</option>";
+                  if($row3["Name"] == $category)
+                    echo "<option selected=\"selected\" value = " . $row3["ID"] . ">" . $row3["Name"] . "</option>";
+                  else
+                    echo "<option value = " . $row3["ID"] . ">" . $row3["Name"] . "</option>";
                 }
               }
               ?>
