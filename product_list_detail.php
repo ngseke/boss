@@ -32,6 +32,13 @@
     $sql3 = "SELECT * FROM category";
     $result3 = $conn -> query($sql3);
 
+    // for discount default
+    $sqlInfo = "SELECT Info FROM discount WHERE ID IN (SELECT DID FROM product WHERE ID = " . $_GET['ID'] . ")";
+    $resultInfo = $conn->query($sqlInfo);
+    $rowInfo = mysqli_fetch_array($resultInfo);
+    $info = $rowInfo['Info'];
+    echo "info = " . $info;
+
   ?>
 
   <div class="col-6 offset-3 mt-5">
@@ -65,9 +72,14 @@
               <?php
               if($result2->num_rows > 0) {
                 while($row2 = $result2->fetch_assoc()){
-                  echo "<option value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+                  if($row2["Info"] == $info)
+                    echo "<option selected=\"selected\" value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+                  else
+                    echo "<option value = " . $row2["ID"] . ">" . $row2["Info"] . "</option>";
+
                 }
               }
+              echo "<option value= \"\"> </option>";
                ?>
             </select>
           </div>
