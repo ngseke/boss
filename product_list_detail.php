@@ -23,6 +23,7 @@
     $Img = $row['Img'];
     $DID = $row['DID'];
     $CategoryID = $row['CategoryID'];
+    $State = $row['State'];
 
     // for discount
     $sql2 = "SELECT * FROM discount WHERE Type = 'event'";
@@ -44,7 +45,12 @@
     $rowCategory = mysqli_fetch_array($resultCategory);
     $category = $rowCategory['Name'];
 
+    // for stock type
+    $discountType = ["in_stock", "out_of_stock", "removed_from_shelves"];
+
   ?>
+
+
 
   <div class="col-6 offset-3 mt-5">
     <div class="card">
@@ -58,9 +64,15 @@
           <div class="col-12 form-group">
             <label for="">庫存狀態 <span class="text-info">*</span></label>
             <select class="form-control" name="stock" >
-              <option value="in_stock">in_stock</option>
-              <option value="out_of_stock">out_of_stock</option>
-              <option value="removed_from_shelves">removed_from_shelves</option>
+              <?php
+                foreach ($discountType as $key=>$value) {
+                  if($value == $State){
+                    echo "<option selected=\"selected\" value = " . $value . ">" . $value . "</option>";
+                  }else{
+                    echo "<option value = " . $value . ">" . $value . "</option>";
+                  }
+                }
+                ?>
             </select>
           </div>
           <div class="col-12 col-lg-6 form-group">

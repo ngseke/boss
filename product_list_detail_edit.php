@@ -2,7 +2,7 @@
 <head>
   <?php
     if($_SERVER['HTTP_HOST'] == 'localhost'){
-      echo '<meta http-equiv=REFRESH CONTENT=100;url=product_list.php>';
+      echo '<meta http-equiv=REFRESH CONTENT=1;url=product_list.php>';
     }
     else{
       echo '<meta http-equiv=REFRESH CONTENT=1;url=';
