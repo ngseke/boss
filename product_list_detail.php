@@ -79,7 +79,11 @@
 
                 }
               }
-              echo "<option value= \"\"> </option>";
+              if($info == '')
+              echo "<option value= \"\" selected=\"selected\"></option>";
+
+              else
+                echo "<option value= \"\"></option>";
                ?>
             </select>
           </div>

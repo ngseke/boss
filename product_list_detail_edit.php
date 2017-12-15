@@ -17,8 +17,10 @@
     $price = $_POST['price'];
     $description = $_POST['description'];
     $ID = $_POST['IDnum'];
-    $DID = $_POST['discount'];
     $categoryID = $_POST['category'];
+    $DID = $_POST['discount'];
+    if($DID == '')
+      $DID = 'null';
 
     $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
