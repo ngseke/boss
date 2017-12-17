@@ -1,11 +1,7 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
 <?php
-$sql = "SELECT *, P.ID PID ,P.Name PName, C.Name CName FROM PRODUCT P
-INNER JOIN CATEGORY C
-ON P.CategoryID = C.ID
-WHERE P.CategoryID = C.ID
-AND P.ID = ".$_GET['ID'];
+$sql = "SELECT * FROM PRODUCT_VIEW WHERE PID = ".$_GET['ID'];
 $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
 ?>
 
@@ -27,19 +23,14 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
     <?php include('echo_alert.php') ?>
     <div class="row">
       <?php
-      $sql = "SELECT * FROM PRODUCT_VIEW
-              WHERE PID = ".$_GET['ID'];
+      $sql = "SELECT * FROM PRODUCT_VIEW WHERE PID = ".$_GET['ID'];
 
       $result = $conn->query($sql);
       $rows = mysqli_fetch_array($result);
-      if(product_detail_animation_mode)
-        $product_detail_animation='id="product-detail"';
-      else
-        $product_detail_animation='';
       ?>
 
       <div class="col-12 col-lg-10 offset-lg-1">
-        <div class="card py-3 " <?php echo $product_detail_animation ?>>
+        <div class="card py-3 " >
           <div class="card-body">
             <div class="row">
               <div class="col-12 col-lg-4 text-center">

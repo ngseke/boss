@@ -1,8 +1,7 @@
-
 <div class="card">
   <div class="card-body">
     <h2 class="card-title mb-3">查詢商品</h2>
-    <form class="" method="get" action="product.php">
+    <form method="get" action="product.php">
       <div class="form-group">
         <label>關鍵字</label>
         <input type="search" class="form-control" name="keyword" placeholder="Keyword">
@@ -26,7 +25,7 @@
         <select class="form-control" name="category" >
           <option value=""></option>
           <?php
-          $sql = "SELECT * FROM CATEGORY";
+          $sql = "SELECT ID, Name FROM CATEGORY";
           $result= $conn->query($sql);
           while($rows = mysqli_fetch_array($result)){
             echo "<option value=" . $rows["ID"] . ">" . $rows["Name"] . "</option>";

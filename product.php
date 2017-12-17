@@ -100,14 +100,14 @@
                     <i class="material-icons">search</i>
                     查到 <strong>'. mysqli_num_rows($result) .'</strong> 項商品。 搜尋條件：';
             if($search_keyword!=NULL)
-              echo '<span class="badge badge-light">“ '. $search_keyword .' ”</span> ';
+              echo '<span class="badge badge-light">“'. $search_keyword .'”</span> ';
             if($search_category!=NULL)
               echo '<span class="badge badge-light">'. mysqli_fetch_array($conn->query("SELECT Name FROM CATEGORY WHERE ID=$search_category"))['Name'] .'</span> ';
             if($price_from!=NULL && $price_to!=NULL)
               echo '<span class="badge badge-light"> $'. $price_from .' ~ $'. $price_to .'</span> ';
 
             if($search_keyword!=NULL || $search_category!=NULL || $price_from!=NULL || $price_to!=NULL)
-            echo '</div> </div>';
+            echo '</div></div>';
 
             // 用迴圈把每列內容取出 存放在$rows 並印出
             if(!isset($_GET['page'])){

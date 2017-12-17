@@ -5,7 +5,6 @@
   $rows_star = mysqli_fetch_array($result_star);
   $star_num=round($rows_star['Star'],1);
 
-
   $star_geweishu= floor($star_num); // 取得平均星的 “整數”
   $star_xiaoshudian= $star_num - floor($star_num); // 取得平均星的 “小數”
 ?>
@@ -15,6 +14,8 @@
     if($star_num=='0')
       echo '暫無評分';
     else{
+      echo "<h6 class='my-0'><strong>$star_num</strong></h6>";
+
       $star_counter=0;
       // 印出填滿星星
       for ($i=0; $i < $star_geweishu; $i++) {
@@ -30,8 +31,7 @@
       for(;$star_counter<5;$star_counter++){
         echo '<i class="material-icons">star_border</i>';
       }
-
-      echo ' '.$star_num;
+      //echo ' '.$star_num;
     }
   ?>
 

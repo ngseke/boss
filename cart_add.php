@@ -12,8 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <!-- <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_detail.php?ID=<?php echo $_POST['PID'] ?>"> -->
-
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_detail.php?ID=<?php echo $_POST['PID'] ?>">
 </head>
 
 <body>
@@ -39,8 +38,8 @@
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>
-<script language="Javascript">
+<!-- <script language="Javascript">
   // 返回上一頁
   setTimeout("history.back()", 10);
-</script>
+</script> -->
 </html>
