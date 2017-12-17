@@ -1,14 +1,16 @@
+<?php session_start(); ?>
+<?php include('connection.php'); ?>
+<?php $page_name = '新增中' ?>
+
+<!DOCTYPE html>
 <html>
 <head>
-  <?php
-    if($_SERVER['HTTP_HOST'] == 'localhost'){
-      echo '<meta http-equiv=REFRESH CONTENT=100;url=product_list_new.php>';
-    }
-    else{
-      echo '<meta http-equiv=REFRESH CONTENT=1;url=';
-    }
-  ?>
-  echo '<meta http-equiv=REFRESH CONTENT=1;url=product_list.php>';
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <?php include('style.php') ?>
+  <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_list.php">
 </head>
 <body>
   <?php

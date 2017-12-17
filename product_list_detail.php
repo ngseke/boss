@@ -11,7 +11,8 @@
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 <body>
-  <?php  include ('connection.php');
+  <?php
+    include ('connection.php');
     // for product
     $sql = "SELECT * FROM product WHERE ID = " . $_GET['ID'];
     $result = $conn -> query($sql);
@@ -49,9 +50,6 @@
     $discountType = ["in_stock", "out_of_stock", "removed_from_shelves"];
 
   ?>
-
-
-
   <div class="col-6 offset-3 mt-5">
     <div class="card">
       <div class="card-header text-center">修改商品</div>
