@@ -39,18 +39,18 @@ CREATE TABLE CATEGORY(
 
 -- 訂單;
 CREATE TABLE ORDER_LIST (
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  ID VARCHAR(8) PRIMARY KEY,
   Date DATETIME NOT NULL,
   FinalCost INT(7) UNSIGNED NOT NULL,
   State ENUM('submitted', 'processed', 'delivered', 'completed'),
-  CID VARCHAR(30) NOT NULL,
+  CID VARCHAR(20) NOT NULL,
   DID INT(7) UNSIGNED NOT NULL,
-  SID INT(7) UNSIGNED NOT NULL
+  SID VARCHAR(20) NOT NULL
 );
 
 -- 訂單和商品的特殊性關係;
 CREATE TABLE ORDER_LIST_RECORD (
-  OID INT(7) UNSIGNED NOT NULL,
+  OID VARCHAR(8) NOT NULL,
   PID INT(7) UNSIGNED NOT NULL,
   Quantity INT(7) UNSIGNED NOT NULL,
   PRIMARY KEY (OID, PID)
@@ -178,7 +178,8 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
             ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
             ('zhaozhenting', '0104b52e470130135013a7a87a42b609', '趙振廷', 'zhaozhenting@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市'),
-            ('yuakiqi', '0104b52e470130135013a7a87a42b609', '余鎧企', 'yuakiqi@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
+            ('yuakiqi', '0104b52e470130135013a7a87a42b609', '余鎧企', 'yuakiqi@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市'),
+            ('guest', '0104b52e470130135013a7a87a42b609', '---', '-----@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
 
 INSERT INTO COMMENT (CID, PID, Star, Comment)
   VALUES ('admin', '1', '4', 'I am Admin!'),
