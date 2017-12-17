@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=index.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=member_information.php">
 </head>
 
 <body>

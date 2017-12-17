@@ -30,7 +30,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
           <a class="nav-link " href="product.php">商品</a>
         </li>
         <form class="form-inline mx-0 mx-lg-2 my-2 my-lg-0" method="get" action="product.php">
-          <input class="form-control mr-sm-2" type="search" placeholder="搜尋" name="keyword" required>
+          <input class="form-control mr-sm-2" type="search" placeholder="快速搜尋" name="keyword" required>
           <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">Search</button>
         </form>
       </ul>

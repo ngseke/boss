@@ -28,15 +28,15 @@
         $Birth=$row['Birth'];
         $Gender=$row['Gender'];
         $Address=$row['Address'];
-        // $Position=$row['Position']; // 職位是不能自己改的親愛的
        ?>
   <div class="container my-3">
+    <?php include('echo_alert.php') ?>
     <div class="row">
       <div class="col-12 col-lg-6 offset-lg-3">
         <div class="card">
           <div class="card-header text-center">修改資料</div>
           <div class="card-body">
-            <?php include('echo_alert.php') ?>
+
             <form class="row" action="member_information_edit.php" method="post" enctype="multipart/form-data" >
               <div class="col-12 form-group">
                 <label for="">帳號<span class="text-info">*</span></label>
