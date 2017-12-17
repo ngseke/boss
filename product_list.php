@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php include('connection.php'); ?>
+<?php $page_name = '商品列表' ?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -9,14 +9,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <style>
-    .d-block{
-      display: block;
-    }
-    .d-none{
-      display: none;;
-    }
-  </style>
 </head>
 
 <body>
@@ -80,10 +72,10 @@
                 <select class="form-control " name="Event" required>
                   <?php
                     if($result->num_rows > 0) {
-                      while($row = $result->fetch_assoc()){
+                      while($row = $result->fetch_assoc())
                         echo "<option value = " . $row["ID"] . ">" . $row["Info"] . "</option>";
-                      }
                     }
+                    echo "<option value= \"\"></option>";
                   ?>
                 </select>
               </div>
@@ -105,18 +97,3 @@
 </body>
 <?php include('js.php') ?>
 </html>
-<!-- <script type="text/javascript">
-  $(document).ready(function(){
-    $("#DiscountType").change(function() {
-      if($("#DiscountType option:selected").index() == 2){
-        $("#EventTypeDiv").removeClass("d-none");
-        $("#EventTypeDiv").addClass("d-block");
-      }
-      else{
-        $("#EventTypeDiv").removeClass("d-block");
-        $("#EventTypeDiv").addClass("d-none");
-      }
-    });
-  });
-
-</script> -->

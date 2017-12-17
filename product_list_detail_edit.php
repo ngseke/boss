@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <!-- <title><?php echo  $page_name. ' - ' .title_name ?></title> -->
+  <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_list.php">
 </head>
 <body>
@@ -58,13 +58,10 @@
               WHERE ID = " . $ID;
     }
 
-    if ($conn -> query($sql) === TRUE){
-      $_SESSION['AlertMsg'] = array('success','<i class="material-icons">done</i> 修改成功', false);
-      // echo $_SESSION['AlertMsg'][0] . "<br>" .
-      //      $_SESSION['AlertMsg'][1] . "<br>" .
-      //      print_r($_SESSION['AlertMsg'][2]);
-    }else
-      echo "Check fail <br>";
+    if ($conn -> query($sql) === TRUE)
+      $_SESSION['AlertMsg'] = array('success','<i class="material-icons">done</i> 修改成功！', false);
+    else
+      $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 修改失敗！',false);
    ?>
 
 </body>

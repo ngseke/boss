@@ -21,41 +21,35 @@
       $price = $_POST['Price'];
       $info = $_POST['Info'];
       $event = $_POST['Event'];
+      if($event == '')
+        $event = 'null';
       $type = $_POST['Type'];
-
       $target_dir = "upload/";
-      $target_file = $target_dir . basename($_FILES["file"]["name"]);
+      $target_file = $target_dir . md5(basename($_FILES["file"]["name"]));
       $uploadOk = 1;
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
       // Check if image file is a actual image or fake image
-      if(isset($_POST['Name'])) {
+      if(!empty($_POST['file'])) {
         $check = getimagesize($_FILES["file"]["tmp_name"]);
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ". <br>";
             $uploadOk = 1;
             move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
             // echo $_FILES["file"]["tmp_name"]."<br>";
-        } else {
-            echo "File is not an image. <br>";
-        }
-      }
-      else{
-        echo "file is not exist";
-      }
+        } else $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不為圖片！',false);
+      } else $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不存在！',false);
 
 
       if(isset($_POST['Name']) && isset($_POST['State']) && isset($_POST['Type'])
-                && isset($_POST['Stock']) && isset($_POST['Price']) && isset($_POST['Info'])
-                && isset($_POST['Event'])){
-                  $sql = "INSERT INTO product
-                          VALUE(null, '$name', '$state', $stock, $price, '$target_file', '$info', $event, $type)";
-                  if ($conn -> query($sql) === TRUE){
-                    echo "新增成功";
-                  }
-                  else{
-                    echo '新增失敗';
-                  }
-                }
+        && isset($_POST['Stock']) && isset($_POST['Price']) && isset($_POST['Info'])
+        && isset($_POST['Event'])){
+          $sql = "INSERT INTO product
+                  VALUE(null, '$name', '$state', $stock, $price, '$target_file', '$info', $event, $type)";
+          if ($conn -> query($sql) === TRUE)
+            $_SESSION['AlertMsg'] = array('success','<i class="material-icons">done</i> 新增成功！', false);
+          else
+            $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 新增失敗！',false);
+        }
    ?>
 </body>
 </html>
