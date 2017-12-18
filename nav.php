@@ -99,7 +99,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
           </a>
           <div class="dropdown-menu" >
             <h6 class="dropdown-header">ID: <?php echo $user_id ?></h6>
-            <a class="dropdown-item <?php echo $customer_display ?>" href="#">訂單</a>
+            <a class="dropdown-item <?php echo $customer_display ?>" href="customer_order.php">訂單</a>
             <a class="dropdown-item" href="member_information.php">會員資料</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout.php">
