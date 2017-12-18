@@ -42,7 +42,7 @@
     else $comment_del_url='';
 
     $star_text='<span class="badge badge-light star mx-2">
-                  <i class="material-icons">star</i>'. $Star .'
+                  <span style="color: #FFBA0C">★</span> '. $Star .'
                 </span>';
     echo '<a '. $comment_del_url .' class="list-group-item list-group-item-action flex-column '. $comment_by_me .'">
             <div class="d-flex w-100 justify-content-between">

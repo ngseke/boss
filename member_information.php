@@ -9,6 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
+  <?php // 若無權限
+  if(!isset($_SESSION['ID']))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 
@@ -43,12 +47,12 @@
                 <input type="text" value="<?php echo $ID;?>" name="ID" class="form-control" readonly>
               </div>
               <div class="col-12 form-group">
-                <label for="">姓名<span class="text-info">*</span></label>
-                <input type="text" value="<?php echo $Name;?>" name="Name" placeholder="" class="form-control" required>
+                <label for="">密碼<span class="text-info">*</span></label>
+                <input type="password" name="Password" placeholder = "若不修改請留白" class="form-control" >
               </div>
               <div class="col-12 form-group">
-                <label for="">密碼<span class="text-info">*</span></label>
-                <input type="text" name="Password" placeholder = "若不修改請留白" class="form-control" >
+                <label for="">姓名<span class="text-info">*</span></label>
+                <input type="text" value="<?php echo $Name;?>" name="Name" placeholder="" class="form-control" required>
               </div>
               <div class="col-12 col-lg-6 form-group">
                 <label for="">E-mail<span class="text-info">*</span></label>
@@ -59,15 +63,13 @@
                 <input type="text" name="Phone" value="<?php echo $Phone;?>" placeholder="0987654321" maxlength="10" class="form-control" required>
               </div>
               <div class="col-12 col-lg-6 form-group">
-                <label for="">生日<span class="text-info">*</span></label>
+                <label for="">生日</label>
                 <input type="date" value="<?php echo $Birth;?>" name="Birth" placeholder="Birth" class="form-control" >
               </div>
               <div class="col-12 col-lg-6 form-group">
-                <label for="">性別<span class="text-info">*</span></label>
+                <label for="">性別</label>
                 <select class="form-control" value="<?php echo $Gender;?>" name="Gender" required>
                   <?php
-                    // 如果直接對select標籤預設value是不管用der
-                    // 所以改以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
                     $genderList= array('M','F','N');
                     $genderTextList= array('男(M)','女(F)','未知(N)');
                     foreach ($genderList as $key => $ppap) {
@@ -78,7 +80,7 @@
                 </select>
               </div>
               <div class="col-12 form-group">
-                <label for="">地址<span class="text-info">*</span></label>
+                <label for="">地址</label>
                 <input type="text" name="Address" value="<?php echo $Address;?>" maxlength="100" class="form-control" >
               </div>
               <div class="col-12 form-group">
