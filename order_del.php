@@ -19,18 +19,11 @@
       <div class="col-12 text-center ">
         <?php
           $CartID = $_GET['CartID'];
-          $OrderID = $_GET['OrderID'];
           $sql = "DELETE FROM CART_RECORD
                   WHERE ID='".$CartID."'";
           $conn->query($sql);
           $sql = "DELETE FROM CART
                   WHERE ID='".$CartID."'";
-          $conn->query($sql);
-          $sql = "DELETE FROM ORDER_LIST_RECORD
-                  WHERE OID='".$OrderID."'";
-          $conn->query($sql);
-          $sql = "DELETE FROM ORDER_LIST
-                  WHERE ID='".$OrderID."'";
           $conn->query($sql);
         ?>
       </div>

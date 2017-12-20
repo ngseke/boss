@@ -1,5 +1,4 @@
 <?php
-  include('nav.php');
   // 產生一組隨機的訂單ID (8位英數)
   if(isset($_SESSION['OrderID'])){
     unset($_SESSION['$OrderID']);
