@@ -11,6 +11,7 @@
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 <body>
+  <?php include('nav.php'); ?>
   <?php
     include ('connection.php');
     // for product
@@ -128,7 +129,7 @@
           </div>
           <div class="col-12 form-group">
             <input type="hidden" name="IDnum" value="<?php echo $_GET['ID'] ?>">
-            <button class="btn btn-success btn-block" type="submit" >立即新增</button>
+            <button class="btn btn-success btn-block" type="submit" >立即修改</button>
           </div>
         </form>
 
