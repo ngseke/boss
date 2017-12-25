@@ -42,10 +42,10 @@ CREATE TABLE ORDER_LIST (
   ID VARCHAR(8) PRIMARY KEY,
   Date DATETIME NOT NULL,
   FinalCost INT(7) UNSIGNED NOT NULL,
-  State ENUM('submitted', 'processed', 'delivered', 'completed'),
+  State ENUM('submitted', 'processed', 'delivered', 'completed') NOT NULL DEFAULT 'submitted',
   CID VARCHAR(20) NOT NULL,
   DID INT(7) UNSIGNED NOT NULL,
-  SID VARCHAR(20) NOT NULL
+  SID VARCHAR(20) 
 );
 
 -- 訂單和商品的特殊性關係;
@@ -198,6 +198,8 @@ INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '2', '4', '最
 INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '13', '4', '覺得可以嘗試自己做, 買茶包加牛奶');
 INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('kimjongun', '13', '1', '雖然濃醇香但是打倒日本鬼子！！🇰🇵🇰🇵🇰🇵');
 
+INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('f7cbe6b7','2017-12-25 17:28:04',22,'submitted','customer',3,'staff');
+INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('f7cbe6b6','2017-12-25 17:28:04',22,'completed','customer',3,'staff');
 
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
