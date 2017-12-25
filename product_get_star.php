@@ -31,7 +31,6 @@
       for(;$star_counter<5;$star_counter++){
         echo '<i class="material-icons">star_border</i>';
       }
-      //echo ' '.$star_num;
     }
   ?>
 
