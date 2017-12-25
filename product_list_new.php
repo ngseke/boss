@@ -71,11 +71,11 @@
                 <label for="">Event折扣方式</label>
                 <select class="form-control " name="Event" required>
                   <?php
+                  echo "<option value= \"\"></option>";
                     if($result->num_rows > 0) {
                       while($row = $result->fetch_assoc())
                         echo "<option value = " . $row["ID"] . ">" . $row["Info"] . "</option>";
                     }
-                    echo "<option value= \"\"></option>";
                   ?>
                 </select>
               </div>
