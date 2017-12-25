@@ -23,16 +23,11 @@
   <div class="container my-3">
     <?php include('echo_alert.php') ?>
     <div class="row">
-      <div class="col-12">
-        <ul class="nav nav-pills ">
-          <li class="nav-item">
-            <a class="nav-link <?php if($_GET['page']==1)echo 'active ' ?>" href="user_list.php?page=1">管理會員</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php if($_GET['page']==2)echo 'active ' ?>" href="user_list.php?page=2">新增</a>
-          </li>
-        </ul>
+      <div class="col-12 btn-group">
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['page']==1)echo 'active '?>" onclick="location.href='?page=1'">管理會員</button>
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['page']==2)echo 'active '?>" onclick="location.href='?page=2'">新增</button>
       </div>
+      
       <div class="col-12 text-center <?php if($_GET['page']!=1)echo 'd-none ' ?>">
         <h2 class=" my-3 d-none" style="border-bottom:5px #333 solid;">管理會員</h2>
         <table class="table table-hover table-dark my-3 ">
