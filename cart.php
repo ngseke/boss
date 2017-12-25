@@ -99,7 +99,7 @@
       <div class="col-12 col-lg-6 offset-lg-3 text-center ">
         <?php
           if($Total > 0)
-            echo'<a class="btn btn-outline-dark" href="order.php?CartID='.$CartID.'"><i class="material-icons">確認訂單</i></a>';
+            echo'<a class="btn btn-outline-dark" href="order.php?CartID='.$CartID.'">確認訂單</a>';
         ?>
       </div>
     </div>

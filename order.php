@@ -11,6 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+
 </head>
 
 <body>
@@ -93,8 +94,10 @@
         </table>
         <?php
           if($Total > 0){
-            echo'<a class="btn btn-outline-dark" href="order_submit.php?CartID='.$CartID.'&&Total='.$Total.'"><i class="material-icons">提交訂單</i></a>';
-            echo'<a class="btn btn-outline-dark" href="order_del.php?CartID='.$CartID.'"><i class="material-icons">取消訂單</i></a>';
+            echo'<a class="btn btn-outline-dark mr-3" href="order_submit.php?CartID='.$CartID.'&&Total='.$Total.'"><i class="material-icons">check</i> 提交訂單</a>';
+            echo'<a class="btn btn-outline-dark" href="order_del.php?CartID='.$CartID.'"><i class="material-icons">clear</i> 取消訂單</a>';
+          } else{
+              die ('<meta http-equiv="refresh" content="0;URL=cart.php">');
           }
         ?>
       </div>
@@ -103,8 +106,5 @@
   <?php include('footer.php') ?>
 </body>
 <?php include('js.php') ?>
-<script language="Javascript">
-  // 返回上一頁
-  //setTimeout("history.back()", 10);
-</script>
+
 </html>

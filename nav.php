@@ -26,7 +26,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- 靠左 -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item <?php echo ($this_page =='product')?'active':''; ?>">
+        <li class="nav-item <?=($this_page =='product')?'active':'';?>">
           <a class="nav-link " href="product.php">商品</a>
         </li>
         <form class="form-inline mx-0 mx-lg-2 my-2 my-lg-0" method="get" action="product.php">
@@ -55,39 +55,39 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
       <!-- 靠右 -->
       <ul class="navbar-nav ml-auto">
         <!-- Customer -->
-        <li class="nav-item <?php echo ($this_page =='cart')?'active ':'' ?> <?php echo $customer_display; ?>">
+        <li class="nav-item <?=($this_page =='cart')?'active ':'' ?> <?=$customer_display; ?>">
           <a class="nav-link" href="cart.php"><i class="material-icons">shopping_cart</i> 購物車</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='login')?'active ':'' ?> <?php echo $login_display ?>">
+        <li class="nav-item <?=($this_page =='login')?'active ':'' ?> <?=$login_display ?>">
           <a class="nav-link" href="login.php">登入</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='reg')?'active ':'' ?> <?php echo $reg_display ?>">
+        <li class="nav-item <?=($this_page =='reg')?'active ':'' ?> <?=$reg_display ?>">
           <a class="nav-link" href="reg.php">註冊</a>
         </li>
         <!-- Admin & Staff  -->
-        <li class="nav-item <?php echo ($this_page =='order')?'active ':'' ?> <?php echo $admin_display ?>">
+        <li class="nav-item <?=($this_page =='order')?'active ':'' ?> <?=$admin_display ?>">
           <a class="nav-link" href="order_list.php">管理訂單</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='product_list')?'active ':'' ?> <?php echo $admin_display ?>">
+        <li class="nav-item <?=($this_page =='product_list')?'active ':'' ?> <?=$admin_display ?>">
           <a class="nav-link" href="product_list.php">管理商品</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='discount_list')?'active ':'' ?> <?php echo $admin_display ?>">
+        <li class="nav-item <?=($this_page =='discount_list')?'active ':'' ?> <?=$admin_display ?>">
           <a class="nav-link" href=" discount_list.php">管理折扣</a>
         </li>
-        <li class="nav-item <?php echo ($this_page =='user_list')?'active ':'' ?> <?php echo $admin_display ?>">
+        <li class="nav-item <?=($this_page =='user_list')?'active ':'' ?> <?=$admin_display ?>">
           <a class="nav-link" href="user_list.php">管理會員</a>
         </li>
 
-        <li class="nav-item <?php echo ($this_page =='logout')?'active ':'' ?> d-none">
+        <li class="nav-item <?=($this_page =='logout')?'active ':''?> d-none">
           <a class="nav-link" href="logout.php">
             <i class="material-icons">exit_to_app</i>
-            登出 <?php echo $user_id ?>
+            登出 <?=$user_id ?>
           </a>
         </li>
-        <li class="nav-item dropdown <?php echo isset($_SESSION['ID'])?'':'d-none' ?>">
+        <li class="nav-item dropdown <?=isset($_SESSION['ID'])?'':'d-none'?>">
           <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">account_circle</i>
-            <?php echo $user_name ?>
+            <?=$user_name?>
             <?php
             if($user_position=='A'){
               echo '<span class="badge badge-pill badge-warning">管理員</span>';
@@ -98,8 +98,8 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
 
           </a>
           <div class="dropdown-menu" >
-            <h6 class="dropdown-header">ID: <?php echo $user_id ?></h6>
-            <a class="dropdown-item <?php echo $customer_display ?>" href="#">訂單</a>
+            <h6 class="dropdown-header">ID: <?=$user_id?></h6>
+            <a class="dropdown-item <?=$customer_display?>" href="#">訂單</a>
             <a class="dropdown-item" href="member_information.php">會員資料</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout.php">

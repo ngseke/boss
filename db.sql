@@ -175,18 +175,30 @@ INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Ad
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S', '台北市中正區忠孝東路一段1號'),
             ('customer', '91ec1f9324753048c0096d036a694f86', '奧客', 'customer@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市中正區中山南路1號'),
             ('a92304a92304', '0104b52e470130135013a7a87a42b609', '黃省喬', 'a92304a92304@gmail.com', '0983333804', '1997-08-23', 'M', 'C', '台北市大同區延平北路三段14號'),
-            ('wupinyi', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'wupinyi@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
+            ('kr80737', '5de7bb3c232741f461f3ccd13c1ba7a0', '吳品頤', 'kr80737@gmail.com', '0975276741', '1997-08-19', 'F', 'C' ,'台北車站Y區地下街'),
             ('zhaozhenting', '0104b52e470130135013a7a87a42b609', '趙振廷', 'zhaozhenting@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市'),
-            ('yuakiqi', '0104b52e470130135013a7a87a42b609', '余鎧企', 'yuakiqi@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
+            ('mdyu1000', '0104b52e470130135013a7a87a42b609', '余鎧企', 'mdyu1000@gmail.com', '0912345678', '1911-10-10', 'M', 'C', '台北市');
+
+INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Address)
+            VALUE('kimjongun', '21232f297a57a5a743894a0e4a801fc3', '金政恩', 'kimjongun@gmail.com', '0912345678', '1911-10-10', 'M', 'C','北朝鮮'),
+            ('caiyingwen', '1253208465b1efa876f982d8a9e73eef', '蔡央乂', 'caiyingwen@gmail.com', '0912345678', '1911-10-10', 'F', 'C', '台北市總統府');
 
 INSERT INTO COMMENT (CID, PID, Star, Comment)
   VALUES ('admin', '1', '4', 'I am Admin!'),
   ('staff', '1', '4', 'I am staff!'),
   ('customer', '1', '3','I am customer!'),
   ('customer', '1', '5', '樓下金城武'),
-  ('customer', '1', '5', '好茶好茶'),
-  ('a92304a92304', '1', '1', '樓上自肥')
-;
+  ('customer', '1', '5', '好茶好茶🍵'),
+  ('a92304a92304', '1', '1', '樓上自肥');
+
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('kr80737', '1', '1', '聞起來很奶茶，喝起來濃濃化工味。。。出來面對啦！');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('staff', '1', '5', '請樓上的客人息怒，我們將不會退錢給你');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('a92304a92304', '5', '5', '大推 不錯喝👍！有點酸酸甜甜的像是初戀的滋味 不知道是不是臭酸');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '2', '4', '最近也看到這家，是下次要購買的口袋清單 >///<');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '13', '4', '覺得可以嘗試自己做, 買茶包加牛奶');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('kimjongun', '13', '1', '雖然濃醇香但是打倒日本鬼子！！🇰🇵🇰🇵🇰🇵');
+
+
 
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季大折扣','');

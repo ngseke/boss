@@ -25,7 +25,7 @@
     <?php include('echo_alert.php') ?>
     <div class="row">
       <div class="col-12">
-        <ul class="nav nav-tabs ">
+        <ul class="nav nav-pills ">
           <li class="nav-item">
             <a class="nav-link <?php if($_GET['page']==1)echo 'active ' ?>" href="discount_list.php?page=1">管理折扣</a>
           </li>
