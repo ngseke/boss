@@ -79,8 +79,6 @@
                             <a class="btn btn-outline-dark" href="cart_del.php?CartID='.$CartID.'&PID='.$rows['PID'].'"><i class="material-icons">delete</i></a>
                           </th>
                         </tr>';
-                  echo'<form action="cart_del.php" method="post">
-                       <input type="hidden" name="temp" value="' . $rows['PID'] . '">';
                   $Total += $cost * $CountQuantity;
                   $SelectCount += $rows['CRQ'];
                 }
@@ -101,7 +99,7 @@
       <div class="col-12 col-lg-6 offset-lg-3 text-center ">
         <?php
           if($Total > 0)
-            echo'<a class="btn btn-outline-dark btn-block" href="#">確認訂單</a>';
+            echo'<a class="btn btn-outline-dark" href="order.php?CartID='.$CartID.'"><i class="material-icons">確認訂單</i></a>';
         ?>
       </div>
     </div>
