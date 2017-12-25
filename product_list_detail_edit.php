@@ -27,8 +27,13 @@
     if($DID == '')
       $DID = 'null';
 
+    $file = basename($_FILES["file"]["name"]);
+    $fileExplode = explode(".", $file);
+    $fileName = $fileExplode[0];  //檔名
+    $fileType = $fileExplode[1];  //檔案類型
+
     $target_dir = "upload/";
-    $target_file = $target_dir . password_hash(basename($_FILES["file"]["name"]),PASSWORD_BCRYPT);
+    $target_file = $target_dir . md5(password_hash($fileName, PASSWORD_DEFAULT)) . "." . $fileType;
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
