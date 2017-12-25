@@ -25,17 +25,32 @@
       if($event == '')
         $event = 'null';
       $type = $_POST['Type'];
-      $target_dir = "upload/";
-      $target_file = $target_dir . password_hash(basename($_FILES["file"]["name"]),PASSWORD_BCRYPT);
       $uploadOk = 1;
+
+      $file = basename($_FILES["file"]["name"]);
+      $fileExplode = explode(".", $file);
+      $fileName = $fileExplode[0];  //檔名
+      $fileType = $fileExplode[1];  //檔案類型
+
+      $target_dir = "upload/";
+      // $target_file = $target_dir . basename($_FILES["file"]["name"]);
+      $target_file = $target_dir . md5(password_hash($fileName, PASSWORD_DEFAULT)) . "." . $fileType;
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-      // Check if image file is a actual image or fake image
+
+      // echo "fileName : " . $fileName . "<br>" .
+      //      "fileType : " . $fileType . "<br>" ;
+
+      // echo "檔案名稱 : " . $_FILES["file"]["name"] . "<br>" .
+      //      "檔案類型 : " . $_FILES["file"]["type"] . "<br>" .
+      //      "暫存名稱 : " . $_FILES["file"]["tmp_name"] . "<br>" .
+      //      "目的地 : " . $target_file;
+
       if(!empty(basename($_FILES["file"]["name"]))) {
         $check = getimagesize($_FILES["file"]["tmp_name"]);
         if($check !== false) {
             // echo "File is an image - " . $check["mime"] . ". <br>";
             $uploadOk = 1;
-            move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
+            move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
             // echo $_FILES["file"]["tmp_name"]."<br>";
         }else{
           $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不為圖片！',false);
