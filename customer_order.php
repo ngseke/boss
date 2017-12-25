@@ -28,46 +28,50 @@
          <?php
             
             // 查詢該類別下有多少筆訂單 這是數量喔喔喔～
-            if(isset($_GET['state'])){
-              switch ($_GET['state']) {
-                case 'all':
-                  $sql = "SELECT COUNT(*) Count FROM ORDER_LIST";
+            $sql = "SELECT COUNT(*) Count FROM ORDER_LIST";
                   $result = $conn->query($sql);
-                  break;
-                case 'processed':
-                  $sql = "SELECT COUNT(*) Count 
+                  $all = mysqli_fetch_array($result)[0];
+
+            $sql = "SELECT COUNT(*) Count 
                           FROM ORDER_LIST
                           WHERE State ='submitted' 
                           OR State ='processed' 
                           OR State ='delivered'";
                   $result = $conn->query($sql);
-                  break;
-                case 'completed':
-                  $sql = "SELECT COUNT(*) Count 
+                  $processed=mysqli_fetch_array($result)[0];
+
+            $sql = "SELECT COUNT(*) Count 
                           FROM ORDER_LIST
                           WHERE State ='completed'";
                   $result = $conn->query($sql);
+                  $completed=mysqli_fetch_array($result)[0];
+
+
+
+            if(isset($_GET['state'])){
+              switch ($_GET['state']) {
+                case 'all':
+                  
+                  break;
+                case 'processed':
+                  
+                  break;
+                case 'completed':
+                  
                   break;
                 default:
                   # code...
                   break;
               }
-              $rows = mysqli_fetch_array($result);
-              $count = $rows[0];
-              echo $count;
             }
             if(isset($_GET['state']) && $_GET['state']== $rows['State']){
               $list_active='active';
-            }else $list_active='';
-            echo '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
-                  '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
-              
-              
+            }else $list_active=''
           ?>
         <div class="list-group">
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=all" >所有</a>
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=processed">未完成</a>
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=completed">完成</a>
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=all" >所有<span class="badge badge-dark badge-pill"><?php echo $all ?></span></a>
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=processed">未完成<span class="badge badge-dark badge-pill"><?php echo $processed ?></span></a>
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=completed">完成<span class="badge badge-dark badge-pill"><?php echo $completed ?></span></a>
         </div>
       </div>
         
