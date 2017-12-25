@@ -24,26 +24,50 @@
   <div class="container my-3">
     <div class="row">
       <!-- 左側選單 -->
-      <div class="col-12 col-lg-3 mb-3" style="max-height:30rem; overflow-y: scroll; overflow-x: hidden;">
-        <div class="list-group">
-          <a href="product.php" class="list-group-item list-group-item-action <?php echo $list_active ?>">訂單狀態</a>
-          <?php
-            $sql = "SELECT State,COUNT(*) ID
-                    FROM ORDER_LIST GROUP BY CID
-                    ORDER BY Date";
-            $result = $conn->query($sql);
-            while($rows = mysqli_fetch_array($result)){
-              // 查詢該類別下有多少筆訂單
-              if($rows['State']=='completed') $states = 'c';
-              else $states = 'p';
-              if(isset($_GET['state']) && $_GET['state']== $rows['CID']){
-                $list_active='active';
-              }else $list_active='';
-              echo '<a href="product.php?state='. $rows['CID'] .'"
-                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
-                    '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
+      <div class="col-12 col-lg-3 mb-3" >
+         <?php
+            
+            // 查詢該類別下有多少筆訂單 這是數量喔喔喔～
+            if(isset($_GET['state'])){
+              switch ($_GET['state']) {
+                case 'all':
+                  $sql = "SELECT COUNT(*) Count FROM ORDER_LIST";
+                  $result = $conn->query($sql);
+                  break;
+                case 'processed':
+                  $sql = "SELECT COUNT(*) Count 
+                          FROM ORDER_LIST
+                          WHERE State ='submitted' 
+                          OR State ='processed' 
+                          OR State ='delivered'";
+                  $result = $conn->query($sql);
+                  break;
+                case 'completed':
+                  $sql = "SELECT COUNT(*) Count 
+                          FROM ORDER_LIST
+                          WHERE State ='completed'";
+                  $result = $conn->query($sql);
+                  break;
+                default:
+                  # code...
+                  break;
+              }
+              $rows = mysqli_fetch_array($result);
+              $count = $rows[0];
+              echo $count;
             }
+            if(isset($_GET['state']) && $_GET['state']== $rows['State']){
+              $list_active='active';
+            }else $list_active='';
+            echo '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center '. $list_active .'">'. $rows['CName'] .
+                  '<span class="badge badge-dark badge-pill">'. $rows['CNum'] .'</span></a>';
+              
+              
           ?>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=all" >所有</a>
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=processed">未完成</a>
+          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=completed">完成</a>
         </div>
       </div>
         
