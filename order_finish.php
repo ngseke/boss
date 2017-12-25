@@ -28,15 +28,21 @@
               <tr class="text-lg-left">
                 <?php
                   $OrderID = $_GET['OrderID'];
-                  $sql = "SELECT FinalCost FROM ORDER_LIST
-                          WHERE ID = '".$OrderID."'";
+                  $sql = "SELECT M.Name Name, O.Date Date, O.FinalCost FinalCost, M.Address Address, M.Phone Phone
+                          FROM ORDER_LIST O
+                          JOIN MEMBER M ON O.CID = M.ID
+                          WHERE O.ID = '".$OrderID."'";
                   $result = $conn->query($sql);
                   $rows = mysqli_fetch_array($result);
                   $Total = $rows['FinalCost'];
                   echo '
                     <th>
                       訂單編號：<strong>'.$OrderID.'</strong></br>
-                      訂單總金額：<strong>NT$ '.number_format($Total).'</strong>
+                      訂單總金額：<strong>NT$ '.number_format($Total).'</strong></br>
+                      訂購人姓名：'.$rows['Name'].'</br>
+                      訂購人電話：'.$rows['Phone'].'</br>
+                      訂購日期：'.$rows['Date'].'</br>
+                      配送地址：'.$rows['Address'].'</br>
                     </th>';
                 ?>
               </tr>
