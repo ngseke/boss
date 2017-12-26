@@ -27,6 +27,9 @@
   $resultDet = $conn->query($sqlDet);
   $rowDet = mysqli_fetch_array($resultDet);
 
+  $Quantity = $rowDet['Quantity'];
+  $PID = $rowDet['PID'];
+
   //---------------------From member----------------
   $sqlName = "SELECT * FROM member WHERE position != \"C\"";
   $resultName = $conn->query($sqlName);
@@ -37,6 +40,7 @@
   $rowNameAssign = mysqli_fetch_array($resultNameAssign);
 
   $NameAssign = $rowNameAssign['Name'];
+
 
   $stateArr = array("submitted", "processed", "delivered", "completed");
   ?>
@@ -72,10 +76,11 @@
                   <select class="form-control">
                     <?php
                     foreach ($stateArr as $value){
-                      if($value !== $state)
+                      if($value !== $state){
                         echo "<option>$value</option>";
-                      else
+                      }else{
                         echo "<option selected>$value</option>";
+                      }
                     }
                     ?>
                   </select>
@@ -95,9 +100,7 @@
                     ?>
                   </select>
                 </div>
-              </div>
-              <div class="form-group col-12">
-
+                <?php include('order_list_detail_table.php'); ?>
               </div>
             </form>
           </div>
