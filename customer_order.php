@@ -161,13 +161,13 @@ $page_name = '訂單';
                                 </tr>
                                 <?php
                                 for ($i=0; $i < 5; $i++) {
-                                  echo '                        <tr>
+                                  <tr>
                                   <th class="align-middle" scope="row">1</th>
                                   <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
                                   <td class="align-middle">純喫茶綠茶 </td>
                                   <td class="align-middle">$ 199</td>
                                   <td class="align-middle">99</td>
-                                  </tr>';
+                                  </tr>;
                                 }
                                 ?>
                               </tbody>
