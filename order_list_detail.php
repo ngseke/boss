@@ -64,7 +64,7 @@
               <div class="row">
                 <div class="form-group col-6">
                   <label for="inputState">State</label>
-                  <select class="form-control">
+                  <select class="form-control" name="state">
                     <?php
                     foreach ($stateArr as $value){
                       if($value !== $state){
@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group col-6">
                   <label for="inputState">接管成員</label>
-                  <select class="form-control">
+                  <select class="form-control" name="manageName">
                     <?php
                       while($rowName = $resultName->fetch_assoc()){
                         $Name = $rowName['Name'];

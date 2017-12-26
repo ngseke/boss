@@ -29,5 +29,6 @@ $resultOrderView = $conn->query($sqlOrderView);
   </table>
 </div>
 <div class="col-12 form-group">
-  <button class="btn btn-success btn-block" type="submit" >立即修改</button>
+  <input type="hidden" name="ID" value="<?php echo $_GET['ID'] ?>">
+<button class="btn btn-success btn-block" type="submit" >立即修改</button>
 </div>

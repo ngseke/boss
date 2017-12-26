@@ -15,6 +15,7 @@
     $sql = "SELECT * FROM order_list";
     $result = $conn->query($sql);
   ?>
+  <div class="container mt-3"><?php include('echo_alert.php') ?></div>
   <div class="container">
     <div class="row">
       <table class="table mt-5 d-none d-lg-table ">
@@ -34,15 +35,20 @@
           <?php
           if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()){
-              $sqlName = "SELECT Name FROM member WHERE ID IN (SELECT CID FROM order_list WHERE CID = '" . $row["CID"] . "')";
-              $resultName = $conn->query($sqlName);
-              $rowName = mysqli_fetch_array($resultName);
-              $Name = $rowName['Name'];
+              $sqlCID = "SELECT Name FROM member WHERE ID IN (SELECT CID FROM order_list WHERE CID = '" . $row["CID"] . "')";
+              $resultCID = $conn->query($sqlCID);
+              $rowCID = mysqli_fetch_array($resultCID);
+              $NameCID = $rowCID['Name'];
 
               $sqlInfo = "SELECT Info FROM discount WHERE ID IN (SELECT DID FROM order_list WHERE DID = " . $row["DID"] . ")";
               $resultInfo = $conn->query($sqlInfo);
               $rowInfo = mysqli_fetch_array($resultInfo);
               $info = $rowInfo['Info'];
+
+              $sqlSID = "SELECT Name FROM member WHERE ID IN (SELECT SID FROM order_list WHERE SID = '" . $row["SID"] . "')";
+              $resultSID = $conn->query($sqlSID);
+              $rowSID = mysqli_fetch_array($resultSID);
+              $NameSID = $rowSID['Name'];
 
               echo
               '<tr>
@@ -50,9 +56,9 @@
               <td>' . $row["Date"] . '</td>
               <td>' . $row["FinalCost"] . '</td>
               <td>' . $row["State"] . '</td>
-              <td>' . $Name . '</td>
+              <td>' . $NameCID . '</td>
               <td>' . $info . '</td>
-              <td>' . $row["SID"] . '</td>
+              <td>' . $NameSID . '</td>
               <td> <button type="button" class="btn btn-primary" onclick="location.href=\'order_list_detail.php?ID=' .$row["ID"].'\'"> 查閱 </button> </td>
               </tr>';
             }
