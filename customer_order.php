@@ -26,7 +26,9 @@
       <!-- 左側選單 -->
       <div class="col-12 col-lg-3 mb-3" >
          <?php
-            
+            if(isset($_GET['state'])){
+              $state=$_GET['state'];
+            }
             // 查詢該類別下有多少筆訂單 這是數量喔喔喔～
             $sql = "SELECT COUNT(*) Count FROM ORDER_LIST";
                   $result = $conn->query($sql);
@@ -64,14 +66,17 @@
                   break;
               }
             }
+            $sql = "SELECT * FROM ORDER_LIST";
+            $result = $conn->query($sql);
+            $rows = mysqli_fetch_array($result);
             if(isset($_GET['state']) && $_GET['state']== $rows['State']){
               $list_active='active';
             }else $list_active=''
           ?>
         <div class="list-group">
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=all" >所有<span class="badge badge-dark badge-pill"><?php echo $all ?></span></a>
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=processed">未完成<span class="badge badge-dark badge-pill"><?php echo $processed ?></span></a>
-          <a class="list-group-item list-group-item-action <?php echo $list_active ?>" href="customer_order.php?state=completed">完成<span class="badge badge-dark badge-pill"><?php echo $completed ?></span></a>
+          <a href="customer_order.php?state=all" class="list-group-item list-group-item-action <?=($state == 'all')?'active':'' ?>" >所有 <span class="badge badge-dark badge-pill"><?php echo $all ?></span></a>
+          <a href="customer_order.php?state=processed" class="list-group-item list-group-item-action  <?=($state == 'processed')?'active':'' ?>" >未完成 <span class="badge badge-dark badge-pill"><?php echo $processed ?></span></a>
+          <a href="customer_order.php?state=completed" class="list-group-item list-group-item-action <?=($state == 'completed')?'active':'' ?>" >完成 <span class="badge badge-dark badge-pill"><?php echo $completed ?></span></a>
         </div>
       </div>
         
