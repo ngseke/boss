@@ -34,6 +34,15 @@
           <?php
           if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()){
+              $sqlName = "SELECT Name FROM member WHERE ID IN (SELECT CID FROM order_list WHERE CID = '" . $row["CID"] . "')";
+              $resultName = $conn->query($sqlName);
+              $rowName = mysqli_fetch_array($resultName);
+              $Name = $rowName['Name'];
+
+              $sqlInfo = "SELECT Info FROM discount WHERE ID IN (SELECT DID FROM order_list WHERE DID = " . $row["DID"] . ")";
+              $resultInfo = $conn->query($sqlInfo);
+              $rowInfo = mysqli_fetch_array($resultInfo);
+              $info = $rowInfo['Info'];
 
               echo
               '<tr>
@@ -41,8 +50,8 @@
               <td>' . $row["Date"] . '</td>
               <td>' . $row["FinalCost"] . '</td>
               <td>' . $row["State"] . '</td>
-              <td>' . $row["CID"] . '</td>
-              <td>' . $row["DID"] . '</td>
+              <td>' . $Name . '</td>
+              <td>' . $info . '</td>
               <td>' . $row["SID"] . '</td>
               <td> <button type="button" class="btn btn-primary" onclick="location.href=\'order_list_detail.php?ID=' .$row["ID"].'\'"> 查閱 </button> </td>
               </tr>';
