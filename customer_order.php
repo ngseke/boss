@@ -23,7 +23,6 @@ $page_name = '訂單';
   <?php include('nav.php') ?>
   <div class="container my-3">
     <div class="row">
-
       <div class="col-3">
         <?php
         if(isset($_GET['state'])){
@@ -55,55 +54,71 @@ $page_name = '訂單';
           <a href="customer_order.php?state=processed" class="list-group-item list-group-item-action  <?=($state == 'processed')?'active':'' ?>" >未完成 <span class="badge badge-dark badge-pill"><?php echo $processed ?></span></a>
           <a href="customer_order.php?state=completed" class="list-group-item list-group-item-action <?=($state == 'completed')?'active':'' ?>" >完成 <span class="badge badge-dark badge-pill"><?php echo $completed ?></span></a>
         </div>
-
       </div>
 
+      <!-- 右側訂單列表 -->
 
-      <div class="col-9">
-        <div class="card mb-3">
-          <h5 class="card-header">
+      <?php 
+      //變數宣告 是駝峰式的喔～
+      $orderNumber='';//訂單日期與編號
+      $orderProgessBar='';//訂單狀態列
+      $orderInformation = '';//收件者資訊
+      $orderDetail='';//訂單詳細內容
 
-            <!-- 右側訂單列表 -->
-
-            <?php 
-            $order ='';
       //查詢全部的訂單
-            $sql = "SELECT * FROM ORDER_LIST";
-            $result = $conn->query($sql);
-            $rowAll = mysqli_fetch_array($result);
+      $sql = "SELECT * FROM ORDER_LIST";
+      $result = $conn->query($sql);
       //查詢未完成的訂單
-            $sql = "SELECT * FROM ORDER_LIST";
-            $result = $conn->query($sql);
-            $rowProcessed = mysqli_fetch_array($result);
+      $sql = "SELECT * FROM ORDER_LIST";
+      $result = $conn->query($sql);
       //查詢已完成的訂單
-            $sql = "SELECT COUNT(*) Count 
-            FROM ORDER_LIST
-            WHERE State ='completed'";
-            $result = $conn->query($sql);
-            $rowCompleted=mysqli_fetch_array($result);
+      $sql = "SELECT COUNT(*) Count 
+      FROM ORDER_LIST
+      WHERE State ='completed'";
+      $result = $conn->query($sql);
 
 
-            if(isset($_GET['state'])){
-              switch ($_GET['state']) {
-                case 'all':
+      //印出資訊的方遜
+      function PrintOrder($orderNumber,$orderProgessBar,$orderInformation,$orderDetail) {
+        echo $orderNumber.$orderProgessBar.$orderInformation.$orderDetail;
+      }
 
-                break;
-                case 'processed':
+      PrintOrder('1','2','3','4');
 
-                break;
-                case 'completed':
+      if(isset($_GET['state'])){
+        switch ($_GET['state']) {
+          case 'all':
+            while($rowsAll = mysqli_fetch_array($result)){
 
-                break;
-                default:
-              # code...
-                break;
-              }
+            }
+
+          break;
+          case 'processed':
+            while($rowProcessed = mysqli_fetch_array($result)){
+
             }
 
 
 
+          break;
+          case 'completed':
+            while($rowCompleted = mysqli_fetch_array($result)){
 
-            ?>
+            }
+
+
+          break;
+          default:
+              # code...
+          break;
+        }
+      }
+
+      ?>
+
+      <div class="col-9">
+        <div class="card mb-3">
+          <h5 class="card-header">
 
 
 
