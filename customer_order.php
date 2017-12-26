@@ -112,11 +112,11 @@ $page_name = '訂單';
             }
 
             $cardStart='<div class="col-12"><div class="card mb-3">';
-            $orderNumber='<h5 class="card-header">
-                              <a data-toggle="collapse" href="#'.$rowsAll['ID'].'" >
+            $orderNumber='  <a class="text-dark" data-toggle="collapse" href="#'.$rowsAll['ID'].'" >
+                              <h5 class="card-header">
                                 <strong>'.$rowsAll['Date'].'</strong> 訂單編號 : '.$rowsAll['ID'].'
-                              </a>
-                          </h5>';
+                              </h5>
+                            </a>';
 
             $orderProgressBar ='<div class="card-body collapse" id="'.$rowsAll['ID'].'"><div class="row"><div class="col-12 mb-3">
             <div class="progress" style="height: 2rem;">
