@@ -12,6 +12,7 @@
 </head>
 <body>
   <?php include('nav.php');
+  //----------------------From order_list----------------
   $sql = "SELECT * FROM order_list WHERE ID = '" . $_GET['ID'] . "'";
   $result = $conn->query($sql);
   $row = mysqli_fetch_array($result);
@@ -21,14 +22,21 @@
   $FinalCost = $row['FinalCost'];
   $State = $row['State'];
 
+  //---------------------From order_list_record----------------
   $sqlDet = "SELECT * FROM order_list_record WHERE OID = '" . $_GET['ID'] . "'";
   $resultDet = $conn->query($sqlDet);
   $rowDet = mysqli_fetch_array($resultDet);
 
+  //---------------------From member----------------
   $sqlName = "SELECT * FROM member WHERE position != \"C\"";
   $resultName = $conn->query($sqlName);
-  // $rowName = mysqli_fetch_array($resultName);
-  // $Name = $rowName['Name'];
+
+  //----------------------From member assign name----------------
+  $sqlNameAssign = "SELECT Name FROM member WHERE ID IN (SELECT SID FROM order_list WHERE ID = '" . $_GET['ID'] . "')";
+  $resultNameAssign = $conn->query($sqlNameAssign);
+  $rowNameAssign = mysqli_fetch_array($resultNameAssign);
+
+  $NameAssign = $rowNameAssign['Name'];
 
   $stateArr = array("submitted", "processed", "delivered", "completed");
   ?>
@@ -76,12 +84,20 @@
                   <label for="inputState">接管成員</label>
                   <select class="form-control">
                     <?php
-                      while($Name = $resultName->fetch_assoc()){
-                        echo "<option>" . $Name["Name"] . "</option>";
+                      while($rowName = $resultName->fetch_assoc()){
+                        $Name = $rowName['Name'];
+                        if($Name !== $NameAssign){
+                          echo "<option>" . $Name . "</option>";
+                        }else{
+                          echo "<option selected>" . $Name . "</option>";
+                        }
                       }
                     ?>
                   </select>
                 </div>
+              </div>
+              <div class="form-group col-12">
+
               </div>
             </form>
           </div>
