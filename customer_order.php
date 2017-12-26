@@ -70,17 +70,8 @@ $page_name = '訂單';
       $isDelivered = '';
       $isCompleted = '';
 
-      //查詢全部的訂單
-      $sql = "SELECT * FROM ORDER_LIST";
-      $result = $conn->query($sql);
-      //查詢未完成的訂單
-      $sql = "SELECT * FROM ORDER_LIST";
-      $result = $conn->query($sql);
-      //查詢已完成的訂單
-      $sql = "SELECT COUNT(*) Count 
-      FROM ORDER_LIST
-      WHERE State ='completed'";
-      $result = $conn->query($sql);
+
+      
 
 
       //印出資訊的方遜
@@ -91,35 +82,39 @@ $page_name = '訂單';
       if(isset($_GET['state'])){
         switch ($_GET['state']) {
           case 'all':
+          //查詢全部的訂單
+          $sql = "SELECT * FROM ORDER_LIST";
+          $result = $conn->query($sql);
+          
           while($rowsAll = mysqli_fetch_array($result)){
 
             switch ($rowsAll['State']) {
               case 'submitted':
-                $isSubmitted='bg-secondary';
-                $isProcessed='bg-primary';
-                $isDelivered='bg-primary';
-                $isCompleted='bg-primary';
+              $isSubmitted='bg-secondary';
+              $isProcessed='bg-primary';
+              $isDelivered='bg-primary';
+              $isCompleted='bg-primary';
               break;
               case 'processed':
-                $isSubmitted='bg-secondary';
-                $isProcessed='bg-secondary';
-                $isDelivered='bg-primary';
-                $isCompleted='bg-primary';
+              $isSubmitted='bg-secondary';
+              $isProcessed='bg-secondary';
+              $isDelivered='bg-primary';
+              $isCompleted='bg-primary';
               break;
               case 'delivered':
-                $isSubmitted='bg-secondary';
-                $isProcessed='bg-secondary';
-                $isDelivered='bg-secondary';
-                $isCompleted='bg-primary';
+              $isSubmitted='bg-secondary';
+              $isProcessed='bg-secondary';
+              $isDelivered='bg-secondary';
+              $isCompleted='bg-primary';
               break;
               case 'completed':
-                $isSubmitted='bg-success';
-                $isProcessed='bg-success';
-                $isDelivered='bg-success';
-                $isCompleted='bg-success';
+              $isSubmitted='bg-success';
+              $isProcessed='bg-success';
+              $isDelivered='bg-success';
+              $isCompleted='bg-success';
               break; 
               default:
-                  echo 'bitch!';
+              echo 'bitch!';
               break;
             }
 
@@ -136,43 +131,43 @@ $page_name = '訂單';
             </div></div>';
 
             $orderInformation .='<div class="col-4"><strong>收件人:</strong>'.$user_name.'</div>
-              <div class="col-6"><strong>收件人電話:</strong> '.$user_phone.'</div>
-              <div class="col-6"><strong>收件地址:</strong> '.$user_address.'</div>'; 
+            <div class="col-6"><strong>收件人電話:</strong> '.$user_phone.'</div>
+            <div class="col-6"><strong>收件地址:</strong> '.$user_address.'</div>'; 
 
             $orderDetail .= ' <div class="col-12">
-                              <table class="table table-hover table-sm mt-3">
-                              <thead class="thead-dark">
-                              <tr>
-                                <th scope="col" style="width:2rem;">#</th>
-                                <th scope="col" style="width:4rem;"></th>
-                                <th scope="col">商品名稱</th>
-                                <th scope="col">單價</th>
-                                <th scope="col">數量</th>
-                              </tr>
+            <table class="table table-hover table-sm mt-3">
+            <thead class="thead-dark">
+            <tr>
+            <th scope="col" style="width:2rem;">#</th>
+            <th scope="col" style="width:4rem;"></th>
+            <th scope="col">商品名稱</th>
+            <th scope="col">單價</th>
+            <th scope="col">數量</th>
+            </tr>
 
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th class="align-middle" scope="row">1</th>
-                                  <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
-                                  <td class="align-middle">純喫茶綠茶 </td>
-                                  <td class="align-middle">$ 199</td>
-                                  <td class="align-middle">99</td>
-                                </tr>
-                                <?php
-                                for ($i=0; $i < 5; $i++) {
-                                  <tr>
-                                  <th class="align-middle" scope="row">1</th>
-                                  <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
-                                  <td class="align-middle">純喫茶綠茶 </td>
-                                  <td class="align-middle">$ 199</td>
-                                  <td class="align-middle">99</td>
-                                  </tr>;
-                                }
-                                ?>
-                              </tbody>
-                            </table>
-                          </div>';
+            </thead>
+            <tbody>
+            <tr>
+            <th class="align-middle" scope="row">1</th>
+            <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
+            <td class="align-middle">純喫茶綠茶 </td>
+            <td class="align-middle">$ 199</td>
+            <td class="align-middle">99</td>
+            </tr>
+            <?php
+            for ($i=0; $i < 5; $i++) {
+              <tr>
+              <th class="align-middle" scope="row">1</th>
+              <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
+              <td class="align-middle">純喫茶綠茶 </td>
+              <td class="align-middle">$ 199</td>
+              <td class="align-middle">99</td>
+              </tr>;
+            }
+            ?>
+            </tbody>
+            </table>
+            </div>';
 
             PrintOrder($orderNumber,$orderProgressBar,$orderInformation,$orderDetail,$orderCost);
 
@@ -180,6 +175,10 @@ $page_name = '訂單';
 
           break;
           case 'processed':
+          //查詢未完成的訂單
+          $sql = "SELECT * FROM ORDER_LIST";
+          $result = $conn->query($sql);
+          
           while($rowProcessed = mysqli_fetch_array($result)){
 
           }
@@ -188,6 +187,11 @@ $page_name = '訂單';
 
           break;
           case 'completed':
+             //查詢已完成的訂單
+          $sql = "SELECT COUNT(*) Count 
+          FROM ORDER_LIST
+          WHERE State ='completed'";
+          $result = $conn->query($sql);
           while($rowCompleted = mysqli_fetch_array($result)){
 
           }
