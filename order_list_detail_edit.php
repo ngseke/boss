@@ -11,7 +11,7 @@
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 <body>
-  <?php include('nav.php');
+  <?php include('nav.php') ?>
 
   <?php include('footer.php') ?>
 </body>

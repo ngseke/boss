@@ -22,14 +22,6 @@
   $FinalCost = $row['FinalCost'];
   $State = $row['State'];
 
-  //---------------------From order_list_record----------------
-  $sqlDet = "SELECT * FROM order_list_record WHERE OID = '" . $_GET['ID'] . "'";
-  $resultDet = $conn->query($sqlDet);
-  $rowDet = mysqli_fetch_array($resultDet);
-
-  $Quantity = $rowDet['Quantity'];
-  $PID = $rowDet['PID'];
-
   //---------------------From member----------------
   $sqlName = "SELECT * FROM member WHERE position != \"C\"";
   $resultName = $conn->query($sqlName);
@@ -40,7 +32,6 @@
   $rowNameAssign = mysqli_fetch_array($resultNameAssign);
 
   $NameAssign = $rowNameAssign['Name'];
-
 
   $stateArr = array("submitted", "processed", "delivered", "completed");
   ?>
