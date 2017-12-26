@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-12">
       <small>
-        <p class="text-muted text-center" onclick="location.href='percent.php'">© Copyright BOSS 2017 - <?php echo date('Y',time()); ?></p>
+        <p class="text-muted text-center">© Copyright BOSS 2017 - <?php echo date('Y',time()); ?></p>
       </small>
 
       <?php

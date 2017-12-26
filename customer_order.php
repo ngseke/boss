@@ -66,12 +66,7 @@
                   break;
               }
             }
-            $sql = "SELECT * FROM ORDER_LIST";
-            $result = $conn->query($sql);
-            $rows = mysqli_fetch_array($result);
-            if(isset($_GET['state']) && $_GET['state']== $rows['State']){
-              $list_active='active';
-            }else $list_active=''
+
           ?>
         <div class="list-group">
           <a href="customer_order.php?state=all" class="list-group-item list-group-item-action <?=($state == 'all')?'active':'' ?>" >所有 <span class="badge badge-dark badge-pill"><?php echo $all ?></span></a>
@@ -79,6 +74,9 @@
           <a href="customer_order.php?state=completed" class="list-group-item list-group-item-action <?=($state == 'completed')?'active':'' ?>" >完成 <span class="badge badge-dark badge-pill"><?php echo $completed ?></span></a>
         </div>
       </div>
+
+      <!-- 右側訂單列表 -->
+      
         
     </div>
   </div>
