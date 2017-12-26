@@ -6,6 +6,6 @@
   $OrderID = mb_strimwidth(md5(rand()*rand()),0,8);
   // DB中插入此購物車
   $sql="INSERT INTO ORDER_LIST(ID, Date, State, CID, DID, SID)
-        VALUES('$OrderID', CURRENT_TIMESTAMP, NULL, '".$user_id."', '3', 'staff')";
+        VALUES('$OrderID', CURRENT_TIMESTAMP, NULL, '".$user_id."', '3', 'NULL')";
   $conn->query($sql);
   $_SESSION['OrderID']=$OrderID;
