@@ -45,7 +45,7 @@ CREATE TABLE ORDER_LIST (
   State ENUM('submitted', 'processed', 'delivered', 'completed'),
   CID VARCHAR(20) NOT NULL,
   DID INT(7) UNSIGNED NOT NULL,
-  SID VARCHAR(20) NOT NULL
+  SID VARCHAR(20)
 );
 
 -- 訂單和商品的特殊性關係;
