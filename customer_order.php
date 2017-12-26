@@ -59,51 +59,55 @@ $page_name = '訂單';
       <!-- 右側訂單列表 -->
       <div class="col-9">
         <?php
+        // 基本Query指令
+        $sql = "SELECT * FROM ORDER_LIST
+                WHERE CID = '$user_id'";
 
         // 根據訂單狀態Query
         if(isset($_GET['state'])){
           switch ($_GET['state']) {
             case 'all': //查詢全部的訂單
-              $sql = "SELECT * FROM ORDER_LIST
-                      WHERE CID = '$user_id'";
               break;
 
             case 'processed': //查詢未完成的訂單
-              $sql = "SELECT * FROM ORDER_LIST
-                      WHERE CID = '$user_id'
-                      AND (State ='submitted'
-                      OR State ='delivered'
-                      OR State ='processed') ";
+              $sql = $sql. "AND (State ='submitted'
+                            OR State ='delivered'
+                            OR State ='processed') ";
               break;
             case 'completed': //查詢已完成的訂單
-              $sql = "SELECT * FROM ORDER_LIST
-                      WHERE CID = '$user_id'
-                      AND (State ='completed') ";
+              $sql = $sql. "AND (State ='completed') ";
               break;
           }
-
+          $sql .= " ORDER BY Date ASC"; // 按照日期排序
           $result = $conn->query($sql);
 
           // 顯示訂單狀態樣式
           while($rowsAll = mysqli_fetch_array($result)){
             // 預設全部皆bg-secondary
             $isSubmitted=$isProcessed=$isDelivered=$isCompleted='bg-secondary';
-
+            $porgressBarDefault = 'bg-primary';
+            $porgressBarInProcess = ' progress-bar-striped progress-bar-animated'; // 條紋動畫
             switch ($rowsAll['State']) {
               case 'submitted':
                 // Submitted為bg-primary
-                $isSubmitted='bg-primary';
-              break;
+                $isSubmitted= $porgressBarDefault;
+                $isSubmitted.=$porgressBarInProcess;
+                break;
+
               case 'processed':
-                $isSubmitted=$isProcessed='bg-primary';
-              break;
+                $isSubmitted=$isProcessed= $porgressBarDefault;
+                $isProcessed.=$porgressBarInProcess;
+                break;
+
               case 'delivered':
-                $isSubmitted=$isProcessed=$isDelivered='bg-primary';
-              break;
+                $isSubmitted=$isProcessed=$isDelivered= $porgressBarDefault;
+                $isDelivered.=$porgressBarInProcess;
+                break;
+
               case 'completed':
                 // 全部皆bg-success
-                $isSubmitted=$isProcessed=$isDelivered=$isCompleted='bg-success';
-              break;
+                $isSubmitted=$isProcessed=$isDelivered=$isCompleted='bg-success ';
+                break;
               default: break;
             }
 
@@ -120,11 +124,11 @@ $page_name = '訂單';
             <div class="progress-bar '.$isCompleted.' text-light " style="width: 25%; ">已完成</div>
             </div></div>';
 
-            $orderInformation ='<div class="col-4"><strong>收件人:</strong>'.$user_name.'</div>
+            $orderInformation ='<div class="col-4"><strong>收件人: </strong>'.$user_name.'</div>
             <div class="col-6"><strong>收件人電話:</strong> '.$user_phone.'</div>
             <div class="col-6"><strong>收件地址:</strong> '.$user_address.'</div>';
 
-            $orderDetail = ' <div class="col-12">
+            $orderDetail = ' <div class="col-9">
             <table class="table table-hover table-sm mt-3">
             <thead class="thead-dark">
             <tr>
@@ -148,9 +152,11 @@ $page_name = '訂單';
             </table>
             </div>';
 
-            $orderCost = '<div class="col-12 text-right">
+            $orderCost = '<div class="col-3 text-right position-relative" >
+            <div class="position-absolute  " style="bottom:0rem; right:2rem;">
             總金額:  <h3 class="d-inline-block"><strong class="text-danger">NT$ '.$rowsAll['FinalCost'].'</strong></h3>
-            </div></div></div>';
+            </div></div></div></div>';
+
             $cardEnd="</div></div>";
 
             echo  $cardStart.$orderNumber.$orderProgressBar.$orderInformation.$orderDetail.$orderCost.$cardEnd;
