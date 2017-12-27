@@ -28,7 +28,8 @@
           </tr>';
   }
 
-  $Total = 0;
+  $IniTotal = 0;
+  $FinalTotal = 0;
   $SelectCount = 0;
   $Fare = 60;
   // 資料庫指令
@@ -53,12 +54,22 @@
       $CountQuantity = ($rows['PDEvent'] == 'BOGO') ? ceil((float)($rows['CRQ'] / 2)) : $rows['CRQ'];
       // 針對discount計算價格
       $cost = ($rows['PDEvent'] == 'discount') ? round($rows['PPriceD']) : $rows['PPrice'];
-      $Total += $cost * $CountQuantity; // 總金額
+      $IniTotal += $cost * $CountQuantity; // 總金額
       $SelectCount += $rows['CRQ']; // 總商品數量
       if($this_page == "cart")
         echo EchoCartItem($rows['PIMG'], $rows['PName'], $rows['PDEvent'], $cost, $rows['CRQ'], $CountQuantity, $CartID, $rows['PID']);
       else if($this_page == "order")
         echo EchoOrderItem($rows['PIMG'], $rows['PName'], $rows['PDEvent'], $cost, $rows['CRQ'], $CountQuantity, $CartID, $rows['PID']);
-
     }
+    $sql = "SELECT * FROM DISCOUNT D
+            WHERE PeriodFrom <= CURRENT_TIMESTAMP AND PeriodTo >= CURRENT_TIMESTAMP";
+    $result = $conn->query($sql);
+    if(mysqli_num_rows($result) > 0)
+      while($rows = mysqli_fetch_array($result)){
+        if($rows['Type'] == 'seasoning' && $IniTotal >= $rows['Requirement'])
+          $FinalTotal = $IniTotal * $rows['Rate'];
+        if($rows['Type'] == 'shipping' && $IniTotal >= $rows['Requirement'])
+          $Fare = 0;
+      }
+    $FinalTotal = $FinalTotal + $Fare;
   }

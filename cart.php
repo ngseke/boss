@@ -36,11 +36,9 @@
             <?php include 'price_calculate.php'; ?>
             <tr class="text-right">
               <td colspan="6">
-                <?php echo '共<strong>'.$SelectCount.'</strong>件商品　商品金額：<strong>NT$ '.number_format($Total).'</strong></br>';
-                if($Total<1000) $Total += $Fare;
-                else $Fare = 0;
+                <?php echo '共<strong>'.$SelectCount.'</strong>件商品　商品總金額：<strong>NT$ '.number_format($IniTotal).'</strong></br>';
                 echo '運費小計：<strong>NT$ '.$Fare.'</strong></br>';
-                echo '<font size="+2">總金額：NT$ <strong>'.number_format($Total).'</strong></font>'; ?>
+                echo '<font size="+2">總金額：<font size="-1"><del>NT$ '.number_format($IniTotal + $Fare).'</del></font>NT$ <strong>'.number_format($FinalTotal).'</strong></font>'; ?>
               </td>
             </tr>
           </tbody>
@@ -48,7 +46,7 @@
       </div>
       <div class="col-12 col-lg-6 offset-lg-3 text-center ">
         <?php
-          if($Total > 0)
+          if($FinalTotal > 0)
             echo'<a class="btn btn-outline-dark" href="order.php?CartID='.$CartID.'">確認訂單</a>';
         ?>
       </div>
