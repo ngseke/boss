@@ -88,6 +88,7 @@ $page_name = '訂單';
             $porgressBarDefault = 'bg-primary';
             $porgressBarInProcess = ' progress-bar-striped progress-bar-animated'; // 條紋動畫
             switch ($rowsAll['State']) {
+
               case 'submitted':
                 // Submitted為bg-primary
                 $isSubmitted= $porgressBarDefault;
@@ -128,6 +129,25 @@ $page_name = '訂單';
             <div class="col-6"><strong>收件人電話:</strong> '.$user_phone.'</div>
             <div class="col-6"><strong>收件地址:</strong> '.$user_address.'</div>';
 
+            $OID=$rowsAll['ID'];
+            
+            $sql_0 = "SELECT Name,Price,OLR.Quantity,Img From PRODUCT P, ORDER_LIST_RECORD OLR
+                    WHERE OLR.OID = '$OID'
+                    AND OLR.PID = P.ID";
+            $result_0 = $conn->query($sql_0);
+            $str='';
+            $i=1;
+            while ($rows_0= mysqli_fetch_array($result_0)){
+                $str .='<tr>
+                <th class="align-middle" scope="row">'.($i++).'</th>
+                <td class="text-center"><img src="'.$rows_0['Img'].'" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
+                <td class="align-middle">'.$rows_0['Name'].' </td>
+                <td class="align-middle">$ '.$rows_0['Price'].'</td>
+                <td class="align-middle">'.$rows_0['Quantity'].'</td>
+              </tr>';
+
+            }
+
             $orderDetail = ' <div class="col-9">
             <table class="table table-hover table-sm mt-3">
             <thead class="thead-dark">
@@ -141,13 +161,7 @@ $page_name = '訂單';
             </thead>
 
             <tbody>
-              <tr>
-                <th class="align-middle" scope="row">1</th>
-                <td class="text-center"><img src="http://www.pecos.com.tw/tmp/image/20140409/20140409202153_39623.jpg" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
-                <td class="align-middle">純喫茶綠茶 </td>
-                <td class="align-middle">$ 199</td>
-                <td class="align-middle">99</td>
-              </tr>
+            '.$str.'
             </tbody>
             </table>
             </div>';

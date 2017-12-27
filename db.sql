@@ -203,6 +203,13 @@ INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('f7cbe6b7','2
 INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('a0000001','2017-12-25 17:28:04',22,'processed','customer',3,'staff');
 INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('a0000002','2017-12-25 17:28:04',22,'delivered','customer',3,'staff');
 
+INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('f7cbe6b6',2,1);
+INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('f7cbe6b6',6,2);
+INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('f7cbe6b7',3,1);
+INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('a0000001',4,1);
+INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('a0000002',5,1);
+
+
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季大折扣','');
 INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
