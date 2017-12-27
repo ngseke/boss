@@ -29,10 +29,11 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
       $rows = mysqli_fetch_array($result);
       ?>
 
-      <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="col-12 col-lg-12 offset-lg-0">
         <div class="card py-3 " >
           <div class="card-body">
             <div class="row">
+
               <div class="col-12 col-lg-4 text-center">
                 <img src="<?php echo $rows['PImg'] ?>" class="img-fluid rounded mx-auto d-block" style="max-height: 16rem; width: auto;">
                 <?php include 'product_get_star.php' ?>

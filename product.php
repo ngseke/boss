@@ -114,7 +114,7 @@
               while($rows = mysqli_fetch_array($result)){
 
               // 如果有折扣的話 顯示有折扣後的價格
-              $card_border = '';
+
               $gift_icon = '<span class="position-absolute" style="right:.8rem; top:.8rem;">
                               <i class="material-icons text-info">card_giftcard</i>
                             </span>';
@@ -126,12 +126,12 @@
                   $price_text.='<span class="badge badge-info">買一送一</span> ';
               } else{
                 $price_text='<span class="badge badge-primary ">NT$ ' . $rows['PPriceF'] . '</span> ';
-                $card_border= $gift_icon = '';
+                $gift_icon = '';
               }
 
               echo '<div class="col-12 col-lg-4 mb-2">
-                      <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark">
-                        <div class="card '. $card_border .'">
+                      <a href="product_detail.php?ID='. $rows['PID'] .'" class="text-dark product-item">
+                        <div class="card">
                           <div class="card-body position-relative">
                               '.$gift_icon.'
                             <div class="row no-gutters text-left text-lg-center">

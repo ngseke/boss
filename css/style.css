@@ -57,3 +57,16 @@ i.material-icons{
 .discount:hover{
   opacity: .8;
 }
+
+/* product.php的各個商品card樣式 */
+.product-item .card{
+  transition: all .3s;
+}
+.product-item:hover{
+  text-decoration: none;
+}
+.product-item .card:hover{
+  /* transform: scale(1.05); */
+  opacity: .7;
+  border-color: #aaa;
+}

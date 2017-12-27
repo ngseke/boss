@@ -90,9 +90,9 @@
                 <select class="form-control" name="discount" >
                   <?php
                   if($info == '')
-                  echo "<option value= \"\" selected=\"selected\"></option>";
+                  echo '<option value="" selected="selected">-</option>';
                   else
-                  echo "<option value= \"\"></option>";
+                  echo "<option value= \"\">-</option>";
                   if($result2->num_rows > 0) {
                     while($row2 = $result2->fetch_assoc()){
                       if($row2["Info"] == $info)

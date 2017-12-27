@@ -11,8 +11,8 @@
   <?php // 若無權限
   if(!($user_position=='A'||$user_position=='S'))
     die ('<meta http-equiv="refresh" content="0;URL=index.php">');
-  if(!isset($_GET['page']))
-    die ('<meta http-equiv="refresh" content="0;URL=user_list.php?page=1">'); ?>
+  if(!isset($_GET['show']))
+    die ('<meta http-equiv="refresh" content="0;URL=user_list.php?show=list">'); ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
 
@@ -23,17 +23,12 @@
   <div class="container my-3">
     <?php include('echo_alert.php') ?>
     <div class="row">
-      <div class="col-12">
-        <ul class="nav nav-pills ">
-          <li class="nav-item">
-            <a class="nav-link <?php if($_GET['page']==1)echo 'active ' ?>" href="user_list.php?page=1">管理會員</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php if($_GET['page']==2)echo 'active ' ?>" href="user_list.php?page=2">新增</a>
-          </li>
-        </ul>
+      <div class="col-12 btn-group">
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['show']=='list')echo 'active '?>" onclick="location.href='?show=list'">管理會員</button>
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['show']=='new')echo 'active '?>" onclick="location.href='?show=new'">新增</button>
       </div>
-      <div class="col-12 text-center <?php if($_GET['page']!=1)echo 'd-none ' ?>">
+
+      <div class="col-12 text-center <?php if($_GET['show']!='list')echo 'd-none ' ?>">
         <h2 class=" my-3 d-none" style="border-bottom:5px #333 solid;">管理會員</h2>
         <table class="table table-hover table-dark my-3 ">
           <thead>
@@ -80,7 +75,7 @@
       </div>
     </div>
   </div>
-      <div class="col-12 col-lg-6 offset-lg-3 my-3 <?php if($_GET['page']!=2)echo 'd-none ' ?>">
+      <div class="col-12 col-lg-6 offset-lg-3 my-3 <?php if($_GET['show']!='new')echo 'd-none ' ?>">
         <div class="card">
           <div class="card-header text-center">新增會員</div>
           <div class="card-body">
