@@ -9,7 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
-
+  <?php // 若無權限
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  if(!(isset($_GET['show'])&&isset($_GET['page'])))
+    die ('<meta http-equiv="refresh" content="0;URL=product_list.php?show=list&page=0">'); ?>
   <!-- 根據所在頁面 印出對應的標題 -->
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
@@ -17,15 +21,26 @@
 
   <?php include('nav.php'); ?>
 
-  <div class="container mt-3"><?php include('echo_alert.php') ?></div>
-
-  <div class="container">
+  <div class="container mt-3">
+    <?php include('echo_alert.php') ?>
 
     <div class="row">
-      <div class="col-12 col-lg-2 mb-3">
-        <a href="product_list_new.php" class="btn btn-primary btn-block btn-lg" role="button">新增商品</a>
+      <div class="col-12 btn-group">
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['show']=='list')echo 'active '?>" onclick="location.href='?show=list'">管理商品</button>
+        <button class="btn btn-outline-primary btn-lg <?php if($_GET['show']=='new')echo 'active '?>" onclick="location.href='?show=new'">新增</button>
       </div>
-      <div class="col-12">
+      <!-- 管理商品 -->
+      <div class="col-12 <?=($_GET['show']!='list')?'d-none ':''; ?> ">
+        <?php
+          if(isset($_GET['page'])){
+            $total = mysqli_num_rows($conn->query("SELECT * FROM product")); // 共幾筆資料
+            $limit = 10; // 每頁5筆
+            $start = $_GET['page'] * $limit;
+            $currentPage=$_GET['page'];
+            $maxPage= ceil($total/$limit);
+          }
+        ?>
+
         <table class="table mt-3 d-none d-lg-table ">
           <thead>
             <tr class="text-center">
@@ -42,6 +57,9 @@
           <tbody>
             <?php
             $sql = "SELECT * FROM product";
+            if(isset($_GET['page'])) // 若有GET到頁數
+               $sql .= " ORDER BY ID ASC LIMIT $start, $limit";
+
             $result = $conn->query($sql);
             if($result->num_rows > 0) {
               while($row = $result->fetch_assoc()){
@@ -55,7 +73,7 @@
                 echo
                 '<tr>
                 <td>' . $row["ID"] . '</td>
-                <td><a href="product_detail.php?ID='.  $row["ID"] .'">' . $row["Name"] . '</a></td>
+                <td><a class="text-dark" href="product_detail.php?ID='.  $row["ID"] .'">' . $row["Name"] . '</a></td>
                 <td>' . $state . '</td>
                 <td>' . $row["Stock"] . '</td>
                 <td>' . $row["Price"] . '</td>
@@ -68,7 +86,34 @@
             ?>
           </tbody>
         </table>
+        <!-- 翻頁 -->
+        <div class="btn-toolbar mt-3">
+          <div class="d-inline-block mx-auto">
+            <div class="btn-group mr-2">
+              <?php $goPageURL = 'onclick="location.href=\'?show=list&page='. ($currentPage-1) .'\'" '; ?>
+              <button type="button" <?=$goPageURL?> class="btn btn-secondary" <?=($currentPage==0)?'disabled':''?>>&laquo;</button>
+            </div>
+            <div class="btn-group mr-2" >
+              <?php
+                if(isset($_GET['page'])){
+                  for ($i=0; $i < $maxPage ; $i++) {
+                    $goPageURL = 'onclick="location.href=\'?show=list&page='. $i .'\'" ';
+                    $isActive = ($currentPage==$i)?'active ':'';
+                    echo '<button type="button" '. $goPageURL.' class="btn btn-secondary '. $isActive .' " >'. ($i+1) .'</button>';
+                  }
+                }
+              ?>
+            </div>
+            <div class="btn-group" >
+              <?php $goPageURL = 'onclick="location.href=\'?show=list&page='. ($currentPage+1) .'\'" '; ?>
+              <button type="button" <?=$goPageURL?> class="btn btn-secondary" <?=($currentPage>=$maxPage-1)?'disabled':''?> >&raquo;</button>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- 新增 -->
+      <?php if($_GET['show']=='new') include 'product_list_new.php' ?>
+
     </div>
   </div>
 

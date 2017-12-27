@@ -27,36 +27,32 @@
       $type = $_POST['Type'];
       $uploadOk = 1;
 
-      $file = basename($_FILES["file"]["name"]);
-      $fileExplode = explode(".", $file);
-      $fileName = $fileExplode[0];  //檔名
-      $fileType = $fileExplode[1];  //檔案類型
+      if (!file_exists($_FILES['file']['tmp_name']) || !is_uploaded_file($_FILES['file']['tmp_name'])){
+        // 未選擇圖片
+        $target_file = 'img/no_img-01.png'; // 沒有選擇圖片時，設定成預設飲料圖
+      } else{
+        // 有選擇圖片
+        $file = basename($_FILES["file"]["name"]);
+        $fileExplode = explode(".", $file);
+        $fileName = $fileExplode[0];  //檔名
+        $fileType = $fileExplode[1];  //檔案類型
 
-      $target_dir = "upload/";
-      // $target_file = $target_dir . basename($_FILES["file"]["name"]);
-      $target_file = $target_dir . md5(password_hash($fileName, PASSWORD_DEFAULT)) . "." . $fileType;
-      $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        $target_dir = "upload/";
+        $target_file = $target_dir . md5(password_hash($fileName, PASSWORD_DEFAULT)) . "." . $fileType;
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
-      // echo "fileName : " . $fileName . "<br>" .
-      //      "fileType : " . $fileType . "<br>" ;
-
-      // echo "檔案名稱 : " . $_FILES["file"]["name"] . "<br>" .
-      //      "檔案類型 : " . $_FILES["file"]["type"] . "<br>" .
-      //      "暫存名稱 : " . $_FILES["file"]["tmp_name"] . "<br>" .
-      //      "目的地 : " . $target_file;
-
-      if(!empty(basename($_FILES["file"]["name"]))) {
-        $check = getimagesize($_FILES["file"]["tmp_name"]);
-        if($check !== false) {
-            // echo "File is an image - " . $check["mime"] . ". <br>";
-            $uploadOk = 1;
-            move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-            // echo $_FILES["file"]["tmp_name"]."<br>";
+        if(!empty(basename($_FILES["file"]["name"]))) {
+          $check = getimagesize($_FILES["file"]["tmp_name"]);
+          if($check !== false) {
+              $uploadOk = 1;
+              move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+          }else{
+            $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不為圖片！',false);
+          }
         }else{
-          $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不為圖片！',false);
+          $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不存在！',false);
         }
-      }else{
-        $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 檔案不存在！',false);
+
       }
 
       $sql = "INSERT INTO product
