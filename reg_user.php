@@ -43,12 +43,10 @@
         } else{
           if ($conn->query($sql) === true) {
             $_SESSION['ID'] = $_POST['ID'];
-            // $_SESSION['AlertMsg'] =
-            // array('success','<i class="material-icons">done</i> 成功註冊！',false);
+
           } else {
-            echo '<div class="alert alert-danger">';
-            echo "Error 註冊: " . $conn->error;
-            echo '</div>';
+            $_SESSION['AlertMsg'] =
+              array('danger','<i class="material-icons">clear</i> 註冊失敗！',false);
           }
         }
         $conn->close();

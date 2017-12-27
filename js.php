@@ -9,3 +9,9 @@
 
 <!-- 使用GetTodayDate()可以取得今天日期。 -->
 <script src="js/get_date.js"></script>
+
+<script type="text/javascript">
+  $('#aboutUsSwitch').click(function(){
+    $("#aboutUsSwitchHidden").trigger("click");
+  });
+</script>

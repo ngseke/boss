@@ -1,6 +1,6 @@
 <!-- Bootstrap 框架 -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+<link rel="stylesheet" href="css/sandstone.theme.css">
 <!-- Google Material icons -->
 <!-- https://material.io/icons/  -->
 <link rel="stylesheet" href="css/material-icon.css" >
