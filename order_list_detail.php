@@ -13,30 +13,30 @@
 <body>
   <?php include('nav.php');
   //----------------------From order_list----------------
-  $sql = "SELECT * FROM order_list WHERE ID = '" . $_GET['ID'] . "'";
+  $sql = "SELECT * FROM order_list_view WHERE ID = '" . $_GET['ID'] . "'";
   $result = $conn->query($sql);
   $row = mysqli_fetch_array($result);
 
   $ID = $row['ID'];
+  $memName = $row['memName'];
   $Date = $row['Date'];
+  $Phone = $row['Phone'];
+  $mail = $row['Email'];
   $FinalCost = $row['FinalCost'];
   $State = $row['State'];
+  $NameAssign = $row['stfName'];
+  $Address = $row['Address'];
 
   //---------------------From member----------------
   $sqlName = "SELECT * FROM member WHERE position != \"C\"";
   $resultName = $conn->query($sqlName);
 
   //----------------------From member assign name----------------
-  $sqlNameAssign = "SELECT * FROM member WHERE ID IN (SELECT SID FROM order_list WHERE ID = '" . $_GET['ID'] . "')";
-  $resultNameAssign = $conn->query($sqlNameAssign);
-  $rowNameAssign = mysqli_fetch_array($resultNameAssign);
 
-  $NameAssign = $rowNameAssign['Name'];
-  $AddressAssign = $rowNameAssign['Address'];
 
   $stateStr = array("submitted", "processed", "delivered", "completed");
-  $attr = array("ID", "時間", "地址", "金額");
-  $attrValue = array("$ID", "$Date", "$AddressAssign", "$FinalCost");
+  $attr = array("ID", "收件人", "mail", "電話", "地址", "訂單時間", "金額");
+  $attrValue = array("$ID", "$memName", "$mail", "$Phone", "$Address", "$Date", "$FinalCost");
   ?>
   <div class="container">
     <div class="row">
@@ -46,7 +46,7 @@
           <div class="card-body">
             <form class="" action="order_list_detail_edit.php" method="post">
               <?php
-              for ($x = 0 ; $x < 4 ; $x++) {
+              for ($x = 0 ; $x < 7 ; $x++) {
                 echo '
                 <div class="form-group row">
                   <label class="col-2 col-form-label font-weight-bold">' .$attr[$x]. '</label>
