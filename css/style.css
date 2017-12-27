@@ -23,6 +23,11 @@ i.material-icons{
   cursor: pointer;
 }
 
+/* hover加入pointer效果 */
+.pointer:hover{
+  cursor: pointer;
+}
+
 /* 文字陰影 */
 .text-shadow-dark{
   text-shadow:0 0 .5rem black;
