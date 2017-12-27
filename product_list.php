@@ -12,8 +12,15 @@
   <?php // 若無權限
   if(!($user_position=='A'||$user_position=='S'))
     die ('<meta http-equiv="refresh" content="0;URL=index.php">');
-  if(!(isset($_GET['show'])&&isset($_GET['page'])))
-    die ('<meta http-equiv="refresh" content="0;URL=product_list.php?show=list&page=0">'); ?>
+  // 若未GET顯示頁面
+  if(!(isset($_GET['show']))){
+    die ('<meta http-equiv="refresh" content="0;URL=product_list.php?show=list&page=0">');
+  }else{
+    // 若GET顯示頁面且為‘list’但未GET到頁數
+    if($_GET['show']=='list'&&!(isset($_GET['page'])))
+      die ('<meta http-equiv="refresh" content="0;URL=product_list.php?show=list&page=0">');
+  }
+  ?>
   <!-- 根據所在頁面 印出對應的標題 -->
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
 </head>
@@ -40,7 +47,6 @@
             $maxPage= ceil($total/$limit);
           }
         ?>
-
         <table class="table mt-3 d-none d-lg-table ">
           <thead>
             <tr class="text-center">
