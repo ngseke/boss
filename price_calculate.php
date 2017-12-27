@@ -55,13 +55,14 @@
       // 針對discount計算價格
       $cost = ($rows['PDEvent'] == 'discount') ? round($rows['PPriceD']) : $rows['PPrice'];
       $IniTotal += $cost * $CountQuantity; // 總金額
+      $FinalTotal = $IniTotal;
       $SelectCount += $rows['CRQ']; // 總商品數量
       if($this_page == "cart")
         echo EchoCartItem($rows['PIMG'], $rows['PName'], $rows['PDEvent'], $cost, $rows['CRQ'], $CountQuantity, $CartID, $rows['PID']);
       else if($this_page == "order")
         echo EchoOrderItem($rows['PIMG'], $rows['PName'], $rows['PDEvent'], $cost, $rows['CRQ'], $CountQuantity, $CartID, $rows['PID']);
     }
-    $sql = "SELECT * FROM DISCOUNT D
+    $sql = "SELECT * FROM DISCOUNT
             WHERE PeriodFrom <= CURRENT_TIMESTAMP AND PeriodTo >= CURRENT_TIMESTAMP";
     $result = $conn->query($sql);
     if(mysqli_num_rows($result) > 0)
@@ -71,5 +72,4 @@
         if($rows['Type'] == 'shipping' && $IniTotal >= $rows['Requirement'])
           $Fare = 0;
       }
-    $FinalTotal = $FinalTotal + $Fare;
   }
