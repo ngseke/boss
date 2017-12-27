@@ -25,9 +25,9 @@
             <th scope="col">Date</th>
             <th scope="col">總金額</th>
             <th scope="col">狀態</th>
-            <th scope="col">CID</th>
+            <th scope="col">收件人</th>
             <th scope="col">折扣</th>
-            <th scope="col">SID</th>
+            <th scope="col">管理人</th>
             <th scope="col">查閱</th>
           </tr>
         </thead>

@@ -27,15 +27,17 @@
   $resultName = $conn->query($sqlName);
 
   //----------------------From member assign name----------------
-  $sqlNameAssign = "SELECT Name FROM member WHERE ID IN (SELECT SID FROM order_list WHERE ID = '" . $_GET['ID'] . "')";
+  $sqlNameAssign = "SELECT * FROM member WHERE ID IN (SELECT SID FROM order_list WHERE ID = '" . $_GET['ID'] . "')";
   $resultNameAssign = $conn->query($sqlNameAssign);
   $rowNameAssign = mysqli_fetch_array($resultNameAssign);
 
   $NameAssign = $rowNameAssign['Name'];
+  $AddressAssign = $rowNameAssign['Address'];
 
-  $stateArr = array("submitted", "processed", "delivered", "completed");
+  $stateStr = array("submitted", "processed", "delivered", "completed");
+  $attr = array("ID", "時間", "地址", "金額");
+  $attrValue = array("$ID", "$Date", "$AddressAssign", "$FinalCost");
   ?>
-
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
@@ -43,30 +45,23 @@
           <div class="card-header text-center">訂單資訊</div>
           <div class="card-body">
             <form class="" action="order_list_detail_edit.php" method="post">
-              <div class="form-group row">
-                <label class="col-2 col-form-label font-weight-bold">ID</label>
-                <div class="col-10">
-                  <input type="text" readonly class="form-control-plaintext" value="<?php echo $ID ?>">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-2 col-form-label font-weight-bold">時間</label>
-                <div class="col-10">
-                  <input type="text" readonly class="form-control-plaintext" value="<?php echo $Date ?>">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-2 col-form-label font-weight-bold">金額</label>
-                <div class="col-10">
-                  <input type="text" readonly class="form-control-plaintext" value="<?php echo $FinalCost ?>">
-                </div>
-              </div>
+              <?php
+              for ($x = 0 ; $x < 4 ; $x++) {
+                echo '
+                <div class="form-group row">
+                  <label class="col-2 col-form-label font-weight-bold">' .$attr[$x]. '</label>
+                  <div class="col-10">
+                    <input type="text" size="70" readonly class="form-control-plaintext" value="' . $attrValue[$x] . '">
+                  </div>
+                </div>';
+              }
+               ?>
               <div class="row">
                 <div class="form-group col-6">
                   <label for="inputState">State</label>
                   <select class="form-control" name="state">
                     <?php
-                    foreach ($stateArr as $value){
+                    foreach ($stateStr as $value){
                       if($value !== $state){
                         echo "<option>$value</option>";
                       }else{
