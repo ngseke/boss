@@ -9,12 +9,15 @@ require_once 'connection.php';
 
 if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
   // 若當前主機為localhost
-  $file = file_get_contents('db.sql'); // 取得sql腳本檔
+  $file = file_get_contents('sql/db.sql'); // 取得sql腳本檔
   $conn = new mysqli(db_host, db_username, db_password); // 建立mysql連接
 }else{
-  $file = file_get_contents('db_server.sql');
+  $file = file_get_contents('sql/db_server.sql');
   $conn = new mysqli(db_host, db_username, db_password, db_name);
 }
+
+// 加入範例資料的sql
+$file.= file_get_contents('sql/example_data.sql');
 
 // 將讀入的腳本檔字串打散為Array，以';'分割，所以連註解的尾也要打';'
 $arr = explode(';', $file);
@@ -66,19 +69,15 @@ $arr = explode(';', $file);
 </body>
 <?php include('js.php') ?>
 <script type="text/javascript">
-
-  // 頁面載入完成後，自動滾到最底部
   $(document).ready(function(){
-    var h = $(document).height()-$(window).height();
-    $(document).scrollTop(h);
-
     // 若查詢成功則將指令折疊。
     if($('#final-msg').hasClass('alert-success')){
       $('#zhiling').addClass('collapse');
     }
+    // 頁面載入完成後，自動滾到最底部
+    var h = $(document).height()-$(window).height();
+    $(document).scrollTop(h);
   });
-
-
 </script>
 
 </html>
