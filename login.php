@@ -1,5 +1,6 @@
 <!--
   登入介面改為modal顯示。
+  此頁放的是‘modal彈出視窗’ 和 ‘AJAX語法’， 同時處理登入和登出。
 -->
 
 <div class="modal fade" id="loginModal" tabindex="-1">
@@ -13,8 +14,11 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <div id="LoginAlert" class="alert text-center d-none"></div>
-          <div class="row" action="" method="post">
+
+          <div class="row login-panel" method="post">
+            <div class="col-12">
+              <div id="LoginAlert" class="alert text-center d-none"></div>
+            </div>
             <div class="col-12 form-group">
               <label for="">帳號</label>
               <input id="LoginID" value="admin" type="text" name="ID" placeholder="帳號" class="form-control" required>
@@ -45,10 +49,11 @@ $("#login").click(function(){
     Password: $('#LoginPW').val()
   },
   function(data,status){
-    $('#LoginAlert').removeClass('d-none').removeClass('alert-success').removeClass('alert-danger').removeClass('alert-warning');
+    $('#LoginAlert').removeClass('d-none').removeClass('alert-success').removeClass('alert-danger');
     if(data=='success'){
-      $('#LoginAlert').addClass('alert-success').html('成功登入!');
-      location.reload();// 刷新頁面
+      $('.login-panel').empty().html('<div class="col-12 text-center my-3 text-success"><i class="material-icons text-success" style="font-size:5rem">done</i><h5>成功登入!</h5></div>');
+      // 等待一秒後刷新頁面
+      setTimeout(function(){location.reload();}, 500);
     }else {
       $('#LoginAlert').addClass('alert-danger').html('<i class="material-icons">block</i> 帳號或密碼錯誤!');
     }
@@ -71,14 +76,14 @@ $("#LoginID").change(function(){
   });
 });
 
-// 按下ENTER鍵送出
+// 當焦點在LoginID時，按下ENTER鍵送出
 $("#LoginID").keypress(function(e){
   code = (e.keyCode ? e.keyCode : e.which);
   if (code == 13) $("#login").click();
 });
+// 當焦點在LoginPW時，按下ENTER鍵送出
 $("#LoginPW").keypress(function(e){
   code = (e.keyCode ? e.keyCode : e.which);
   if (code == 13) $("#login").click();
 });
-
 </script>

@@ -14,6 +14,8 @@ $page_name = '訂單';
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
   <?php
+  if(!isset($_SESSION['ID']))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
   if(!isset($_GET['state']))
     die ('<meta http-equiv="refresh" content="0;URL=?state=all">'); ?>
 
