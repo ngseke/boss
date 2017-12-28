@@ -17,8 +17,8 @@
   <div class="container my-3">
     <div class="row" >
       <?php
-        $CartID = $_GET['CartID'];
-        $Total = $_GET['Total'];
+        $CartID = $_POST['CartID'];
+        $Total = $_POST['Total'];
         $sql = "SELECT COUNT(*)
                 FROM CART_RECORD
                 WHERE ID = '".$CartID."'";
