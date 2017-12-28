@@ -10,6 +10,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=order_list.php">
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <?php include('nav.php') ?>
@@ -34,6 +35,4 @@
    ?>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 <html>

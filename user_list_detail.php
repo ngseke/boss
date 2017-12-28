@@ -9,6 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <!-- 引入導覽列 -->
@@ -116,7 +117,5 @@
 
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 
 </html>

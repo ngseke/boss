@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
           if($user_id == "guest"){
             $_SESSION['AlertMsg'] =
             array('warning','<i class="material-icons">warning</i> 尚未登入！',false);
-            echo '<meta http-equiv=REFRESH CONTENT=1;url=login.php>';
+            echo '<meta http-equiv=REFRESH CONTENT=0;url=cart.php>';
           }
           else{
             include('order_set.php');
@@ -57,7 +58,7 @@
             $conn->query($sql);
             $_SESSION['AlertMsg'] =
             array('success','<i class="material-icons">done</i> 訂單已成功送出！',false);
-            echo '<meta http-equiv=REFRESH CONTENT=1;url=order_finish.php?OrderID='.$OrderID.'>';
+            echo '<meta http-equiv=REFRESH CONTENT=0;url=order_finish.php?OrderID='.$OrderID.'>';
           }
         }
       ?>
@@ -65,5 +66,4 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
 </html>

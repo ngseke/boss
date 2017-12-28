@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -31,7 +32,6 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
 <script language="Javascript">
   setTimeout(function(){location.href='index.php';}, 100);
 </script>

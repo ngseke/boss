@@ -10,6 +10,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=discount_list.php">
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -46,5 +47,4 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
 </html>

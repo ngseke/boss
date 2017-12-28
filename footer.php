@@ -55,11 +55,6 @@ $authorList= array( "FBID"=>array('100002864697459','100000427402468', "10000022
               <div class="rounded-circle d-inline-block align-middle" style="width:2rem; height:2rem; background:url(http://www.cc.ntut.edu.tw/~cliu/DSC00288%20cliu.jpg); background-size:contain; background-position:center;"></div>
               <span class="ml-1"><a class="text-warning" target="_blank" href="http://www.cc.ntut.edu.tw/~cliu/">Chien-Hung Liu</a></span>
             </div>
-            <div class="col-12 text-center rounded my-2 text-info py-3 d-none" style="background:#333">
-              <i class="material-icons" style="font-size:5rem;">mood</i>
-              <i class="material-icons" style="font-size:5rem;">favorite</i>
-              <i class="material-icons" style="font-size:5rem;">storage</i>
-            </div>
           </div>
         </div>
       </div>
@@ -67,3 +62,11 @@ $authorList= array( "FBID"=>array('100002864697459','100000427402468', "10000022
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('#aboutUsSwitch').click(function(){
+    $("#aboutUsSwitchHidden").trigger("click");
+  });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>

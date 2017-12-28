@@ -14,6 +14,7 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -94,8 +95,5 @@ $page_name = mysqli_fetch_array($conn->query($sql))['PName'];
   </div>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 
-</script>
 </html>

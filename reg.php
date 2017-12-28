@@ -11,6 +11,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <?php if($login) die ('<meta http-equiv="refresh" content="0;URL=index.php">'); ?>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -71,5 +72,5 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
+
 </html>

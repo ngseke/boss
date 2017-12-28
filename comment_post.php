@@ -13,6 +13,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_detail.php<?php echo '?ID='.$_POST['PID']?>">
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -44,6 +45,5 @@
   <?php include('footer.php') ?>
 </body>
 <!-- 引入JS -->
-<?php include('js.php') ?>
 
 </html>

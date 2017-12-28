@@ -15,6 +15,7 @@
   if(!isset($_GET['show']))
     die ('<meta http-equiv="refresh" content="0;URL=discount_list.php?show=list">'); ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -169,6 +170,4 @@ DISCOUNT
 
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 </html>

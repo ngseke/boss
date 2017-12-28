@@ -10,6 +10,7 @@
   <!-- 引入CSS等樣式內容 -->
   <?php include('style.php') ?>
   <title><?php echo title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -26,7 +27,5 @@
   <?php include('jumbotron/slogan2.php') ?>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 
 </html>

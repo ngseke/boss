@@ -19,6 +19,7 @@ $page_name = '訂單';
 
   <!-- 根據所在頁面 印出對應的標題 -->
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -192,7 +193,6 @@ $page_name = '訂單';
   </div>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
+
 
 </html>
