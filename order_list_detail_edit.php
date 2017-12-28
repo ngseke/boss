@@ -9,13 +9,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
-  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=order_list.php">
+  <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=order_list.php?State=Submitted">
 </head>
 <body>
   <?php include('nav.php') ?>
   <?php
     $state = $_POST['state'];
     $manageName = $_POST['manageName'];
+    if($manageName = ''){
+      $manageName = "NULL";
+    }
     $ID = $_POST['ID'];
 
     $sqlSID = "SELECT ID FROM member WHERE Name = '" . $manageName . "'";

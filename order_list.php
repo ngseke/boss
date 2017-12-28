@@ -12,13 +12,30 @@
 </head>
 <body>
   <?php include('nav.php');
-    $sql = "SELECT * FROM order_list_view";
-    $result = $conn->query($sql);
+  $sql = "SELECT * FROM order_list_view";
+  if(isset($_GET['State'])){
+    $sql.= " WHERE State = '" . $_GET['State'] . "'";
+  }
+  $result = $conn->query($sql);
   ?>
   <div class="container mt-3"><?php include('echo_alert.php') ?></div>
   <div class="container">
+    <div class="row mt-4">
+      <div class="col-3 text-center">
+        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Submitted'">Submitted</button>
+      </div>
+      <div class="col-3 text-center">
+        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Processed'">Processed</button>
+      </div>
+      <div class="col-3 text-center">
+        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Delivered'">Delivered</button>
+      </div>
+      <div class="col-3 text-center">
+        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Completed'">Completed</button>
+      </div>
+    </div>
     <div class="row">
-      <table class="table mt-5 d-none d-lg-table ">
+      <table class="table mt-4 d-none d-lg-table ">
         <thead>
           <tr class="text-center">
             <th scope="col">ID</th>

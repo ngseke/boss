@@ -35,8 +35,19 @@
 
 
   $stateStr = array("submitted", "processed", "delivered", "completed");
-  $attr = array("ID", "收件人", "mail", "電話", "地址", "訂單時間", "金額");
-  $attrValue = array("$ID", "$memName", "$mail", "$Phone", "$Address", "$Date", "$FinalCost");
+  $attr = array("ID", "收件人", "mail", "電話", "地址", "訂單時間", "金額", "接管成員");
+  $attrValue = array("$ID", "$memName", "$mail", "$Phone", "$Address", "$Date", "$FinalCost", "$stfName");
+  $attrSize = count($attr);
+  $isDisplay = '';
+  $idColSize = '';
+  if($user_position == "A"){
+    $attrSize = count($attr) - 1;
+    $idColSize = 'col-6';
+  }else{
+    $isDisplay = 'd-none';
+    $idColSize = 'col-12';
+}
+
   ?>
   <div class="container">
     <div class="row">
@@ -46,7 +57,7 @@
           <div class="card-body">
             <form class="" action="order_list_detail_edit.php" method="post">
               <?php
-              for ($x = 0 ; $x < 7 ; $x++) {
+              for ($x = 0 ; $x < $attrSize ; $x++) {
                 echo '
                 <div class="form-group row">
                   <label class="col-2 col-form-label font-weight-bold">' .$attr[$x]. '</label>
@@ -57,8 +68,8 @@
               }
                ?>
               <div class="row">
-                <div class="form-group col-6">
-                  <label for="inputState">State</label>
+                <div class="form-group <?php echo $idColSize ?>">
+                  <label for="inputState" class="font-weight-bold">State</label>
                   <select class="form-control" name="state">
                     <?php
                     foreach ($stateStr as $value){
@@ -71,9 +82,10 @@
                     ?>
                   </select>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6 <?php echo $isDisplay ?>">
                   <label for="inputState">接管成員</label>
                   <select class="form-control" name="manageName">
+                    <option value=""></option>
                     <?php
                       while($rowName = $resultName->fetch_assoc()){
                         $Name = $rowName['Name'];
