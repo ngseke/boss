@@ -31,7 +31,7 @@ $queryLineNum = sizeof($arr);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
-  <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <title><?=$page_name. ' - ' .title_name ?></title>
   <?php include('js.php') ?>
 </head>
 
@@ -42,16 +42,16 @@ $queryLineNum = sizeof($arr);
     <div class="alert alert-info text-center"><i class="material-icons">storage</i> 執行了以下查詢 <a data-toggle="collapse" href="#zhiling" class="alert-link">顯示</a></div>
     <!-- 進度條 -->
     <div class="progress my-3">
-      <div class="progress-bar text-light" style="width: 0%;">0%</div>
+      <div class="progress-bar progress-bar-striped progress-bar-animated text-light" style="width: 0%;background:https://c.pxhere.com/photos/6a/14/beach_dawn_dusk_ocean_sea_seascape_sun_sunrise-1364695.jpg!s">0%</div>
     </div>
     <div class="" id="zhiling">
     <?php
-      // 逐一執行mysql查詢
       $errorNum=$i=0;
-
+      // 逐一執行mysql查詢
       foreach ($arr as $line) {
         ob_flush();
         flush();
+
         if ($conn->query($line.';') == TRUE) {
           // 若正確
           if (!($rst = strpos($line, '--'))) { // 只印出非註解指令
@@ -65,14 +65,18 @@ $queryLineNum = sizeof($arr);
 
         }
         $percent=ceil((++$i)/$queryLineNum*100);
-        echo '<script type="text/javascript">
-                $(\'.progress-bar\').html('. ($percent) .');
-                $(\'.progress-bar\').css("width", "'.$percent.'%");
-              </script>';
+
+        // 設定進度
+        if($i%1==0){
+          $precentText =  $percent . ' % '. "($i/$queryLineNum)" ;
+          echo '<script type="text/javascript">
+                  $(\'.progress-bar\').html("'.$precentText.'");
+                  $(\'.progress-bar\').css("width", "'.$percent.'%");
+                </script>';
+        }
+        //usleep(1000 * 50);
       }
-      echo '<script type="text/javascript">
-              $(\'.progress\').remove();
-            </script>';
+      // 隱藏進度條
     ?>
 
     </div>
@@ -90,9 +94,12 @@ $queryLineNum = sizeof($arr);
     if($('#final-msg').hasClass('alert-success')){
       $('#zhiling').addClass('collapse');
     }
+
     // 頁面載入完成後，自動滾到最底部
     var h = $(document).height()-$(window).height();
     $(document).scrollTop(h);
+
+    $('.progress').remove(); // 隱藏進度條
   });
 </script>
 
