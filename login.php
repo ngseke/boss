@@ -54,10 +54,10 @@
     function(data,status){
       $('#LoginAlert').removeClass('d-none').removeClass('alert-success').removeClass('alert-danger').removeClass('alert-warning');
       if(data=='success'){
-        $('#LoginAlert').addClass('alert-success').html('已成功登入!');
+        $('#LoginAlert').addClass('alert-success').html('成功登入!');
         window.location.href='index.php'; // 跳轉
       }else {
-        $('#LoginAlert').addClass('alert-danger').html('帳號或密碼錯誤!');
+        $('#LoginAlert').addClass('alert-danger').html('<i class="material-icons">block</i> 帳號或密碼錯誤!');
       }
     });
   });
@@ -71,7 +71,7 @@
     },
     function(data,status){
       if(data=='iderr'){
-        $('#NoSuchID').html('查無此帳號').removeClass('d-none');
+        $('#NoSuchID').html('<i class="material-icons" style="font-size:.8rem">help_outline</i> 查無此帳號').removeClass('d-none');
       }else{
         $('#NoSuchID').html('').addClass('d-none')
       }
