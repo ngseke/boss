@@ -1,96 +1,16 @@
-DROP DATABASE IF EXISTS BOSS;
+-- 插入類別 ;
+INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
+('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
+('啤酒'), ('燒酒'), ('洋酒'), ('水');
 
-CREATE DATABASE BOSS default character set utf8mb4 collate utf8mb4_general_ci;
-SET NAMES utf8mb4;
-USE BOSS;
+-- 插入折扣活動 ;
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季大折扣','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'飲涼卡好節','discount');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2018-1-11','2018-1-28',123,0.90,'Xmas耶誕優惠','');
+INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-2','2018-1-10', 112,0.88,'1/12週年慶','');
 
--- 會員資料;
-CREATE TABLE MEMBER(
-  ID VARCHAR(20) PRIMARY KEY,
-  Password VARCHAR(128) NOT NULL,
-  Name VARCHAR(12) NOT NULL,
-  Email VARCHAR(30) NOT NULL,
-  Phone VARCHAR(10) NOT NULL,
-  RegDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  Birth DATE,
-  Gender ENUM('M', 'F', 'N'),
-  Address VARCHAR(100),
-  Position ENUM('S', 'A', 'C') NOT NULL
-);
-
--- 商品;
-CREATE TABLE PRODUCT(
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  Name VARCHAR(30) NOT NULL,
-  State ENUM('in_stock', 'out_of_stock', 'removed_from_shelves'),
-  Stock INT(7) UNSIGNED NOT NULL,
-  Price INT(10) UNSIGNED NOT NULL,
-  Img VARCHAR(100) NOT NULL,
-  Info VARCHAR(300),
-  DID INT(7) UNSIGNED,
-  CategoryID INT(7) UNSIGNED NOT NULL
-);
-
--- 商品類型;
-CREATE TABLE CATEGORY(
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  Name VARCHAR(10) NOT NULL UNIQUE
-);
-
--- 訂單;
-CREATE TABLE ORDER_LIST (
-  ID VARCHAR(8) PRIMARY KEY,
-  Date DATETIME NOT NULL,
-  FinalCost INT(7) UNSIGNED NOT NULL,
-  State ENUM('submitted', 'processed', 'delivered', 'completed') NOT NULL DEFAULT 'submitted',
-  CID VARCHAR(20) NOT NULL,
-  DID INT(7) UNSIGNED NOT NULL,
-  SID VARCHAR(20)
-);
-
--- 訂單和商品的特殊性關係;
-CREATE TABLE ORDER_LIST_RECORD (
-  OID VARCHAR(8) NOT NULL,
-  PID INT(7) UNSIGNED NOT NULL,
-  Quantity INT(7) UNSIGNED NOT NULL,
-  PRIMARY KEY (OID, PID)
-);
-
--- 購物車;
-CREATE TABLE CART (
-  ID VARCHAR(8) PRIMARY KEY,
-  Date DATETIME NOT NULL
-);
-
--- 購物車和商品的特殊性關係;
-CREATE TABLE CART_RECORD (
-  ID VARCHAR(8),
-  PID INT(7) UNSIGNED,
-  Quantity INT(5) UNSIGNED NOT NULL,
-  PRIMARY KEY(ID,PID)
-);
-
--- 評論;
-CREATE TABLE COMMENT (
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  CID VARCHAR(20) NOT NULL,
-  PID INT(7) UNSIGNED NOT NULL,
-  Star INT(1) NOT NULL,
-  Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  Comment VARCHAR(100) NOT NULL
-);
-
--- 折扣;
-CREATE TABLE DISCOUNT (
-  ID INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  Type ENUM('shipping', 'seasoning', 'event'),
-  PeriodFrom DATE NOT NULL,
-  PeriodTo DATE NOT NULL,
-  Requirement INT(7) UNSIGNED,
-  Rate DOUBLE(3,3) NOT NULL,
-  Info VARCHAR(100) NOT NULL,
-  EventType ENUM('BOGO', 'discount')
-);
 
 -- 插入測試用範例資料;
 -- 插入 純喫茶;
@@ -164,12 +84,6 @@ VALUE('美粒果柳橙汁', 23, 'in_stock', 999, NULL, 8, '加入了陽光果肉
 INSERT INTO PRODUCT (Name, Price, State, Stock, DID, CategoryID, Info, Img)
 VALUE('光泉杯裝麥芽調味乳玉米片', 35, 'in_stock', 999, NULL, 9, '對生活步調匆忙的學生族而言，是最便利、營養的早餐飲品,精選進口麥芽粉溶入香純牛乳中,喝下滿口自然香甜的麥芽風味， 也喝下了好健康', 'https://www.savesafe.com.tw/ProdImg/1007/857/00/1007857_00_main.jpg');
 
-
--- ('x', 25, 'in_stock', 999, NULL, 5, 'x', 'x'),   ;
-INSERT INTO CATEGORY(Name) Value('綠茶'), ('紅茶'), ('烏龍茶'), ('健康茶'), ('奶茶'),
-('碳酸飲料'), ('乳酸飲料') , ('果汁'), ('乳飲品'), ('咖啡'), ('運動飲料'),
-('啤酒'), ('燒酒'), ('洋酒'), ('水');
-
 INSERT INTO MEMBER(ID, Password, Name, Email, Phone, Birth, Gender, Position, Address)
             VALUE('admin', '21232f297a57a5a743894a0e4a801fc3', '管理員大大', 'admin@gmail.com', '0912345678', '1911-10-10', 'M', 'A','台北市中正區重慶南路一段122號'),
             ('staff', '1253208465b1efa876f982d8a9e73eef', '廢物員工', 'staff@gmail.com', '0912345678', '1911-10-10', 'M', 'S', '台北市中正區忠孝東路一段1號'),
@@ -196,7 +110,7 @@ INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('staff', '1', '5', '請樓
 INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('a92304a92304', '5', '5', '大推 不錯喝👍！有點酸酸甜甜的像是初戀的滋味 不知道是不是臭酸');
 INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '2', '4', '最近也看到這家，是下次要購買的口袋清單 >///<');
 INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('mdyu1000', '13', '4', '覺得可以嘗試自己做, 買茶包加牛奶');
-INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('kimjongun', '13', '1', '雖然濃醇香但是打倒日本鬼子！！🇰🇵🇰🇵🇰🇵');
+INSERT INTO COMMENT (CID, PID, Star, Comment) VALUES ('kimjongun', '13', '1', '雖然濃醇香但是比不上祖國的！🇰🇵🇰🇵🇰🇵');
 
 INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('f7cbe6b6','2017-12-25 17:28:04',22,'completed','customer',3,'staff');
 INSERT INTO ORDER_LIST(ID,DATE,FinalCost,State,CID,DID,SID) VALUES('f7cbe6b7','2017-12-25 17:28:04',22,'submitted','customer',3,'staff');
@@ -209,71 +123,5 @@ INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('f7cbe6b7',3,1);
 INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('a0000001',4,1);
 INSERT into ORDER_LIST_RECORD (OID,PID,Quantity) VALUES ('a0000002',5,1);
 
-
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('shipping','2017-11-28','2017-11-29',500,0.1,'老闆出差之員工亂來','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-11-28','2017-11-29',500,0.1,'起秋季大折扣','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.9,'不小心進太多貨GG','BOGO');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('Event','2017-11-28','2018-2-10',500,0.87,'飲涼卡好節','discount');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2018-1-11','2018-1-28',123,0.90,'Xmas耶誕優惠','');
-INSERT INTO DISCOUNT (Type,PeriodFrom,PeriodTo,Requirement,Rate,Info,EventType) VALUES('seasoning','2017-12-2','2018-1-10', 112,0.88,'1/12週年慶','');
-
-
--- FOREIGN KEY;
-ALTER TABLE PRODUCT ADD FOREIGN KEY (DID) REFERENCES DISCOUNT (ID);
-ALTER TABLE PRODUCT ADD FOREIGN KEY (CategoryID) REFERENCES CATEGORY(ID);
-ALTER TABLE ORDER_LIST ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID);
-ALTER TABLE ORDER_LIST ADD FOREIGN KEY (DID) REFERENCES DISCOUNT(ID);
-ALTER TABLE ORDER_LIST_RECORD ADD FOREIGN KEY (OID) REFERENCES ORDER_LIST(ID);
-ALTER TABLE CART_RECORD ADD FOREIGN KEY (ID) REFERENCES CART(ID);
-ALTER TABLE CART_RECORD ADD FOREIGN KEY (PID) REFERENCES PRODUCT(ID);
-ALTER TABLE COMMENT ADD FOREIGN KEY (CID) REFERENCES MEMBER(ID);
-
-
--- VIEW 視界;
-
-DROP VIEW IF EXISTS PRODUCT_VIEW;
-
--- 為了簡化在php中的查詢指令，建此VIEW把 PRODUCT, CATEGORY, DISCOUNT 合併成一表。;
--- PPrice: 原始價格 / PPriceDiscount: 折扣後價格，如果沒有折扣或者在期限外則為NULL;
--- PPriceF: 加入逗號的原始價格 / PPriceDiscount: 加入逗號的折扣後價格，同上。;
-
-CREATE VIEW PRODUCT_VIEW
-AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.State PState,
-          C.Name CName, C.ID CID, D.ID DID, D.Rate DRate, D.EventType DEvent,
-          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='BOGO')
-                THEN 'BOGO'
-                WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
-                THEN 'Discount'
-                ELSE NULL END) DEventType,
-          P.Price PPrice,
-          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
-                THEN (P.Price * D.Rate)
-                ELSE NULL END) PPriceDiscount,
-          FORMAT(P.Price,0) PPriceF,
-          FORMAT((CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
-                THEN (P.Price * D.Rate)
-                ELSE NULL END),0) PPriceDiscountF
-           FROM PRODUCT P
-           INNER JOIN CATEGORY C ON P.CategoryID = C.ID
-           LEFT JOIN DISCOUNT D ON P.DID = D.ID
-           WHERE P.CategoryID = C.ID
-           ORDER BY PID;
-
-DROP VIEW IF EXISTS ORDER_LIST_RECORD_VIEW;
-
--- 結合了 product的名字與照片 與 order_list_record
-CREATE VIEW ORDER_LIST_RECORD_VIEW AS
-SELECT order_list_record.OID, order_list_record.PID, order_list_record.Quantity, product.Name, product.Img
-FROM order_list_record, product
-WHERE order_list_record.PID = product.ID;
-
-
-DROP VIEW IF EXISTS ORDER_LIST_VIEW;
-
--- 結合了 member(又分收件人與員工) discount order_list_record 的 view
-CREATE VIEW ORDER_LIST_VIEW AS
-SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", D.Info
-FROM order_list O, member mem, member stf, discount D
-WHERE O.CID = mem.ID
-AND O.DID = D.ID
-AND O.SID = stf.ID
+-- 這個最後一行可以直接無視。 ;
+SELECT * FROM PRODUCT

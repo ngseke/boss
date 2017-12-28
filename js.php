@@ -14,4 +14,7 @@
   $('#aboutUsSwitch').click(function(){
     $("#aboutUsSwitchHidden").trigger("click");
   });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 </script>
