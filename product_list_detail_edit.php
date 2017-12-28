@@ -11,6 +11,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=product_list.php">
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -72,8 +73,8 @@
   else
   $_SESSION['AlertMsg'] = array('danger','<i class="material-icons">block</i> 修改失敗！',false);
   ?>
+  <?php include('footer.php') ?>
 
 </body>
-<?php include('footer.php') ?>
-<?php include('js.php') ?>
+
 </html>

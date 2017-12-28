@@ -11,6 +11,7 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <meta http-equiv="refresh" content="<?php echo auto_jump_time ?>;URL=user_list.php">
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <?php include('nav.php'); ?>
@@ -32,5 +33,5 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
+
 </html>

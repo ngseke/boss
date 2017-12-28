@@ -9,11 +9,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  ?>
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <?php include('nav.php');
   $sql = "SELECT * FROM order_list_view";
+  $state='';
   if(isset($_GET['State'])){
+    $state=$_GET['State'];
     $sql.= " WHERE State = '" . $_GET['State'] . "'";
   }
   $result = $conn->query($sql);
@@ -21,17 +28,20 @@
   <div class="container mt-3"><?php include('echo_alert.php') ?></div>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-3 text-center">
-        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Submitted'">Submitted</button>
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-dark btn-block <?=($state=='')?'active':''?>" onclick="javascript:location.href='order_list.php?'">所有訂單</button>
       </div>
-      <div class="col-3 text-center">
-        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Processed'">Processed</button>
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-secondary btn-block <?=($state=='Submitted')?'active':''?>" onclick="javascript:location.href='order_list.php?State=Submitted'">Submitted</button>
       </div>
-      <div class="col-3 text-center">
-        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Delivered'">Delivered</button>
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-secondary btn-block <?=($state=='Processed')?'active':''?>" onclick="javascript:location.href='order_list.php?State=Processed'">Processed</button>
       </div>
-      <div class="col-3 text-center">
-        <button type="button" class="btn btn-outline-secondary" onclick="javascript:location.href='order_list.php?State=Completed'">Completed</button>
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-secondary btn-block <?=($state=='Delivered')?'active':''?>" onclick="javascript:location.href='order_list.php?State=Delivered'">Delivered</button>
+      </div>
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-secondary btn-block <?=($state=='Completed')?'active':''?>" onclick="javascript:location.href='order_list.php?State=Completed'">Completed</button>
       </div>
     </div>
     <div class="row">
@@ -53,7 +63,7 @@
           if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()){
               echo
-              '<tr>
+              '<tr class="text-center">
               <td>' . $row["ID"] . '</td>
               <td>' . $row["Date"] . '</td>
               <td>' . $row["FinalCost"] . '</td>
@@ -72,6 +82,4 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 <html>

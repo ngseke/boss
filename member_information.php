@@ -14,6 +14,7 @@
     die ('<meta http-equiv="refresh" content="0;URL=index.php">');
   ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -40,8 +41,10 @@
         <div class="card">
           <div class="card-header text-center">修改資料</div>
           <div class="card-body">
-
             <form class="row" action="member_information_edit.php" method="post" enctype="multipart/form-data" >
+              <div class="col-12">
+                <div id="LoginAlert" class="alert text-center d-none">123</div>
+              </div>
               <div class="col-12 form-group">
                 <label for="">帳號<span class="text-info">*</span></label>
                 <input type="text" value="<?php echo $ID;?>" name="ID" class="form-control" readonly>
@@ -95,5 +98,5 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
+
 </html>

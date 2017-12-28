@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <meta http-equiv="refresh" content="<?php echo 0 ?>;URL=user_list.php">
+  <?php require_once ('js.php') ?>
 </head>
 
 <body>
@@ -45,5 +46,5 @@
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
+
 </html>

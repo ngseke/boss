@@ -12,7 +12,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
   $customer_display  = ($user_position=='C'||$user_position=='G')?'':'d-none '; // Customer和Guest的Display
   $admin_display  = ($user_position=='A'||$user_position=='S')?'':'d-none '; // Admin和Staff的Display
 ?>
-
+<?php require_once 'login.php' ?>
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary1 sticky-top" style="background:rgba(62,63,58,1);">
   <div class="container">
     <a class="navbar-brand align-middle" href="index.php">
@@ -59,13 +59,13 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
           <a class="nav-link" href="cart.php"><i class="material-icons">shopping_cart</i> 購物車</a>
         </li>
         <li class="nav-item <?=($this_page =='login')?'active ':'' ?> <?=$login_display ?>">
-          <a class="nav-link" href="login.php">登入</a>
+          <a class="nav-link" data-toggle="modal" href="#loginModal">登入</a>
         </li>
         <li class="nav-item <?=($this_page =='reg')?'active ':'' ?> <?=$reg_display ?>">
           <a class="nav-link" href="reg.php">註冊</a>
         </li>
         <!-- Admin & Staff  -->
-        <li class="nav-item <?=($this_page =='order')?'active ':'' ?> <?=$admin_display ?>">
+        <li class="nav-item <?=($this_page =='order_list')?'active ':'' ?> <?=$admin_display ?>">
           <a class="nav-link" href="order_list.php">管理訂單</a>
         </li>
         <li class="nav-item <?=($this_page =='product_list')?'active ':'' ?> <?=$admin_display ?>">
@@ -102,7 +102,7 @@ $this_page = pathinfo($_SERVER['PHP_SELF'])['filename']
             <a class="dropdown-item <?=$customer_display ?>" href="customer_order.php">訂單</a>
             <a class="dropdown-item" href="member_information.php">會員資料</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="logout.php">
+            <a class="dropdown-item" href="#" onclick="$.post('logout.php');location.reload();">
               <i class="material-icons">exit_to_app</i> 登出
             </a>
           </div>

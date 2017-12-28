@@ -9,6 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+  ?>
+  <?php require_once ('js.php') ?>
 </head>
 <body>
   <?php include('nav.php');
@@ -109,6 +114,4 @@
 
   <?php include('footer.php') ?>
 </body>
-<!-- 引入JS -->
-<?php include('js.php') ?>
 <html>
