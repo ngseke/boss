@@ -53,7 +53,7 @@
               <th scope="col">#</th>
               <th scope="col" style="width:8rem">名稱</th>
               <th scope="col" style="width:5rem">狀態</th>
-              <th scope="col" style="width:5rem">庫存數量</th>
+              <th scope="col" style="width:6rem">庫存數量</th>
               <th scope="col" style="width:4rem">價錢</th>
               <th scope="col" style="width:10rem" >圖片</th>
               <th scope="col">商品介紹</th>

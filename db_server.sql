@@ -242,3 +242,10 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
            LEFT JOIN DISCOUNT D ON P.DID = D.ID
            WHERE P.CategoryID = C.ID
            ORDER BY PID
+
+DROP VIEW IF EXISTS ORDER_LIST_RECORD_VIEW;
+
+CREATE VIEW ORDER_LIST_RECORD_VIEW AS
+SELECT order_list_record.OID, order_list_record.PID, order_list_record.Quantity, product.Name, product.Img
+FROM order_list_record, product
+WHERE order_list_record.PID = product.ID

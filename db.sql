@@ -257,4 +257,23 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
            INNER JOIN CATEGORY C ON P.CategoryID = C.ID
            LEFT JOIN DISCOUNT D ON P.DID = D.ID
            WHERE P.CategoryID = C.ID
-           ORDER BY PID
+           ORDER BY PID;
+
+DROP VIEW IF EXISTS ORDER_LIST_RECORD_VIEW;
+
+-- 結合了 product的名字與照片 與 order_list_record
+CREATE VIEW ORDER_LIST_RECORD_VIEW AS
+SELECT order_list_record.OID, order_list_record.PID, order_list_record.Quantity, product.Name, product.Img
+FROM order_list_record, product
+WHERE order_list_record.PID = product.ID;
+
+
+DROP VIEW IF EXISTS ORDER_LIST_VIEW;
+
+-- 結合了 member(又分收件人與員工) discount order_list_record 的 view
+CREATE VIEW ORDER_LIST_VIEW AS
+SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", D.Info
+FROM order_list O, member mem, member stf, discount D
+WHERE O.CID = mem.ID
+AND O.DID = D.ID
+AND O.SID = stf.ID
