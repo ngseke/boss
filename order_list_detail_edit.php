@@ -16,7 +16,7 @@
   <?php
     $state = $_POST['state'];
     $manageName = $_POST['manageName'];
-    if($manageName = ''){
+    if($manageName == ''){
       $manageName = "NULL";
     }
     $ID = $_POST['ID'];

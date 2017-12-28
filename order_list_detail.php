@@ -85,8 +85,8 @@
                 <div class="form-group col-6 <?php echo $isDisplay ?>">
                   <label for="inputState">接管成員</label>
                   <select class="form-control" name="manageName">
-                    <option value=""></option>
                     <?php
+                      echo "<option></option>";
                       while($rowName = $resultName->fetch_assoc()){
                         $Name = $rowName['Name'];
                         if($Name !== $stfName){
