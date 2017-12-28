@@ -21,12 +21,12 @@
             </div>
             <div class="col-12 form-group">
               <label for="">帳號</label>
-              <input id="LoginID" value="admin" type="text" name="ID" placeholder="帳號" class="form-control" required>
+              <input id="LoginID" value="admin" type="text" placeholder="帳號" class="form-control" required>
               <small id="NoSuchID" class="text-warning d-none"></small>
             </div>
             <div class="col-12 form-group">
               <label for="">密碼</label>
-              <input id="LoginPW" value="pw" type="password" name="Password" placeholder="密碼" class="form-control" required>
+              <input id="LoginPW" value="pw" type="password" placeholder="密碼" class="form-control" required>
               <small class="text-muted">萬用密碼'pw'</small>
             </div>
             <div class="col-12 form-group">
