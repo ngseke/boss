@@ -24,7 +24,7 @@
   $mail = $row['Email'];
   $FinalCost = $row['FinalCost'];
   $State = $row['State'];
-  $NameAssign = $row['stfName'];
+  $stfName = $row['stfName'];
   $Address = $row['Address'];
 
   //---------------------From member----------------
@@ -62,7 +62,7 @@
                   <select class="form-control" name="state">
                     <?php
                     foreach ($stateStr as $value){
-                      if($value !== $state){
+                      if($value !== $State){
                         echo "<option>$value</option>";
                       }else{
                         echo "<option selected>$value</option>";
@@ -77,7 +77,7 @@
                     <?php
                       while($rowName = $resultName->fetch_assoc()){
                         $Name = $rowName['Name'];
-                        if($Name !== $NameAssign){
+                        if($Name !== $stfName){
                           echo "<option>" . $Name . "</option>";
                         }else{
                           echo "<option selected>" . $Name . "</option>";
