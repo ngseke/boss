@@ -44,7 +44,7 @@ CREATE TABLE ORDER_LIST (
   FinalCost INT(7) UNSIGNED NOT NULL,
   State ENUM('submitted', 'processed', 'delivered', 'completed') NOT NULL DEFAULT 'submitted',
   CID VARCHAR(20) NOT NULL,
-  DID INT(7) UNSIGNED NOT NULL,
+  DID INT(7) UNSIGNED,
   SID VARCHAR(20)
 );
 
@@ -121,7 +121,7 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
                 THEN 'Discount'
                 ELSE NULL END) DEventType,
           P.Price PPrice,
-          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+            (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
                 THEN (P.Price * D.Rate)
                 ELSE NULL END) PPriceDiscount,
           FORMAT(P.Price,0) PPriceF,
@@ -148,8 +148,8 @@ DROP VIEW IF EXISTS ORDER_LIST_VIEW;
 
 -- 結合了 member(又分收件人與員工) discount order_list_record 的 view ;
 CREATE VIEW ORDER_LIST_VIEW AS
-SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", D.Info
-FROM order_list O, member mem, member stf, discount D
-WHERE O.CID = mem.ID
-AND O.DID = D.ID
-AND O.SID = stf.ID;
+SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", d.Info
+FROM order_list O
+LEFT JOIN member stf ON O.SID = stf.ID
+LEFT JOIN member mem ON O.CID = mem.ID
+LEFT JOIN discount d ON O.DID = d.ID
