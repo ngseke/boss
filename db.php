@@ -21,7 +21,7 @@ $file.= file_get_contents('sql/example_data.sql');
 
 // 將讀入的腳本檔字串打散為Array，以';'分割，所以連註解的尾也要打';'
 $arr = explode(';', $file);
-
+$queryLineNum = sizeof($arr);
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +32,23 @@ $arr = explode(';', $file);
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
+  <?php include('js.php') ?>
 </head>
 
 <body>
+
   <?php include('nav.php') ?>
-  <div class="container mt-3">
+  <div class="container mt-3" id="zhilingBox">
     <div class="alert alert-info text-center"><i class="material-icons">storage</i> 執行了以下查詢 <a data-toggle="collapse" href="#zhiling" class="alert-link">顯示</a></div>
+    <!-- 進度條 -->
+    <div class="progress my-3">
+      <div class="progress-bar text-light" style="width: 0%;">0%</div>
+    </div>
     <div class="" id="zhiling">
     <?php
       // 逐一執行mysql查詢
-      $errorNum=0;
+      $errorNum=$i=0;
+
       foreach ($arr as $line) {
         ob_flush();
         flush();
@@ -57,8 +64,17 @@ $arr = explode(';', $file);
               . $line . ';<br><strong></code></pre>'. $conn->error .'</strong></div>';
 
         }
+        $percent=ceil((++$i)/$queryLineNum*100);
+        echo '<script type="text/javascript">
+                $(\'.progress-bar\').html('. ($percent) .');
+                $(\'.progress-bar\').css("width", "'.$percent.'%");
+              </script>';
       }
+      echo '<script type="text/javascript">
+              $(\'.progress\').remove();
+            </script>';
     ?>
+
     </div>
     <?=($errorNum>0)
      ?'<div class="alert alert-danger text-center" id="final-msg"><i class="material-icons">report_problem</i> 查詢時發生了共 '. $errorNum .' 筆錯誤！</div>'
@@ -67,7 +83,7 @@ $arr = explode(';', $file);
   </div>
   <?php include('footer.php') ?>
 </body>
-<?php include('js.php') ?>
+
 <script type="text/javascript">
   $(document).ready(function(){
     // 若查詢成功則將指令折疊。
