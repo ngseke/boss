@@ -39,7 +39,7 @@ $queryLineNum = sizeof($arr);
 
   <?php include('nav.php') ?>
   <div class="container mt-3" id="zhilingBox">
-    <div class="alert alert-info text-center"><i class="material-icons">storage</i> 執行了以下查詢 <a data-toggle="collapse" href="#zhiling" class="alert-link">顯示</a></div>
+    <div class="alert alert-info text-center"><i class="material-icons">storage</i> 執行了以下查詢</div>
     <!-- 進度條 -->
     <div class="progress my-3">
       <div class="progress-bar progress-bar-striped progress-bar-animated text-light" style="width: 0%;background:https://c.pxhere.com/photos/6a/14/beach_dawn_dusk_ocean_sea_seascape_sun_sunrise-1364695.jpg!s">0%</div>
@@ -82,7 +82,7 @@ $queryLineNum = sizeof($arr);
     </div>
     <?=($errorNum>0)
      ?'<div class="alert alert-danger text-center" id="final-msg"><i class="material-icons">report_problem</i> 查詢時發生了共 '. $errorNum .' 筆錯誤！</div>'
-     :'<div class="alert alert-success text-center" id="final-msg"><i class="material-icons">favorite</i> 已成功查詢所有指令。</div>';
+     :'<div class="alert alert-success text-center" id="final-msg"><i class="material-icons">favorite</i> 已成功查詢所有指令。 <a data-toggle="collapse" href="#zhiling" class="alert-link">顯示</a></div>';
      ?>
   </div>
   <?php include('footer.php') ?>
