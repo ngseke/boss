@@ -36,14 +36,14 @@
 <div class="row  <?php if(isset($_SESSION['ID']))echo'd-none ' ?>">
   <div class="col-12 col-lg-7">
     <?php $bg_url='https://c.pxhere.com/photos/e3/78/mug_coffee_cup_drink-98978.jpg!s' ; ?>
-    <div class="jumbotron link text-center bg-dark text-light" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center;" onclick="location.href='login.php'">
-      <button type="button" class="btn btn-outline-light">登入</button>
+    <div class="jumbotron text-center bg-dark text-light" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center;" >
+      <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#loginModal">登入</button>
     </div>
   </div>
   <div class="col-12 col-lg-5">
     <?php $bg_url='https://c.pxhere.com/photos/39/a8/coffee_cafe_mug_decorative_drink_beverage_latte_cappuccino-847370.jpg!d' ; ?>
-    <div class="jumbotron link text-center bg-light text-dark" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; " onclick="location.href='reg.php'">
-      <button type="button" class="btn btn-dark">註冊</button>
+    <div class="jumbotron text-center bg-light text-dark" style="background:url('<?php echo $bg_url ?>');background-size: cover; background-position:center center; " >
+      <button type="button" class="btn btn-dark" onclick="location.href='reg.php'">註冊</button>
     </div>
   </div>
 </div>
