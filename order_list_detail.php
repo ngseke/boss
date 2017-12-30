@@ -18,7 +18,7 @@
 <body>
   <?php include('nav.php');
   //----------------------From order_list----------------
-  $sql = "SELECT * FROM order_list_view WHERE ID = '" . $_GET['ID'] . "'";
+  $sql = "SELECT * FROM ORDER_LIST_VIEW WHERE ID = '" . $_GET['ID'] . "'";
   $result = $conn->query($sql);
   $row = mysqli_fetch_array($result);
 
@@ -33,7 +33,7 @@
   $Address = $row['Address'];
 
   //---------------------From member----------------
-  $sqlName = "SELECT * FROM member WHERE position != \"C\"";
+  $sqlName = "SELECT * FROM MEMBER WHERE position != \"C\"";
   $resultName = $conn->query($sqlName);
 
   //----------------------From member assign name----------------

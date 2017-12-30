@@ -136,20 +136,20 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
 
 DROP VIEW IF EXISTS ORDER_LIST_RECORD_VIEW;
 
--- 結合了 product的名字與照片 與 order_list_record ;
+-- 結合了 product的名字與照片 與 ORDER_LIST_RECORD ;
 
 CREATE VIEW ORDER_LIST_RECORD_VIEW AS
-SELECT order_list_record.OID, order_list_record.PID, order_list_record.Quantity, product.Name, product.Img
-FROM order_list_record, product
-WHERE order_list_record.PID = product.ID;
+SELECT ORDER_LIST_RECORD.OID, ORDER_LIST_RECORD.PID, ORDER_LIST_RECORD.Quantity, PRODUCT.Name, PRODUCT.Img
+FROM ORDER_LIST_RECORD, PRODUCT
+WHERE ORDER_LIST_RECORD.PID = PRODUCT.ID;
 
 
 DROP VIEW IF EXISTS ORDER_LIST_VIEW;
 
--- 結合了 member(又分收件人與員工) discount order_list_record 的 view ;
+-- 結合了 member(又分收件人與員工) discount ORDER_LIST_RECORD 的 view ;
 CREATE VIEW ORDER_LIST_VIEW AS
 SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", d.Info
-FROM order_list O
-LEFT JOIN member stf ON O.SID = stf.ID
-LEFT JOIN member mem ON O.CID = mem.ID
-LEFT JOIN discount d ON O.DID = d.ID
+FROM ORDER_LIST O
+LEFT JOIN MEMBER stf ON O.SID = stf.ID
+LEFT JOIN MEMBER mem ON O.CID = mem.ID
+LEFT JOIN DISCOUNT d ON O.DID = d.ID;

@@ -41,7 +41,7 @@
       <div class="col-12 <?=($_GET['show']!='list')?'d-none ':''; ?> ">
         <?php
           if(isset($_GET['page'])){
-            $total = mysqli_num_rows($conn->query("SELECT * FROM product")); // 共幾筆資料
+            $total = mysqli_num_rows($conn->query("SELECT * FROM PRODUCT")); // 共幾筆資料
             $limit = 10; // 每頁5筆
             $start = $_GET['page'] * $limit;
             $currentPage=$_GET['page'];
@@ -63,7 +63,7 @@
           </thead>
           <tbody>
             <?php
-            $sql = "SELECT * FROM product";
+            $sql = "SELECT * FROM PRODUCT";
             if(isset($_GET['page'])) // 若有GET到頁數
                $sql .= " ORDER BY ID ASC LIMIT $start, $limit";
 

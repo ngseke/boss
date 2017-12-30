@@ -1,6 +1,6 @@
 <!-- 本頁僅用於回傳當前商品的評分星星 -->
 <?php
-  $sql_star = 'SELECT AVG(Star) Star FROM Comment WHERE PID='.$_GET['ID'];
+  $sql_star = 'SELECT AVG(Star) Star FROM COMMENT WHERE PID='.$_GET['ID'];
   $result_star = $conn->query($sql_star);
   $rows_star = mysqli_fetch_array($result_star);
   $star_num=round($rows_star['Star'],1);

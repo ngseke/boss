@@ -45,7 +45,7 @@
 
   // 若未上傳圖片檔案則不update
   if(empty(basename($_FILES["file"]["name"]))){
-    $sql = "UPDATE product
+    $sql = "UPDATE PRODUCT
     SET Name = '$name', Info = '$description', State = '$stock',
     Stock = '$stockNum', Price = $price
     , DID = $DID, CategoryID = $categoryID
@@ -61,7 +61,7 @@
       $uploadOk = 0;
     }
 
-    $sql = "UPDATE product
+    $sql = "UPDATE PRODUCT
     SET Name = '$name', Info = '$description', State = '$stock',
     Stock = '$stockNum', Price = $price, Img = '$target_file'
     , DID = $DID, CategoryID = $categoryID

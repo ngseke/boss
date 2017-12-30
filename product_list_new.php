@@ -1,11 +1,11 @@
 <div class="col-12 col-lg-6 offset-lg-3 my-3">
   <?php
     // for discount
-    $sql = "SELECT * FROM discount WHERE Type = 'event'";
+    $sql = "SELECT * FROM DISCOUNT WHERE Type = 'event'";
     $result = $conn->query($sql);
 
     // for CATEGORY
-    $sql3 = "SELECT * FROM category";
+    $sql3 = "SELECT * FROM CATEGORY";
     $result3 = $conn -> query($sql3);
   ?>
   <div class="card">

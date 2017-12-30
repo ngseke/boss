@@ -1,6 +1,6 @@
 <?php
 //---------------------From order_list_record_view----------------
-$sqlOrderView = "SELECT * FROM order_list_record_view WHERE OID = '" . $_GET['ID'] . "'";
+$sqlOrderView = "SELECT * FROM ORDER_LIST_RECORD_VIEW WHERE OID = '" . $_GET['ID'] . "'";
 $resultOrderView = $conn->query($sqlOrderView);
 
 ?>

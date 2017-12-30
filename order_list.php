@@ -17,7 +17,7 @@
 </head>
 <body>
   <?php include('nav.php');
-  $sql = "SELECT * FROM order_list_view";
+  $sql = "SELECT * FROM ORDER_LIST_VIEW";
   $state='';
   if(isset($_GET['State'])){
     $state=$_GET['State'];

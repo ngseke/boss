@@ -20,7 +20,7 @@
   <?php
   include ('connection.php');
   // for product
-  $sql = "SELECT * FROM product WHERE ID = " . $_GET['ID'];
+  $sql = "SELECT * FROM PRODUCT WHERE ID = " . $_GET['ID'];
   $result = $conn -> query($sql);
   $row = mysqli_fetch_array($result);
   $name = $row['Name'];
@@ -33,21 +33,21 @@
   $State = $row['State'];
 
   // for discount
-  $sql2 = "SELECT * FROM discount WHERE Type = 'event'";
+  $sql2 = "SELECT * FROM DISCOUNT WHERE Type = 'event'";
   $result2 = $conn -> query($sql2);
 
   // for CATEGORY
-  $sql3 = "SELECT * FROM category";
+  $sql3 = "SELECT * FROM CATEGORY";
   $result3 = $conn -> query($sql3);
 
   // for discount default
-  $sqlInfo = "SELECT Info FROM discount WHERE ID IN (SELECT DID FROM product WHERE ID = " . $_GET['ID'] . ")";
+  $sqlInfo = "SELECT Info FROM DISCOUNT WHERE ID IN (SELECT DID FROM PRODUCT WHERE ID = " . $_GET['ID'] . ")";
   $resultInfo = $conn->query($sqlInfo);
   $rowInfo = mysqli_fetch_array($resultInfo);
   $info = $rowInfo['Info'];
 
   // for category DEFAULT
-  $sqlCategory = "SELECT Name FROM category WHERE ID IN (SELECT CategoryID FROM product WHERE ID = " . $_GET['ID'] . ")";
+  $sqlCategory = "SELECT Name FROM CATEGORY WHERE ID IN (SELECT CategoryID FROM PRODUCT WHERE ID = " . $_GET['ID'] . ")";
   $resultCategory = $conn->query($sqlCategory);
   $rowCategory = mysqli_fetch_array($resultCategory);
   $category = $rowCategory['Name'];

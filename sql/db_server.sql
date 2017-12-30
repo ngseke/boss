@@ -1,10 +1,9 @@
 -- ！不要改這個 這個是伺服器用的版本 要改請改db.php！ ;
 
-DROP DATABASE IF EXISTS b24_21029138_BOSS;
-
-CREATE DATABASE b24_21029138_BOSS default character set utf8mb4 collate utf8mb4_general_ci;
+DROP DATABASE IF EXISTS id4146602_boss;
+CREATE DATABASE id4146602_boss default character set utf8mb4 collate utf8mb4_general_ci;
 SET NAMES utf8mb4;
-USE b24_21029138_BOSS;
+USE id4146602_boss;
 
 -- 會員資料;
 CREATE TABLE MEMBER(
@@ -46,7 +45,7 @@ CREATE TABLE ORDER_LIST (
   FinalCost INT(7) UNSIGNED NOT NULL,
   State ENUM('submitted', 'processed', 'delivered', 'completed') NOT NULL DEFAULT 'submitted',
   CID VARCHAR(20) NOT NULL,
-  DID INT(7) UNSIGNED NOT NULL,
+  DID INT(7) UNSIGNED,
   SID VARCHAR(20)
 );
 
@@ -123,7 +122,7 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
                 THEN 'Discount'
                 ELSE NULL END) DEventType,
           P.Price PPrice,
-          (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
+            (CASE WHEN ((D.PeriodTo >= NOW() AND D.PeriodFrom <= NOW()) AND D.EventType='Discount')
                 THEN (P.Price * D.Rate)
                 ELSE NULL END) PPriceDiscount,
           FORMAT(P.Price,0) PPriceF,
@@ -138,20 +137,20 @@ AS SELECT P.ID PID ,P.Name PName, P.Info PInfo, P.Img PImg, P.Stock PStock, P.St
 
 DROP VIEW IF EXISTS ORDER_LIST_RECORD_VIEW;
 
--- 結合了 product的名字與照片 與 order_list_record ;
+-- 結合了 product的名字與照片 與 ORDER_LIST_RECORD ;
 
 CREATE VIEW ORDER_LIST_RECORD_VIEW AS
-SELECT order_list_record.OID, order_list_record.PID, order_list_record.Quantity, product.Name, product.Img
-FROM order_list_record, product
-WHERE order_list_record.PID = product.ID;
+SELECT ORDER_LIST_RECORD.OID, ORDER_LIST_RECORD.PID, ORDER_LIST_RECORD.Quantity, PRODUCT.Name, PRODUCT.Img
+FROM ORDER_LIST_RECORD, PRODUCT
+WHERE ORDER_LIST_RECORD.PID = PRODUCT.ID;
 
 
 DROP VIEW IF EXISTS ORDER_LIST_VIEW;
 
--- 結合了 member(又分收件人與員工) discount order_list_record 的 view ;
+-- 結合了 member(又分收件人與員工) discount ORDER_LIST_RECORD 的 view ;
 CREATE VIEW ORDER_LIST_VIEW AS
-SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", D.Info
-FROM order_list O, member mem, member stf, discount D
-WHERE O.CID = mem.ID
-AND O.DID = D.ID
-AND O.SID = stf.ID;
+SELECT O.*, mem.Name "memName", mem.Email, mem.Phone, mem.Address, stf.Name "stfName", d.Info
+FROM ORDER_LIST O
+LEFT JOIN MEMBER stf ON O.SID = stf.ID
+LEFT JOIN MEMBER mem ON O.CID = mem.ID
+LEFT JOIN DISCOUNT d ON O.DID = d.ID;
