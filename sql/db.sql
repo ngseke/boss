@@ -1,9 +1,3 @@
-DROP DATABASE IF EXISTS BOSS;
-
-CREATE DATABASE BOSS default character set utf8mb4 collate utf8mb4_general_ci;
-SET NAMES utf8mb4;
-USE BOSS;
-
 -- 會員資料;
 CREATE TABLE MEMBER(
   ID VARCHAR(20) PRIMARY KEY,

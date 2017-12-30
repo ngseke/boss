@@ -84,7 +84,7 @@ $page_name = '訂單';
               $sql = $sql. "AND (State ='completed') ";
               break;
           }
-          $sql .= " ORDER BY Date ASC"; // 按照日期排序
+          $sql .= " ORDER BY Date DESC"; // 按照日期排序
           $result = $conn->query($sql);
 
           // 顯示訂單狀態樣式
