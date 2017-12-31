@@ -4,14 +4,6 @@ i.material-icons{
   font-size: 1.2rem;
 }
 
-/* login頁背景 */
-.login-bg{
-  background: url('https://c.pxhere.com/photos/62/b8/restaurant_cafe_bar_counter-2620.jpg!d');
-  background-position: top center;
-  background-size: 100% auto;
-  background-attachment: fixed;
-}
-
 /* jumbotron滑入效果 */
 .link.jumbotron, div.link{
   transition: transform .3s;
@@ -69,4 +61,12 @@ i.material-icons{
   /* transform: scale(1.05); */
   opacity: .7;
   border-color: #aaa;
+}
+
+/* 滑入背景變色效果 */
+.bg-hover{
+  transition: .4s all;
+}
+.bg-hover:hover{
+  background: #eee;
 }

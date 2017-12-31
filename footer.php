@@ -5,6 +5,13 @@ $authorList= array( "FBID"=>array('100002864697459','100000427402468', "10000022
 "num"=>array("104590020", "104590025","104590029","104590036"),
 "t"=>array("87", "87","帥","87"));
 ?>
+<?php
+$FirstDay = date('Y-m-d H:i:s',mktime(11, 43, 58, 11, 14, 2017)); // GIT創建日
+$Deadline = date('Y-m-d H:i:s',mktime(00, 00, 00, 01, 02, 2018)); // 死線日
+$Today = date('Y-m-d H:i:s');
+$FirstDayDiff = floor((strtotime($Today) - strtotime($FirstDay))/3600/24);
+$DeadlineDiff = -(floor((strtotime($Today) - strtotime($Deadline))/3600/24));
+?>
 <div class="container mt-3">
   <div class="row">
     <div class="col-12">
@@ -32,15 +39,18 @@ $authorList= array( "FBID"=>array('100002864697459','100000427402468', "10000022
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
+            <div class="col-12 d-none">
+              <p class="text-center rounded bg-hover">已開幕第 <?= $FirstDayDiff ?> 天</p>
+            </div>
             <div class="col-12">
-              <h4 class="text-center mt-3"><em>NTUT CSIE</em></h4>
+              <h4 class="text-center mt-3"><em>NTUT-CSIE</em></h4>
             </div>
             <?php
             for ($i=0; $i < 4 ; $i++) {
               // Tooltip
-              $tooltip='data-toggle="tooltip" data-placement="bottom" title="'. $authorList['t'][$i]  .'"';
+              $tooltip='data-toggle="tooltip" data-placement="bottom" title="'. $authorList['num'][$i]  .'"';
               //
-              echo '<div class="col-6 col-lg-3 text-center my-3">';
+              echo '<div class="col-6 col-lg-3 text-center my-3 rounded bg-hover">';
               echo '<img class="img-fluid rounded-circle" style="width:2rem" '.$tooltip.' src="https://graph.facebook.com/'. $authorList['FBID'][$i] . '/picture">
               <span class="ml-1">
                 <a class="text-info" target="_blank" href="https://www.facebook.com/'. $authorList['FBID'][$i]  .'">'. $authorList['name'][$i] .'</a>
@@ -51,9 +61,9 @@ $authorList= array( "FBID"=>array('100002864697459','100000427402468', "10000022
             <div class="col-12">
               <h4 class="text-center mt-3"><em>指導教授</em></h4>
             </div>
-            <div class="col-12 text-center my-3">
+            <div class="col-12 text-center my-3 rounded bg-hover">
               <div class="rounded-circle d-inline-block align-middle" style="width:2rem; height:2rem; background:url(http://www.cc.ntut.edu.tw/~cliu/DSC00288%20cliu.jpg); background-size:contain; background-position:center;"></div>
-              <span class="ml-1"><a class="text-warning" target="_blank" href="http://www.cc.ntut.edu.tw/~cliu/">Chien-Hung Liu</a></span>
+              <span class="ml-1"><a class="text-info" target="_blank" href="http://www.cc.ntut.edu.tw/~cliu/">Chien-Hung Liu</a></span>
             </div>
           </div>
         </div>
