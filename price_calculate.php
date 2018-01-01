@@ -34,7 +34,7 @@
   $Fare = 60;
   // 資料庫指令
   $sql = "SELECT P.PID PID, P.PImg PIMG, P.PName PName, P.PPrice PPrice,
-          CR.Quantity CRQ, P.PPriceDiscount PPriceD, P.DID PDID, P.DEvent PDEvent
+          CR.Quantity CRQ, P.PPriceDiscount PPriceD, P.DID PDID, P.DEventType PDEvent
           FROM CART C
           JOIN CART_RECORD CR ON C.ID = CR.ID
           JOIN PRODUCT_VIEW P ON CR.PID = P.PID
