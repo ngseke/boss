@@ -2,19 +2,17 @@
   登入介面改為modal顯示。
   此頁放的是‘modal彈出視窗’ 和 ‘AJAX語法’， 同時處理登入和登出。
 -->
-
 <div class="modal fade" id="loginModal" tabindex="-1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><a class="text-dark" >登入BOSS</h5>
+        <h5 class="modal-title">登入BOSS</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-
           <div class="row login-panel" method="post">
             <div class="col-12">
               <div id="LoginAlert" class="alert text-center d-none"></div>
