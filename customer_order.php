@@ -29,7 +29,7 @@ $page_name = '訂單';
   <?php include('nav.php') ?>
   <div class="container my-3">
     <div class="row">
-      <div class="col-3">
+      <div class="col-12 col-lg-3 mt-1">
         <?php
         if(isset($_GET['state'])){
           $state=$_GET['state'];
@@ -63,7 +63,8 @@ $page_name = '訂單';
         </div>
       </div>
       <!-- 右側訂單列表 -->
-      <div class="col-9">
+      <div class="col-12 col-lg-9 mt-2">
+        <div class="row">
         <?php
         // 基本Query指令
         $sql = "SELECT * FROM ORDER_LIST
@@ -148,7 +149,7 @@ $page_name = '訂單';
             while ($rows_0= mysqli_fetch_array($result_0)){
                 $str .='<tr>
                 <th class="align-middle" scope="row">'.($i++).'</th>
-                <td class="text-center"><img src="'.$rows_0['Img'].'" class="img-fluid rounded d-block" style="max-height: 3rem; width: auto;"></td>
+                <td class="text-center"><img src="'.$rows_0['Img'].'" class="img-fluid rounded d-inline-block text-center" style="max-height: 3rem; width: auto;"></td>
                 <td class="align-middle">'.$rows_0['Name'].' </td>
                 <td class="align-middle">$ '.$rows_0['Price'].'</td>
                 <td class="align-middle">'.$rows_0['Quantity'].'</td>
@@ -156,15 +157,15 @@ $page_name = '訂單';
 
             }
 
-            $orderDetail = ' <div class="col-9">
+            $orderDetail = ' <div class="col-12 col-lg-9">
             <table class="table table-hover table-sm mt-3">
             <thead class="thead-dark">
             <tr>
               <th scope="col" style="width:2rem;">#</th>
               <th scope="col" style="width:4rem;"></th>
               <th scope="col">商品名稱</th>
-              <th scope="col">單價</th>
-              <th scope="col">數量</th>
+              <th scope="col" style="width:3rem;">單價</th>
+              <th scope="col" style="width:3rem;">數量</th>
             </tr>
             </thead>
 
@@ -174,7 +175,7 @@ $page_name = '訂單';
             </table>
             </div>';
 
-            $orderCost = '<div class="col-3 text-right position-relative" >
+            $orderCost = '<div class="col-12 mt-5 mt-lg-0 col-lg-3 text-right position-relative" >
             <div class="position-absolute  " style="bottom:0rem; right:2rem;">
             總金額:  <h3 class="d-inline-block"><strong class="text-danger">NT$ '.$rowsAll['FinalCost'].'</strong></h3>
             </div></div></div></div>';
@@ -191,6 +192,7 @@ $page_name = '訂單';
         ?>
 
       </div>
+    </div>
     </div>
   </div>
   <?php include('footer.php') ?>
