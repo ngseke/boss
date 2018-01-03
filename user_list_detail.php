@@ -92,15 +92,11 @@
                       $positionList= array('A');
                       $positionTextList = array('管理員 (Admin)');
                     }
-                    else if($Position=='C'){
+                    else{
                       $positionList= array('C','S');
                       $positionTextList = array('顧客 (Customer)','員工 (Staff)');
                     }
-                    else{
-                      $positionList= array('C','S','A');
-                      $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
-                    }
-                      
+                    
                     foreach ($positionList as $key => $ppap) {
                       $isThisSelected = ($Position==$ppap)?'selected ':'';
                       echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$positionTextList[$key].'</option>';
