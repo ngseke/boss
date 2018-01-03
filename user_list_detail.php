@@ -10,6 +10,10 @@
   <?php include('style.php') ?>
   <title><?php echo  $page_name. ' - ' .title_name ?></title>
   <?php require_once ('js.php') ?>
+  <?php 
+  if(!($user_position=='A'||$user_position=='S'))
+    die ('<meta http-equiv="refresh" content="0;URL=index.php">');
+   ?>
 </head>
 <body>
   <!-- 引入導覽列 -->
