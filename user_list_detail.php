@@ -87,13 +87,20 @@
                 <select class="form-control" value="<?php echo $Position;?>" name="Position" required>
                   <?php
                     // 以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
-                    $positionList= array('C','S','A');
-                    if ($Position=='A')
+                    
+                    if ($Position=='A'){
+                      $positionList= array('A');
                       $positionTextList = array('管理員 (Admin)');
-                    else if($Position=='C')
+                    }
+                    else if($Position=='C'){
+                      $positionList= array('C','S');
                       $positionTextList = array('顧客 (Customer)','員工 (Staff)');
-                    else
+                    }
+                    else{
+                      $positionList= array('C','S','A');
                       $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
+                    }
+                      
                     foreach ($positionList as $key => $ppap) {
                       $isThisSelected = ($Position==$ppap)?'selected ':'';
                       echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$positionTextList[$key].'</option>';
