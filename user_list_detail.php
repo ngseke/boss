@@ -88,7 +88,12 @@
                   <?php
                     // 以PHP生成下拉式選單的選項，為了個別設置原來選項的selected
                     $positionList= array('C','S','A');
-                    $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
+                    if ($Position=='A')
+                      $positionTextList = array('管理員 (Admin)');
+                    else if($Position=='C')
+                      $positionTextList = array('顧客 (Customer)','員工 (Staff)');
+                    else
+                      $positionTextList= array('顧客 (Customer)','員工 (Staff)','管理員 (Admin)');
                     foreach ($positionList as $key => $ppap) {
                       $isThisSelected = ($Position==$ppap)?'selected ':'';
                       echo '<option value="'.$ppap.'" '. $isThisSelected .' >'.$positionTextList[$key].'</option>';
