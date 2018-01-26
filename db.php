@@ -14,10 +14,9 @@ if($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
           SET NAMES utf8mb4;
           USE BOSS;";
 }else{
-  $file="DROP DATABASE IF EXISTS id4146602_boss;
-          CREATE DATABASE id4146602_boss default character set utf8mb4 collate utf8mb4_general_ci;
-          SET NAMES utf8mb4;
-          USE id4146602_boss;";
+  $file="SET NAMES utf8mb4;
+         DROP TABLE IF EXISTS
+         MEMBER,PRODUCT,CATEGORY,ORDER_LIST,ORDER_LIST_RECORD,CART,CART_RECORD,COMMENT,DISCOUNT";
 }
 
 $file.= file_get_contents('sql/db.sql'); // 取得sql腳本檔

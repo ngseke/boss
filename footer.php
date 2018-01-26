@@ -16,7 +16,15 @@ $DeadlineDiff = -(floor((strtotime($Today) - strtotime($Deadline))/3600/24));
   <div class="row">
     <div class="col-12">
       <small>
-        <p class="text-muted text-center">© Copyright <span id="aboutUsSwitch">BOSS</span> 2017 - <?php echo date('Y',time()); ?></p>
+        <p class="text-muted text-center">© Copyright <span id="aboutUsSwitch">BOSS</span> 2017 - <?php echo date('Y',time()); ?>
+        <?php
+          if ($_SERVER['HTTP_HOST']=='localhost' || $_SERVER['HTTP_HOST']== '127.0.0.1'){
+            echo '';
+          }else {
+            echo 'on '.$_SERVER['HTTP_HOST'];
+          }
+        ?>
+        </p>
       </small>
     </div>
   </div>
