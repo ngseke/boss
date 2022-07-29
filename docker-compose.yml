@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+      - "${PORT}:80"
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7.39
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: password
+      MYSQL_DATABASE: BOSS
+    command:
+      - "--character-set-server=utf8mb4"
